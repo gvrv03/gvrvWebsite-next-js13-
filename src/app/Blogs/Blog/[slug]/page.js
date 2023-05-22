@@ -1,9 +1,12 @@
-import { getsingle } from "@/Functions/getBlogs";
 import React from "react";
 import Link from "next/link";
+import { getSingleURL } from "../../../../../allLinks";
+import { notFound } from "next/navigation";
 
 const page = async ({ params }) => {
-  const data = await getsingle(params.slug);
+  const res = await fetch(getSingleURL + params.slug);
+ 
+  const data = await res.json();
   const { title, category, description, image, artical, author, views } = data;
   return (
     <>
