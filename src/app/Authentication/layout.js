@@ -3,10 +3,10 @@ import React, { useState } from "react";
 import { DefButton } from "@/Components/UtilComponent";
 import { useUserAuth } from "@/Context/UserAuthContext";
 
-const layout = ({ children }) => {
+const Layout = ({ children }) => {
   const { signWithGoogle } = useUserAuth();
   const [loading, setloading] = useState(false);
-  
+
   const handleGoogleSignIn = async (e) => {
     e.preventDefault();
     setloading(true);
@@ -37,4 +37,4 @@ const layout = ({ children }) => {
   );
 };
 
-export default layout;
+export default Layout;
