@@ -93,7 +93,7 @@ const page = async ({ params }) => {
             <article
               className="overflow-y-scroll  mt-5"
               dangerouslySetInnerHTML={{
-                __html: artical ? artical : "<p>Not Found</p>",
+                __html: artical ? artical : "",
               }}
             />
           </section>

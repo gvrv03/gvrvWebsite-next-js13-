@@ -2,9 +2,9 @@ import { getBlogs } from "@/Functions/getBlogs";
 import React from "react";
 import BlogCard from "./BlogCard";
 
-const AllBlogs = async () => {
-  const blogs = await getBlogs();
-  if (blogs.body === null) {
+export default async function AllBlogs() {
+  const { body } = await getBlogs();
+  if (body === null) {
     return (
       <section className="mt-5 grid grid-cols-1  h-90 md:grid-cols-3 gap-5 justify-between overflow-y-scroll flex-wrap ">
         Not found
@@ -13,7 +13,7 @@ const AllBlogs = async () => {
   }
   return (
     <section className="mt-5 grid grid-cols-1  h-90 md:grid-cols-3 gap-5 justify-between overflow-y-scroll flex-wrap ">
-      {blogs.body.map((i, index) => {
+      {body.map((i, index) => {
         return (
           <BlogCard
             key={index}
@@ -28,6 +28,4 @@ const AllBlogs = async () => {
       })}
     </section>
   );
-};
-
-export default AllBlogs;
+}

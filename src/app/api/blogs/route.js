@@ -2,7 +2,6 @@ import initDB from "@/helper/initDB";
 import Blogs from "@/Modal/Blogs";
 initDB();
 
-import { headers } from "next/headers";
 import { NextResponse } from "next/server";
 
 export async function GET(req, res) {
