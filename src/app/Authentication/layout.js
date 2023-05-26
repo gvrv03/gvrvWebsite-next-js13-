@@ -18,6 +18,7 @@ const Layout = ({ children }) => {
       setloading(false);
     }
   };
+  
   return (
     <>
       <div className="flex flex-col items-center  container justify-center  py-8 mx-auto h-screen lg:py-0">

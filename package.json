@@ -24,7 +24,6 @@
     "@reduxjs/toolkit": "^1.9.5",
     "@tailwindcss/aspect-ratio": "^0.2.1",
     "autoprefixer": "10.4.14",
-    "aws-crt": "^1.15.16",
     "browserslist": "^4.21.5",
     "eslint": "8.41.0",
     "eslint-config-next": "13.4.3",

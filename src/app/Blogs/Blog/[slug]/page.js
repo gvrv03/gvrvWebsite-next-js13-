@@ -1,13 +1,18 @@
 import React from "react";
 import Link from "next/link";
 import { getSingleURL } from "../../../../../allLinks";
-import { notFound } from "next/navigation";
 
 const page = async ({ params }) => {
   const res = await fetch(getSingleURL + params.slug);
- 
   const data = await res.json();
   const { title, category, description, image, artical, author, views } = data;
+  if (!title) {
+    return (
+      <div className="bg-white h-full p-5 ">
+        <h1>Not Found</h1>
+      </div>
+    );
+  }
   return (
     <>
       <div className="bg-white h-full p-5 ">
@@ -85,7 +90,9 @@ const page = async ({ params }) => {
             <img src={image} alt={title} />
             <article
               className="overflow-y-scroll  mt-5"
-              dangerouslySetInnerHTML={{ __html: artical }}
+              dangerouslySetInnerHTML={{
+                __html: artical ? artical : "<p>Not Found</p>",
+              }}
             />
           </section>
         </div>
