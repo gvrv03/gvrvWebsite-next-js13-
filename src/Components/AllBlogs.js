@@ -4,7 +4,7 @@ import BlogCard from "./BlogCard";
 
 const AllBlogs = async () => {
   const blogs = await getBlogs();
-  if (!blogs) {
+  if (blogs.body === null) {
     return (
       <section className="mt-5 grid grid-cols-1  h-90 md:grid-cols-3 gap-5 justify-between overflow-y-scroll flex-wrap ">
         Not found

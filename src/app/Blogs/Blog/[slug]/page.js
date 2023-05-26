@@ -5,8 +5,10 @@ import { getSingleURL } from "../../../../../allLinks";
 const page = async ({ params }) => {
   const res = await fetch(getSingleURL + params.slug);
   const data = await res.json();
-  const { title, category, description, image, artical, author, views } = data;
-  if (!title) {
+  const { title, category, description, image, artical, author, views } = data
+    ? data
+    : {};
+  if (title === null) {
     return (
       <div className="bg-white h-full p-5 ">
         <h1>Not Found</h1>
