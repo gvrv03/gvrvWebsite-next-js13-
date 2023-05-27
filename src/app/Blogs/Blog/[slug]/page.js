@@ -1,6 +1,8 @@
 import React from "react";
 import Link from "next/link";
 import { getSingleURL } from "../../../../../allLinks";
+import { Skeleton } from "@mui/material";
+import Loading from "../loading";
 
 const page = async ({ params }) => {
   const res = await fetch(getSingleURL + params.slug);
@@ -70,6 +72,15 @@ const page = async ({ params }) => {
               </div>
             </li>
           </ol>
+
+          <div className="flex gap-2">
+            <button>
+              <i className="uil uil-edit mr-2 text-xl pColor" />
+            </button>
+            <button>
+              <i className="uil uil-bookmark mr-2 text-xl text-blue-400" />
+            </button>
+          </div>
         </nav>
 
         <div className="h-90 overflow-y-scroll">

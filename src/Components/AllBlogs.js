@@ -14,6 +14,7 @@ export default async function AllBlogs() {
   }
   return (
     <section className="mt-5 grid grid-cols-1  h-90 md:grid-cols-3 gap-5 justify-between overflow-y-scroll flex-wrap ">
+    
       {data &&
         data.map((i, index) => {
           return (
