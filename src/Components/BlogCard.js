@@ -18,7 +18,6 @@ export default function BlogCard(props) {
               href={{
                 pathname: `/Blogs/Blog/` + id,
               }}
-              target="_blank"
               className="text-indigo-500 inline-flex items-center md:mb-2 lg:mb-0"
             >
               Learn More

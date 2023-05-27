@@ -32,9 +32,9 @@ const AllSkills = ({ fun, mState }) => {
           fun("hidden");
         }}
       />
-      <div className=" bg-white dark:bg-gray-900 gap-10 grid place-items-center p-10 z-10 h-4/5 w-4/5  absolute  ">
+      <div className=" bg-white  gap-10 grid place-items-center p-10 z-10 h-4/5 w-4/5  absolute  ">
         <h4 className="font-bold text-2xl text-center">Skills</h4>
-        <div className="w-10 h-1 bg-gray-200 dark:bg-gray-700  rounded-full" />
+        <div className="w-10 h-1 bg-gray-200 rounded-full" />
 
         <div className="h-full  overflow-y-scroll">
           <div className="grid place-items-center mb-10">
