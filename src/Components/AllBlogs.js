@@ -1,16 +1,23 @@
-import { getBlogs } from "@/Functions/getBlogs";
 import React from "react";
+import { getAllBlogsURL } from "../../allLinks";
 import BlogCard from "./BlogCard";
 
-const AllBlogs = async () => {
-  const { body } = await getBlogs();
-  if (body === undefined) {
-    return <div>Error occuured</div>;
-  }
+export default async function AllBlogs() {
+  // const res = await fetch(getAllBlogsURL);
+  // const data = await res.json();
+  // console.log(data);
+  // if (data === undefined) {
+  //   return (
+  //     <div className="h-screen w-full grid place-items-center  bg-white ">
+  //       Error occuured
+  //     </div>
+  //   );
+  // }
   return (
     <section className="mt-5 grid grid-cols-1  h-90 md:grid-cols-3 gap-5 justify-between overflow-y-scroll flex-wrap ">
-      {body &&
-        body.map((i, index) => {
+      <h1 className="font-semibold p-5">No Blog Found</h1>{" "}
+      {/* {data &&
+        data.map((i, index) => {
           return (
             <BlogCard
               key={index}
@@ -22,9 +29,7 @@ const AllBlogs = async () => {
               views={i.views}
             />
           );
-        })}
+        })} */}
     </section>
   );
-};
-
-export default AllBlogs;
+}

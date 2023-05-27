@@ -1,14 +1,8 @@
 import Image from "next/image";
 import Link from "next/link";
 
-export default function BlogCard({
-  title,
-  category,
-  description,
-  image,
-  id,
-  views,
-}) {
+export default function BlogCard(props) {
+  const { title, category, description, image, id, views } = props ? props : {};
   return (
     <div className="w-full md:w-auto ">
       <div className=" rounded-sm">
@@ -22,9 +16,7 @@ export default function BlogCard({
           <div className="flex items-center flex-wrap ">
             <Link
               href={{
-                pathname: `/Blogs/Blog/` + id  ,
-               
-              
+                pathname: `/Blogs/Blog/` + id,
               }}
               target="_blank"
               className="text-indigo-500 inline-flex items-center md:mb-2 lg:mb-0"

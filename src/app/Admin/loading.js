@@ -3,10 +3,7 @@ import React from "react";
 
 const loading = () => {
   return (
-    <div
-      className="grid place-items-center w-full h-90
-     bg-white top-0"
-    >
+    <div className="grid place-items-center w-full h-screen bg-white top-0">
       <LoadingSpinner />
     </div>
   );

@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import LoadingSpinner from "@/Components/Spinner/LoadingSpinner";
 import { fetchBlogs } from "@/Store/Actions/blogAction";
 import React, { useEffect } from "react";
@@ -46,10 +46,7 @@ const AllBlogs = () => {
           {blogs.data &&
             blogs.data.map((item, index) => {
               return (
-                <div
-                  key={index}
-                  className="bg-white  h-fit  p-5"
-                >
+                <div key={index} className="bg-white  h-fit  p-5">
                   {" "}
                   <div className="flex flex-col md:flex-row items-center justify-between gap-5  ">
                     <div className="flex gap-5  items-center flex-col justify-center md:flex-row ">
@@ -117,10 +114,7 @@ const AllBlogs = () => {
           {blogs.data &&
             blogs.data.map((item, index) => {
               return (
-                <div
-                  key={index}
-                  className="bg-white  h-fit  p-5"
-                >
+                <div key={index} className="bg-white  h-fit  p-5">
                   {" "}
                   <div className="flex flex-col md:flex-row items-center justify-between gap-5  ">
                     <div className="flex gap-5  items-center flex-col justify-center md:flex-row ">
