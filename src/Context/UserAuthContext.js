@@ -2,14 +2,16 @@ import { useContext } from "react";
 import { createContext } from "react";
 import baseUrl from "../../baseUrl";
 import {
-  createUserWithEmailAndPassword,
-  signInWithEmailAndPassword,
   signOut,
   onAuthStateChanged,
   GoogleAuthProvider,
   sendPasswordResetEmail,
   signInWithPopup,
-  sendEmailVerification,
+
+  //roles
+  updateProfile,
+  signInWithPhoneNumber,
+  RecaptchaVerifier,
 } from "firebase/auth";
 import { auth } from "../../firebase";
 import { useEffect } from "react";
@@ -18,18 +20,42 @@ import { useState } from "react";
 const userAuthContext = createContext();
 export function UserAuthContexProvider({ children }) {
   const [user, setuser] = useState("");
+  const [response, setresponse] = useState("");
+  const [verificatioIDPhone, setverificatioIDPhone] = useState({});
 
-  async function signUp(email, password) {
-    const res = await createUserWithEmailAndPassword(auth, email, password);
-    await sendEmailVerification(res.user);
-    // console.log(res.user);
-    return res;
-  }
+  const sendOTP = async (phoneNo) => {
+    try {
+      const applicationVerifier = new RecaptchaVerifier(
+        "recaptcha-container",
+        {},
+        auth
+      );
+      await applicationVerifier.render();
+      const verificationId = await signInWithPhoneNumber(
+        auth,
+        "+" + phoneNo,
+        applicationVerifier
+      );
+      setverificatioIDPhone(verificationId);
+      return { msg: "OTP send to " + phoneNo };
+    } catch (error) {
+      return { error: error.code };
+    }
+  };
+  const verifyOTPServer = async (otp, name, gender) => {
+    try {
+      await verificatioIDPhone.confirm(otp);
+      await updateProfile(auth.currentUser, {
+        displayName: name,
+        photoURL:
+          gender === "Male" ? "/img/maleUser.svg" : "/img/femaleUser.svg",
+      });
+      return { msg: "Sign In Successfull" };
+    } catch (error) {
+      return { error: error.code };
+    }
+  };
 
-  function signUIn(email, password) {
-    const res = signInWithEmailAndPassword(auth, email, password);
-    return res;
-  }
   function logOut() {
     return signOut(auth);
   }
@@ -41,7 +67,6 @@ export function UserAuthContexProvider({ children }) {
   function resetPassword(email) {
     const actionCodeSettings = {
       url: baseUrl + "?email=" + email,
-
       handleCodeInApp: true,
     };
     return sendPasswordResetEmail(auth, email, actionCodeSettings);
@@ -60,9 +85,9 @@ export function UserAuthContexProvider({ children }) {
     <userAuthContext.Provider
       value={{
         user,
-        signUp,
-        signUIn,
         logOut,
+        sendOTP,
+        verifyOTPServer,
         signWithGoogle,
         resetPassword,
       }}

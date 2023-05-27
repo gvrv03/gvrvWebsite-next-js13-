@@ -1,20 +1,27 @@
-"use client"
+"use client";
 
 import React, { useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { DefButton } from "@/Components/UtilComponent";
-import { useUserAuth } from "@/Context/UserAuthContext";
+import PhoneInput from "react-phone-input-2";
+import "react-phone-input-2/lib/style.css";
 
+import { useUserAuth } from "@/Context/UserAuthContext";
 const SignIn = () => {
-  const [userData, setuserData] = useState({});
-  const [requiredState, setRequired] = useState(false);
-  const { signUIn, user } = useUserAuth();
+  const [phoneNo, setphoneNo] = useState("");
+  const [uName, setUname] = useState("");
+  const [gender, setgender] = useState("");
+  const [otp, setOtp] = useState("");
+  const [sendOTPCheck, setSendOtpCheck] = useState(false);
+
+  const [requiredState, setRequired] = useState(true);
+  const { verifyOTPServer, sendOTP, user } = useUserAuth();
   const [msg, setmsg] = useState("");
   const [loading, setloading] = useState(false);
 
   const router = useRouter();
-
+  console.log(phoneNo + "   " + otp);
   if (msg) {
     setTimeout(() => {
       setmsg("");
@@ -23,23 +30,40 @@ const SignIn = () => {
   if (user) {
     router.push("/");
   }
-  const onChange = (e) => {
-    setuserData({
-      ...userData,
-      [e.target.name]: e.target.value,
-    });
-  };
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    setmsg("");
-    setloading(true);
-    try {
-      await signUIn(userData.email, userData.password);
-      setloading(false);
 
+  const sendOTPClient = async (e) => {
+    e.preventDefault();
+    setloading(true);
+    if (phoneNo && uName && gender) {
+      const res = await sendOTP(phoneNo);
+      if (res) {
+        setmsg(res.msg);
+        setSendOtpCheck(true);
+      } else {
+        setmsg(res.error);
+        setSendOtpCheck(false);
+      }
+      setSendOtpCheck(true);
+      setloading(false);
+      console.log(res);
+    } else {
+      setmsg("Fill all the fields");
+      setloading(false);
+    }
+  };
+
+  const verifyOTPClient = async (e) => {
+    e.preventDefault();
+    setloading(true);
+
+    const res = await verifyOTPServer(parseInt(otp), uName, gender);
+    if (res.msg) {
+      setmsg(res.msg);
+      setSendOtpCheck(false);
+      setloading(false);
       router.push("/");
-    } catch (error) {
-      setmsg(error.code);
+    } else {
+      setmsg(res.error);
       setloading(false);
     }
   };
@@ -51,65 +75,110 @@ const SignIn = () => {
             Sign In
           </h1>
           {msg != "" && (
-            <h3 className="bg-red-100 text-center py-2 border border-red-200 font-bold text-red-700 ">
+            <h3 className="bg-red-100 text-center py-2  font-bold text-red-700 ">
               {msg}
             </h3>
           )}
 
-          <form onSubmit={handleSubmit} className="space-y-4 md:space-y-6">
+          <form className="space-y-4 md:space-y-6">
             <div>
               <div className="block mb-2 text-sm font-medium text-gray-900 ">
-                Your email
+                Enter Name
               </div>
               <input
-                type="email"
+                type="text"
                 required={requiredState}
-                onChange={onChange}
-                id="email"
-                // value={setuserData.email ? setuserData.email : ""}
-                name="email"
-                className=" text-gray-900 sm:text-sm rounded-sm focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 border-b-2 border-red-200 outline-none"
-                placeholder="name@company.com"
+                onChange={(e) => {
+                  setUname(e.target.value);
+                }}
+                className=" text-gray-900 sm:text-sm rounded-sm h-10 focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 bg-gray-50  outline-none"
               />
             </div>
+
+            <div>
+              <label
+                htmlFor="gender"
+                className="block mb-2 text-sm font-medium text-gray-900 "
+              >
+                You are
+              </label>
+              <div className=" flex gap-5">
+                <div className="flex justify-start gap-2 text-xs">
+                  <input
+                    type="radio"
+                    required={requiredState}
+                    onChange={(e) => {
+                      setgender(e.target.value);
+                    }}
+                    name="gender"
+                    value="Male"
+                    className=" text-gray-900 sm:text-sm rounded-sm  outline-none block w-full p-2.5 bg-gray-100 "
+                    placeholder="Your Name"
+                  />
+                  <span>Male</span>
+                </div>
+                <div className="flex justify-start gap-2 text-xs">
+                  <input
+                    type="radio"
+                    required={requiredState}
+                    onChange={(e) => {
+                      setgender(e.target.value);
+                    }}
+                    name="gender"
+                    value="Female"
+                    className=" text-gray-900 sm:text-sm rounded-sm  outline-none block w-full p-2.5 bg-gray-100 "
+                    placeholder="Your Name"
+                  />
+                  <span>Female</span>
+                </div>
+              </div>
+            </div>
+
             <div>
               <div className="block mb-2 text-sm font-medium text-gray-900 ">
-                Password
+                Enter phone number
               </div>
-              <input
-                type="password"
+              <PhoneInput
+                country={"in"}
                 required={requiredState}
-                onChange={onChange}
-                id="password"
-                // value={setuserData.password ? setuserData.password : ""}
-                name="password"
-                placeholder="••••••••"
-                className=" text-gray-900 sm:text-sm rounded-sm focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 border-b-2 border-red-200 outline-none"
+                value={phoneNo}
+                onChange={setphoneNo}
               />
             </div>
-            <div className="flex items-center justify-between">
-              <Link
-                href="/Forgot"
-                className="text-sm font-medium text-primary-600 hover:underline dark:text-primary-500"
-              >
-                Forgot password?
-              </Link>
-            </div>
-            <DefButton
-              loading={loading}
-              func={handleSubmit}
-              name="Sign In"
-              btnStyle="text-white pBtn px-5 py-2 w-full"
-            />
-            <p className="text-sm font-light text-gray-500  dark:text-gray-400">
-              Don&apos;t have an account yet?{" "}
-              <Link
-                href="/SignUp"
-                className="font-medium text-primary-600 hover:underline dark:text-primary-500"
-              >
-                Sign up
-              </Link>
-            </p>
+            {!sendOTPCheck && <div id="recaptcha-container"></div>}
+            {sendOTPCheck && (
+              <div>
+                <div className="block mb-2 text-sm font-medium text-gray-900 ">
+                  Enter OTP
+                </div>
+                <input
+                  type="number"
+                  required={requiredState}
+                  onChange={(e) => {
+                    setOtp(e.target.value);
+                  }}
+                  id="otp"
+                  name="otp"
+                  className=" text-gray-900 sm:text-sm rounded-sm h-10 focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 bg-gray-50  outline-none"
+                />
+              </div>
+            )}
+
+            {!sendOTPCheck ? (
+              <DefButton
+                loading={loading}
+                func={sendOTPClient}
+                name="Send OTP"
+                btnStyle="text-white pBtn px-5 py-2 w-full"
+              />
+            ) : (
+              <DefButton
+                loading={loading}
+                func={verifyOTPClient}
+                name="Verify OTP"
+                btnStyle="text-white pBtn px-5 py-2 w-full"
+              />
+            )}
           </form>
         </div>
       </div>

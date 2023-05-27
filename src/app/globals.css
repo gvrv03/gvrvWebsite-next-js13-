@@ -237,66 +237,127 @@
   box-sizing: content-box;
 }
 
-
 /* api loader  */
 @keyframes ldio-drbvkqf2ixt {
-  0% { transform: translate(9.06px,60.4px) scale(0); }
- 25% { transform: translate(9.06px,60.4px) scale(0); }
- 50% { transform: translate(9.06px,60.4px) scale(1); }
- 75% { transform: translate(60.4px,60.4px) scale(1); }
-100% { transform: translate(111.74px,60.4px) scale(1); }
+  0% {
+    transform: translate(9.06px, 60.4px) scale(0);
+  }
+  25% {
+    transform: translate(9.06px, 60.4px) scale(0);
+  }
+  50% {
+    transform: translate(9.06px, 60.4px) scale(1);
+  }
+  75% {
+    transform: translate(60.4px, 60.4px) scale(1);
+  }
+  100% {
+    transform: translate(111.74px, 60.4px) scale(1);
+  }
 }
 
 @keyframes ldio-drbvkqf2ixt-r {
-  0% { transform: translate(111.74px,60.4px) scale(1); }
-100% { transform: translate(111.74px,60.4px) scale(0); }
+  0% {
+    transform: translate(111.74px, 60.4px) scale(1);
+  }
+  100% {
+    transform: translate(111.74px, 60.4px) scale(0);
+  }
 }
 @keyframes ldio-drbvkqf2ixt-c {
-  0% { background: #df1317 }
- 25% { background: #e1e7e7 }
- 50% { background: #e2bb8b }
- 75% { background: #e4934b }
-100% { background: #df1317 }
+  0% {
+    background: #df1317;
+  }
+  25% {
+    background: #e1e7e7;
+  }
+  50% {
+    background: #e2bb8b;
+  }
+  75% {
+    background: #e4934b;
+  }
+  100% {
+    background: #df1317;
+  }
 }
 .ldio-drbvkqf2ixt div {
- position: absolute;
- width: 30.2px;
- height: 30.2px;
- border-radius: 50%;
- transform: translate(60.4px,60.4px) scale(1);
- background: #df1317;
- animation: ldio-drbvkqf2ixt 1.7543859649122806s infinite cubic-bezier(0,0.5,0.5,1);
+  position: absolute;
+  width: 30.2px;
+  height: 30.2px;
+  border-radius: 50%;
+  transform: translate(60.4px, 60.4px) scale(1);
+  background: #df1317;
+  animation: ldio-drbvkqf2ixt 1.7543859649122806s infinite
+    cubic-bezier(0, 0.5, 0.5, 1);
 }
 .ldio-drbvkqf2ixt div:nth-child(1) {
- background: #e4934b;
- transform: translate(111.74px,60.4px) scale(1);
- animation: ldio-drbvkqf2ixt-r 0.43859649122807015s infinite cubic-bezier(0,0.5,0.5,1), ldio-drbvkqf2ixt-c 1.7543859649122806s infinite step-start;
-}.ldio-drbvkqf2ixt div:nth-child(2) {
- animation-delay: -0.43859649122807015s;
- background: #df1317;
-}.ldio-drbvkqf2ixt div:nth-child(3) {
- animation-delay: -0.8771929824561403s;
- background: #e4934b;
-}.ldio-drbvkqf2ixt div:nth-child(4) {
- animation-delay: -1.3157894736842104s;
- background: #e2bb8b;
-}.ldio-drbvkqf2ixt div:nth-child(5) {
- animation-delay: -1.7543859649122806s;
- background: #e1e7e7;
+  background: #e4934b;
+  transform: translate(111.74px, 60.4px) scale(1);
+  animation: ldio-drbvkqf2ixt-r 0.43859649122807015s infinite
+      cubic-bezier(0, 0.5, 0.5, 1),
+    ldio-drbvkqf2ixt-c 1.7543859649122806s infinite step-start;
+}
+.ldio-drbvkqf2ixt div:nth-child(2) {
+  animation-delay: -0.43859649122807015s;
+  background: #df1317;
+}
+.ldio-drbvkqf2ixt div:nth-child(3) {
+  animation-delay: -0.8771929824561403s;
+  background: #e4934b;
+}
+.ldio-drbvkqf2ixt div:nth-child(4) {
+  animation-delay: -1.3157894736842104s;
+  background: #e2bb8b;
+}
+.ldio-drbvkqf2ixt div:nth-child(5) {
+  animation-delay: -1.7543859649122806s;
+  background: #e1e7e7;
 }
 .loadingio-spinner-ellipsis-bwn4ktor48q {
- width: 151px;
- height: 151px;
- display: inline-block;
- overflow: hidden;
- background: transparent;
+  width: 151px;
+  height: 151px;
+  display: inline-block;
+  overflow: hidden;
+  background: transparent;
 }
 .ldio-drbvkqf2ixt {
- width: 100%;
- height: 100%;
- position: relative;
- transform: translateZ(0) scale(1);
- backface-visibility: hidden;
- transform-origin: 0 0; /* see note above */
+  width: 100%;
+  height: 100%;
+  position: relative;
+  transform: translateZ(0) scale(1);
+  backface-visibility: hidden;
+  transform-origin: 0 0; /* see note above */
 }
-.ldio-drbvkqf2ixt div { box-sizing: content-box; }
+.ldio-drbvkqf2ixt div {
+  box-sizing: content-box;
+}
+
+/* Phone nmber input */
+.react-tel-input .form-control {
+  position: relative !important;
+  font-size: 14px !important;
+  letter-spacing: 0.01rem !important;
+  margin-top: 0 !important;
+  border-radius: 0.125rem !important;
+  background-color: rgb(249 250 251 / var(--tw-bg-opacity)) !important;
+  margin-bottom: 0 !important;
+  padding-left: 48px !important;
+
+  margin-left: 0 !important;
+  line-height: 25px !important;
+  height: 40px !important;
+  width: 100% !important;
+  outline: none !important;
+  border: none !important;
+}
+
+.react-tel-input .flag-dropdown {
+  position: absolute !important;
+  top: 0 !important;
+  bottom: 0 !important;
+  padding: 0 !important;
+  background-color: transparent !important;
+  border: none !important;
+  border-radius: 0 !important;
+}

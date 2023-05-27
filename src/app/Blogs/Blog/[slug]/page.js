@@ -1,8 +1,6 @@
 import React from "react";
 import Link from "next/link";
 import { getSingleURL } from "../../../../../allLinks";
-import { Skeleton } from "@mui/material";
-import Loading from "../loading";
 
 const page = async ({ params }) => {
   const res = await fetch(getSingleURL + params.slug);
