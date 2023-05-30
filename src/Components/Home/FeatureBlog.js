@@ -18,7 +18,7 @@ const FeatureBlog = () => {
   const last = blogs.data.length;
   const first = last - 3;
   return (
-    <div className="container  m-auto">
+    <div className="   m-auto">
       <HeaderName name="Blog" />
       {blogs.data.length === 0 && (
         <div className="grid grid-cols-1 md:grid-cols-3 gap-10">

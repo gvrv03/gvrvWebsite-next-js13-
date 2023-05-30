@@ -9,7 +9,7 @@ export async function GET(req, res) {
     const blog = await Blogs.find();
     return NextResponse.json(blog);
   } catch (error) {
-    return NextResponse.json({ body: { msg: "Internal Server Error" } });
+    return NextResponse.json({ msg: "Internal Server Error" }, { status: 500 });
   }
 }
 

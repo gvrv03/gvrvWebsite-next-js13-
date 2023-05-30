@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
 // import { useUserAuth } from "../../lib/Context/UserAuthContext";
@@ -9,13 +9,14 @@ import UserDropDown from "./UserDropDown";
 
 const Navbar = () => {
   const { user, logOut } = useUserAuth();
-
+  console.log(user);
   const router = useRouter();
 
   return (
     <>
-      <nav className="py-3 px-5 fixed z-50 w-full left-0 backdrop-blur-xl top-0 dark:border-none shadow-md ">
-        <div className="container flex flex-wrap items-center justify-between mx-auto">
+      <nav className="py-3 px-5  fixed z-50 w-full left-0 bg-white backdrop-blur-2xl top-0 ">
+        <div className=" flex flex-wrap items-center justify-between mx-auto">
+        {/* <div className=" flex flex-wrap container items-center justify-between mx-auto"> */}
           <Link href="/" className="flex items-center">
             <span className="border w-10 h-10 grid  rounded-full place-items-center  text-2xl pColor rotate-45 font-bold">
               G
@@ -39,7 +40,7 @@ const Navbar = () => {
 
             {!user ? (
               <Link
-                href="/Authentication/SignIn"
+                href="/Authentication"
                 className=" border w-6 h-6  cursor-pointer grid place-items-center   rounded-full"
               >
                 <i className="bi bi-person-fill"></i>

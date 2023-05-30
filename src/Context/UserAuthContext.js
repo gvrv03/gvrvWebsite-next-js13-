@@ -44,12 +44,28 @@ export function UserAuthContexProvider({ children }) {
   };
   const verifyOTPServer = async (otp, name, gender) => {
     try {
-      await verificatioIDPhone.confirm(otp);
+      const verifyConform = await verificatioIDPhone.confirm(otp);
+      console.log(verifyConform);
       await updateProfile(auth.currentUser, {
         displayName: name,
         photoURL:
           gender === "Male" ? "/img/maleUser.svg" : "/img/femaleUser.svg",
       });
+      const { displayName, photoURL, phoneNumber, uid } = auth.currentUser;
+      await fetch("api/signIn", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          userName: displayName,
+          firebaseID: uid,
+          gender: gender,
+          phoneNo: phoneNumber,
+          userProfile: photoURL,
+        }),
+      });
+
       return { msg: "Sign In Successfull" };
     } catch (error) {
       return { error: error.code };
@@ -59,9 +75,27 @@ export function UserAuthContexProvider({ children }) {
   function logOut() {
     return signOut(auth);
   }
-  function signWithGoogle() {
+  async function signWithGoogle() {
     const googleAuthProvider = new GoogleAuthProvider();
-    return signInWithPopup(auth, googleAuthProvider);
+    const res = await signInWithPopup(auth, googleAuthProvider);
+    const { displayName, photoURL, email, uid } = res.user;
+
+    await fetch("/api/signIn", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        userName: displayName,
+        firebaseID: uid,
+        email,
+        userProfile: photoURL,
+      }),
+    });
+    localStorage.setItem("token", await res.user.getIdToken());
+    localStorage.setItem("firebaseuid", res.user.uid);
+    setresponse(Math.random());
+    return res;
   }
 
   function resetPassword(email) {

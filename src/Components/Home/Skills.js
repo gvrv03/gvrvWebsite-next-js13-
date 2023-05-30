@@ -35,7 +35,7 @@ const Skills = () => {
 
   const [modalState, setmodalState] = useState("hidden");
   return (
-    <div className="container m-auto">
+    <div className="  m-auto">
       <HeaderName name="My Skills" />
       <div className="flex flex-wrap -m-4">
         <SkillCard

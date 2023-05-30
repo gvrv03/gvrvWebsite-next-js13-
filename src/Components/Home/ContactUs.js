@@ -3,9 +3,9 @@ import HeaderName from "./HeaderName";
 
 const ContactUs = () => {
   return (
-    <div className="container m-auto">
+    <div className="  m-auto">
       <HeaderName name="Contact Us" />
-      <div className="container   mx-auto flex sm:flex-nowrap flex-wrap">
+      <div className="    mx-auto flex sm:flex-nowrap flex-wrap">
         <div className="lg:w-2/3 md:w-1/2  bg-gray-300 rounded-lg overflow-hidden sm:mr-10 p-10 flex items-end justify-start relative">
           <iframe
             width="100%"

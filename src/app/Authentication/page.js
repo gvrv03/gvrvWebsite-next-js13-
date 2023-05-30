@@ -6,8 +6,8 @@ import { useRouter } from "next/navigation";
 import { DefButton } from "@/Components/UtilComponent";
 import PhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/style.css";
-
 import { useUserAuth } from "@/Context/UserAuthContext";
+
 const SignIn = () => {
   const [phoneNo, setphoneNo] = useState("");
   const [uName, setUname] = useState("");
@@ -21,7 +21,7 @@ const SignIn = () => {
   const [loading, setloading] = useState(false);
 
   const router = useRouter();
-  console.log(phoneNo + "   " + otp);
+  
   if (msg) {
     setTimeout(() => {
       setmsg("");

@@ -32,8 +32,7 @@ const DashboardLayout = ({ children }) => {
   //   if (user && user.emailVerified) {
   return (
     
-    <div className="mt-24  container m-auto">
-      
+    <div className="mt-24  m-auto">
       <div className="flex  flex-col md:flex-row mt-5 gap-5">
         <aside className=" p-5    border rounded-sm hidden md:grid w-full  md:w-3/12 place-items-start   bg-white">
           <div className="gap-2 flex flex-col">

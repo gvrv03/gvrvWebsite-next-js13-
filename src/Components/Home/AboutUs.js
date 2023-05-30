@@ -7,7 +7,7 @@ import Link from "next/link";
 
 const AboutUs = () => {
   return (
-    <div className="container  m-auto">
+    <div className="  m-auto">
       <HeaderName name="About Us" />
       <div className=" ">
         <div className="-z-50 w-auto h-80 rounded-full  overflow-hidden grid place-items-center">

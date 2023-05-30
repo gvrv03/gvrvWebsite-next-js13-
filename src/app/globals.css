@@ -8,7 +8,7 @@
   background-image: url("/Background.svg");
 }
 .bgBackground {
-  background-color: rgba(237, 237, 255, 0.336);
+  background-color: rgb(247, 247, 255);
 }
 /* Custom scrollbar */
 ::-webkit-scrollbar {
@@ -25,6 +25,16 @@
   background-color: var(--PrimaryColor);
   color: white;
   font-weight: 600;
+}
+.landingHome {
+  background-color: #ffffff;
+  opacity: 1;
+  background-image: repeating-radial-gradient(
+      circle at 0 0,
+      transparent 0,
+      #ffffff 40px
+    ),
+    repeating-linear-gradient(#f5f5ff55, #f5f5ff);
 }
 .h-90 {
   height: 90vh;

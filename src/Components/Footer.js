@@ -5,7 +5,7 @@ import React from "react";
 const Footer = () => {
   return (
       <footer className="  m-auto  mt-5  rounded-sm ">
-        <div className="w-full mx-auto container bg-white md:p-6 p-4 md:flex md:items-center md:justify-between">
+        <div className="w-full mx-auto     bg-white md:p-6 p-4 md:flex md:items-center md:justify-between">
           <span className="text-sm text-gray-500 sm:text-center ">
             © 2023{" "}
             <Link href="/" className="hover:underline">
