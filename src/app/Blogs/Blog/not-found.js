@@ -25,11 +25,11 @@ export default function NotFound() {
           </div>
         </div>
         <h1 className="mt-5 text-[36px] font-bold text-slate-800 lg:text-[50px]">
-          404 - Blog not found
+          404 &#45; Blog not found
         </h1>
         <p className="text-slate-600 mt-5 lg:text-lg">
-          The page you are looking for doesn't exist or <br />
-          has been removed.
+          The page you are looking for doesn&#39;t exist or <br />
+          has been removed&#46;
         </p>
         <button
           className="pBtn px-10 py-2 mt-5"
