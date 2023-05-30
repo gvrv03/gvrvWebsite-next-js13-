@@ -1,6 +1,7 @@
 import React from "react";
 import Link from "next/link";
 import { getSingleURL } from "../../../../../allLinks";
+import NotFound from "../not-found";
 
 const page = async ({ params }) => {
   const res = await fetch(getSingleURL + params.slug);
@@ -8,13 +9,14 @@ const page = async ({ params }) => {
   const { title, category, description, image, artical, author, views } = data
     ? data
     : {};
-  if (title === null) {
+  if (artical === undefined) {
     return (
-      <div className="bg-white h-full p-5 ">
-        <h1>Not Found</h1>
+      <div className="bg-white h-full ">
+        <NotFound />
       </div>
     );
   }
+
   return (
     <>
       <div className="bg-white h-full p-5 ">
@@ -102,7 +104,7 @@ const page = async ({ params }) => {
             <article
               className="overflow-y-scroll  mt-5"
               dangerouslySetInnerHTML={{
-                __html: artical ? artical : "",
+                __html: artical,
               }}
             />
           </section>
