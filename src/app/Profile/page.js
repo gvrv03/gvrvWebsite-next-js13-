@@ -4,7 +4,7 @@ import { useUserAuth } from "@/Context/UserAuthContext";
 import Link from "next/link";
 import React, { useEffect } from "react";
 
-const page = () => {
+const Profile = () => {
   const { user } = useUserAuth();
 
   return (
@@ -47,11 +47,15 @@ const page = () => {
         </section>
       ) : (
         <div className="bg-white p-5 font-semibold">
-          You need Sign In! <Link href="/Authentication" className="pColor"> Sign In</Link>{" "}
+          You need Sign In!{" "}
+          <Link href="/Authentication" className="pColor">
+            {" "}
+            Sign In
+          </Link>{" "}
         </div>
       )}
     </div>
   );
 };
 
-export default page;
+export default Profile;

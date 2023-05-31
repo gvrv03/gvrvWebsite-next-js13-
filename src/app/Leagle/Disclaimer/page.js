@@ -1,7 +1,7 @@
 import Link from "next/link";
 import React from "react";
 
-const page = () => {
+const Disclaimer = () => {
   return (
     <div className=" bg-white h-full text-justify p-5">
       <ol className="inline-flex  pb-5 bg-white  w-full items-center space-x-1 md:space-x-3">
@@ -52,9 +52,9 @@ const page = () => {
         <p>For the purposes of this Disclaimer:</p>
         <ul className="list-disc ml-16">
           <li>
-            <strong>Company</strong> (referred to as either "the Company", "We",
-            "Us" or "Our" in this Disclaimer) refers to Gaurav Narnaware ||
-            Personal Website.
+            <strong>Company</strong> (referred to as either &#34;the
+            Company&#34;&#44; &#34;We&#34;, &#34;Us&#34; or &#34;Our&#34; in
+            this Disclaimer) refers to Gaurav Narnaware || Personal Website.
           </li>
           <li>
             <strong>Service</strong> refers to the Website.
@@ -66,7 +66,7 @@ const page = () => {
           </li>
           <li>
             <strong>Website</strong> refers to Gaurav Narnaware || Personal
-            Website, accessible from{" "}
+            Website, accessible from
             <a
               href="http://gauravnarnaware.com/"
               rel="external nofollow noopener"
@@ -139,8 +139,8 @@ const page = () => {
           teaching, scholarship, or research.
         </p>
         <p>
-          The Company believes this constitutes a "fair use" of any such
-          copyrighted material as provided for in section 107 of the United
+          The Company believes this constitutes a &#34;fair use &#34; of any
+          such copyrighted material as provided for in section 107 of the United
           States Copyright law.
         </p>
         <p>
@@ -180,14 +180,14 @@ const page = () => {
           to access or use the Service.
         </p>
         <h1 className="font-bold text-2xl mt-5">
-          "Use at Your Own Risk" Disclaimer
+          &#34;Use at Your Own Risk &#34; Disclaimer
         </h1>
         <p>
-          All information in the Service is provided "as is", with no guarantee
-          of completeness, accuracy, timeliness or of the results obtained from
-          the use of this information, and without warranty of any kind, express
-          or implied, including, but not limited to warranties of performance,
-          merchantability and fitness for a particular purpose.
+          All information in the Service is provided &#34;as is &#34;&#44; with
+          no guarantee of completeness, accuracy, timeliness or of the results
+          obtained from the use of this information, and without warranty of any
+          kind, express or implied, including, but not limited to warranties of
+          performance, merchantability and fitness for a particular purpose.
         </p>
         <p>
           The Company will not be liable to You or anyone else for any decision
@@ -221,4 +221,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Disclaimer;

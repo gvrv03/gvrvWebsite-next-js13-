@@ -25,7 +25,7 @@ const LeagleLayout = ({ children }) => {
     <section className=" m-auto h-full  container">
       <button
         onClick={toggleLegal}
-        className="md:hidden block fixed top-2/4 right-0 bgpColor rounded-l-full p-2 "
+        className="md:hidden hover:w-20 block fixed top-2/4 right-0 transition-all ease-linear delay-700 bgpColor rounded-l-full p-2 "
       >
         <i className="uil uil-angle-left-b text-white text-2xl" />
       </button>
