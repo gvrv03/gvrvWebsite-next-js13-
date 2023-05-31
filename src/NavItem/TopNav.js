@@ -1,17 +1,17 @@
 export const Legal = [
   {
     name: "Disclaimer",
-    location: "/",
+    location: "/Leagle/Disclaimer",
     icon: "pColor uil uil-shield-exclamation",
   },
   {
     name: "Terms & Condition",
-    location: "/",
+    location: "/Leagle/Terms&Condition",
     icon: "pColor uil uil-file-contract",
   },
   {
     name: "Privacy policy",
-    location: "/",
+    location: "/Leagle/PrivacyPolicy",
     icon: "pColor uil uil-shield-check",
   },
 ];

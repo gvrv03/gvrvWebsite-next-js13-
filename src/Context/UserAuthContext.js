@@ -65,7 +65,8 @@ export function UserAuthContexProvider({ children }) {
           userProfile: photoURL,
         }),
       });
-
+      localStorage.setItem("token", await auth.currentUser.getIdToken());
+      localStorage.setItem("firebaseuid", auth.currentUser.uid);
       return { msg: "Sign In Successfull" };
     } catch (error) {
       return { error: error.code };
@@ -73,6 +74,8 @@ export function UserAuthContexProvider({ children }) {
   };
 
   function logOut() {
+    localStorage.removeItem("firebaseuid");
+    localStorage.removeItem("token");
     return signOut(auth);
   }
   async function signWithGoogle() {

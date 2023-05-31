@@ -5,7 +5,7 @@ import Typewriter from "typewriter-effect";
 
 const LandingPage = () => {
   return (
-    <section className={`text-gray-600 landingHome h-screen -mx-5 body-font `}>
+    <section className={`text-gray-600 CSSPAttern2 h-screen -mx-5 body-font `}>
       <div className=" mx-auto gap-10 justify-center flex-col flex pt-10 h-full items-center">
         <div className=" flex items-center justify-center backdrop-blur-sm">
           <div className=" rounded-full overflow-hidden md:h-96 md:w-96   w-60 h-60 grid place-items-center p-10 border-8 shadow-xl  border-white">

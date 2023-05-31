@@ -18,6 +18,9 @@
 :root {
   --PrimaryColor: rgb(255, 0, 0);
 }
+.bgpColor{
+  background-color: var(--PrimaryColor);
+}
 .pColor {
   color: var(--PrimaryColor);
 }
@@ -26,13 +29,14 @@
   color: white;
   font-weight: 600;
 }
-.landingHome {
-  background-color: #ffffff;
+
+.CSSPAttern2 {
+  background-color: #f6f5ff;
   opacity: 1;
   background-image: repeating-radial-gradient(
       circle at 0 0,
       transparent 0,
-      #ffffff 40px
+      #ffffff 80px
     ),
     repeating-linear-gradient(#f5f5ff55, #f5f5ff);
 }

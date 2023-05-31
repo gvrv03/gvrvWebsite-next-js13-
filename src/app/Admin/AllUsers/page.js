@@ -1,14 +1,29 @@
+"use client";
 import UserTable from "@/Components/Table/UserTable";
 import { User } from "../../../DataSet/DataSet";
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchUsers } from "@/Store/Actions/userAction";
+import LoadingSpinner from "@/Components/Spinner/LoadingSpinner";
 
 const AllUsers = () => {
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(fetchUsers());
+  }, [dispatch]);
+
+  const Users = useSelector((state) => state.users);
+  const { isLoading, data } = Users;
   return (
     <div>
       <div className=" font-semibold rounded-sm  border-b-2 p-2 bg-white flex justify-between ">
-        <div>All User ({User.length})</div>
+        <div>All User ({data.length})</div>
         <div className="flex gap-5 justify-between items-center">
-          <button>
+          <button
+            onClick={() => {
+              dispatch(fetchUsers());
+            }}
+          >
             <i className="bi bi-arrow-clockwise text-lg" />{" "}
           </button>
           <button
@@ -19,9 +34,13 @@ const AllUsers = () => {
           </button>
         </div>
       </div>
-
+      {isLoading && (
+        <div className=" relative z-30 w-full grid place-items-center  ">
+          <LoadingSpinner />
+        </div>
+      )}
       <div className="mt-5">
-        <UserTable />
+        <UserTable Users={Users} />
       </div>
     </div>
   );

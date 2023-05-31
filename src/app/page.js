@@ -8,10 +8,12 @@ export default function Home() {
   return (
     <main>
       <LandingPage />
-      <AboutUs />
-      <Skills />
-      <FeatureBlog />
-      <ContactUs />
+      <div className="container  m-auto">
+        <AboutUs />
+        <Skills />
+        <FeatureBlog />
+        <ContactUs />
+      </div>
     </main>
   );
 }

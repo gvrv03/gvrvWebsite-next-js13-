@@ -1,10 +1,12 @@
 "use client";
+import HtmlEditor from "@/Components/Admin/HtmlEditor ";
 import TextEditor from "@/Components/Admin/TextEditor";
 import Sidebar from "@/Components/Sidebar";
 import React, { useState } from "react";
 const CreatePost = () => {
   const [blogNav, setblogNav] = useState("-right-full");
   const [category, setcategory] = useState([]);
+  const [editorType, seteditorType] = useState("html");
   const [cat, setcat] = useState("");
   const addCategory = (cate) => {
     setcategory([...category, cate]);
@@ -58,7 +60,30 @@ const CreatePost = () => {
               placeholder="Description..."
             ></textarea>
           </div>
-          <TextEditor />
+
+          <div className="flex gap-5 mt-5 border p-5  font-semibold ">
+            <button
+              onClick={() => {
+                seteditorType("html");
+              }}
+              className={`${
+                editorType === "html" && "bgpColor text-white"
+              } rounded-full px-10 py-2`}
+            >
+              HTML
+            </button>
+            <button
+              onClick={() => {
+                seteditorType("text");
+              }}
+              className={`${
+                editorType === "text" && "bgpColor text-white"
+              } rounded-full px-10 py-2`}
+            >
+              Editor
+            </button>
+          </div>
+          {editorType === "text" ? <TextEditor /> : <HtmlEditor htmlData="<p>Hey Man</p>" />}
         </div>
 
         <div
