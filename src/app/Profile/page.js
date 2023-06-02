@@ -2,13 +2,32 @@
 import MainCard from "@/Components/Profile/MainCard";
 import { useUserAuth } from "@/Context/UserAuthContext";
 import Link from "next/link";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
+import { read, utils } from "xlsx";
 
 const Profile = () => {
   const { user } = useUserAuth();
+  const [xlsxData, setxlsxData] = useState({});
+  const readUploadFile = (e) => {
+    e.preventDefault();
+    if (e.target.files.length > 0) {
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        const data = e.target.result;
+        const workbook = read(data, { type: "array" });
+        const sheetName = workbook.SheetNames[0];
+        const worksheet = workbook.Sheets[sheetName];
+        const json = utils.sheet_to_json(worksheet);
+        setxlsxData(json);
+      };
+      reader.readAsArrayBuffer(e.target.files[0]);
+    }
+  };
+
+  console.log(xlsxData);
 
   return (
-    <div className="mt-24 flex-col flex gap-5">
+    <div className="mt-24 container m-auto flex-col flex gap-5">
       {" "}
       <ol className="inline-flex bg-white p-5 w-full items-center space-x-1 md:space-x-3">
         <li className="inline-flex items-center">
@@ -54,6 +73,16 @@ const Profile = () => {
           </Link>{" "}
         </div>
       )}
+      {/* xlsx Example */}
+      <form>
+        <label htmlFor="upload">Upload File</label>
+        <input
+          type="file"
+          name="upload"
+          id="upload"
+          onChange={readUploadFile}
+        />
+      </form>
     </div>
   );
 };

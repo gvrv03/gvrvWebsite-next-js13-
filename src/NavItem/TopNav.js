@@ -32,6 +32,11 @@ const TopNav = [
     icon: "pColor uil uil-files-landscapes-alt",
   },
   {
+    name: "Products",
+    location: "/Products",
+    icon: "pColor uil  uil-shopping-cart-alt",
+  },
+  {
     name: "Collection",
     location: "/Collection",
     icon: "pColor uil uil-bookmark",
@@ -83,6 +88,11 @@ export const DashNav = [
     name: "Projects",
     location: "/",
     icon: "pColor uil uil-file-lock-alt",
+  },
+  {
+    name: "Products",
+    location: "/",
+    icon: "pColor uil  uil-shopping-cart-alt",
   },
   {
     name: "Contacts",

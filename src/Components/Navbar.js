@@ -14,8 +14,8 @@ const Navbar = () => {
 
   return (
     <>
-      <nav className="py-3 px-5  fixed z-50 w-full left-0 bg-white backdrop-blur-2xl top-0 ">
-        <div className=" flex flex-wrap items-center justify-between mx-auto">
+      <nav className=" py-1 md:px-0 px-5  fixed z-50 w-full left-0 bg-white backdrop-blur-2xl top-0 ">
+        <div className=" flex container m-auto flex-wrap items-center justify-between mx-auto">
         {/* <div className=" flex flex-wrap container items-center justify-between mx-auto"> */}
           <Link href="/" className="flex items-center">
             <span className="border w-10 h-10 grid  rounded-full place-items-center  text-2xl pColor rotate-45 font-bold">

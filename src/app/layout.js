@@ -24,13 +24,13 @@ export default function RootLayout({ children }) {
         <Provider store={store}>
           <UserAuthContexProvider>
             <Navbar />
-            {/* <div className="container m-auto"> */}
+            <div className="">
               {children}
-            {/* </div> */}
+            </div>
              <Footer />
-            <ScrollToTop showUnder={160}>
+            {/* <ScrollToTop showUnder={160}>
               <i className="bi text-3xl pColor bi-arrow-up-square-fill"></i>
-            </ScrollToTop>
+            </ScrollToTop> */}
           </UserAuthContexProvider>
         </Provider>
       </body>

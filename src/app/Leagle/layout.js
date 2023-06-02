@@ -22,14 +22,14 @@ const LeagleLayout = ({ children }) => {
   };
 
   return (
-    <section className=" m-auto h-full  container">
+    <section className=" m-auto h-full    container">
       <button
         onClick={toggleLegal}
         className="md:hidden hover:w-20 block fixed top-2/4 right-0 transition-all ease-linear delay-700 bgpColor rounded-l-full p-2 "
       >
         <i className="uil uil-angle-left-b text-white text-2xl" />
       </button>
-      <div className=" mt-24    md:flex-row flex-col gap-5 flex">
+      <div className=" mt-20    md:flex-row flex-col gap-5 flex">
         <main className="  w-full md:w-9/12 h-screen ">{children}</main>
         <aside
           className={`w-full md:w-1/4 bg-white fixed md:relative transition-all ease-linear delay-300 md:top-0 md:h-auto md:right-0 top-20 ${LegalNav}  h-full p-5 `}

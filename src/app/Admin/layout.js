@@ -32,8 +32,8 @@ const DashboardLayout = ({ children }) => {
 
   //   if (user && user.emailVerified) {
   return (
-    <div className="flex mt-24  flex-col md:flex-row gap-5">
-      <aside className=" p-5    rounded-sm hidden md:grid w-full  md:w-3/12 place-items-start   bg-white">
+    <div className="flex mt-20  container m-auto h-screen flex-col md:flex-row gap-5">
+      <aside className=" p-5    rounded-sm hidden md:grid w-full h-full md:w-3/12 place-items-start   bg-white">
         <div className="gap-2 flex flex-col">
           <button
             onClick={() => {
