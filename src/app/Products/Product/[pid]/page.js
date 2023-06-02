@@ -2,7 +2,7 @@
 import Link from "next/link";
 import React, { useState } from "react";
 
-const page = () => {
+const ProductDetail = () => {
   const [saved, setsaved] = useState(false);
   const savedHandler = () => {
     if (saved === true) {
@@ -248,4 +248,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default ProductDetail;
