@@ -11,12 +11,8 @@ export async function POST(request) {
     const checkUser = await User.findOne({ firebaseID });
 
     if (checkUser) {
-      return NextResponse.json(
-        { msg: "User Already exists" },
-        {
-          status: 208,
-        }
-      );
+      const updateUser = await User.findOneAndUpdate({ firebaseID }, Data);
+      return NextResponse.json(updateUser);
     }
     const userAdd = await User.create(Data);
     return NextResponse.json(userAdd);

@@ -18,7 +18,7 @@
 :root {
   --PrimaryColor: rgb(255, 0, 0);
 }
-.bgpColor{
+.bgpColor {
   background-color: var(--PrimaryColor);
 }
 .pColor {
@@ -374,4 +374,46 @@
   background-color: transparent !important;
   border: none !important;
   border-radius: 0 !important;
+}
+
+/* btn spinner 2 */
+
+@keyframes ldio-dgenfq81oy5 {
+  0% {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  100% {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+.ldio-dgenfq81oy5 div {
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  border: 10px solid #ffffff;
+  border-top-color: transparent;
+  border-radius: 50%;
+}
+.ldio-dgenfq81oy5 div {
+  animation: ldio-dgenfq81oy5 0.6711409395973155s linear infinite;
+  top: 50px;
+  left: 50px;
+}
+.loadingio-spinner-rolling-93tf0i2dza {
+  width: 18px;
+  height: 18px;
+  display: inline-block;
+  overflow: hidden;
+  background: rgba(221, 221, 221, 0);
+}
+.ldio-dgenfq81oy5 {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  transform: translateZ(0) scale(0.18);
+  backface-visibility: hidden;
+  transform-origin: 0 0; /* see note above */
+}
+.ldio-dgenfq81oy5 div {
+  box-sizing: content-box;
 }

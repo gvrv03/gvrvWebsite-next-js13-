@@ -1,5 +1,5 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import { fetchBlogs } from "../Actions/blogAction";
+import { AddBlog, fetchBlogs } from "../Actions/blogAction";
 
 // Define the initial state
 const initialState = {
@@ -12,9 +12,6 @@ const initialState = {
 const blogSlice = createSlice({
   name: "blogs",
   initialState,
-  reducers: {
-    deleteBlog(state, action) {},
-  },
   extraReducers: (builder) => {
     builder
       .addCase(fetchBlogs.pending, (state) => {
@@ -25,6 +22,17 @@ const blogSlice = createSlice({
         state.data = action.payload;
       })
       .addCase(fetchBlogs.rejected, (state, action) => {
+        state.isLoading = false;
+        state.error = action.error.message;
+      })
+      .addCase(AddBlog.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(AddBlog.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.data.push(action.payload.data);
+      })
+      .addCase(AddBlog.rejected, (state, action) => {
         state.isLoading = false;
         state.error = action.error.message;
       });

@@ -5,14 +5,18 @@ import 'suneditor/dist/css/suneditor.min.css';
 const SunEditor = dynamic(() => import("suneditor-react"), {
   ssr: false,
 });
-const TextEditor = () => {
+const TextEditor = ({setartical}) => {
+
+
+
   return (
     <div className="mt-5">
         <SunEditor
               // value={valueText}
-            //   onChange={(content) => {
-            //     setlongDesc(content);
-            //   }}
+              defaultValue="Hey Man"
+              onChange={(content) => {
+                setartical(content);
+              }}
             //   placeholder="Write brief information"
               height="100%"
               

@@ -44,4 +44,15 @@ export const ApiLoader = () => {
     </div>
   );
 };
+
+export const BtnSpinner2 = () => {
+  return (
+    <div class="loadingio-spinner-rolling-93tf0i2dza">
+      <div class="ldio-dgenfq81oy5">
+        <div></div>
+      </div>
+    </div>
+  );
+};
+
 export default LoadingSpinner;

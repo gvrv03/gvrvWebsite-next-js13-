@@ -1,20 +1,37 @@
 "use client";
 import HtmlEditor from "@/Components/Admin/HtmlEditor ";
 import TextEditor from "@/Components/Admin/TextEditor";
-import Sidebar from "@/Components/Sidebar";
+import { useUserAuth } from "@/Context/UserAuthContext";
+import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
+import { storage } from "../../../../firebase";
+import { v4 } from "uuid";
 import React, { useState } from "react";
+import LoadingSpinner, {
+  BtnSpinner,
+  BtnSpinner2,
+} from "@/Components/Spinner/LoadingSpinner";
+import { UploadButton } from "@/Components/UtilComponent";
+import { AddBlog } from "@/Store/Actions/blogAction";
+import { useDispatch, useSelector } from "react-redux";
 const CreatePost = () => {
   const [blogNav, setblogNav] = useState("-right-full");
-  const [category, setcategory] = useState([]);
-  const [editorType, seteditorType] = useState("html");
   const [cat, setcat] = useState("");
+  const [editorType, seteditorType] = useState("html");
+  const { userIDS } = useUserAuth();
+  const [loading, setloading] = useState(false);
+  // Data State
+  const [title, settitle] = useState("");
+  const [category, setcategory] = useState([]);
+  const [imageUrls, setImageUrls] = useState("");
+  const [description, setdescription] = useState("");
+  const [artical, setartical] = useState("");
+
   const addCategory = (cate) => {
     setcategory([...category, cate]);
   };
   const removeSpecificCategory = (cate) => {
     setcategory(category.filter((currentCategory) => currentCategory !== cate));
   };
-
   const toggleblogNav = () => {
     if (blogNav === "right-0") {
       setblogNav("-right-full");
@@ -22,11 +39,87 @@ const CreatePost = () => {
       setblogNav("right-0");
     }
   };
+
+  // ------------------Upload Image-------------
+  const [uploadLoad, setuploadLoad] = useState(false);
+  const [imageUpload, setImageUpload] = useState(null);
+  const [blogError, setblogError] = useState();
+  const [upload, setupload] = useState(false);
+
+  const uploadFile = async (e) => {
+    e.preventDefault();
+    setuploadLoad(true);
+    if (imageUpload == null) {
+      setuploadLoad(false);
+      return setblogError("Please Select Image");
+    }
+    if (!title) {
+      setuploadLoad(false);
+      return setblogError("Please Enter Title");
+    }
+
+    const imageRef = ref(
+      storage,
+      `Blog/${title}/Cover/${imageUpload.name + v4()}`
+    );
+    await uploadBytes(imageRef, imageUpload).then((snapshot) => {
+      getDownloadURL(snapshot.ref).then((url) => {
+        setImageUrls(url);
+      });
+    });
+    setblogError("Image Uploaded");
+    setuploadLoad(false);
+    setupload(true);
+  };
+
+  if (blogError) {
+    setTimeout(() => {
+      setblogError("");
+    }, 2000);
+  }
+
+  // --------------------- Add Blog to Database -----------------
+  const dispatch = useDispatch();
+  const createBlog = async (e) => {
+    e.preventDefault();
+    if (
+      category.length === 0 ||
+      !upload ||
+      !title ||
+      !imageUrls ||
+      !description ||
+      !artical
+    ) {
+      return setblogError("Please Fill all the fields");
+    }
+    const { payload } = await dispatch(
+      AddBlog({
+        title,
+        category,
+        author: userIDS.ID,
+        image: imageUrls,
+        description,
+        artical,
+      })
+    );
+    if (payload.message) {
+      setblogError(payload.message);
+    }
+    if (payload.error) {
+      setblogError(payload.error);
+    }
+  };
+  const blogs = useSelector((state) => state.blogs);
+  const { isLoading } = blogs;
+
   return (
     <div className="w-full bg-white p-5  h-full">
       <div className="  gap-5 flex">
         <input
           type="text"
+          onChange={(e) => {
+            settitle(e.target.value);
+          }}
           className="w-full border-b-2  border-red-500 bg-transparent outline-none p-2 "
           placeholder="Title"
           name=""
@@ -37,18 +130,29 @@ const CreatePost = () => {
             <i className="bi bi-eye-fill" />
             <p className="hidden md:block">Preview</p>
           </button>
-          <button className=" flex   gap-2 rounded-full bg-red-600  text-white  items-center justify-center  font-semibold  p-2 px-3">
-            <i className="bi bi-telegram" />
+          <button
+            type="submit"
+            onClick={createBlog}
+            disabled={loading ? true : false}
+            className=" flex   gap-2 rounded-full bg-red-600  text-white  items-center justify-center  font-semibold  p-2 px-3"
+          >
+            {isLoading ? <BtnSpinner2 /> : <i className="bi bi-telegram" />}
             <p className="hidden md:block">Publish</p>
           </button>
         </div>
         <button
+          type="button"
           onClick={toggleblogNav}
           className="border    block md:hidden  gap-2 rounded-full p-2 px-3"
         >
           <i className="bi bi-gear-fill" />
         </button>
       </div>
+      {blogError && (
+        <div className="font-semibold border mt-5 p-2 text-center bg-red-50 text-red-900 border-red-200">
+          {blogError}
+        </div>
+      )}
 
       <div className=" w-full flex gap-5 mt-10">
         <div className="w-full md:w-4/5">
@@ -57,33 +161,14 @@ const CreatePost = () => {
               className="border outline-none p-5 w-full h-auto"
               id=""
               rows="2"
+              onChange={(e) => {
+                setdescription(e.target.value);
+              }}
               placeholder="Description..."
             ></textarea>
           </div>
 
-          <div className="flex gap-5 mt-5 border p-5  font-semibold ">
-            <button
-              onClick={() => {
-                seteditorType("html");
-              }}
-              className={`${
-                editorType === "html" && "bgpColor text-white"
-              } rounded-full px-10 py-2`}
-            >
-              HTML
-            </button>
-            <button
-              onClick={() => {
-                seteditorType("text");
-              }}
-              className={`${
-                editorType === "text" && "bgpColor text-white"
-              } rounded-full px-10 py-2`}
-            >
-              Editor
-            </button>
-          </div>
-          {editorType === "text" ? <TextEditor /> : <HtmlEditor htmlData="<p>Hey Man</p>" />}
+          <TextEditor setartical={setartical} />
         </div>
 
         <div
@@ -100,10 +185,30 @@ const CreatePost = () => {
           <div className="flex flex-col w-full ">
             <h5 className="text-gray-500">Upload Thumbnail</h5>
             <div>
-              <input type="file" name="" className="mt-2" id="" />
-              <button className="pBtn w-full py-1 mt-4">Upload</button>
+              <input
+                type="file"
+                name=""
+                onChange={(event) => {
+                  setImageUpload(event.target.files[0]);
+                }}
+                className="mt-2"
+                id=""
+              />
+              <UploadButton
+                name="Upload"
+                btnStyle="pBtn w-full py-1 mt-4"
+                upload={upload}
+                loading={uploadLoad}
+                uploadFile={uploadFile}
+              />
             </div>
           </div>
+
+          {imageUrls && (
+            <div className="w-full">
+              <img src={imageUrls} className="w-full" />
+            </div>
+          )}
           <div>
             <h5 className="text-gray-500">Keywords</h5>
             <input

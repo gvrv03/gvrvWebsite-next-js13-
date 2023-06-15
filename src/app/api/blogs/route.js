@@ -4,51 +4,89 @@ initDB();
 
 import { NextResponse } from "next/server";
 
+// --------------To Add Blog--------------
+export async function POST(request) {
+  try {
+    const Data = await request.json();
+    const { title } = Data;
+console.log(Data);
+    const titleExist = await Blogs.findOne({ title });
+    if (titleExist) {
+      return NextResponse.json(
+        {
+          data: null,
+          message: "This Title Already Exits",
+          isSuccess: false,
+        },
+        {
+          status: 400,
+        }
+      );
+    }
+
+    const addBlog = await Blogs.create(Data);
+    return NextResponse.json(
+      {
+        data: addBlog,
+        message: "Blog Added Successfully",
+        isSuccess: true,
+      },
+      {
+        status: 201,
+      }
+    );
+  } catch (error) {
+    return NextResponse.json(
+      {
+        data: null,
+        error: error,
+        errorMsg: "Internal Server Error",
+        isSuccess: false,
+      },
+      {
+        status: 500,
+      }
+    );
+  }
+}
+
+// --------------To Fetch All Blogs--------------
 export async function GET(req, res) {
   try {
     const blog = await Blogs.find();
     return NextResponse.json(blog);
   } catch (error) {
-    return NextResponse.json({ msg: "Internal Server Error" }, { status: 500 });
+    return NextResponse.json(
+      {
+        data: null,
+        error: error,
+        errorMsg: "Internal Server Error",
+        isSuccess: false,
+      },
+      {
+        status: 500,
+      }
+    );
   }
 }
 
-// export default async (req, res) => {
-//   switch (req.method) {
-//     case "GET":
-//       await fetchBlog(req, res);
-//       break;
-//     case "POST":
-//       await addBlog(req, res);
-//       break;
-//   }
-// };
+// --------------To Delete  Blog--------------
+export async function DELETE(request) {
+  try {
+    const data = await request
+    return NextResponse.json(data)
 
-// // To Add Blogs
-// const addBlog = async (req, res) => {
-//   const { title, category, author, image, description, artical } = req.body;
-
-//   try {
-//     const blog = await new Blogs({
-//       title,
-//       category,
-//       author,
-//       image,
-//       description,
-//       artical,
-//     }).save();
-//     res.status(201).json(blog);
-//   } catch (err) {
-//     res.status(500).json({ error: "internal server error" });
-//   }
-// };
-
-// // Fetch All Blogs
-// const fetchBlog = async (req, res) => {
-//   try {
-//     const blog = await Blogs.find();
-//     res.status(200).json(blog);
-//   } catch (err) {
-//     console.log(err);
-//   }
-// };
+  } catch (error) {
+    return NextResponse.json(
+      {
+        data: null,
+        error: error,
+        errorMsg: "Internal Server Error",
+        isSuccess: false,
+      },
+      {
+        status: 500,
+      }
+    );
+  }
+}

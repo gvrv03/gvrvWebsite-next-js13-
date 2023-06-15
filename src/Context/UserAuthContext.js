@@ -22,6 +22,11 @@ export function UserAuthContexProvider({ children }) {
   const [user, setuser] = useState("");
   const [response, setresponse] = useState("");
   const [verificatioIDPhone, setverificatioIDPhone] = useState({});
+  const [userIDS, setuserIDS] = useState({
+    token: null,
+    firebaseID: null,
+    ID: null,
+  });
 
   const sendOTP = async (phoneNo) => {
     try {
@@ -76,6 +81,8 @@ export function UserAuthContexProvider({ children }) {
   function logOut() {
     localStorage.removeItem("firebaseuid");
     localStorage.removeItem("token");
+    localStorage.removeItem("id");
+
     return signOut(auth);
   }
   async function signWithGoogle() {
@@ -83,7 +90,7 @@ export function UserAuthContexProvider({ children }) {
     const res = await signInWithPopup(auth, googleAuthProvider);
     const { displayName, photoURL, email, uid } = res.user;
 
-    await fetch("/api/signIn", {
+    const res2 = await fetch("/api/signIn", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -95,8 +102,10 @@ export function UserAuthContexProvider({ children }) {
         userProfile: photoURL,
       }),
     });
+    const userData = await res2.json();
     localStorage.setItem("token", await res.user.getIdToken());
     localStorage.setItem("firebaseuid", res.user.uid);
+    localStorage.setItem("id", userData._id);
     setresponse(Math.random());
     return res;
   }
@@ -110,6 +119,11 @@ export function UserAuthContexProvider({ children }) {
   }
 
   useEffect(() => {
+    setuserIDS({
+      token: localStorage.getItem("token"),
+      firebaseID: localStorage.getItem("firebaseuid"),
+      ID: localStorage.getItem("id"),
+    });
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
       setuser(currentUser);
     });
@@ -123,6 +137,7 @@ export function UserAuthContexProvider({ children }) {
       value={{
         user,
         logOut,
+        userIDS,
         sendOTP,
         verifyOTPServer,
         signWithGoogle,
