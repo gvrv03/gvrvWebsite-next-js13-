@@ -1,4 +1,6 @@
 "use client";
+import DetailTabs from "@/Components/Product/DetailTabs";
+import ProductCard from "@/Components/Product/ProductCard";
 import Link from "next/link";
 import React, { useState } from "react";
 
@@ -12,62 +14,68 @@ const ProductDetail = () => {
     }
   };
   return (
-    <div>
-      <ol className="inline-flex items-center bg-white p-5  w-full">
-        <li className="inline-flex items-center">
-          <Link
-            href="/"
-            className="inline-flex items-center text-sm font-medium text-gray-700 hover:text-blue-600 "
-          >
-            <i className="uil uil-estate mr-2 pColor" />
-            Home
-          </Link>
-        </li>
-        <li aria-current="page">
-          <Link href="/Products" className="flex items-center">
-            <svg
-              aria-hidden="true"
-              className="w-6 h-6 text-gray-400"
-              fill="currentColor"
-              viewBox="0 0 20 20"
-              xmlns="http://www.w3.org/2000/svg"
+    <div className="h-full">
+      <nav
+        className="flex p-5 justify-between bg-white "
+        aria-label="Breadcrumb"
+      >
+        <ol className="inline-flex items-center space-x-1 md:space-x-3">
+          <li className="inline-flex items-center">
+            <Link
+              href="/"
+              className="inline-flex items-center text-sm font-medium text-gray-700 hover:text-blue-600 "
             >
-              <path
-                fillRule="evenodd"
-                d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
-                clipRule="evenodd"
-              ></path>
-            </svg>
-            <span className="ml-1 text-sm font-medium text-gray-500 md:ml-2">
-              Products
-            </span>
-          </Link>
-        </li>
-
-        <li aria-current="page">
-          <div className="flex items-center">
-            <svg
-              aria-hidden="true"
-              className="w-6 h-6 text-gray-400"
-              fill="currentColor"
-              viewBox="0 0 20 20"
-              xmlns="http://www.w3.org/2000/svg"
+              <i className="uil uil-estate mr-2 pColor" />
+              Home
+            </Link>
+          </li>
+          <li className="inline-flex items-center">
+            <Link
+              href="/"
+              className="inline-flex items-center text-sm font-medium text-gray-700 hover:text-blue-600 "
             >
-              <path
-                fillRule="evenodd"
-                d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
-                clipRule="evenodd"
-              ></path>
-            </svg>
-            <span className="ml-1 text-sm font-medium text-gray-500 md:ml-2">
-              Products
-            </span>
-          </div>
-        </li>
-      </ol>
+              <svg
+                aria-hidden="true"
+                className="w-6 h-6 text-gray-400"
+                fill="currentColor"
+                viewBox="0 0 20 20"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  fillRule="evenodd"
+                  d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
+                  clipRule="evenodd"
+                ></path>
+              </svg>
+              Product
+            </Link>
+          </li>
+          <li aria-current="page">
+            <div className="flex items-center">
+              <svg
+                aria-hidden="true"
+                className="w-6 h-6 text-gray-400"
+                fill="currentColor"
+                viewBox="0 0 20 20"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  fillRule="evenodd"
+                  d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
+                  clipRule="evenodd"
+                ></path>
+              </svg>
+              <span className="ml-1 text-sm font-medium text-gray-500 md:ml-2">
+                Products
+              </span>
+            </div>
+          </li>
+        </ol>
+      </nav>
 
-      <section class="text-gray-600 mt-5 bg-white h-full p-5 body-font overflow-hidden">
-        <div class="">
+      <section class=" mt-5 grid grid-cols-1  h-90 overflow-y-scroll ">
+        {/* short description  */}
+        <div class="bg-white p-5">
           <div class="w-full mx-auto flex flex-wrap">
             <img
               alt="ecommerce"
@@ -241,6 +249,22 @@ const ProductDetail = () => {
                 </div>
               </div>
             </div>
+          </div>
+        </div>
+        {/* All Detail Section  */}
+        <div className=" bg-white mt-5 ">
+          <DetailTabs />
+        </div>{" "}
+        {/* Reccomended Products  */}
+        <div>
+          <h2 class="text-lg bg-white p-5 mt-5 lg:text-2xl font-bold text-gray-900 ">
+            Recommended Products
+          </h2>
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-5 mt-5 ">
+            <ProductCard />
+            <ProductCard />
+            <ProductCard />
+            <ProductCard />
           </div>
         </div>
       </section>

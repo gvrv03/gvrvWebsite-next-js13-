@@ -7,7 +7,6 @@ import { NextResponse } from "next/server";
 export async function POST(request) {
   try {
     const Data = await request.json();
-    console.log(Data);
     const { firebaseID } = Data;
     const checkUser = await User.findOne({ firebaseID });
 
