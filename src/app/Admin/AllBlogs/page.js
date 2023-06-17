@@ -17,7 +17,7 @@ const AllBlogs = () => {
 
   return (
     <>
-      <div className="h-full  ">
+      <div className=" ">
         <div className=" font-semibold    rounded-sm  border-b-2 p-2 bg-white flex justify-between ">
           <div>All Blogs ({blogs.data.length})</div>
           <div className="flex gap-5 justify-between items-center">

@@ -6,7 +6,7 @@ import { useUserAuth } from "@/Context/UserAuthContext";
 const Layout = ({ children }) => {
   return (
     <>
-      <div className="flex flex-col items-center      justify-center  py-8 mx-auto h-screen lg:py-0">
+      <div className="flex flex-col items-center  justify-center  py-8 mx-auto  h-85s lg:py-0">
         {children}
         <GoogleSignIn />
       </div>

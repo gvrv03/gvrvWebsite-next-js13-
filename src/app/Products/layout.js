@@ -10,8 +10,7 @@ const BlogsLayout = ({ children }) => {
     );
   };
   return (
-    <section className=" m-auto h-screen  container">
-      <div className=" mt-20 h-screen overflow-y-scroll  md:flex-row flex-col gap-5 flex">
+      <section className="  h-screen overflow-y-scroll  md:flex-row flex-col gap-5 flex">
         <main className="  w-full md:w-9/12  h-screen  ">{children}</main>
         <aside className="w-full md:w-1/4 bg-white  p-5 ">
           <div className=" ">
@@ -21,8 +20,7 @@ const BlogsLayout = ({ children }) => {
             </div>
           </div>
         </aside>
-      </div>
-    </section>
+      </section>
   );
 };
 

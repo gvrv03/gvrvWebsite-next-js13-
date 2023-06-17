@@ -24,48 +24,50 @@ const BlogsLayout = ({ children }) => {
     );
   };
   return (
-    <section className=" m-auto h-screen  container">
-      <div className=" mt-20 h-screen overflow-y-scroll  md:flex-row flex-col gap-5 flex">
-        <main className="  w-full md:w-9/12  h-full ">{children}</main>
-        <aside className="w-full md:w-1/4 bg-white  p-5 ">
-          <div className=" ">
-            <HeaderName name="Popular Post" />
-            <div className="mt-5 h-64 overflow-y-scroll flex flex-col gap-5">
-              <SingleBlogCard />
-              <SingleBlogCard />
-              <SingleBlogCard />
-              <SingleBlogCard />
-              <SingleBlogCard />
-            </div>
-          </div>
+    // <section className="     bg-red-800 h-90vh  md:flex-row flex-col gap-5 flex">
+    //   <main className="  w-full md:w-9/12  h-full">{children}</main>
+    //   <aside className="w-full md:w-1/4  h-fit bg-white  p-5 ">
+    //     <div className=" ">
+    //       <HeaderName name="Popular Post" />
+    //       <div className="mt-5 h-64 overflow-y-scroll flex flex-col gap-5">
+    //         <SingleBlogCard />
+    //         <SingleBlogCard />
+    //         <SingleBlogCard />
+    //         <SingleBlogCard />
+    //         <SingleBlogCard />
+    //       </div>
+    //     </div>
 
-          <div className=" mt-10">
-            <HeaderName name="Category" />
-            <div className="mt-5 flex gap-2 justify-between items-center flex-wrap">
-              <button className="bg-gray-100 hover:bg-gray-100 font-semibold rounded-sm px-5 py-1  ">
-                Python
-              </button>
+    //     <div className=" mt-10">
+    //       <HeaderName name="Category" />
+    //       <div className="mt-5 flex gap-2 justify-between items-center flex-wrap">
+    //         <button className="bg-gray-100 hover:bg-gray-100 font-semibold rounded-sm px-5 py-1  ">
+    //           Python
+    //         </button>
 
-              <button className="bg-gray-100 hover:bg-gray-100 font-semibold rounded-sm px-5 py-1  ">
-                Cyber Security
-              </button>
+    //         <button className="bg-gray-100 hover:bg-gray-100 font-semibold rounded-sm px-5 py-1  ">
+    //           Cyber Security
+    //         </button>
 
-              <button className="bg-gray-100 hover:bg-gray-100 font-semibold rounded-sm px-5 py-1  ">
-                Java
-              </button>
-              <button className="bg-gray-100 hover:bg-gray-100 font-semibold rounded-sm px-5 py-1  ">
-                Cyber Security
-              </button>
-              <button className="bg-gray-100 hover:bg-gray-100 font-semibold rounded-sm px-5 py-1  ">
-                Next js
-              </button>
-              <button className="bg-gray-100 hover:bg-gray-100 font-semibold rounded-sm px-5 py-1  ">
-                React
-              </button>
-            </div>
-          </div>
-        </aside>
-      </div>
+    //         <button className="bg-gray-100 hover:bg-gray-100 font-semibold rounded-sm px-5 py-1  ">
+    //           Java
+    //         </button>
+    //         <button className="bg-gray-100 hover:bg-gray-100 font-semibold rounded-sm px-5 py-1  ">
+    //           Cyber Security
+    //         </button>
+    //         <button className="bg-gray-100 hover:bg-gray-100 font-semibold rounded-sm px-5 py-1  ">
+    //           Next js
+    //         </button>
+    //         <button className="bg-gray-100 hover:bg-gray-100 font-semibold rounded-sm px-5 py-1  ">
+    //           React
+    //         </button>
+    //       </div>
+    //     </div>
+    //   </aside>
+    // </section>
+
+    <section className=" flex gap-5   ">
+      <main className="  w-full  relative ">{children}</main>
     </section>
   );
 };

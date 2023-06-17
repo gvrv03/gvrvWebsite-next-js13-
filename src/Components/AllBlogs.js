@@ -19,7 +19,7 @@ export default async function AllBlogs() {
           No Blogs Found
         </div>
       )}
-      <section className="mt-5 grid grid-cols-1  h-90 md:grid-cols-3 gap-5 justify-between overflow-y-scroll flex-wrap ">
+      <section className=" grid grid-cols-1 mt-5 md:grid-cols-4 gap-5 justify-between  flex-wrap ">
         {data &&
           data.map((i, index) => {
             return (
@@ -34,6 +34,7 @@ export default async function AllBlogs() {
               />
             );
           })}
+          
       </section>
     </>
   );

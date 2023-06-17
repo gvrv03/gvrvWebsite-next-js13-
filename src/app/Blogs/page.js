@@ -5,7 +5,7 @@ import React from "react";
 
 const Blogs = () => {
   return (
-    <div className="h-full ">
+    <div className="h-full  ">
       <nav
         className="flex  p-5 justify-between bg-white "
         aria-label="Breadcrumb"

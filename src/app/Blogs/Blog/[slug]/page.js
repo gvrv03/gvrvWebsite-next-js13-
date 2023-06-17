@@ -40,7 +40,7 @@ const page = async ({ params }) => {
 
           <div className="w-full h-1 bg-gray-200  mt-5 rounded-full" />
           <section className="mt-5">
-            <img src={image} alt={title} />
+            <img src={image} className="w-full" alt={title} />
             <article
               className="overflow-y-scroll  mt-5"
               dangerouslySetInnerHTML={{
