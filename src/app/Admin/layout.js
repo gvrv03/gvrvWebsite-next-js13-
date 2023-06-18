@@ -19,7 +19,8 @@ import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
 import InboxIcon from "@mui/icons-material/MoveToInbox";
 import MailIcon from "@mui/icons-material/Mail";
-import EditNoteIcon from '@mui/icons-material/EditNote';
+import EditNoteIcon from "@mui/icons-material/EditNote";
+import LocalMallIcon from "@mui/icons-material/LocalMall";
 import TopNav, { DashNav } from "@/NavItem/TopNav";
 import { useRouter } from "next/navigation";
 import { AppBarNav } from "@/Components/Navbar";
@@ -90,8 +91,16 @@ export default function PersistentDrawerLeft({ children }) {
   };
 
   const actions = [
-    { icon: <EditNoteIcon />, name: "Create Post", location: "/Admin/CreatePost" },
-    { icon: <SaveIcon />, name: "Save", location: "/Admin/CreatePost" },
+    {
+      icon: <EditNoteIcon />,
+      name: "Create Post",
+      location: "/Admin/CreatePost",
+    },
+    {
+      icon: <LocalMallIcon />,
+      name: "Create Product",
+      location: "/Admin/CreateProduct",
+    },
     { icon: <PrintIcon />, name: "Print", location: "/Admin/CreatePost" },
     { icon: <ShareIcon />, name: "Share", location: "/Admin/CreatePost" },
   ];
