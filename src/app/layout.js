@@ -20,14 +20,14 @@ export default function RootLayout({ children }) {
           href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css"
         />
       </head>
-      <body className="bgBackground px-5 text-black">
+      <body className="bgBackground  text-black">
         <Provider store={store}>
           <UserAuthContexProvider>
             <Navbar />
             <div className="">
               {children}
             </div>
-             <Footer />
+             {/* <Footer /> */}
             {/* <ScrollToTop showUnder={160}>
               <i className="bi text-3xl pColor bi-arrow-up-square-fill"></i>
             </ScrollToTop> */}

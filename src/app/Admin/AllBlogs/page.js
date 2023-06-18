@@ -1,6 +1,6 @@
 "use client";
 import LoadingSpinner from "@/Components/Spinner/LoadingSpinner";
-import { fetchBlogs } from "@/Store/Actions/blogAction";
+import { DeleteBlog, fetchBlogs } from "@/Store/Actions/blogAction";
 import React, { useEffect } from "react";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
@@ -42,6 +42,7 @@ const AllBlogs = () => {
             <LoadingSpinner />
           </div>
         )}
+        {blogs.data.length === 0 && <div className="text-center p-5 mt-10 grid  place-items-center">No Blog Found</div>}
         <div className="mt-5 flex gap-5 flex-col h-screen  overflow-y-scroll">
           {blogs.data &&
             blogs.data.map((item, index) => {
@@ -102,7 +103,12 @@ const AllBlogs = () => {
                         >
                           Cancel
                         </button>
-                        <button className="pBtn px-5 py-1 rounded-sm">
+                        <button
+                          onClick={() => {
+                            dispatch(DeleteBlog(forDelete.id));
+                          }}
+                          className="pBtn px-5 py-1 rounded-sm"
+                        >
                           Delete
                         </button>
                       </div>

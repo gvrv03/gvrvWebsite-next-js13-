@@ -1,74 +1,192 @@
 "use client";
-import { useUserAuth } from "@/Context/UserAuthContext";
-import { DashNav } from "@/NavItem/TopNav";
+import * as React from "react";
+import { styled, useTheme } from "@mui/material/styles";
+import Box from "@mui/material/Box";
+import Drawer from "@mui/material/Drawer";
+import CssBaseline from "@mui/material/CssBaseline";
+import MuiAppBar from "@mui/material/AppBar";
+import Toolbar from "@mui/material/Toolbar";
+import List from "@mui/material/List";
+import Typography from "@mui/material/Typography";
+import Divider from "@mui/material/Divider";
+import IconButton from "@mui/material/IconButton";
+import MenuIcon from "@mui/icons-material/Menu";
+import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
+import ChevronRightIcon from "@mui/icons-material/ChevronRight";
+import ListItem from "@mui/material/ListItem";
+import ListItemButton from "@mui/material/ListItemButton";
+import ListItemIcon from "@mui/material/ListItemIcon";
+import ListItemText from "@mui/material/ListItemText";
+import InboxIcon from "@mui/icons-material/MoveToInbox";
+import MailIcon from "@mui/icons-material/Mail";
+import EditNoteIcon from '@mui/icons-material/EditNote';
+import TopNav, { DashNav } from "@/NavItem/TopNav";
 import { useRouter } from "next/navigation";
-import React from "react";
+import { AppBarNav } from "@/Components/Navbar";
+import SpeedDial from "@mui/material/SpeedDial";
+import SpeedDialIcon from "@mui/material/SpeedDialIcon";
+import SpeedDialAction from "@mui/material/SpeedDialAction";
+import FileCopyIcon from "@mui/icons-material/FileCopyOutlined";
+import SaveIcon from "@mui/icons-material/Save";
+import PrintIcon from "@mui/icons-material/Print";
+import ShareIcon from "@mui/icons-material/Share";
+const drawerWidth = 300;
 
-const DashboardLayout = ({ children }) => {
+const Main = styled("main", { shouldForwardProp: (prop) => prop !== "open" })(
+  ({ theme, open }) => ({
+    flexGrow: 1,
+    padding: theme.spacing(3),
+    transition: theme.transitions.create("margin", {
+      easing: theme.transitions.easing.sharp,
+      duration: theme.transitions.duration.leavingScreen,
+    }),
+    marginLeft: `-${drawerWidth}px`,
+    ...(open && {
+      transition: theme.transitions.create("margin", {
+        easing: theme.transitions.easing.easeOut,
+        duration: theme.transitions.duration.enteringScreen,
+      }),
+      marginLeft: 0,
+    }),
+  })
+);
+
+const AppBar = styled(MuiAppBar, {
+  shouldForwardProp: (prop) => prop !== "open",
+})(({ theme, open }) => ({
+  transition: theme.transitions.create(["margin", "width"], {
+    easing: theme.transitions.easing.sharp,
+    duration: theme.transitions.duration.leavingScreen,
+  }),
+  ...(open && {
+    width: `calc(100% - ${drawerWidth}px)`,
+    marginLeft: `${drawerWidth}px`,
+    transition: theme.transitions.create(["margin", "width"], {
+      easing: theme.transitions.easing.easeOut,
+      duration: theme.transitions.duration.enteringScreen,
+    }),
+  }),
+}));
+
+const DrawerHeader = styled("div")(({ theme }) => ({
+  display: "flex",
+  alignItems: "center",
+  padding: theme.spacing(0, 1),
+  // necessary for content to be below app bar
+  ...theme.mixins.toolbar,
+  justifyContent: "flex-end",
+}));
+
+export default function PersistentDrawerLeft({ children }) {
+  const theme = useTheme();
+  const [open, setOpen] = React.useState(false);
   const router = useRouter();
-  const { user } = useUserAuth();
-  if (!user) {
-    return (
-      <div className="w-full h-screen grid place-items-center">
-        <div>
-          <img src="" alt="" />
-          <h1 className="text-red-800 font-semibold text-center">!</h1>
-          <p>Login First</p>
-        </div>
-      </div>
-    );
-  }
-  if (user.email != "itsgaurav3112003@gmail.com") {
-    return (
-      <div className="w-full h-screen grid place-items-center">
-        <div>
-          <img src="" alt="" />
-          <h1 className="text-red-800 font-semibold text-center">Website</h1>
-          <p>Under Construction</p>
-        </div>
-      </div>
-    );
-  }
+  const handleDrawerOpen = () => {
+    setOpen(true);
+  };
 
-  //   if (user && user.emailVerified) {
+  const handleDrawerClose = () => {
+    setOpen(false);
+  };
+
+  const actions = [
+    { icon: <EditNoteIcon />, name: "Create Post", location: "/Admin/CreatePost" },
+    { icon: <SaveIcon />, name: "Save", location: "/Admin/CreatePost" },
+    { icon: <PrintIcon />, name: "Print", location: "/Admin/CreatePost" },
+    { icon: <ShareIcon />, name: "Share", location: "/Admin/CreatePost" },
+  ];
+
   return (
-    <div className="flex mt-20  container m-auto h-screen flex-col md:flex-row gap-5">
-      <aside className=" p-5    rounded-sm hidden md:grid w-full h-full md:w-3/12 place-items-start   bg-white">
-        <div className="gap-2 flex flex-col">
-          <button
-            onClick={() => {
-              router.push("/Admin/CreatePost");
-            }}
-            className="text-red-500 flex gap-5 items-center justify-center shadow-md border font-bold w-40 rounded-full py-3"
-          >
-            <i className="bi bi-plus-lg" />
-            <p>New Post</p>
-          </button>
+    <Box sx={{ display: "flex" }}>
+      <CssBaseline />
+      <AppBarNav
+        handleDrawerOpen={handleDrawerOpen}
+        open={open}
+        AppBar={AppBar}
+      />
+      <Drawer
+        sx={{
+          width: drawerWidth,
+          flexShrink: 0,
+          "& .MuiDrawer-paper": {
+            width: drawerWidth,
+            boxSizing: "border-box",
+          },
+        }}
+        variant="persistent"
+        anchor="left"
+        open={open}
+      >
+        <DrawerHeader>
+          <IconButton onClick={handleDrawerClose}>
+            {theme.direction === "ltr" ? (
+              <ChevronLeftIcon />
+            ) : (
+              <ChevronRightIcon />
+            )}
+          </IconButton>
+        </DrawerHeader>
+        <Divider />
+        <List>
+          {TopNav.map((text, index) => (
+            <button
+              className="w-full"
+              key={index}
+              onClick={() => {
+                router.push(text.location);
+              }}
+            >
+              <ListItem disablePadding>
+                <ListItemButton>
+                  <i className={`text-blue-600 ${text.icon} mr-5 text-xl`} />
+                  <ListItemText primary={text.name} />
+                </ListItemButton>
+              </ListItem>
+            </button>
+          ))}
+        </List>
+        <Divider />
 
-          <div className="mt-5 gap-5 flex flex-col  ">
-            {DashNav.map((item, index) => {
-              return (
-                <button
-                  key={index}
-                  onClick={() => {
-                    router.push(item.location);
-                  }}
-                  className=" flex w-full gap-5 rounded-md text-left px-5  font-semibold "
-                >
-                  <i className={`${item.icon} `} />
-                  <p>{item.name} </p>
-                </button>
-              );
-            })}
-          </div>
-        </div>
-      </aside>
-      <div className="w-full ">
-        <div className="">{children}</div>
-      </div>
-    </div>
+        <List>
+          {DashNav.map((text, index) => (
+            <button
+              className="w-full"
+              key={index}
+              onClick={() => {
+                router.push(text.location);
+              }}
+            >
+              <ListItem disablePadding>
+                <ListItemButton>
+                  <i className={`text-blue-600 ${text.icon} mr-5 text-xl`} />
+                  <ListItemText primary={text.name} />
+                </ListItemButton>
+              </ListItem>
+            </button>
+          ))}
+        </List>
+        <Divider />
+      </Drawer>
+      <Main open={open}>
+        <DrawerHeader />
+        {children}
+        <SpeedDial
+          ariaLabel="SpeedDial basic example"
+          sx={{ position: "fixed", bottom: 20, right: 20 }}
+          icon={<SpeedDialIcon />}
+        >
+          {actions.map((action) => (
+            <SpeedDialAction
+              key={action.name}
+              icon={action.icon}
+              onClick={() => {
+                router.push(action.location);
+              }}
+              tooltipTitle={action.name}
+            />
+          ))}
+        </SpeedDial>
+      </Main>
+    </Box>
   );
-  //   }
-};
-
-export default DashboardLayout;
+}

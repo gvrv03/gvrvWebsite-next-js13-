@@ -1,5 +1,5 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import { getAllBlogsURL } from "../../../allLinks";
+import { getAllBlogsURL, getSingleURL } from "../../../allLinks";
 
 export const fetchBlogs = createAsyncThunk("blogs/fetchBlogs", async () => {
   const res = await fetch(getAllBlogsURL, {
@@ -12,13 +12,22 @@ export const fetchBlogs = createAsyncThunk("blogs/fetchBlogs", async () => {
 });
 
 export const AddBlog = createAsyncThunk("blogs/AddBlog", async (data) => {
-  console.log(data);
   const res = await fetch(getAllBlogsURL, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
     },
     body: JSON.stringify(data),
+  });
+  return await res.json();
+});
+
+export const DeleteBlog = createAsyncThunk("blogs/DeleteBlog", async (id) => {
+  const res = await fetch(getSingleURL + id, {
+    method: "DELETE",
+    headers: {
+      "Content-Type": "application/json",
+    },
   });
   return await res.json();
 });

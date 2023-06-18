@@ -1,5 +1,5 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import { AddBlog, fetchBlogs } from "../Actions/blogAction";
+import { AddBlog, DeleteBlog, fetchBlogs } from "../Actions/blogAction";
 
 // Define the initial state
 const initialState = {
@@ -35,6 +35,20 @@ const blogSlice = createSlice({
       .addCase(AddBlog.rejected, (state, action) => {
         state.isLoading = false;
         state.error = action.error.message;
+      })
+      .addCase(DeleteBlog.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(DeleteBlog.fulfilled, (state, action) => {
+        state.isLoading = false;
+        const { _id } = action.payload.data;
+        if (_id) {
+          state.data = state.data.filter((ele) => ele._id !== _id);
+        }
+      })
+      .addCase(DeleteBlog.rejected, (state, action) => {
+        state.isLoading = false;
+        state.error = action.payload.error;
       });
   },
 });

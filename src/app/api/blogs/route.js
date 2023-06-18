@@ -70,23 +70,3 @@ export async function GET(req, res) {
   }
 }
 
-// --------------To Delete  Blog--------------
-export async function DELETE(request) {
-  try {
-    const data = await request
-    return NextResponse.json(data)
-
-  } catch (error) {
-    return NextResponse.json(
-      {
-        data: null,
-        error: error,
-        errorMsg: "Internal Server Error",
-        isSuccess: false,
-      },
-      {
-        status: 500,
-      }
-    );
-  }
-}

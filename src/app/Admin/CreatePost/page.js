@@ -113,20 +113,20 @@ console.log(userIDS);
   const { isLoading } = blogs;
 
   return (
-    <div className="w-full bg-white p-5  h-full">
-      <div className="  gap-5 flex">
+    <div className="w-full    h-full">
+      <div className="  bg-white p-5 gap-5 flex">
         <input
           type="text"
           onChange={(e) => {
             settitle(e.target.value);
           }}
-          className="w-full border-b-2  border-red-500 bg-transparent outline-none p-2 "
+          className="w-full md:w-4/5 border-b-2  border-red-500 bg-transparent outline-none p-2 "
           placeholder="Title"
           name=""
           id=""
         />
-        <div className=" w-1/5 flex gap-2">
-          <button className="border   flex  gap-2 rounded-full items-center justify-center  p-2 px-3">
+        <div className=" w-1/5 flex justify-between gap-2">
+          <button className="border  w-full  flex  gap-2 rounded-full items-center justify-center  p-2 px-3">
             <i className="bi bi-eye-fill" />
             <p className="hidden md:block">Preview</p>
           </button>
@@ -134,7 +134,7 @@ console.log(userIDS);
             type="submit"
             onClick={createBlog}
             disabled={loading ? true : false}
-            className=" flex   gap-2 rounded-full bg-red-600  text-white  items-center justify-center  font-semibold  p-2 px-3"
+            className=" flex  w-full  gap-2 rounded-full bg-red-600  text-white  items-center justify-center  font-semibold  p-2 px-3"
           >
             {isLoading ? <BtnSpinner2 /> : <i className="bi bi-telegram" />}
             <p className="hidden md:block">Publish</p>
@@ -154,8 +154,8 @@ console.log(userIDS);
         </div>
       )}
 
-      <div className=" w-full flex gap-5 mt-10">
-        <div className="w-full md:w-4/5">
+      <div className=" w-full flex gap-5 mt-5 ">
+        <div className="w-full bg-white p-5 md:w-4/5">
           <div>
             <textarea
               className="border outline-none p-5 w-full h-auto"
@@ -172,9 +172,9 @@ console.log(userIDS);
         </div>
 
         <div
-          className={`flex md:w-1/5 md:relative fixed w-full h-full md:right-0 transition-all ease-linear delay-300   ${blogNav} md:top-0 top-20  md:p-0 z-50 bg-white  p-5 flex-col gap-5`}
+          className={`flex md:w-1/5 md:relative fixed w-full h-full md:right-0 transition-all ease-linear delay-300   ${blogNav} md:top-0 top-20   z-50 bg-white p-5 flex-col gap-5`}
         >
-          <div className="md:hidden">
+          <div className="md:hidden ">
             <button
               onClick={toggleblogNav}
               className=" bg-gray-100 dark:bg-gray-700 p-1  block text-left   "
