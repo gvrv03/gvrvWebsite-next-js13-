@@ -7,6 +7,7 @@ import BlogHeader from "@/Components/BlogHeader";
 const page = async ({ params }) => {
   const res = await fetch(getSingleURL + params.slug);
   const data = await res.json();
+  console.log(data);
   const { title, category, description, image, artical, author, views } = data
     ? data
     : {};
@@ -17,7 +18,6 @@ const page = async ({ params }) => {
       </div>
     );
   }
-
   return (
     <>
       <div className="bg-white h-full p-5 ">

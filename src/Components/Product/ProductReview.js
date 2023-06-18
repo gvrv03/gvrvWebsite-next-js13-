@@ -13,11 +13,11 @@ const ProductReview = () => {
   const [reviewState, setreviewState] = useState("hidden");
   return (
     <>
-      <section class=" bg-white">
-        <div class=" mx-auto ">
+      <section className=" bg-white">
+        <div className=" mx-auto ">
           {/* Based on Review  */}
-          <div class="flex flex-col mb-5">
-            <h2 class="text-lg lg:text-2xl font-bold text-gray-900 ">
+          <div className="flex flex-col mb-5">
+            <h2 className="text-lg lg:text-2xl font-bold text-gray-900 ">
               Customer Reviews
             </h2>
             <div className="flex items-center gap-5 mt-2">
@@ -99,9 +99,9 @@ const ProductReview = () => {
             </div>
           </div>
         </div>
-        <div class=" mx-auto mt-10">
-          <div class="flex justify-between flex-col mb-6">
-            <h2 class="text-lg lg:text-2xl font-bold text-gray-900 ">
+        <div className=" mx-auto mt-10">
+          <div className="flex justify-between flex-col mb-6">
+            <h2 className="text-lg lg:text-2xl font-bold text-gray-900 ">
               Share your thoughts
             </h2>
 
@@ -119,38 +119,38 @@ const ProductReview = () => {
               Write a review
             </button>
           </div>
-          <form class={`${reviewState} transition-all delay-200 ease-linear mb-6`}>
-            <div class="py-2 px-4 mb-4 bg-white rounded-lg rounded-t-lg border border-gray-200  ">
-              <label for="comment" class="sr-only">
+          <form className={`${reviewState} transition-all delay-200 ease-linear mb-6`}>
+            <div className="py-2 px-4 mb-4 bg-white rounded-lg rounded-t-lg border border-gray-200  ">
+              <label for="comment" className="sr-only">
                 Your comment
               </label>
               <textarea
                 id="comment"
                 rows="6"
-                class="px-0 w-full text-sm text-gray-900 border-0 focus:ring-0 focus:outline-none  dark:placeholder-gray-400 "
+                className="px-0 w-full text-sm text-gray-900 border-0 focus:ring-0 focus:outline-none  dark:placeholder-gray-400 "
                 placeholder="Write a comment..."
                 required
               ></textarea>
             </div>
             <button
               type="submit"
-              class="inline-flex items-center py-2.5 px-4 text-xs font-medium text-center pBtn bg-primary-700 rounded-lg focus:ring-4 focus:ring-primary-200 "
+              className="inline-flex items-center py-2.5 px-4 text-xs font-medium text-center pBtn bg-primary-700 rounded-lg focus:ring-4 focus:ring-primary-200 "
             >
               Post comment
             </button>
           </form>
-          <article class="p-6 mb-6 text-base bg-white rounded-lg ">
-            <footer class="flex justify-between items-center mb-2">
-              <div class="flex items-center">
-                <p class="inline-flex items-center mr-3 text-sm text-gray-900 ">
+          <article className="p-6 mb-6 text-base bg-white rounded-lg ">
+            <footer className="flex justify-between items-center mb-2">
+              <div className="flex items-center">
+                <p className="inline-flex items-center mr-3 text-sm text-gray-900 ">
                   <img
-                    class="mr-2 w-6 h-6 rounded-full"
+                    className="mr-2 w-6 h-6 rounded-full"
                     src="https://flowbite.com/docs/images/people/profile-picture-2.jpg"
                     alt="Michael Gough"
                   />
                   Michael Gough
                 </p>
-                <p class="text-sm text-gray-600 dark:text-gray-400">
+                <p className="text-sm text-gray-600 dark:text-gray-400">
                   <time
                     pubdate
                     datetime="2022-02-08"
@@ -163,11 +163,11 @@ const ProductReview = () => {
               <button
                 id="dropdownComment1Button"
                 data-dropdown-toggle="dropdownComment1"
-                class="inline-flex items-center p-2 text-sm font-medium text-center text-gray-400 bg-white rounded-lg hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-50  dark:hover:bg-gray-700 dark:focus:ring-gray-600"
+                className="inline-flex items-center p-2 text-sm font-medium text-center text-gray-400 bg-white rounded-lg hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-50  dark:hover:bg-gray-700 dark:focus:ring-gray-600"
                 type="button"
               >
                 <svg
-                  class="w-5 h-5"
+                  className="w-5 h-5"
                   aria-hidden="true"
                   fill="currentColor"
                   viewBox="0 0 20 20"
@@ -175,22 +175,22 @@ const ProductReview = () => {
                 >
                   <path d="M6 10a2 2 0 11-4 0 2 2 0 014 0zM12 10a2 2 0 11-4 0 2 2 0 014 0zM16 12a2 2 0 100-4 2 2 0 000 4z"></path>
                 </svg>
-                <span class="sr-only">Comment settings</span>
+                <span className="sr-only">Comment settings</span>
               </button>
 
               {/* <!-- Dropdown menu --> */}
               <div
                 id="dropdownComment1"
-                class="hidden z-10 w-36 bg-white rounded divide-y divide-gray-100 shadow dark:bg-gray-700 dark:divide-gray-600"
+                className="hidden z-10 w-36 bg-white rounded divide-y divide-gray-100 shadow dark:bg-gray-700 dark:divide-gray-600"
               >
                 <ul
-                  class="py-1 text-sm text-gray-700 dark:text-gray-200"
+                  className="py-1 text-sm text-gray-700 dark:text-gray-200"
                   aria-labelledby="dropdownMenuIconHorizontalButton"
                 >
                   <li>
                     <a
                       href="#"
-                      class="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                      className="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
                     >
                       Edit
                     </a>
@@ -198,7 +198,7 @@ const ProductReview = () => {
                   <li>
                     <a
                       href="#"
-                      class="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                      className="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
                     >
                       Remove
                     </a>
@@ -206,7 +206,7 @@ const ProductReview = () => {
                   <li>
                     <a
                       href="#"
-                      class="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                      className="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
                     >
                       Report
                     </a>
@@ -214,20 +214,20 @@ const ProductReview = () => {
                 </ul>
               </div>
             </footer>
-            <p class="text-gray-500 dark:text-gray-400">
+            <p className="text-gray-500 dark:text-gray-400">
               Very straight-to-point article. Really worth time reading. Thank
               you! But tools are just the instruments for the UX designers. The
               knowledge of the design tools are as important as the creation of
               the design strategy.
             </p>
-            <div class="flex items-center mt-4 space-x-4">
+            <div className="flex items-center mt-4 space-x-4">
               <button
                 type="button"
-                class="flex items-center text-sm text-gray-500 hover:underline dark:text-gray-400"
+                className="flex items-center text-sm text-gray-500 hover:underline dark:text-gray-400"
               >
                 <svg
                   aria-hidden="true"
-                  class="mr-1 w-4 h-4"
+                  className="mr-1 w-4 h-4"
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"

@@ -47,8 +47,8 @@ export const ApiLoader = () => {
 
 export const BtnSpinner2 = () => {
   return (
-    <div class="loadingio-spinner-rolling-93tf0i2dza">
-      <div class="ldio-dgenfq81oy5">
+    <div className="loadingio-spinner-rolling-93tf0i2dza">
+      <div className="ldio-dgenfq81oy5">
         <div></div>
       </div>
     </div>

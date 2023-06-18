@@ -77,7 +77,7 @@ const CreatePost = () => {
       setblogError("");
     }, 2000);
   }
-
+console.log(userIDS);
   // --------------------- Add Blog to Database -----------------
   const dispatch = useDispatch();
   const createBlog = async (e) => {

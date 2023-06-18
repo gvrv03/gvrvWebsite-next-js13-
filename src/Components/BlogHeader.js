@@ -74,10 +74,10 @@ const BlogHeader =  (props) => {
         </button>
         <button
           onClick={savedHandler}
-          class="rounded-full w-10 h-10 bg-gray-200 p-0 border-0 inline-flex items-center justify-center text-gray-500 "
+          className="rounded-full w-7 h-7 bg-gray-200 p-0 border-0 flex items-center justify-center text-gray-500 "
         >
           <i
-            className={`bi bi-heart-fill  ${
+            className={`bi bi-heart-fill  text-sm ${
               saved === true ? "pColor" : "text-gray-700"
             } `}
           />
