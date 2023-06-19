@@ -1,3 +1,4 @@
+import authMiddleware from "@/helper/authMiddleware";
 import initDB from "@/helper/initDB";
 import Blogs from "@/Modal/Blogs";
 import { NextResponse } from "next/server";
@@ -5,7 +6,7 @@ initDB();
 
 // to fetch single Blog
 
-export async function GET(req, { params }) {
+export const GET = async (req, { params }) => {
   try {
     const getBlog = await Blogs.findById(params.pid);
     const update = { views: getBlog.views + 1 };
@@ -15,10 +16,10 @@ export async function GET(req, { params }) {
   } catch (error) {
     return NextResponse.json({ body: { msg: "Internal Server Error" } });
   }
-}
+};
 
 // to Delete Blog
-export async function DELETE(req, { params }) {
+export const DELETE = async (req, { params }) => {
   try {
     const { pid } = await params;
     const deleteBlog = await Blogs.findByIdAndDelete(pid);
@@ -57,4 +58,4 @@ export async function DELETE(req, { params }) {
       }
     );
   }
-}
+};

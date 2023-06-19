@@ -55,4 +55,13 @@ export const BtnSpinner2 = () => {
   );
 };
 
+export const FullScreenLoader = () => {
+  return (
+    <div className=" fixed z-50 left-0 right-0 w-full h-screen top-0  p-2 mt-5 grid place-items-center">
+      <div className="bg-white shadow-lg w-20 h-20 grid place-items-center">
+        <LoadingSpinner />
+      </div>{" "}
+    </div>
+  );
+};
 export default LoadingSpinner;

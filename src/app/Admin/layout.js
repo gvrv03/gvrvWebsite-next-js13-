@@ -31,7 +31,8 @@ import FileCopyIcon from "@mui/icons-material/FileCopyOutlined";
 import SaveIcon from "@mui/icons-material/Save";
 import PrintIcon from "@mui/icons-material/Print";
 import ShareIcon from "@mui/icons-material/Share";
-const drawerWidth = 300;
+import { useUserAuth } from "@/Context/UserAuthContext";
+const drawerWidth = 250;
 
 const Main = styled("main", { shouldForwardProp: (prop) => prop !== "open" })(
   ({ theme, open }) => ({
@@ -80,7 +81,8 @@ const DrawerHeader = styled("div")(({ theme }) => ({
 
 export default function PersistentDrawerLeft({ children }) {
   const theme = useTheme();
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = React.useState(true);
+  const { user } = useUserAuth();
   const router = useRouter();
   const handleDrawerOpen = () => {
     setOpen(true);
@@ -89,6 +91,21 @@ export default function PersistentDrawerLeft({ children }) {
   const handleDrawerClose = () => {
     setOpen(false);
   };
+
+  if (!user) {
+    return (
+      <div className="h-screen bg-white w-full grid place-items-center">
+        You Need to Sign In
+      </div>
+    );
+  }
+  if (user.email != "itsgaurav3112003@gmail.com") {
+    return (
+      <div className="h-screen bg-white w-full grid place-items-center">
+        Access Denied
+      </div>
+    );
+  }
 
   const actions = [
     {
@@ -135,7 +152,7 @@ export default function PersistentDrawerLeft({ children }) {
             )}
           </IconButton>
         </DrawerHeader>
-        <Divider />
+        {/* <Divider />
         <List>
           {TopNav.map((text, index) => (
             <button
@@ -148,12 +165,12 @@ export default function PersistentDrawerLeft({ children }) {
               <ListItem disablePadding>
                 <ListItemButton>
                   <i className={`text-blue-600 ${text.icon} mr-5 text-xl`} />
-                  <ListItemText primary={text.name} />
+                  <ListItemText className="text-sm" primary={text.name} />
                 </ListItemButton>
               </ListItem>
             </button>
           ))}
-        </List>
+        </List> */}
         <Divider />
 
         <List>
@@ -168,7 +185,7 @@ export default function PersistentDrawerLeft({ children }) {
               <ListItem disablePadding>
                 <ListItemButton>
                   <i className={`text-blue-600 ${text.icon} mr-5 text-xl`} />
-                  <ListItemText primary={text.name} />
+                  <ListItemText className="text-sm" primary={text.name} />
                 </ListItemButton>
               </ListItem>
             </button>

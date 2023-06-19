@@ -13,10 +13,10 @@ import LoadingSpinner, {
 import { UploadButton } from "@/Components/UtilComponent";
 import { AddBlog } from "@/Store/Actions/blogAction";
 import { useDispatch, useSelector } from "react-redux";
+import { toast } from "react-toastify";
 const CreatePost = () => {
   const [blogNav, setblogNav] = useState("-right-full");
   const [cat, setcat] = useState("");
-  const [editorType, seteditorType] = useState("html");
   const { userIDS } = useUserAuth();
   const [loading, setloading] = useState(false);
   // Data State
@@ -43,7 +43,6 @@ const CreatePost = () => {
   // ------------------Upload Image-------------
   const [uploadLoad, setuploadLoad] = useState(false);
   const [imageUpload, setImageUpload] = useState(null);
-  const [blogError, setblogError] = useState();
   const [upload, setupload] = useState(false);
 
   const uploadFile = async (e) => {
@@ -51,11 +50,11 @@ const CreatePost = () => {
     setuploadLoad(true);
     if (imageUpload == null) {
       setuploadLoad(false);
-      return setblogError("Please Select Image");
+      return toast.error("Please Select Image");
     }
     if (!title) {
       setuploadLoad(false);
-      return setblogError("Please Enter Title");
+      return toast.error("Please Enter Title");
     }
 
     const imageRef = ref(
@@ -67,17 +66,11 @@ const CreatePost = () => {
         setImageUrls(url);
       });
     });
-    setblogError("Image Uploaded");
+    toast.success("Image Uploaded");
     setuploadLoad(false);
     setupload(true);
   };
 
-  if (blogError) {
-    setTimeout(() => {
-      setblogError("");
-    }, 2000);
-  }
-console.log(userIDS);
   // --------------------- Add Blog to Database -----------------
   const dispatch = useDispatch();
   const createBlog = async (e) => {
@@ -90,23 +83,26 @@ console.log(userIDS);
       !description ||
       !artical
     ) {
-      return setblogError("Please Fill all the fields");
+      return toast.error("Please Fill all the fields");
     }
     const { payload } = await dispatch(
-      AddBlog({
-        title,
-        category,
-        author: userIDS.ID,
-        image: imageUrls,
-        description,
-        artical,
-      })
+      AddBlog(
+        {
+          title,
+          category,
+          author: userIDS.ID,
+          image: imageUrls,
+          description,
+          artical,
+        },
+        userIDS.firebaseuid
+      )
     );
     if (payload.message) {
-      setblogError(payload.message);
+      toast.success(payload.message);
     }
     if (payload.error) {
-      setblogError(payload.error);
+      toast.error(payload.error);
     }
   };
   const blogs = useSelector((state) => state.blogs);
@@ -148,11 +144,7 @@ console.log(userIDS);
           <i className="bi bi-gear-fill" />
         </button>
       </div>
-      {blogError && (
-        <div className="font-semibold border mt-5 p-2 text-center bg-red-50 text-red-900 border-red-200">
-          {blogError}
-        </div>
-      )}
+    
 
       <div className=" w-full flex gap-5 mt-5 ">
         <div className="w-full bg-white p-5 md:w-4/5">

@@ -1,3 +1,4 @@
+import authMiddleware from "@/helper/authMiddleware";
 import initDB from "@/helper/initDB";
 import Blogs from "@/Modal/Blogs";
 initDB();
@@ -5,11 +6,11 @@ initDB();
 import { NextResponse } from "next/server";
 
 // --------------To Add Blog--------------
-export async function POST(request) {
+export const POST = async (request) => {
   try {
     const Data = await request.json();
     const { title } = Data;
-console.log(Data);
+    console.log(Data);
     const titleExist = await Blogs.findOne({ title });
     if (titleExist) {
       return NextResponse.json(
@@ -48,10 +49,10 @@ console.log(Data);
       }
     );
   }
-}
+};
 
 // --------------To Fetch All Blogs--------------
-export async function GET(req, res) {
+export const GET = async (req, res) => {
   try {
     const blog = await Blogs.find();
     return NextResponse.json(blog);
@@ -68,5 +69,4 @@ export async function GET(req, res) {
       }
     );
   }
-}
-
+};

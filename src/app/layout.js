@@ -6,7 +6,8 @@ import store from "@/Store/store";
 import { Provider } from "react-redux";
 import ScrollToTop from "react-scroll-up";
 import "./globals.css";
-
+import "react-toastify/dist/ReactToastify.css";
+import { ToastContainer } from "react-toastify";
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
@@ -25,9 +26,21 @@ export default function RootLayout({ children }) {
           <UserAuthContexProvider>
             <Navbar />
             <div className="">
+              <ToastContainer
+                position="top-left"
+                autoClose={2000}
+                hideProgressBar={false}
+                newestOnTop={false}
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+                theme="light"
+              />
               {children}
             </div>
-             {/* <Footer /> */}
+            {/* <Footer /> */}
             {/* <ScrollToTop showUnder={160}>
               <i className="bi text-3xl pColor bi-arrow-up-square-fill"></i>
             </ScrollToTop> */}
