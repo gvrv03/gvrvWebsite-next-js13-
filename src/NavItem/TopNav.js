@@ -91,7 +91,7 @@ export const DashNav = [
   },
   {
     name: "Products",
-    location: "/",
+    location: "/Admin/AllProducts",
     icon: "pColor uil  uil-shopping-cart-alt",
   },
   {
@@ -99,11 +99,7 @@ export const DashNav = [
     location: "/Admin/AllContactUs",
     icon: "pColor uil uil-phone",
   },
-  {
-    name: "Products",
-    location: "/",
-    icon: "pColor uil uil-shopping-bag",
-  },
+
   {
     name: "Emails",
     location: "/Admin/AllEmails",

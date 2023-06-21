@@ -1,6 +1,6 @@
 "use client";
 import * as React from "react";
-import { styled, useTheme } from "@mui/material/styles";
+import { styled, ThemeProvider, useTheme } from "@mui/material/styles";
 import Box from "@mui/material/Box";
 import Drawer from "@mui/material/Drawer";
 import CssBaseline from "@mui/material/CssBaseline";
@@ -32,6 +32,7 @@ import SaveIcon from "@mui/icons-material/Save";
 import PrintIcon from "@mui/icons-material/Print";
 import ShareIcon from "@mui/icons-material/Share";
 import { useUserAuth } from "@/Context/UserAuthContext";
+import theme from '../../Components/Theme';
 const drawerWidth = 250;
 
 const Main = styled("main", { shouldForwardProp: (prop) => prop !== "open" })(
@@ -123,6 +124,7 @@ export default function PersistentDrawerLeft({ children }) {
   ];
 
   return (
+    <ThemeProvider theme={theme}>
     <Box sx={{ display: "flex" }}>
       <CssBaseline />
       <AppBarNav
@@ -191,12 +193,13 @@ export default function PersistentDrawerLeft({ children }) {
             </button>
           ))}
         </List>
-        <Divider />
+        {/* <Divider /> */}
       </Drawer>
       <Main open={open}>
         <DrawerHeader />
         {children}
         <SpeedDial
+        color="primary"
           ariaLabel="SpeedDial basic example"
           sx={{ position: "fixed", bottom: 20, right: 20 }}
           icon={<SpeedDialIcon />}
@@ -214,5 +217,6 @@ export default function PersistentDrawerLeft({ children }) {
         </SpeedDial>
       </Main>
     </Box>
+    </ThemeProvider>
   );
 }

@@ -73,16 +73,7 @@ const Profile = () => {
           </Link>{" "}
         </div>
       )}
-      {/* xlsx Example */}
-      <form>
-        <label htmlFor="upload">Upload File</label>
-        <input
-          type="file"
-          name="upload"
-          id="upload"
-          onChange={readUploadFile}
-        />
-      </form>
+    
     </div>
   );
 };

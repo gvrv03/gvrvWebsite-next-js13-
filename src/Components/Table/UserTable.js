@@ -23,7 +23,7 @@ export default function UserTable({ Users }) {
     setRowsPerPage(+event.target.value);
     setPage(0);
   };
-  const { error, isLoading } = Users;
+  const { error } = Users;
   return (
     <Paper sx={{ width: "100%", overflow: "hidden" }}>
       <TableContainer sx={{ maxHeight: "90vh" }}>
@@ -99,7 +99,7 @@ export default function UserTable({ Users }) {
       <TablePagination
         rowsPerPageOptions={[10, 25, 100]}
         component="div"
-        count={User.length}
+        count={Users.data.length}
         rowsPerPage={rowsPerPage}
         page={page}
         onPageChange={handleChangePage}

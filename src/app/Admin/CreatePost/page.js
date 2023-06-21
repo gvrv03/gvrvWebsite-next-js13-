@@ -160,7 +160,7 @@ const CreatePost = () => {
             ></textarea>
           </div>
 
-          <TextEditor setartical={setartical} />
+          <TextEditor setartical={setartical}  artical={artical} />
         </div>
 
         <div

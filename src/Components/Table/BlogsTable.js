@@ -8,14 +8,15 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TablePagination from "@mui/material/TablePagination";
 import TableRow from "@mui/material/TableRow";
-import { User } from "@/DataSet/DataSet";
 import { useUserAuth } from "@/Context/UserAuthContext";
 import DeleteModal from "../DeleteModal";
 import { useState } from "react";
 import { DeleteBlog } from "@/Store/Actions/blogAction";
-
+import CreateIcon from "@mui/icons-material/Create";
 import { toast } from "react-toastify";
 import { useDispatch } from "react-redux";
+import { IconButton } from "@mui/material";
+import DeleteIcon from "@mui/icons-material/Delete";
 
 export default function BlogsTable({ blogs }) {
   const [page, setPage] = React.useState(0);
@@ -50,12 +51,16 @@ export default function BlogsTable({ blogs }) {
         state={forDelete.state}
         id={forDelete.id}
       />
-      <TableContainer sx={{ maxHeight: "90vh" }}>
+      <TableContainer sx={{ maxHeight: "80vh" }}>
         <Table stickyHeader aria-label="sticky table">
           <TableHead>
             <TableRow>
-              <TableCell style={{ fontWeight: 800 }}>Sr. No.</TableCell>
-              <TableCell style={{ fontWeight: 800 }}>Image</TableCell>
+              <TableCell className="text-center" style={{ fontWeight: 800 }}>
+                Sr. No.
+              </TableCell>
+              <TableCell className="text-center" style={{ fontWeight: 800 }}>
+                Image
+              </TableCell>
               <TableCell style={{ fontWeight: 800 }}>Title</TableCell>
               <TableCell style={{ fontWeight: 800 }}>Category</TableCell>
               <TableCell style={{ fontWeight: 800 }}>createdAt</TableCell>
@@ -71,9 +76,9 @@ export default function BlogsTable({ blogs }) {
               .map((blog, index) => {
                 return (
                   <TableRow hover role="checkbox" tabIndex={-1} key={index}>
-                    <TableCell>{index + 1}</TableCell>
+                    <TableCell className="text-center">{index + 1}</TableCell>
 
-                    <TableCell>
+                    <TableCell className="text-center">
                       <img
                         src={blog.image}
                         className="rounded-full border-2 border-gray-400 w-10 h-10"
@@ -85,19 +90,18 @@ export default function BlogsTable({ blogs }) {
                     <TableCell>{blog.category}</TableCell>
                     <TableCell>{blog.createdAt}</TableCell>
                     <TableCell>{blog.author}</TableCell>
-                    <TableCell>
-                      <div className="w-full flex justify-center gap-5 items-center">
-                        <button>
-                          <i className="uil uil-edit text-xl  text-blue-600" />
-                        </button>
-                        <button
+                    <TableCell className="text-center">
+                      <IconButton aria-label="delete" size="small">
+                        <CreateIcon fontSize="small" />
+                      </IconButton>
+                      <IconButton aria-label="delete" size="small">
+                        <DeleteIcon
                           onClick={() => {
                             setforDelete({ state: "grid", id: blog._id });
                           }}
-                        >
-                          <i className="uil uil-trash-alt text-red-600 text-xl " />
-                        </button>
-                      </div>
+                          fontSize="small"
+                        />
+                      </IconButton>
                     </TableCell>
                   </TableRow>
                 );
@@ -108,7 +112,7 @@ export default function BlogsTable({ blogs }) {
       <TablePagination
         rowsPerPageOptions={[10, 25, 100]}
         component="div"
-        count={User.length}
+        count={blogs.length}
         rowsPerPage={rowsPerPage}
         page={page}
         onPageChange={handleChangePage}

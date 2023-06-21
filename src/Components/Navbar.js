@@ -64,7 +64,7 @@ export const AppBarNav = ({ handleDrawerOpen, open, AppBar }) => {
   const { user } = useUserAuth();
 
   return (
-    <AppBar position="fixed" className="bg-white text-black" open={open}>
+    <AppBar position="fixed"  color="primary" open={open}>
       <Toolbar className="flex justify-between">
         <div className="flex items-center">
           <IconButton

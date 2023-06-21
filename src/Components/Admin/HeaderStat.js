@@ -1,33 +1,39 @@
-"use client"
+"use client";
 import { useUserAuth } from "@/Context/UserAuthContext";
-import React from "react";
+import SupervisorAccountIcon from "@mui/icons-material/SupervisorAccount";
+import NewspaperIcon from "@mui/icons-material/Newspaper";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchBlogs } from "@/Store/Actions/blogAction";
+import LoopIcon from "@mui/icons-material/Loop";
+import { fetchUsers } from "@/Store/Actions/userAction";
+import { IconButton } from "@mui/material";
+import { BtnSpinner, BtnSpinner2 } from "../Spinner/LoadingSpinner";
+import { useState } from "react";
 const HeaderStat = () => {
   const { user } = useUserAuth();
+  const [updater, setupdater] = useState("");
+  const dispatch = useDispatch();
 
-  const StatHeader = () => {
-    const HeaderCard = () => {
+  useEffect(() => {
+    dispatch(fetchBlogs());
+    dispatch(fetchUsers());
+  }, [updater]);
+  const { blogs, users } = useSelector((state) => state);
+
+  const StatHeader = ({ blogs, users }) => {
+    const HeaderCard = ({ name, value, icon, loading }) => {
       return (
         <div className="">
-          <div className="  px-5 py-5 bg-gray-100 flex gap-5 justify-center items-center  rounded-sm">
-            <svg
-              fill="none"
-              stroke="currentColor"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth="2"
-              className=" pColor w-12 h-12 mb-3 inline-block"
-              viewBox="0 0 24 24"
-            >
-              <path d="M8 17l4 4 4-4m-4-5v9"></path>
-              <path d="M20.88 18.09A5 5 0 0018 9h-1.26A8 8 0 103 16.29"></path>
-            </svg>
+          <div className="  px-5 py-5 bg-gray-100 flex gap-5 relative justify-center items-center  rounded-sm">
+            {icon}
             <div className=" ">
-              <h2 className="title-font font-medium  text-xl ">
-                2.7K
-              </h2>
-              <p className="leading-relaxed text-sm ">
-                Downloads
-              </p>
+              <div className="flex gap-5">
+                <h2 className="title-font font-medium  text-xl ">{value}</h2>
+                {loading && <BtnSpinner />}
+              </div>
+
+              <p className="leading-relaxed text-sm ">{name}</p>
             </div>
           </div>
         </div>
@@ -37,10 +43,18 @@ const HeaderStat = () => {
       <section className="text-gray-600 body-font">
         <div className="   mx-auto">
           <div className="grid gap-5 grid-cols-2 md:grid-cols-4 ">
-            <HeaderCard />
-            <HeaderCard />
-            <HeaderCard />
-            <HeaderCard />
+            <HeaderCard
+              name="Blogs"
+              value={blogs.data.length}
+              loading={blogs.isLoading}
+              icon={<NewspaperIcon className="pColor text-3xl" />}
+            />
+            <HeaderCard
+              name="Users"
+              value={users.data.length}
+              loading={users.isLoading}
+              icon={<SupervisorAccountIcon className="pColor text-3xl" />}
+            />
           </div>
         </div>
       </section>
@@ -58,7 +72,17 @@ const HeaderStat = () => {
             </span>{" "}
           </div>
 
-          <div className="rounded-full   bg-gray-100   overflow-hidden p-1 w-auto">
+          <div className="rounded-full   flex gap-5 justify-center items-center bg-gray-100   overflow-hidden p-1 w-auto">
+            <IconButton
+              onClick={() => {
+                setupdater(Math.random());
+              }}
+              aria-label="LoopIcon"
+              className="ml-5"
+              size="small"
+            >
+              <LoopIcon className="text-2xl  " />
+            </IconButton>
             <img
               className="w-10 h-10 rounded-full"
               src={user && user.photoURL}
@@ -66,7 +90,7 @@ const HeaderStat = () => {
             />
           </div>
         </div>
-        <StatHeader />
+        <StatHeader blogs={blogs} users={users} />
       </div>
     </div>
   );
