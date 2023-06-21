@@ -75,7 +75,12 @@ export default function UserTable({ Users }) {
                     <TableCell>{email}</TableCell>
                     <TableCell>{phoneNo}</TableCell>
                     <TableCell>{gender}</TableCell>
-                    <TableCell>{role}</TableCell>
+                    <TableCell>
+                    <select value={role}>
+                      <option value="user">User</option>
+                      <option value="admin">Admin</option>
+                    </select>
+                    </TableCell>
                     <TableCell>
                       <div className="w-full flex justify-center gap-5 items-center">
                         <button>

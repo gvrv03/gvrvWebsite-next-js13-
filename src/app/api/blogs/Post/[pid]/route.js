@@ -1,4 +1,5 @@
-import authMiddleware from "@/helper/authMiddleware";
+
+import { RootMiddleware } from "@/helper/authMiddleware";
 import initDB from "@/helper/initDB";
 import Blogs from "@/Modal/Blogs";
 import { NextResponse } from "next/server";
@@ -19,7 +20,7 @@ export const GET = async (req, { params }) => {
 };
 
 // to Delete Blog
-export const DELETE = async (req, { params }) => {
+export const DELETE = RootMiddleware(async (req, { params }) => {
   try {
     const { pid } = await params;
     const deleteBlog = await Blogs.findByIdAndDelete(pid);
@@ -58,4 +59,4 @@ export const DELETE = async (req, { params }) => {
       }
     );
   }
-};
+});

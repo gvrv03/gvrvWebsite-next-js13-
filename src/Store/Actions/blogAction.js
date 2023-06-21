@@ -13,25 +13,25 @@ export const fetchBlogs = createAsyncThunk("blogs/fetchBlogs", async () => {
 
 export const AddBlog = createAsyncThunk(
   "blogs/AddBlog",
-  async (data, adminToken) => {
+  async (data) => {
     const res = await fetch(getAllBlogsURL, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        Authorization: "Bearer " + adminToken,
+        Authorization: "Bearer " + data.adminToken,
       },
-      body: JSON.stringify(data),
+      body: JSON.stringify(data.blog),
     });
     return await res.json();
   }
 );
 
-export const DeleteBlog = createAsyncThunk("blogs/DeleteBlog", async (id) => {
-  const res = await fetch(getSingleURL + id, {
+export const DeleteBlog = createAsyncThunk("blogs/DeleteBlog", async (data) => {
+  const res = await fetch(getSingleURL + data.id, {
     method: "DELETE",
     headers: {
       "Content-Type": "application/json",
-      Authorization: "Bearer " + id,
+      Authorization: "Bearer " + data.token,
     },
   });
   return await res.json();

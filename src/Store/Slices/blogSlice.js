@@ -30,7 +30,10 @@ const blogSlice = createSlice({
       })
       .addCase(AddBlog.fulfilled, (state, action) => {
         state.isLoading = false;
-        state.data.push(action.payload.data);
+        const blogData = action.payload;
+        if (blogData.isSuccess === true) {
+          state.data.push(action.payload.data);
+        }
       })
       .addCase(AddBlog.rejected, (state, action) => {
         state.isLoading = false;
@@ -41,9 +44,11 @@ const blogSlice = createSlice({
       })
       .addCase(DeleteBlog.fulfilled, (state, action) => {
         state.isLoading = false;
-        const { _id } = action.payload.data;
-        if (_id) {
-          state.data = state.data.filter((ele) => ele._id !== _id);
+        const blogData = action.payload;
+        if (blogData.isSuccess === true) {
+          state.data = state.data.filter(
+            (ele) => ele._id !== blogData.data._id
+          );
         }
       })
       .addCase(DeleteBlog.rejected, (state, action) => {

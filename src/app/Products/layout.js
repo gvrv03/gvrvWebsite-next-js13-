@@ -1,6 +1,6 @@
 import React from "react";
 
-const BlogsLayout = ({ children }) => {
+const ProductLayout = ({ children }) => {
   const HeaderName = (props) => {
     return (
       <h2 className="font-bold text-lg relative">
@@ -26,4 +26,4 @@ const BlogsLayout = ({ children }) => {
   );
 };
 
-export default BlogsLayout;
+export default ProductLayout;

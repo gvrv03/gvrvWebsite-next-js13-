@@ -2,6 +2,8 @@ import { Button, IconButton } from "@mui/material";
 import { useRouter } from "next/navigation";
 import React from "react";
 import LoopIcon from "@mui/icons-material/Loop";
+import ArrowBackIcon from "@mui/icons-material/ArrowBack";
+
 import { BtnSpinner, BtnSpinner2 } from "./Spinner/LoadingSpinner";
 
 export const DefButton = ({ name, func, btnStyle, loading }) => {
@@ -44,16 +46,15 @@ export const NoDataFound = ({ nameHead, location, btnTitle }) => {
       <div className="bg-white w-full md:w-fit flex flex-col justify-center items-center p-5 ">
         <img src="/NoData.svg" className="w-80" alt="" srcset="" />
         <h1 className="text-gray-400 mt-5">{nameHead}</h1>
-        <Button
-          variant="contained"
+        <button
           onClick={() => {
             router.push(location);
           }}
-          className="pBtn mt-5"
+          className="p-2 pBtn mt-5"
         >
           <i className="bi  bi-plus text-lg " />
           {btnTitle}
-        </Button>
+        </button>
       </div>
     </div>
   );
@@ -72,23 +73,41 @@ export const AdminPageHeader = ({
       <div>
         {pageName} ({totalCount})
       </div>
-      <div className="flex  justify-between items-center">
+      <div className="flex  justify-between gap-2 items-center">
         <IconButton onClick={refreshFun} aria-label="LoopIcon" size="small">
           <LoopIcon className="text-2xl  " />
         </IconButton>
-        <Button variant="text">Export</Button>
-        <Button variant="text">Import</Button>
-        <Button
-          variant="contained"
+        <button className=" text-gray-500 p-2">Export</button>
+        <button className=" text-gray-500 p-2">Import</button>
+        <button
           onClick={() => {
             router.push(routeLocation);
           }}
-          className="pBtn"
+          className="pBtn p-2 rounded-sm"
         >
           <i className="bi bi-plus text-lg " />
           {btnName}
-        </Button>
+        </button>
       </div>
     </div>
+  );
+};
+
+export const BackBtn = ({ backLocation, headName }) => {
+  const router = useRouter();
+
+  return (
+    <h1 className="text-lg pb-5 font-bold">
+      <IconButton
+        onClick={() => {
+          router.push(backLocation);
+        }}
+        aria-label="LoopIcon"
+        size="small"
+      >
+        <ArrowBackIcon className="text-2xl  " />
+      </IconButton>{" "}
+      {headName}
+    </h1>
   );
 };

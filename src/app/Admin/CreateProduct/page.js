@@ -1,12 +1,13 @@
 "use client";
 import TextEditor from "@/Components/Admin/TextEditor";
-import { Divider } from "@mui/material";
+import { Divider, IconButton } from "@mui/material";
 import dynamic from "next/dynamic";
 import React from "react";
-import ArrowBackIcon from '@mui/icons-material/ArrowBack';
+import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import { useState } from "react";
 
 import { FileUploader } from "react-drag-drop-files";
+import { BackBtn } from "@/Components/UtilComponent";
 const fileTypes = ["PDF", "ZIP", "RAR"];
 const ImageTypes = ["JPEG", "SVG", "WEBP", "PNG"];
 const CreateProdct = () => {
@@ -31,9 +32,9 @@ const CreateProdct = () => {
 
   return (
     <>
-    <nav>
-      <h1 className="text-lg pb-5 font-bold"> <ArrowBackIcon/> Create Product</h1>
-    </nav>
+      <nav>
+        <BackBtn backLocation="/Admin/AllProducts" headName="Create Product" />
+      </nav>
       <section className=" flex gap-5 flex-col md:flex-row ">
         <div className="  w-full flex flex-col gap-5">
           <div className="p-5 bg-white">

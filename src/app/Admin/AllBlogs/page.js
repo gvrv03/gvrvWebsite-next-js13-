@@ -21,7 +21,7 @@ const AllBlogs = () => {
 
   return (
     <>
-      <div className="  ">
+      <div className=" w-full mt-24 ">
         <AdminPageHeader
           pageName="All Blogs"
           totalCount={blogs.data.length}

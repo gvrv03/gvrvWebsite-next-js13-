@@ -1,4 +1,4 @@
-import authMiddleware from "@/helper/authMiddleware";
+import { AdminMiddleware } from "@/helper/authMiddleware";
 import initDB from "@/helper/initDB";
 import Blogs from "@/Modal/Blogs";
 initDB();
@@ -6,7 +6,7 @@ initDB();
 import { NextResponse } from "next/server";
 
 // --------------To Add Blog--------------
-export const POST = async (request) => {
+export const POST = AdminMiddleware(async (request) => {
   try {
     const Data = await request.json();
     const { title } = Data;
@@ -16,7 +16,7 @@ export const POST = async (request) => {
       return NextResponse.json(
         {
           data: null,
-          message: "This Title Already Exits",
+          error: "This Title Already Exits",
           isSuccess: false,
         },
         {
@@ -24,7 +24,6 @@ export const POST = async (request) => {
         }
       );
     }
-
     const addBlog = await Blogs.create(Data);
     return NextResponse.json(
       {
@@ -49,7 +48,7 @@ export const POST = async (request) => {
       }
     );
   }
-};
+});
 
 // --------------To Fetch All Blogs--------------
 export const GET = async (req, res) => {

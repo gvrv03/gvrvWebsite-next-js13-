@@ -10,7 +10,7 @@ import LoadingSpinner, {
   BtnSpinner,
   BtnSpinner2,
 } from "@/Components/Spinner/LoadingSpinner";
-import { UploadButton } from "@/Components/UtilComponent";
+import { BackBtn, UploadButton } from "@/Components/UtilComponent";
 import { AddBlog } from "@/Store/Actions/blogAction";
 import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
@@ -86,8 +86,8 @@ const CreatePost = () => {
       return toast.error("Please Fill all the fields");
     }
     const { payload } = await dispatch(
-      AddBlog(
-        {
+      AddBlog({
+        blog: {
           title,
           category,
           author: userIDS.ID,
@@ -95,8 +95,8 @@ const CreatePost = () => {
           description,
           artical,
         },
-        userIDS.firebaseuid
-      )
+        adminToken: userIDS.ID,
+      })
     );
     if (payload.message) {
       toast.success(payload.message);
@@ -110,6 +110,8 @@ const CreatePost = () => {
 
   return (
     <div className="w-full    h-full">
+      <BackBtn backLocation="/Admin/AllBlogs" headName="Create Blog" />
+
       <div className="  bg-white p-5 gap-5 flex">
         <input
           type="text"
@@ -144,7 +146,6 @@ const CreatePost = () => {
           <i className="bi bi-gear-fill" />
         </button>
       </div>
-    
 
       <div className=" w-full flex gap-5 mt-5 ">
         <div className="w-full bg-white p-5 md:w-4/5">
@@ -160,7 +161,7 @@ const CreatePost = () => {
             ></textarea>
           </div>
 
-          <TextEditor setartical={setartical}  artical={artical} />
+          <TextEditor setartical={setartical} artical={artical} />
         </div>
 
         <div

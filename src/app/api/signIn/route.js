@@ -1,3 +1,4 @@
+import { RootMiddleware } from "@/helper/authMiddleware";
 import initDB from "@/helper/initDB";
 import User from "@/Modal/User";
 initDB();
@@ -26,7 +27,7 @@ export async function POST(request) {
   }
 }
 
-export async function GET(request) {
+export const GET = async (request) => {
   try {
     const allUser = await User.find();
     return NextResponse.json(allUser);
@@ -38,4 +39,4 @@ export async function GET(request) {
       }
     );
   }
-}
+};

@@ -10,24 +10,26 @@ import LoadingSpinner, {
 import { getAuth } from "firebase/auth";
 import { Button } from "@mui/material";
 import { AdminPageHeader } from "@/Components/UtilComponent";
+import { useUserAuth } from "@/Context/UserAuthContext";
 
 const AllUsers = () => {
   const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(fetchUsers());
+  const { userIDS } = useUserAuth();
+
+  useEffect(async () => {
+    await dispatch(fetchUsers(userIDS.ID));
   }, [dispatch]);
 
   const Users = useSelector((state) => state.users);
   const { isLoading, data } = Users;
-
 
   return (
     <div>
       <AdminPageHeader
         pageName="All Users"
         totalCount={data.length}
-        refreshFun={() => {
-          dispatch(fetchUsers());
+        refreshFun={async () => {
+          await dispatch(fetchUsers(userIDS.ID));
         }}
         routeLocation="/Admin/CreatePost"
         btnName="Add User"

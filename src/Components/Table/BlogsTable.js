@@ -21,11 +21,10 @@ import DeleteIcon from "@mui/icons-material/Delete";
 export default function BlogsTable({ blogs }) {
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(10);
-  const Context = useUserAuth();
+  const { userIDS } = useUserAuth();
   const handleChangePage = (event, newPage) => {
     setPage(newPage);
   };
-  console.log(blogs);
 
   const handleChangeRowsPerPage = (event) => {
     setRowsPerPage(+event.target.value);
@@ -36,10 +35,14 @@ export default function BlogsTable({ blogs }) {
   const dispatch = useDispatch();
 
   const handleDelete = async (id) => {
-    const { payload } = await dispatch(DeleteBlog(id));
+    const { payload } = await dispatch(
+      DeleteBlog({ id: id, token: userIDS.ID })
+    );
     console.log(payload);
     if (payload.isSuccess) {
       toast.success(payload.message);
+    } else {
+      toast.error(payload.error);
     }
   };
 
@@ -51,7 +54,7 @@ export default function BlogsTable({ blogs }) {
         state={forDelete.state}
         id={forDelete.id}
       />
-      <TableContainer sx={{ maxHeight: "80vh" }}>
+      <TableContainer sx={{ maxHeight: "75vh" }}>
         <Table stickyHeader aria-label="sticky table">
           <TableHead>
             <TableRow>
