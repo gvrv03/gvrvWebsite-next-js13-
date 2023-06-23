@@ -21,7 +21,7 @@ export default async function Allproducts() {
         </div>
       )}
       <section className="mt-5 grid grid-cols-1  h-90 md:grid-cols-4 gap-5 justify-between overflow-y-scroll flex-wrap ">
-        {data.map((product, index) => {
+        {data && data.map((product, index) => {
           const {
             title,
             thumbnail,
