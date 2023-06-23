@@ -36,6 +36,7 @@ const Allproducts = async () => {
           return (
             <ProductCard
               key={index}
+              id={_id}
               title={title}
               thumbnail={thumbnail}
               price={price}

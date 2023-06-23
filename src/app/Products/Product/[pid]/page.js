@@ -1,4 +1,5 @@
 "use client";
+import Allproducts from "@/Components/Product/Allproducts";
 import DetailTabs from "@/Components/Product/DetailTabs";
 import ProductCard from "@/Components/Product/ProductCard";
 import Link from "next/link";
@@ -260,12 +261,7 @@ const ProductDetail = () => {
           <h2 className="text-lg bg-white p-5 mt-5 lg:text-2xl font-bold text-gray-900 ">
             Recommended Products
           </h2>
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-5 mt-5 ">
-            <ProductCard />
-            <ProductCard />
-            <ProductCard />
-            <ProductCard />
-          </div>
+          <Allproducts/>
         </div>
       </section>
     </div>

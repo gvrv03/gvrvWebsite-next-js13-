@@ -1,7 +1,7 @@
 import Link from "next/link";
 import React from "react";
 
-const ProductCard = ({ title, thumbnail, price, comAtPrice }) => {
+const ProductCard = ({ title, thumbnail, price, comAtPrice, id }) => {
   return (
     <div className="w-full  bg-white p-5 h-fit rounded-sm shadow ">
       <Link href={`/Products/Product/asdfhagsdra65asdtyg`}>
@@ -70,7 +70,7 @@ const ProductCard = ({ title, thumbnail, price, comAtPrice }) => {
           <span className="text-xl font-bold ">₹{price}</span>
           <strike className="text-xs font-bold ">₹{comAtPrice}</strike>
           <Link
-            href="/Products/Product/jtsd76sdftsgjgjgg687t"
+            href={`/Products/Product/${id}`}
             className="text-sm px-5 py-2.5 text-center pBtn"
           >
             Read More
