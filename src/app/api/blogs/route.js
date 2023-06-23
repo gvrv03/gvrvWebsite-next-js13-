@@ -61,7 +61,7 @@ export const GET = async (req, res) => {
     return NextResponse.json(
       {
         data: null,
-        error: error,
+        error: error.message,
         errorMsg: "Internal Server Error",
         isSuccess: false,
       },

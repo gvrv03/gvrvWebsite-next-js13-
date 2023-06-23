@@ -2,9 +2,10 @@ import React from "react";
 import { getProductsURL } from "../../../allLinks";
 import ProductCard from "./ProductCard";
 
-const Allproducts = async () => {
+export default async function Allproducts() {
   const res = await fetch(getProductsURL);
   const data = await res.json();
+  console.log(data);
   if (data === undefined) {
     return (
       <div className="h-screen w-full grid place-items-center  bg-white ">
@@ -25,14 +26,15 @@ const Allproducts = async () => {
             title,
             thumbnail,
             pricing,
-            productOrganization,
-            addeBy,
+            // productOrganization,
+            // addeBy,
             _id,
           } = product;
           const { price, comAtPrice } = pricing;
 
-          const { category, type, vendor, collection, keywords } =
-            productOrganization;
+          // const { category, type, vendor, collection, keywords } =
+          //   productOrganization;
+
           return (
             <ProductCard
               key={index}
@@ -47,6 +49,4 @@ const Allproducts = async () => {
       </section>
     </>
   );
-};
-
-export default Allproducts;
+}

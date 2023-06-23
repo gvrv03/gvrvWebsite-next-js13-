@@ -81,14 +81,12 @@ export const POST = async (request) => {
 export const GET = async (req, res) => {
   try {
     const products = await ProductDetailData.find();
-    return NextResponse.json(products, {
-      status: 200,
-    });
+    return NextResponse.json(products);
   } catch (error) {
     return NextResponse.json(
       {
         data: null,
-        error: error,
+        error: error.message,
         errorMsg: "Internal Server Error",
         isSuccess: false,
       },
