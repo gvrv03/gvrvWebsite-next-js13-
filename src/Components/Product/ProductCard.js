@@ -1,21 +1,15 @@
 import Link from "next/link";
 import React from "react";
 
-const ProductCard = () => {
+const ProductCard = ({ title, thumbnail, price, comAtPrice }) => {
   return (
     <div className="w-full  bg-white p-5 h-fit rounded-sm shadow ">
       <Link href={`/Products/Product/asdfhagsdra65asdtyg`}>
-        <img
-          className="p-8 rounded-t-lg"
-          src="https://flowbite.com/docs/images/products/apple-watch.png"
-          alt="product image"
-        />
+        <img className="p-8 rounded-t-lg" src={thumbnail} alt="product image" />
       </Link>
       <div className=" ">
         <Link href="/">
-          <h5 className="text-sm font-semibold tracking-tight ">
-            Apple Watch Series 7 GPS, Aluminium Case, Starlight Sport
-          </h5>
+          <h5 className="text-sm font-semibold tracking-tight ">{title}</h5>
         </Link>
         <div className="flex items-center mt-2.5 mb-5">
           <svg
@@ -73,7 +67,8 @@ const ProductCard = () => {
           </span>
         </div>
         <div className="flex items-center justify-between">
-          <span className="text-2xl font-bold ">$599</span>
+          <span className="text-xl font-bold ">₹{price}</span>
+          <strike className="text-xs font-bold ">₹{comAtPrice}</strike>
           <Link
             href="/Products/Product/jtsd76sdftsgjgjgg687t"
             className="text-sm px-5 py-2.5 text-center pBtn"

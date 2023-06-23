@@ -13,14 +13,16 @@ export const POST = AdminMiddleware(async (request) => {
     console.log(Data);
     const titleExist = await Blogs.findOne({ title });
     if (titleExist) {
+      const updateBlog = await Blogs.findOneAndUpdate({ title }, Data);
+
       return NextResponse.json(
         {
-          data: null,
-          error: "This Title Already Exits",
-          isSuccess: false,
+          data: updateBlog,
+          message: "Already Exits, Then Updated",
+          isSuccess: true,
         },
         {
-          status: 400,
+          status: 200,
         }
       );
     }
@@ -39,8 +41,8 @@ export const POST = AdminMiddleware(async (request) => {
     return NextResponse.json(
       {
         data: null,
-        error: error,
-        errorMsg: "Internal Server Error",
+        error: "Internal Server Error",
+        errorMsg: error,
         isSuccess: false,
       },
       {

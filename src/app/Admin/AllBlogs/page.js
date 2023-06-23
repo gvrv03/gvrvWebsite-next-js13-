@@ -10,18 +10,16 @@ import { useDispatch, useSelector } from "react-redux";
 
 const AllBlogs = () => {
   const dispatch = useDispatch();
-  const [forDelete, setforDelete] = useState({ state: false, id: "" });
   useEffect(() => {
     dispatch(fetchBlogs());
   }, [dispatch]);
-  const router = useRouter();
 
   const blogs = useSelector((state) => state.blogs);
   const { isLoading, error } = blogs;
 
   return (
     <>
-      <div className=" w-full mt-24 ">
+      <div className=" w-full  ">
         <AdminPageHeader
           pageName="All Blogs"
           totalCount={blogs.data.length}

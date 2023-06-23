@@ -69,7 +69,7 @@ export const AdminPageHeader = ({
 }) => {
   const router = useRouter();
   return (
-    <div className=" font-semibold    rounded-sm   flex justify-between ">
+    <div className=" font-semibold    rounded-sm  items-center flex justify-between ">
       <div>
         {pageName} ({totalCount})
       </div>
@@ -77,13 +77,13 @@ export const AdminPageHeader = ({
         <IconButton onClick={refreshFun} aria-label="LoopIcon" size="small">
           <LoopIcon className="text-2xl  " />
         </IconButton>
-        <button className=" text-gray-500 p-2">Export</button>
-        <button className=" text-gray-500 p-2">Import</button>
+        <button className="text-sm  text-gray-500 p-2">Export</button>
+        <button className="text-sm  text-gray-500 p-2">Import</button>
         <button
           onClick={() => {
             router.push(routeLocation);
           }}
-          className="pBtn p-2 rounded-sm"
+          className="pBtn text-sm px-5 py-2 rounded-sm"
         >
           <i className="bi bi-plus text-lg " />
           {btnName}

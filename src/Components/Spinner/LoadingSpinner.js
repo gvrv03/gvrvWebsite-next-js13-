@@ -64,4 +64,15 @@ export const FullScreenLoader = () => {
     </div>
   );
 };
+
+export const FullScreenLoaderMsg = () => {
+  return (
+    <div className=" fixed z-50 left-0 right-0 w-full h-screen top-0  p-2 mt-5 grid place-items-center">
+      <div className="bg-white shadow-lg w-fit h-fit p-5 grid place-items-center">
+        <LoadingSpinner />
+        <label className="font-semibold">Uploading File</label>
+      </div>{" "}
+    </div>
+  );
+};
 export default LoadingSpinner;

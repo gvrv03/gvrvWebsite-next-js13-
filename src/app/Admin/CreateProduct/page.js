@@ -7,11 +7,31 @@ import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import { useState } from "react";
 
 import { FileUploader } from "react-drag-drop-files";
-import { BackBtn } from "@/Components/UtilComponent";
-const fileTypes = ["PDF", "ZIP", "RAR"];
-const ImageTypes = ["JPEG", "SVG", "WEBP", "PNG"];
+import { BackBtn, DefButton } from "@/Components/UtilComponent";
+import Media from "@/Components/Admin/CreateProduct/Media";
+import MainData from "@/Components/Admin/CreateProduct/MainData";
+import Pricing from "@/Components/Admin/CreateProduct/Pricing";
+import ProductOrg from "@/Components/Admin/CreateProduct/ProductOrg";
+import { AddProduct } from "@/Store/Actions/productAction";
+import { toast } from "react-toastify";
+import { useDispatch } from "react-redux";
+import { useUserAuth } from "@/Context/UserAuthContext";
+
 const CreateProdct = () => {
+  //Main Data State
   const [Description, setDescription] = useState("");
+  const [artical, setartical] = useState("");
+  const [title, settitle] = useState("");
+  const [status, setstatus] = useState("");
+  console.log(status);
+  const { userIDS } = useUserAuth();
+  const [loading, setloading] = useState(false);
+  // Product Organization
+  const [PCategory, setPCategory] = useState("");
+  const [PType, setPType] = useState("");
+  const [PVendor, setPVendor] = useState("");
+  const [PCollection, setPCollection] = useState("");
+  const [PKeyword, setPKeyword] = useState("");
 
   // Pricing
   const [price, setprice] = useState(null);
@@ -20,14 +40,55 @@ const CreateProdct = () => {
   const [profit, setprofit] = useState(null);
   const [margin, setmargin] = useState(null);
 
-  //File Uploading
-  const [productImg, setproductImg] = useState(null);
+  // Image
+  const [thumbnail, setthumbnail] = useState("");
+  const [images, setimages] = useState([]);
   const [file, setFile] = useState(null);
-  const handleChangeProduct = (file) => {
-    setFile(file);
-  };
-  const handleChangeProductImage = (file) => {
-    setproductImg(file);
+
+  const dispatch = useDispatch();
+  const createProduct = async (e) => {
+    e.preventDefault();
+    setloading(true);
+    const { payload } = await dispatch(
+      AddProduct({
+        productDetail: {
+          addeBy: userIDS.ID,
+          title: title,
+          description: Description,
+          artical: artical,
+          images,
+          thumbnail: thumbnail,
+          productOrganization: {
+            category: PCategory,
+            type: PType,
+            vendor: PVendor,
+            collection: PCollection,
+            keywords: PKeyword,
+          },
+          pricing: {
+            price: price,
+            comAtPrice: compareprice,
+            costPerItem: costPerItem,
+            profit,
+            margin,
+          },
+          status,
+        },
+        product: {
+          Name: title,
+          Product: file,
+          date: Date.now,
+        },
+      })
+    );
+    if (payload.isSuccess === true) {
+      toast.success(payload.message);
+      return setloading(false);
+    }
+    if (payload.isSuccess === false) {
+      toast.error(payload.error.message);
+      return setloading(false);
+    }
   };
 
   return (
@@ -37,181 +98,70 @@ const CreateProdct = () => {
       </nav>
       <section className=" flex gap-5 flex-col md:flex-row ">
         <div className="  w-full flex flex-col gap-5">
-          <div className="p-5 bg-white">
-            <div className="flex flex-col gap-2">
-              <label>Title</label>
-              <input
-                className="border rounded-sm px-2 py-2 outline-none"
-                type="text"
-              />
-            </div>
-            <div className="flex flex-col mt-5 ">
-              <label className="mb-5">Description</label>
-              <TextEditor setartical={setDescription} artical={Description} />
-            </div>
-          </div>
+          {/* -----------------Main Header Components----------------- */}
+          <MainData
+            setDescription={setDescription}
+            setartical={setartical}
+            artical={artical}
+            settitle={settitle}
+          />
+          {/* -----------------Pricing Components----------------- */}
+          <Pricing
+            setprice={setprice}
+            setcompareprice={setcompareprice}
+            setcostPerItem={setcostPerItem}
+            setprofit={setprofit}
+            setmargin={setmargin}
+            margin={margin}
+            profit={profit}
+            price={price}
+          />
 
-          <div className="p-5 bg-white">
-            <label className="font-semibold text-gray-500">Media</label>
-            <div className=" border-2 border-dashed  flex justify-between rounded-md p-5 mt-5">
-              <FileUploader
-                multiple={true}
-                handleChange={handleChangeProductImage}
-                name="productImg"
-                types={ImageTypes}
-              />
-              <button className=" pBtn p-2 rounded-sm ">Add Link</button>
-            </div>
-          </div>
-
-          <div className="p-5 bg-white">
-            <label className="font-semibold text-gray-500">Pricing</label>
-            <div className="flex mt-5 gap-5">
-              <div className="flex flex-col gap-2 text-sm text-gray-500">
-                <label>Price</label>
-                <div className="border px-2">
-                  ₹
-                  <input
-                    onChange={(e) => {
-                      setprice(e.target.value);
-                    }}
-                    className=" rounded-sm px-2 py-2 outline-none"
-                    type="number"
-                    placeholder="0.00"
-                  />
-                </div>
-              </div>
-              <div className="flex flex-col gap-2 text-sm text-gray-500">
-                <label>Compare-at price</label>
-                <div className="border px-2">
-                  ₹
-                  <input
-                    onChange={(e) => {
-                      setcompareprice(e.target.value);
-                    }}
-                    className=" rounded-sm px-2 py-2 outline-none"
-                    type="number"
-                    placeholder="0.00"
-                  />
-                </div>
-              </div>
-            </div>
-            <Divider className="py-5" />
-            <div className="flex mt-5 flex-wrap gap-5">
-              <div className="flex mt-5 flex-col gap-2 text-sm text-gray-500">
-                <label>Cost per item</label>
-                <div className="border px-2">
-                  ₹
-                  <input
-                    onChange={(e) => {
-                      setcostPerItem(e.target.value);
-                      setprofit(price - e.target.value);
-                      setmargin(100 - (e.target.value / price) * 100);
-                    }}
-                    className=" rounded-sm px-2 py-2 outline-none"
-                    type="number"
-                    placeholder="0.00"
-                  />
-                </div>
-              </div>
-              <div className="flex mt-5 flex-col gap-2 text-sm text-gray-500">
-                <label>Profit</label>
-                <div className="border px-2 bg-gray-100">
-                  ₹
-                  <input
-                    value={profit}
-                    readOnly={true}
-                    className=" rounded-sm bg-gray-100 px-2 py-2 outline-none"
-                    type="number"
-                    placeholder="0.00"
-                  />
-                </div>
-              </div>
-              <div className="flex mt-5 flex-col gap-2 text-sm text-gray-500">
-                <label>Margin</label>
-                <div className="border px-2 bg-gray-100">
-                  <input
-                    value={margin}
-                    readOnly={true}
-                    className=" rounded-sm bg-gray-100 px-2 py-2 outline-none"
-                    type="number"
-                    placeholder="0.00"
-                  />
-                  %
-                </div>
-              </div>
-            </div>
-          </div>
+          {/* -----------------Media Components----------------- */}
+          <Media
+            setthumbnail={setthumbnail}
+            title={title}
+            thumbnail={thumbnail}
+            images={images}
+            setimages={setimages}
+            setFile={setFile}
+          />
         </div>
+
         <div className="w-full md:w-96  flex flex-col gap-5">
           <div className="bg-white flex flex-col p-5">
             <label className="font-semibold text-gray-500">Status</label>
-            <select className="border rounded-sm px-2 mt-2 py-2 outline-none">
+            <select
+              onClick={(e) => {
+                setstatus(e.target.value);
+              }}
+              defaultValue="active"
+              className="border rounded-sm px-2 mt-2 py-2 outline-none"
+            >
               <option value="active">Active</option>
               <option value="draft">Draft</option>
             </select>
           </div>
 
-          <div className="bg-white flex flex-col p-5">
-            <label className="font-semibold text-gray-500">
-              Product Organization
-            </label>
-            <div className="flex mt-5 flex-col gap-2 text-sm text-gray-500">
-              <label>Product Category</label>
-              <select className="border rounded-sm px-2 mt-2 py-2 outline-none">
-                <option value="ebook">EBook</option>
-                <option value="WebTemplate">Web Template</option>
-                <option value="landingPage">Landing Page</option>
-                <option value="illustration">Illustration</option>
-                <option value="designTemplate">Design Template</option>
-              </select>
-            </div>
-            <div className="flex mt-5 flex-col gap-2 text-sm text-gray-500">
-              <label>Product Type</label>
-              <input
-                className="border rounded-sm px-2 py-2 outline-none"
-                type="text"
-              />
-            </div>
-            <div className="flex mt-5 flex-col gap-2 text-sm text-gray-500">
-              <label>Vendor</label>
-              <input
-                className="border rounded-sm px-2 py-2 outline-none"
-                type="text"
-              />
-            </div>
-            <div className="flex mt-5 flex-col gap-2 text-sm text-gray-500">
-              <label>Collection</label>
-              <input
-                className="border rounded-sm px-2 py-2 outline-none"
-                type="text"
-              />
-            </div>
-            <div className="flex mt-5 flex-col gap-2 text-sm text-gray-500">
-              <label>Tags</label>
-              <input
-                className="border rounded-sm px-2 py-2 outline-none"
-                type="text"
-              />
-            </div>
-          </div>
+          {/* -----------------Product Organization Components----------------- */}
+          <ProductOrg
+            setPCategory={setPCategory}
+            setPType={setPType}
+            setPVendor={setPVendor}
+            setPCollection={setPCollection}
+            setPKeyword={setPKeyword}
+          />
 
           <div className="bg-white flex flex-col p-5">
-            <label className="mb-4 font-semibold text-gray-500">
-              Upload Product
-            </label>
-            <FileUploader
-              multiple={true}
-              handleChange={handleChangeProduct}
-              name="file"
-              types={fileTypes}
+            <DefButton
+              name="Add Product"
+              func={createProduct}
+              btnStyle="pBtn px-5 py-2 mt-5"
+              loading={loading}
             />
           </div>
         </div>
       </section>
-
-      <Divider className="py-5" />
-      <button className="pBtn px-5 py-2 mt-5">Add Product</button>
     </>
   );
 };
