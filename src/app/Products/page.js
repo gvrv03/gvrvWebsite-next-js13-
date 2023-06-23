@@ -1,3 +1,4 @@
+"use client"
 import Allproducts from "@/Components/Product/Allproducts";
 import Link from "next/link";
 import React from "react";

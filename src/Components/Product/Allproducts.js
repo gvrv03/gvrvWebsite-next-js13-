@@ -13,17 +13,38 @@ const Allproducts = async () => {
     );
   }
   return (
-    <section className="mt-5 grid grid-cols-1  h-90 md:grid-cols-4 gap-5 justify-between overflow-y-scroll flex-wrap ">
-      {data.map((product, index) => {
-        const { title, thumbnail, pricing, productOrganization, addeBy, _id } =
-          product;
-        const { price,comAtPrice } = pricing;
+    <>
+      {data.length === 0 && (
+        <div className="w-full h-90 grid place-items-center bg-white mt-5">
+          No Product Found
+        </div>
+      )}
+      <section className="mt-5 grid grid-cols-1  h-90 md:grid-cols-4 gap-5 justify-between overflow-y-scroll flex-wrap ">
+        {data.map((product, index) => {
+          const {
+            title,
+            thumbnail,
+            pricing,
+            productOrganization,
+            addeBy,
+            _id,
+          } = product;
+          const { price, comAtPrice } = pricing;
 
-        const { category, type, vendor, collection, keywords } =
-          productOrganization;
-        return <ProductCard key={index} title={title} thumbnail={thumbnail} price={price} comAtPrice={comAtPrice} />;
-      })}
-    </section>
+          const { category, type, vendor, collection, keywords } =
+            productOrganization;
+          return (
+            <ProductCard
+              key={index}
+              title={title}
+              thumbnail={thumbnail}
+              price={price}
+              comAtPrice={comAtPrice}
+            />
+          );
+        })}
+      </section>
+    </>
   );
 };
 
