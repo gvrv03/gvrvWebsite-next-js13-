@@ -73,6 +73,7 @@ const CreateProdct = () => {
             margin,
           },
           status,
+          rating: 2,
         },
         product: {
           Name: title,
@@ -138,7 +139,9 @@ const CreateProdct = () => {
               defaultValue="active"
               className="border rounded-sm px-2 mt-2 py-2 outline-none"
             >
-              <option value="active">Active</option>
+              <option selected={true} value="active">
+                Active
+              </option>
               <option value="draft">Draft</option>
             </select>
           </div>

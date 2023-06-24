@@ -5,7 +5,7 @@ initDB();
 
 import { NextResponse } from "next/server";
 
-// --------------To Add Blog--------------
+// --------------To Add Product--------------
 export const POST = async (request) => {
   try {
     const Data = await request.json();

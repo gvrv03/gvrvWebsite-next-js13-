@@ -85,11 +85,11 @@ export default function ProductsTable({ products }) {
                   productOrganization,
                   addeBy,
                   _id,
-                } = product;
-                const { price } = pricing;
+                } = product ? product : {};
+                const { price } = pricing ? pricing : {};
 
                 const { category, type, vendor, collection, keywords } =
-                  productOrganization;
+                  productOrganization ? productOrganization : {};
                 return (
                   <TableRow hover role="checkbox" tabIndex={-1} key={index}>
                     <TableCell className="text-center">{index + 1}</TableCell>

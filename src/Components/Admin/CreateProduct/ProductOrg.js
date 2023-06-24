@@ -18,10 +18,11 @@ const ProductOrg = ({
           onChange={(e) => {
             setPCategory(e.target.value);
           }}
-          value="ebook"
           className="border rounded-sm px-2 mt-2 py-2 outline-none"
         >
-          <option value="ebook">EBook</option>
+          <option selected={true} value="ebook">
+            EBook
+          </option>
           <option value="WebTemplate">Web Template</option>
           <option value="landingPage">Landing Page</option>
           <option value="illustration">Illustration</option>

@@ -5,7 +5,7 @@ import ProductCard from "./ProductCard";
 export default async function Allproducts() {
   const res = await fetch(getProductsURL);
   const data = await res.json();
-  if (data === undefined) {
+  if (data && data === undefined) {
     return (
       <div className="h-screen w-full grid place-items-center  bg-white ">
         Error occuured
@@ -14,7 +14,7 @@ export default async function Allproducts() {
   }
   return (
     <>
-      {data.length === 0 && (
+      {data && data.length === 0 && (
         <div className="w-full h-90 grid place-items-center bg-white mt-5">
           No Product Found
         </div>
@@ -30,7 +30,7 @@ export default async function Allproducts() {
               // addeBy,
               _id,
             } = product;
-            const { price, comAtPrice } = pricing;
+            const { price, comAtPrice } = pricing ? pricing : {};
 
             // const { category, type, vendor, collection, keywords } =
             //   productOrganization;
