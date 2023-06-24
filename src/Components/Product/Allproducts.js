@@ -29,7 +29,7 @@ export default async function Allproducts() {
               // productOrganization,
               // addeBy,
               _id,
-            } = product;
+            } = product ? product : {};
             const { price, comAtPrice } = pricing ? pricing : {};
 
             // const { category, type, vendor, collection, keywords } =
