@@ -3,6 +3,7 @@ import { useRouter } from "next/navigation";
 import React from "react";
 import LoopIcon from "@mui/icons-material/Loop";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
+import { DownloadTableExcel } from "react-export-table-to-excel";
 
 import { BtnSpinner, BtnSpinner2 } from "./Spinner/LoadingSpinner";
 
@@ -66,6 +67,7 @@ export const AdminPageHeader = ({
   refreshFun,
   routeLocation,
   btnName,
+  downloadData,
 }) => {
   const router = useRouter();
   return (
@@ -77,7 +79,10 @@ export const AdminPageHeader = ({
         <IconButton onClick={refreshFun} aria-label="LoopIcon" size="small">
           <LoopIcon className="text-2xl  " />
         </IconButton>
-        <button className="text-sm  text-gray-500 p-2">Export</button>
+
+        <button onClick={downloadData} className="text-sm  text-gray-500 p-2">
+          Export
+        </button>
         <button className="text-sm  text-gray-500 p-2">Import</button>
         <button
           onClick={() => {

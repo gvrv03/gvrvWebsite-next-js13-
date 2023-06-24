@@ -4,24 +4,27 @@ import SupervisorAccountIcon from "@mui/icons-material/SupervisorAccount";
 import NewspaperIcon from "@mui/icons-material/Newspaper";
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import ShoppingBagIcon from '@mui/icons-material/ShoppingBag';
 import { fetchBlogs } from "@/Store/Actions/blogAction";
 import LoopIcon from "@mui/icons-material/Loop";
 import { fetchUsers } from "@/Store/Actions/userAction";
 import { IconButton } from "@mui/material";
 import { BtnSpinner, BtnSpinner2 } from "../Spinner/LoadingSpinner";
 import { useState } from "react";
+import { fetchProducts } from "@/Store/Actions/productAction";
 const HeaderStat = () => {
   const { user } = useUserAuth();
   const [updater, setupdater] = useState("");
   const dispatch = useDispatch();
-
   useEffect(() => {
     dispatch(fetchBlogs());
+    dispatch(fetchProducts());
     dispatch(fetchUsers());
   }, [updater]);
-  const { blogs, users } = useSelector((state) => state);
+  
+  const { blogs, users, products } = useSelector((state) => state);
 
-  const StatHeader = ({ blogs, users }) => {
+  const StatHeader = ({ blogs, users, products }) => {
     const HeaderCard = ({ name, value, icon, loading }) => {
       return (
         <div className="">
@@ -54,6 +57,12 @@ const HeaderStat = () => {
               value={users.data.length}
               loading={users.isLoading}
               icon={<SupervisorAccountIcon className="pColor text-3xl" />}
+            />
+            <HeaderCard
+              name="Products"
+              value={products.data.length}
+              loading={products.isLoading}
+              icon={<ShoppingBagIcon className="pColor text-3xl" />}
             />
           </div>
         </div>
@@ -90,7 +99,7 @@ const HeaderStat = () => {
             />
           </div>
         </div>
-        <StatHeader blogs={blogs} users={users} />
+        <StatHeader blogs={blogs} users={users} products={products} />
       </div>
     </div>
   );

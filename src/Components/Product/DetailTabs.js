@@ -5,10 +5,10 @@ import Tab from "@mui/material/Tab";
 import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
 import ProductReview from "./ProductReview";
+import ProductImageList from "./ProductImageList";
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
-
   return (
     <div
       role="tabpanel"
@@ -39,7 +39,7 @@ function a11yProps(index) {
   };
 }
 
-export default function DetailTabs() {
+export default function DetailTabs({ artical, images,title }) {
   const [value, setValue] = React.useState(0);
 
   const handleChange = (event, newValue) => {
@@ -60,13 +60,18 @@ export default function DetailTabs() {
         </Tabs>
       </Box>
       <TabPanel value={value} index={0}>
-        Item One
+        <article
+          className=""
+          dangerouslySetInnerHTML={{
+            __html: artical,
+          }}
+        />
       </TabPanel>
       <TabPanel value={value} index={1}>
-        Item Two
+        <ProductImageList ImageData={images}  title={title}/>
       </TabPanel>
       <TabPanel value={value} index={2}>
-        <ProductReview/>
+        <ProductReview />
       </TabPanel>
     </Box>
   );

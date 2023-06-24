@@ -10,18 +10,8 @@ const ProductLayout = ({ children }) => {
     );
   };
   return (
-    <section className=" m-auto h-screen  container">
-      <div className=" mt-20 h-screen overflow-y-scroll  md:flex-row flex-col gap-5 flex">
-        <main className="  w-full md:w-9/12  h-screen  ">{children}</main>
-        <aside className="w-full md:w-1/4 bg-white  p-5 ">
-          <div className=" ">
-            <HeaderName name="Category" />
-            <div className="mt-5 h-64 overflow-y-scroll flex flex-col gap-5">
-             
-            </div>
-          </div>
-        </aside>
-      </div>
+    <section className=" mt-20 m-auto  p-5 container">
+        <main className="  w-full ">{children}</main>
     </section>
   );
 };

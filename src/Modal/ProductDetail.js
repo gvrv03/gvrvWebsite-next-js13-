@@ -46,11 +46,11 @@ const productDetailSchema = new Schema(
       margin: { type: Number, default: 0, required: true },
     },
     reviews: [reviewSchema],
-    rating: {
+    rating: [{
       type: Number,
       min: 1,
       max: 5,
-    },
+    }],
     productID: {
       type: ObjectId,
       ref: "product",

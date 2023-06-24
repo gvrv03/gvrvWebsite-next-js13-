@@ -1,4 +1,3 @@
-
 import { RootMiddleware } from "@/helper/authMiddleware";
 import initDB from "@/helper/initDB";
 import Blogs from "@/Modal/Blogs";
@@ -15,7 +14,16 @@ export const GET = async (req, { params }) => {
 
     return NextResponse.json(getBlog);
   } catch (error) {
-    return NextResponse.json({ body: { msg: "Internal Server Error" } });
+    return NextResponse.json(
+      {
+        error: error.message,
+        errorMsg: "Internal Server Error",
+        isSuccess: false,
+      },
+      {
+        status: 500,
+      }
+    );
   }
 };
 
@@ -27,7 +35,6 @@ export const DELETE = RootMiddleware(async (req, { params }) => {
     if (!deleteBlog) {
       return NextResponse.json(
         {
-          data: null,
           message: "Blog not Exists",
           isSuccess: false,
         },
@@ -49,8 +56,7 @@ export const DELETE = RootMiddleware(async (req, { params }) => {
   } catch (error) {
     return NextResponse.json(
       {
-        data: null,
-        error: error,
+        error: error.message,
         errorMsg: "Internal Server Error",
         isSuccess: false,
       },
