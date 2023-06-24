@@ -89,13 +89,12 @@ const ProductMinDetail = ({
                   ₹{price}
                 </span>
 
-                <button className="flex ml-auto rounded-sm py-2 px-6 pBtn">
+                <button className="flex ml-auto mr-5 rounded-sm py-2 px-6 pBtn">
                   Buy Now
                 </button>
 
                 <ToggleButton
                   value="check"
-                  className="ml-5"
                   selected={selected}
                   onChange={(e) => {
                     e.preventDefault()

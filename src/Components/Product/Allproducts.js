@@ -22,27 +22,27 @@ export default async function Allproducts() {
       <section className="mt-5 grid grid-cols-1  h-90 md:grid-cols-4 gap-5 justify-between overflow-y-scroll flex-wrap ">
         {data &&
           data.map((product, index) => {
-            const {
-              title,
-              thumbnail,
-              pricing,
-              // productOrganization,
-              // addeBy,
-              _id,
-            } = product ? product : {};
-            const { price, comAtPrice } = pricing ? pricing : {};
+            // const {
+            //   title,
+            //   thumbnail,
+            //   pricing,
+            //   // productOrganization,
+            //   // addeBy,
+            //   _id,
+            // } = product ? product : {};
+            // const { price, comAtPrice } = product.pricing ? pricing : {};
 
-            // const { category, type, vendor, collection, keywords } =
-            //   productOrganization;
+            // // const { category, type, vendor, collection, keywords } =
+            // //   productOrganization;
 
             return (
               <ProductCard
                 key={index}
-                id={_id}
-                title={title}
-                thumbnail={thumbnail}
-                price={price}
-                comAtPrice={comAtPrice}
+                id={product._id}
+                title={product.title}
+                thumbnail={product.thumbnail}
+                price={product.pricing.price}
+                comAtPrice={product.pricing.comAtPrice}
               />
             );
           })}

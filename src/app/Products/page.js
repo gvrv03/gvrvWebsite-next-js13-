@@ -43,7 +43,7 @@ const Products = () => {
         </ol>
       </nav>
 
-      {/* <Allproducts /> */}
+      <Allproducts />
     </div>
   );
 };
