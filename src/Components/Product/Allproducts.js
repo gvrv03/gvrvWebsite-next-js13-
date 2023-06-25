@@ -13,7 +13,7 @@ export default async function Allproducts() {
       </div>
     );
   }
-  
+
   return (
     <>
       {data && data.length === 0 && (
@@ -22,8 +22,8 @@ export default async function Allproducts() {
         </div>
       )}
 
-      <ProductHeader/>
-      <section className="mt-12 grid grid-cols-2  md:grid-cols-4 gap-5 justify-between  flex-wrap ">
+      <ProductHeader />
+      <section className="mt-12 grid grid-cols-2  md:grid-cols-4 gap-5  ">
         {data &&
           data.map((product, index) => {
             // const {

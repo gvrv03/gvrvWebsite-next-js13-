@@ -1,6 +1,7 @@
 import React from "react";
 import { getAllBlogsURL } from "../../allLinks";
 import BlogCard from "./BlogCard";
+import BlogsHeader from "./BlogsHeader";
 
 export default async function AllBlogs() {
   const res = await fetch(getAllBlogsURL);
@@ -20,7 +21,7 @@ export default async function AllBlogs() {
         </div>
       )}
       <BlogsHeader/>
-      <section className="mt-5 grid grid-cols-2  h-90 md:grid-cols-3 gap-5 justify-between overflow-y-scroll flex-wrap ">
+      <section className="mt-36 grid grid-cols-2  md:grid-cols-4 gap-5  ">
         {data &&
           data.map((i, index) => {
             return (
