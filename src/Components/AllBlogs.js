@@ -1,11 +1,23 @@
 import React from "react";
-import { getAllBlogsURL } from "../../allLinks";
+import { getAllBlogsByQueryObj } from "../../allLinks";
 import BlogCard from "./BlogCard";
+import BlogsHeader from "./BlogsHeader";
 
 export default async function AllBlogs() {
-  const res = await fetch(getAllBlogsURL);
-  const data = await res.json();
-  if (data === undefined) {
+  const res = await fetch(getAllBlogsByQueryObj, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      queryObject: {},
+      skip: 0,
+      limit: 0,
+      sortingObj: {},
+    }),
+  });
+  const { Blogs } = await res.json();
+  if (Blogs === undefined) {
     return (
       <div className="h-screen w-full grid place-items-center  bg-white ">
         Error occuured
@@ -14,14 +26,15 @@ export default async function AllBlogs() {
   }
   return (
     <>
-      {data.length === 0 && (
+      {Blogs.length === 0 && (
         <div className="w-full h-90 grid place-items-center bg-white mt-5">
           No Blogs Found
         </div>
       )}
-      <section className="mt-5 grid grid-cols-1  h-90 md:grid-cols-3 gap-5 justify-between overflow-y-scroll flex-wrap ">
-        {data &&
-          data.map((i, index) => {
+      <BlogsHeader />
+      <section className="mt-36 grid grid-cols-2  md:grid-cols-4 gap-5 ">
+        {Blogs &&
+          Blogs.map((i, index) => {
             return (
               <BlogCard
                 key={index}

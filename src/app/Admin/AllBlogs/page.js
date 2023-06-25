@@ -2,18 +2,24 @@
 import { FullScreenLoader } from "@/Components/Spinner/LoadingSpinner";
 import BlogsTable from "@/Components/Table/BlogsTable";
 import { AdminPageHeader, NoDataFound } from "@/Components/UtilComponent";
-import { fetchBlogs } from "@/Store/Actions/blogAction";
+import { fetchBlogsByQueryObj } from "@/Store/Actions/blogAction";
 import { useRouter } from "next/navigation";
 import React, { useEffect } from "react";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import XLSX, { utils, write } from "xlsx";
 
-
 const AllBlogs = () => {
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(fetchBlogs());
+    dispatch(
+      fetchBlogsByQueryObj({
+        queryObj: {},
+        skip: 0,
+        limit: 0,
+        sortObj: {},
+      })
+    );
   }, [dispatch]);
 
   const blogs = useSelector((state) => state.blogs);
@@ -53,7 +59,14 @@ const AllBlogs = () => {
           pageName="All Blogs"
           totalCount={blogs.data.length}
           refreshFun={() => {
-            dispatch(fetchBlogs());
+            dispatch(
+              fetchBlogsByQueryObj({
+                queryObj: {},
+                skip: 0,
+                limit: 0,
+                sortObj: {},
+              })
+            );
           }}
           downloadData={() => downloadXlsFile(blogs.data)}
           routeLocation="/Admin/CreatePost"

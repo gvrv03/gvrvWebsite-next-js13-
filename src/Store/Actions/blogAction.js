@@ -1,5 +1,9 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import { getAllBlogsURL, getSingleURL } from "../../../allLinks";
+import {
+  getAllBlogsByQueryObj,
+  getAllBlogsURL,
+  getSingleURL,
+} from "../../../allLinks";
 
 export const fetchBlogs = createAsyncThunk("blogs/fetchBlogs", async () => {
   const res = await fetch(getAllBlogsURL, {
@@ -11,20 +15,36 @@ export const fetchBlogs = createAsyncThunk("blogs/fetchBlogs", async () => {
   return await res.json();
 });
 
-export const AddBlog = createAsyncThunk(
-  "blogs/AddBlog",
+export const fetchBlogsByQueryObj = createAsyncThunk(
+  "Blogs/fetchBlogsByQueryObj",
   async (data) => {
-    const res = await fetch(getAllBlogsURL, {
+    const res = await fetch(getAllBlogsByQueryObj, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        Authorization: "Bearer " + data.adminToken,
       },
-      body: JSON.stringify(data.blog),
+      body: JSON.stringify({
+        queryObject: data.queryObj,
+        skip: data.skip,
+        limit: data.limit,
+        sortingObj: data.sortObj,
+      }),
     });
     return await res.json();
   }
 );
+
+export const AddBlog = createAsyncThunk("blogs/AddBlog", async (data) => {
+  const res = await fetch(getAllBlogsURL, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: "Bearer " + data.adminToken,
+    },
+    body: JSON.stringify(data.blog),
+  });
+  return await res.json();
+});
 
 export const DeleteBlog = createAsyncThunk("blogs/DeleteBlog", async (data) => {
   const res = await fetch(getSingleURL + data.id, {

@@ -10,7 +10,7 @@ const ProductLayout = ({ children }) => {
     );
   };
   return (
-    <section className=" mt-20 m-auto  p-5 container">
+    <section className=" mt-20 m-auto  py-5 container">
         <main className="  w-full ">{children}</main>
     </section>
   );

@@ -1,11 +1,16 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import { AddProduct, fetchProducts } from "../Actions/productAction";
+import {
+  AddProduct,
+  fetchProducts,
+  fetchProductsByQueryObj,
+} from "../Actions/productAction";
 
 // Define the initial state
 const initialState = {
   data: [],
   isLoading: false,
   error: null,
+  count: 0,
 };
 
 // Create the user slice
@@ -22,6 +27,18 @@ const blogSlice = createSlice({
         state.data = action.payload;
       })
       .addCase(fetchProducts.rejected, (state, action) => {
+        state.isLoading = false;
+        state.error = action.error.message;
+      })
+      .addCase(fetchProductsByQueryObj.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(fetchProductsByQueryObj.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.data = action.payload.products;
+        state.count = action.payload.productsCount;
+      })
+      .addCase(fetchProductsByQueryObj.rejected, (state, action) => {
         state.isLoading = false;
         state.error = action.error.message;
       })

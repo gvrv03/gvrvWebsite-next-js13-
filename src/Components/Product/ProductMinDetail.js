@@ -9,6 +9,7 @@ import FavoriteIcon from "@mui/icons-material/Favorite";
 import { downloadProductURL } from "../../../allLinks";
 import { DefButton } from "../UtilComponent";
 import Link from "next/link";
+import ImagesSlideShow from "./ImagesSlideShow";
 const ProductMinDetail = ({
   thumbnail,
   title,
@@ -41,7 +42,7 @@ const ProductMinDetail = ({
   };
   const [selected, setSelected] = useState(false);
   return (
-    <section className=" mt-5 grid grid-cols-1  h-90 overflow-y-scroll ">
+    <section className="  grid grid-cols-1   ">
       {/* short description  */}
       <div className="bg-white p-5">
         <div className="w-full mx-auto flex flex-wrap">
@@ -51,6 +52,7 @@ const ProductMinDetail = ({
               className="object-cover object-center rounded"
               src={thumbnail}
             />
+            {/* <ImagesSlideShow slideImages={images} /> */}
           </div>
           <div className="lg:w-1/2 w-full lg:pl-10 lg:py-6 mt-6 lg:mt-0">
             <h2 className="text-sm title-font text-gray-500 tracking-widest">
@@ -59,7 +61,7 @@ const ProductMinDetail = ({
             <h1 className="text-gray-900 text-3xl title-font font-medium mb-1">
               {title}
             </h1>
-            <div className="flex mb-4">
+            <div className="flex mb-4 border-b-2 pb-2 border-gray-100">
               <span className="flex items-center">
                 <Rating name="read-only" value={3} readOnly />
                 <span className="text-gray-600 ml-3">4 Reviews</span>
@@ -68,7 +70,7 @@ const ProductMinDetail = ({
                 <a className="text-gray-500">
                   <svg
                     fill="currentColor"
-                    stroke-linecap="round"
+                    strokeLinecap="round"
                     stroke-linejoin="round"
                     stroke-width="2"
                     className="w-5 h-5"
@@ -80,7 +82,7 @@ const ProductMinDetail = ({
                 <a className="text-gray-500">
                   <svg
                     fill="currentColor"
-                    stroke-linecap="round"
+                    strokeLinecap="round"
                     stroke-linejoin="round"
                     stroke-width="2"
                     className="w-5 h-5"
@@ -92,7 +94,7 @@ const ProductMinDetail = ({
                 <a className="text-gray-500">
                   <svg
                     fill="currentColor"
-                    stroke-linecap="round"
+                    strokeLinecap="round"
                     stroke-linejoin="round"
                     stroke-width="2"
                     className="w-5 h-5"
@@ -104,7 +106,7 @@ const ProductMinDetail = ({
               </span>
             </div>
             <p className="leading-relaxed text-justify">{description}</p>
-            <div className="flex mt-6 items-center pb-5 border-b-2 border-gray-100 mb-5" />
+            <div className="flex mt-6 items-center pb-5 md:border-b-2 border-gray-100 mb-5" />
 
             <div className=" md:relative z-40 md:border-none border fixed w-full md:bottom-auto md:left-auto md:right-auto md:p-0 bottom-0 left-0 right-0 bg-white p-5">
               <div className="flex container m-auto">

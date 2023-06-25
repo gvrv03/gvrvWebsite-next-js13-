@@ -25,7 +25,7 @@ export default function RootLayout({ children }) {
         <Provider store={store}>
           <UserAuthContexProvider>
             <Navbar />
-            <div className="">
+            <div className="px-5">
               <ToastContainer
                 position="top-left"
                 autoClose={2000}

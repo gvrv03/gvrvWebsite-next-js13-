@@ -1,18 +1,21 @@
 "use client";
+import BlogsHeader from "@/Components/BlogsHeader";
 import BlogSkeleton from "@/Components/BlogSkeleton";
 import React from "react";
 
-const loading = () => {
+const LoadingBlogs = () => {
   return (
-    <section className=" grid grid-cols-1  h-90 md:grid-cols-3 gap-5 justify-between overflow-y-scroll flex-wrap ">
+   <>
+   <BlogsHeader/>
+    <section className=" mt-36 grid grid-cols-2 md:grid-cols-4 gap-5 ">
       <BlogSkeleton />
       <BlogSkeleton />
       <BlogSkeleton />
       <BlogSkeleton />
       <BlogSkeleton />
       <BlogSkeleton />
-    </section>
+    </section></>
   );
 };
 
-export default loading;
+export default LoadingBlogs;

@@ -1,31 +1,42 @@
 import React from "react";
-import { getProductsURL } from "../../../allLinks";
+import { getProductsByQueryOBJURL, getProductsURL } from "../../../allLinks";
 import ProductCard from "./ProductCard";
 import ProductHeader from "./ProductHeader";
 
 export default async function Allproducts() {
-  const res = await fetch(getProductsURL);
-  const data = await res.json();
-  if (data && data === undefined) {
+  const res = await fetch(getProductsByQueryOBJURL, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      queryObject: {},
+      skip: 0,
+      limit: 0,
+      sortingObj: {},
+    }),
+  });
+  const { products } = await res.json();
+  if (products && products === undefined) {
     return (
       <div className="h-screen w-full grid place-items-center  bg-white ">
         Error occuured
       </div>
     );
   }
-  
+
   return (
     <>
-      {data && data.length === 0 && (
+      {products && products.length === 0 && (
         <div className="w-full h-90 grid place-items-center bg-white mt-5">
           No Product Found
         </div>
       )}
 
-      <ProductHeader/>
+      <ProductHeader />
       <section className="mt-12 grid grid-cols-2  md:grid-cols-4 gap-5 justify-between  flex-wrap ">
-        {data &&
-          data.map((product, index) => {
+        {products &&
+          products.map((product, index) => {
             // const {
             //   title,
             //   thumbnail,

@@ -2,7 +2,10 @@
 import { FullScreenLoader } from "@/Components/Spinner/LoadingSpinner";
 import ProductsTable from "@/Components/Table/ProductsTable";
 import { AdminPageHeader, NoDataFound } from "@/Components/UtilComponent";
-import { fetchProducts } from "@/Store/Actions/productAction";
+import {
+  fetchProducts,
+  fetchProductsByQueryObj,
+} from "@/Store/Actions/productAction";
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import XLSX, { utils, write } from "xlsx";
@@ -10,7 +13,9 @@ import XLSX, { utils, write } from "xlsx";
 const AllProducts = () => {
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(fetchProducts());
+    dispatch(
+      fetchProductsByQueryObj({ queryObj: {}, skip: 0, limit: 0, sortObj: {} })
+    );
   }, [dispatch]);
 
   const products = useSelector((state) => state.products);
@@ -49,11 +54,16 @@ const AllProducts = () => {
         pageName="All Products"
         totalCount={data.length}
         refreshFun={() => {
-          dispatch(fetchProducts());
+          dispatch(
+            fetchProductsByQueryObj({
+              queryObj: {},
+              skip: 0,
+              limit: 0,
+              sortObj: {},
+            })
+          );
         }}
-        downloadData={() =>
-          downloadXlsFile(data)
-        }
+        downloadData={() => downloadXlsFile(data)}
         routeLocation="/Admin/CreateProduct"
         btnName="Create Product"
       />
