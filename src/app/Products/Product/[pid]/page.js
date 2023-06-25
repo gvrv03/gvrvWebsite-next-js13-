@@ -18,9 +18,10 @@ const ProductDetail = async ({ params }) => {
     description,
     addeBy,
     _id,
+    productID,
   } = data ? data : {};
 
-  const { price } = pricing ? pricing : {};
+  const { price, comAtPrice } = pricing ? pricing : {};
   if (artical === undefined) {
     return (
       <div className="bg-white h-full ">
@@ -89,7 +90,16 @@ const ProductDetail = async ({ params }) => {
         </ol>
       </nav>
 
-      <ProductMinDetail images={images} artical={artical} price={price} title={title} description={description}  thumbnail={thumbnail}/>
+      <ProductMinDetail
+        comAtPrice={comAtPrice}
+        images={images}
+        artical={artical}
+        productID={productID}
+        price={price}
+        title={title}
+        description={description}
+        thumbnail={thumbnail}
+      />
     </div>
   );
 };

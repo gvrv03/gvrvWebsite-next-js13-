@@ -60,7 +60,7 @@ export default function DetailTabs({ artical, images,title }) {
         </Tabs>
       </Box>
       <TabPanel value={value} index={0}>
-        <article
+        <div
           className=""
           dangerouslySetInnerHTML={{
             __html: artical,

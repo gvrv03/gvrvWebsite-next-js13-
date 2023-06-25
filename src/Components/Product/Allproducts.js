@@ -1,6 +1,7 @@
 import React from "react";
 import { getProductsURL } from "../../../allLinks";
 import ProductCard from "./ProductCard";
+import ProductHeader from "./ProductHeader";
 
 export default async function Allproducts() {
   const res = await fetch(getProductsURL);
@@ -12,6 +13,7 @@ export default async function Allproducts() {
       </div>
     );
   }
+  
   return (
     <>
       {data && data.length === 0 && (
@@ -19,7 +21,9 @@ export default async function Allproducts() {
           No Product Found
         </div>
       )}
-      <section className="mt-5 grid grid-cols-1  h-90 md:grid-cols-4 gap-5 justify-between overflow-y-scroll flex-wrap ">
+
+      <ProductHeader/>
+      <section className="mt-12 grid grid-cols-2  md:grid-cols-4 gap-5 justify-between  flex-wrap ">
         {data &&
           data.map((product, index) => {
             // const {

@@ -10,7 +10,7 @@ import {
   FullScreenLoader,
   FullScreenLoaderMsg,
 } from "@/Components/Spinner/LoadingSpinner";
-const fileTypes = ["PDF", "ZIP", "RAR"];
+const fileTypes = ["ZIP", "RAR"];
 const ImageTypes = ["JPEG", "SVG", "WEBP", "PNG"];
 
 const Media = ({
@@ -32,7 +32,7 @@ const Media = ({
     }
     const imageRef = ref(
       storage,
-      `Product/${title}/ProductFile/${file[0].name + v4()}`
+      `Product/${title}/ProductFile/${file[0].name}`
     );
     await uploadBytes(imageRef, file[0]).then((snapshot) => {
       getDownloadURL(snapshot.ref).then((url) => {

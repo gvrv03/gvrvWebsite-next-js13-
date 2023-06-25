@@ -2,6 +2,7 @@ import baseUrl from "./baseUrl";
 
 // Products
 export const getProductsURL = baseUrl + "api/products";
+export const downloadProductURL = baseUrl + "api/ProductDown";
 export const getSingleProductURL = baseUrl + "api/products/Product/";
 
 // Blogs

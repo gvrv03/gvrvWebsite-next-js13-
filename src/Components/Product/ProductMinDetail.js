@@ -1,21 +1,44 @@
 "use client";
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import Allproducts from "@/Components/Product/Allproducts";
 import DetailTabs from "@/Components/Product/DetailTabs";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import ProductCard from "@/Components/Product/ProductCard";
 import { Rating, ToggleButton } from "@mui/material";
 import FavoriteIcon from "@mui/icons-material/Favorite";
+import { downloadProductURL } from "../../../allLinks";
+import { DefButton } from "../UtilComponent";
+import Link from "next/link";
 const ProductMinDetail = ({
   thumbnail,
   title,
   description,
+  comAtPrice,
   price,
+  productID,
   artical,
   images,
 }) => {
-  // Saved Function
+  // Download Product
 
+  const [laodingDown, setlaodingDown] = useState(false);
+  const handleDownload = async (id) => {
+    setlaodingDown(true);
+    // Fetch the file or generate its data dynamically
+    const res = await fetch(downloadProductURL, {
+      method: "POST", // or 'GET', 'PUT', 'DELETE', etc.
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        pid: id,
+      }),
+    });
+    const productLink = await res.json();
+    const link = document.createElement("a");
+    link.href = productLink;
+    link.download = title + ".zip";
+    link.click();
+    setlaodingDown(false);
+  };
   const [selected, setSelected] = useState(false);
   return (
     <section className=" mt-5 grid grid-cols-1  h-90 overflow-y-scroll ">
@@ -80,24 +103,32 @@ const ProductMinDetail = ({
                 </a>
               </span>
             </div>
-            <p className="leading-relaxed">{description}</p>
+            <p className="leading-relaxed text-justify">{description}</p>
             <div className="flex mt-6 items-center pb-5 border-b-2 border-gray-100 mb-5" />
 
             <div className=" md:relative z-40 md:border-none border fixed w-full md:bottom-auto md:left-auto md:right-auto md:p-0 bottom-0 left-0 right-0 bg-white p-5">
               <div className="flex container m-auto">
                 <span className="title-font font-medium text-2xl text-gray-900">
-                  ₹{price}
+                  ₹{price}{" "}
+                  <strike className="text-xs ml-2">₹{comAtPrice}</strike>
                 </span>
 
-                <button className="flex ml-auto mr-5 rounded-sm py-2 px-6 pBtn">
+                <DefButton
+                  name="Buy"
+                  loading={laodingDown}
+                  func={() => {
+                    handleDownload(productID);
+                  }}
+                  btnStyle="flex ml-auto mr-5 rounded-sm py-2 px-6 pBtn"
+                >
                   Buy Now
-                </button>
+                </DefButton>
 
                 <ToggleButton
                   value="check"
                   selected={selected}
                   onChange={(e) => {
-                    e.preventDefault()
+                    e.preventDefault();
                     setSelected(!selected);
                   }}
                 >

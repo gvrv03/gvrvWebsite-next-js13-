@@ -1,16 +1,18 @@
 import initDB from "@/helper/initDB";
 initDB();
 import { NextResponse } from "next/server";
+import Product from "@/Modal/Product";
 
 // --------------To Download Product--------------
 export const POST = async (request) => {
   try {
-    const response = fetch(
-      "https://firebasestorage.googleapis.com/v0/b/personalportpolio.appspot.com/o/Product%2FJavaScript%20Dashboard%20Masterclass%20%5Bvideo%20course%5D%2FProductFile%2Fhorizon-tailwind-react-main.zipd60aaf4c-544f-4563-96ca-05fb96891cc2?alt=media&token=1cb1355f-5359-40a1-8020-f16a1dd4aeaf"
-    );
+    const Data = await request.json();
+    const { pid } = Data;
 
-    console.log(response);
-    return NextResponse.json(response);
+    const getProduct = await Product.findById(pid);
+    if (getProduct) {
+      return NextResponse.json(getProduct.Product);
+    }
   } catch (error) {
     return NextResponse.json(
       {

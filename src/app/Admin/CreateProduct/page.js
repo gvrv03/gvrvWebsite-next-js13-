@@ -44,7 +44,7 @@ const CreateProdct = () => {
   const [thumbnail, setthumbnail] = useState("");
   const [images, setimages] = useState([]);
   const [file, setFile] = useState(null);
-
+console.log(file);
   const dispatch = useDispatch();
   const createProduct = async (e) => {
     e.preventDefault();

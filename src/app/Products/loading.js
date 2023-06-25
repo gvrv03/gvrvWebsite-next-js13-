@@ -1,18 +1,38 @@
 "use client";
-import BlogSkeleton from "@/Components/BlogSkeleton";
+import ProductHeader from "@/Components/Product/ProductHeader";
+import { Skeleton } from "@mui/material";
 import React from "react";
 
-const loading = () => {
+const LoadingProduct = () => {
   return (
-    <section className=" grid grid-cols-1  h-90 md:grid-cols-3 gap-5 justify-between overflow-y-scroll flex-wrap ">
-      <BlogSkeleton />
-      <BlogSkeleton />
-      <BlogSkeleton />
-      <BlogSkeleton />
-      <BlogSkeleton />
-      <BlogSkeleton />
-    </section>
+    <>
+      <ProductHeader />
+
+      <section className="mt-12 grid grid-cols-2  md:grid-cols-4 gap-5 justify-between  flex-wrap ">
+        <ProductSkeleton />
+        <ProductSkeleton />
+        <ProductSkeleton />
+        <ProductSkeleton />
+        <ProductSkeleton />
+        <ProductSkeleton />
+      </section>
+    </>
   );
 };
 
-export default loading;
+export default LoadingProduct;
+
+function ProductSkeleton() {
+  return (
+    <div className="w-full md:w-auto  bg-white ">
+      <div className=" rounded-sm">
+        <Skeleton variant="rectangular" width="100%" height={220} />
+
+        <div className="flex gap-2 items-center justify-between p-2 flex-wrap mt-2 ">
+          <Skeleton variant="rectangular" width="100%" height={50} />
+          <Skeleton variant="rectangular" width="100%" height={20} />
+        </div>
+      </div>
+    </div>
+  );
+}
