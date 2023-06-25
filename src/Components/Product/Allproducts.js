@@ -16,8 +16,8 @@ export default async function Allproducts() {
       sortingObj: {},
     }),
   });
-  const { products } = await res.json();
-  if (products && products === undefined) {
+  const Data = await res.json();
+  if (Data.products && Data.products === undefined) {
     return (
       <div className="h-screen w-full grid place-items-center  bg-white ">
         Error occuured
@@ -27,7 +27,7 @@ export default async function Allproducts() {
 
   return (
     <>
-      {products && products.length === 0 && (
+      {Data.products && Data.products.length === 0 && (
         <div className="w-full h-90 grid place-items-center bg-white mt-5">
           No Product Found
         </div>
@@ -35,8 +35,8 @@ export default async function Allproducts() {
 
       <ProductHeader />
       <section className="mt-12 grid grid-cols-2  md:grid-cols-4 gap-5 justify-between  flex-wrap ">
-        {products &&
-          products.map((product, index) => {
+        {Data.products &&
+          Data.products.map((product, index) => {
             // const {
             //   title,
             //   thumbnail,
