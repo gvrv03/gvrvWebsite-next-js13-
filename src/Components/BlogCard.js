@@ -14,7 +14,7 @@ export default function BlogCard(props) {
           <h1 className="title-font text-xs md:text-sm font-bold   mb-3">
             {title}
           </h1>
-          <p className="leading-relaxed mb-3 text-xs md:text-sm  text-gray-600">
+          <p className="leading-relaxed text-justify mb-3 text-[10px] md:text-sm  text-gray-600">
             {description}
           </p>
           <div className="flex items-center flex-wrap ">

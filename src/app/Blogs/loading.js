@@ -7,7 +7,9 @@ const LoadingBlogs = () => {
   return (
    <>
    <BlogsHeader/>
-    <section className=" mt-36 grid grid-cols-2 md:grid-cols-4 gap-5 ">
+    <section className=" mt-[148px] grid grid-cols-2 md:grid-cols-4 gap-5 ">
+      <BlogSkeleton />
+      <BlogSkeleton />
       <BlogSkeleton />
       <BlogSkeleton />
       <BlogSkeleton />

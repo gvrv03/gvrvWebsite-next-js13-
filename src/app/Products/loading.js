@@ -15,6 +15,8 @@ const LoadingProduct = () => {
         <ProductSkeleton />
         <ProductSkeleton />
         <ProductSkeleton />
+        <ProductSkeleton />
+        <ProductSkeleton />
       </section>
     </>
   );
@@ -26,7 +28,7 @@ function ProductSkeleton() {
   return (
     <div className="w-full md:w-auto  bg-white ">
       <div className=" rounded-sm">
-        <Skeleton variant="rectangular" width="100%" height={220} />
+        <Skeleton variant="rectangular" width="100%" height={200} />
 
         <div className="flex gap-2 items-center justify-between p-2 flex-wrap mt-2 ">
           <Skeleton variant="rectangular" width="100%" height={50} />

@@ -21,7 +21,7 @@ export default async function AllBlogs() {
         </div>
       )}
       <BlogsHeader/>
-      <section className="mt-36 grid grid-cols-2  md:grid-cols-4 gap-5  ">
+      <section className="mt-[148px]  grid grid-cols-2  md:grid-cols-4 gap-5  ">
         {data &&
           data.map((i, index) => {
             return (
@@ -29,7 +29,7 @@ export default async function AllBlogs() {
                 key={index}
                 title={i.title}
                 category={i.category}
-                description={i.description.substring(0, 100) + "..."}
+                description={i.description.substring(0, 80) + "..."}
                 image={i.image}
                 id={i._id}
                 views={i.views}

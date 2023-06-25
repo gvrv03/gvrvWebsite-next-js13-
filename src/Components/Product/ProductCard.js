@@ -23,11 +23,11 @@ const ProductCard = ({ title, thumbnail, price, comAtPrice, id }) => {
           {title}
         </h5>
         <div className="flex items-center border-t-2 border-gray-50  justify-between mt-3 pt-2">
-          <div className="flex gap-2 items-center justify-between">
+          <div className="flex gap-2 items-baseline justify-between">
             <span className="text-sm md:text-xl font-bold ">₹{price}</span>
-            <strike className="text-xs  font-semibold ">₹{comAtPrice}</strike>
+            <strike className="text-[8px]  font-semibold ">₹{comAtPrice}</strike>
           </div>
-          <span className="text-sm md:text-xl text-red-500 font-light ">
+          <span className="text-[6px]  text-white bg-red-500 p-1 font-bold ">
             - {(100 - (price / comAtPrice) * 100).toFixed(1)} % OFF
           </span>
         </div>

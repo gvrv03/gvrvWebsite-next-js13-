@@ -19,7 +19,7 @@ const AllProducts = () => {
   }, [dispatch]);
 
   const products = useSelector((state) => state.products);
-  const { isLoading, error, data } = products;
+  const { isLoading, error, data, count } = products;
 
   // download Data
   function convertJsonToXls(jsonData) {
@@ -49,10 +49,10 @@ const AllProducts = () => {
     }
   }
   return (
-    <div className="w-full">
+    <div className="">
       <AdminPageHeader
         pageName="All Products"
-        totalCount={data.length}
+        totalCount={count}
         refreshFun={() => {
           dispatch(
             fetchProductsByQueryObj({
@@ -77,7 +77,8 @@ const AllProducts = () => {
           btnTitle="Add New Product"
         />
       ) : (
-        <ProductsTable products={data} />
+        // <></>
+        <ProductsTable products={data} count={count} />
       )}
     </div>
   );

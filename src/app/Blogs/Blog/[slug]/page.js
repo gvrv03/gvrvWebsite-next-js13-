@@ -20,10 +20,10 @@ const page = async ({ params }) => {
   }
   return (
     <>
-      <div className="bg-white h-full p-5 ">
-        <BlogHeader title={title} />
+      <div className="bg-white h-full p-5 mt-[88px] ">
+        {/* <BlogHeader title={title} /> */}
 
-        <div className="h-90 overflow-y-scroll">
+        <div className="">
           <section className="">
             <h1 className="font-bold text-lg md:text-3xl">{title}</h1>
             <div className="mt-5 flex justify-between text-sm">
@@ -42,7 +42,7 @@ const page = async ({ params }) => {
           <section className="mt-5">
             <img src={image} alt={title} />
             <article
-              className="overflow-y-scroll  mt-5"
+              className="  mt-5"
               dangerouslySetInnerHTML={{
                 __html: artical,
               }}

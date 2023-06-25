@@ -18,7 +18,7 @@ import { useDispatch } from "react-redux";
 import { IconButton } from "@mui/material";
 import DeleteIcon from "@mui/icons-material/Delete";
 
-export default function ProductsTable({ products }) {
+export default function ProductsTable({ products, count }) {
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(10);
   const { userIDS } = useUserAuth();
@@ -47,23 +47,10 @@ export default function ProductsTable({ products }) {
   };
 
   return (
-    <Paper className="mt-5" sx={{ width: "100%", overflow: "hidden" }}>
-      <DeleteModal
-        handleDelete={handleDelete}
-        setforDelete={setforDelete}
-        state={forDelete.state}
-        id={forDelete.id}
-      />
-      <TableContainer sx={{ maxHeight: "75vh" }}>
-        <Table stickyHeader aria-label="sticky table">
-          <TableHead>
+    <TableContainer component={Paper}>
+      <Table sx={{ minWidth: 650 }} aria-label="simple table">
+      <TableHead>
             <TableRow>
-              <TableCell className="text-center" style={{ fontWeight: 800 }}>
-                Sr. No.
-              </TableCell>
-              <TableCell className="text-center" style={{ fontWeight: 800 }}>
-                Image
-              </TableCell>
               <TableCell style={{ fontWeight: 800 }}>Title</TableCell>
               <TableCell style={{ fontWeight: 800 }}>Category</TableCell>
               <TableCell style={{ fontWeight: 800 }}>Type</TableCell>
@@ -74,67 +61,53 @@ export default function ProductsTable({ products }) {
               </TableCell>
             </TableRow>
           </TableHead>
-          <TableBody>
-            {products
-              .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-              .map((product, index) => {
-                const {
-                  title,
-                  thumbnail,
-                  pricing,
-                  productOrganization,
-                  addeBy,
-                  _id,
-                } = product ? product : {};
-                const { price } = pricing ? pricing : {};
+        <TableBody>
+          {products.map((product, index) => {
+            const {
+              title,
+              thumbnail,
+              pricing,
+              productOrganization,
+              addeBy,
+              _id,
+            } = product ? product : {};
+            const { price } = pricing ? pricing : {};
 
-                const { category, type, vendor, collection, keywords } =
-                  productOrganization ? productOrganization : {};
-                return (
-                  <TableRow hover role="checkbox" tabIndex={-1} key={index}>
-                    <TableCell className="text-center">{index + 1}</TableCell>
-
-                    <TableCell className="text-center">
-                      <img
-                        src={thumbnail}
-                        className="rounded-full border-2 border-gray-400 w-10 h-10"
-                        alt=""
-                        srcset=""
-                      />
-                    </TableCell>
-                    <TableCell>{title}</TableCell>
-                    <TableCell>{category}</TableCell>
-                    <TableCell>{type}</TableCell>
-                    <TableCell>{addeBy}</TableCell>
-                    <TableCell>₹{price}</TableCell>
-                    <TableCell className="text-center">
-                      <IconButton aria-label="delete" size="small">
-                        <CreateIcon fontSize="small" />
-                      </IconButton>
-                      <IconButton aria-label="delete" size="small">
-                        <DeleteIcon
-                          onClick={() => {
-                            setforDelete({ state: "grid", id: _id });
-                          }}
-                          fontSize="small"
-                        />
-                      </IconButton>
-                    </TableCell>
-                  </TableRow>
-                );
-              })}
-          </TableBody>
-        </Table>
-      </TableContainer>
-      <TablePagination
-        rowsPerPageOptions={[10, 25, 100]}
-        component="div"
-        count={products.length}
-        rowsPerPage={rowsPerPage}
-        page={page}
-        onPageChange={handleChangePage}
-        onRowsPerPageChange={handleChangeRowsPerPage}
-      />
-    </Paper>
+            const { category, type, vendor, collection, keywords } =
+              productOrganization ? productOrganization : {};
+            return (
+              <TableRow
+                key={index}
+                sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
+              >
+                <TableCell component="th" className=" flex gap-5 items-center" scope="row">
+                  <div className=" rounded-full border-2 w-8 border-gray-200">
+                    <img src={thumbnail} className="w-full " alt="" />
+                  </div>
+                  <span>{title}</span>{" "}
+                </TableCell>
+                <TableCell align="left">{category}</TableCell>
+                <TableCell align="left">{type}</TableCell>
+                <TableCell align="left">{addeBy}</TableCell>
+                <TableCell align="left">₹{price}</TableCell>
+                <TableCell align="left">
+                  <IconButton aria-label="delete" size="small">
+                    <CreateIcon fontSize="small" />
+                  </IconButton>
+                  <IconButton aria-label="delete" size="small">
+                    <DeleteIcon
+                      onClick={() => {
+                        setforDelete({ state: "grid", id: _id });
+                      }}
+                      fontSize="small"
+                    />
+                  </IconButton>
+                </TableCell>
+              </TableRow>
+            );
+          })}
+        </TableBody>
+      </Table>
+    </TableContainer>
   );
 }
