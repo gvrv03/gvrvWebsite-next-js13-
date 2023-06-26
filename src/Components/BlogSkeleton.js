@@ -6,7 +6,13 @@ export default function BlogSkeleton() {
   return (
     <div className="w-full  border md:w-auto bg-white ">
       <div className=" rounded-sm">
-        <Skeleton variant="rectangular" width="100%"  className="h-[200px] md:h-[250px]" />
+        <div className="md:block hidden">
+          <Skeleton variant="rectangular" width="100%" height={250} />
+        </div>
+        <div className="block md:hidden">
+          <Skeleton variant="rectangular" width="100%" height={160} />
+        </div>
+
         <div className="p-2 ">
           <Skeleton variant="rectangular" width="100%" height={15} />
           <Skeleton variant="rectangular" width="100%" height={40} />

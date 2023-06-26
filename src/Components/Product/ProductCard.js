@@ -39,7 +39,7 @@ const ProductCard = ({ title, thumbnail, price, comAtPrice, id }) => {
               ₹{comAtPrice}
             </strike>
           </div>
-          <span className="text-[6px] md:text-sm  text-white bg-red-500 p-1 font-bold ">
+          <span className="text-[6px] md:text-sm  text-white bg-red-500  p-1 font-bold ">
             - {(100 - (price / comAtPrice) * 100).toFixed(1)} % OFF
           </span>
         </div>

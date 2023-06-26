@@ -28,8 +28,12 @@ function ProductSkeleton() {
   return (
     <div className="w-full md:w-auto border  bg-white ">
       <div className=" rounded-sm">
-        <Skeleton variant="rectangular" width="100%" className="h-[200px] md:h-[250px]" />
-
+        <div className="md:block hidden">
+          <Skeleton variant="rectangular" width="100%" height={250} />
+        </div>
+        <div className="block md:hidden">
+          <Skeleton variant="rectangular" width="100%" height={160} />
+        </div>
         <div className="flex gap-2 items-center justify-between p-2 flex-wrap mt-2 ">
           <Skeleton variant="rectangular" width="100%" height={50} />
           <Skeleton variant="rectangular" width="100%" height={20} />

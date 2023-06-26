@@ -24,14 +24,14 @@ const ProductDetail = async ({ params }) => {
   const { price, comAtPrice } = pricing ? pricing : {};
   if (artical === undefined) {
     return (
-      <div className="bg-white h-full ">
+      <div className=" h-full ">
         <NotFound />
       </div>
     );
   }
 
   return (
-    <div className="h-full mt-[88px]">
+    <div className="h-full mt-16">
       <ProductMinDetail
         comAtPrice={comAtPrice}
         images={images}
