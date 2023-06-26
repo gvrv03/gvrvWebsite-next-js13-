@@ -87,7 +87,7 @@ export default function ProductsTable({ products, count }) {
               productOrganization ? productOrganization : {};
 
             return (
-              <tr class="bg-white border-b  ">
+              <tr class="bg-white border-b  " key={index}>
                 <th
                   scope="row"
                   class="px-6 py-4 font-medium text-gray-900 gap-2 flex items-center whitespace-nowrap "
