@@ -9,7 +9,7 @@
   background-image: url("/Background.svg");
 }
 .bgBackground {
-  background-color: rgb(247, 247, 255);
+  background-color: rgb(255, 255, 255);
 }
 /* Custom scrollbar */
 ::-webkit-scrollbar {

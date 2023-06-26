@@ -11,7 +11,7 @@ const ProductCard = ({ title, thumbnail, price, comAtPrice, id }) => {
 
   const router = useRouter();
   return (
-    <div className="w-full hover:shadow-md bg-white p-5 h-fit rounded-sm  ">
+    <div className="w-full hover:shadow-md border border-gray-200 bg-white p-5 h-fit rounded-sm  ">
       <div
         onClick={() => {
           router.push("/Products/Product/" + id);
