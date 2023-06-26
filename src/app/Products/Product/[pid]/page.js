@@ -31,7 +31,7 @@ const ProductDetail = async ({ params }) => {
   }
 
   return (
-    <div className="h-full">
+    <div className="h-full mt-[88px]">
       <ProductMinDetail
         comAtPrice={comAtPrice}
         images={images}

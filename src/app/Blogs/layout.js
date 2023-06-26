@@ -24,9 +24,7 @@ const BlogsLayout = ({ children }) => {
     );
   };
   return (
-    <section className=" m-auto container">
-      <main className="  w-full h-full ">{children}</main>
-    </section>
+      <main className=" m-auto container  w-full h-full ">{children}</main>
   );
 };
 

@@ -23,7 +23,7 @@ export default async function Allproducts() {
       )}
 
       <ProductHeader />
-      <section className="mt-12 grid grid-cols-2  md:grid-cols-4 gap-5  ">
+      <section className="mt-[148px] grid grid-cols-2  md:grid-cols-4 gap-5  ">
         {data &&
           data.map((product, index) => {
             // const {
@@ -43,7 +43,7 @@ export default async function Allproducts() {
               <ProductCard
                 key={index}
                 id={product._id}
-                title={product.title}
+                title={product.title.substring(0, 40) + "..."}
                 thumbnail={product.thumbnail}
                 price={product.pricing.price}
                 comAtPrice={product.pricing.comAtPrice}

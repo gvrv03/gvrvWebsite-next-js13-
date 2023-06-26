@@ -8,7 +8,7 @@ const LoadingProduct = () => {
     <>
       <ProductHeader />
 
-      <section className="mt-12 grid grid-cols-2  md:grid-cols-4 gap-5 justify-between  flex-wrap ">
+      <section className="mt-[148px] grid grid-cols-2  md:grid-cols-4 gap-5 justify-between  flex-wrap ">
         <ProductSkeleton />
         <ProductSkeleton />
         <ProductSkeleton />

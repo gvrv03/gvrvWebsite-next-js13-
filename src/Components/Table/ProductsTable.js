@@ -47,21 +47,31 @@ export default function ProductsTable({ products, count }) {
   };
 
   return (
-    <TableContainer component={Paper}>
-      <Table sx={{ minWidth: 650 }} aria-label="simple table">
-      <TableHead>
-            <TableRow>
-              <TableCell style={{ fontWeight: 800 }}>Title</TableCell>
-              <TableCell style={{ fontWeight: 800 }}>Category</TableCell>
-              <TableCell style={{ fontWeight: 800 }}>Type</TableCell>
-              <TableCell style={{ fontWeight: 800 }}>Author</TableCell>
-              <TableCell style={{ fontWeight: 800 }}>Price</TableCell>
-              <TableCell style={{ fontWeight: 800, textAlign: "center" }}>
-                Edit/Delete
-              </TableCell>
-            </TableRow>
-          </TableHead>
-        <TableBody>
+    <div className="w-full bg-white mt-5 p-5 overflow-scroll">
+      <table class=" text-sm text-left w-full text-gray-500 ">
+        <thead class="text-xs text-gray-700 uppercase bg-gray-50 ">
+          <tr>
+            <th scope="col" class="px-6 py-3">
+              Title
+            </th>
+            <th scope="col" class="px-6 py-3">
+              Category
+            </th>
+            <th scope="col" class="px-6 py-3">
+              Type
+            </th>
+            <th scope="col" class="px-6 py-3">
+              Author
+            </th>
+            <th scope="col" class="px-6 py-3">
+              Price
+            </th>
+            <th scope="col" class="px-6 py-3">
+              Edit/Delete
+            </th>
+          </tr>
+        </thead>
+        <tbody>
           {products.map((product, index) => {
             const {
               title,
@@ -75,22 +85,23 @@ export default function ProductsTable({ products, count }) {
 
             const { category, type, vendor, collection, keywords } =
               productOrganization ? productOrganization : {};
+
             return (
-              <TableRow
-                key={index}
-                sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
-              >
-                <TableCell component="th" className=" flex gap-5 items-center" scope="row">
-                  <div className=" rounded-full border-2 w-8 border-gray-200">
+              <tr class="bg-white border-b  ">
+                <th
+                  scope="row"
+                  class="px-6 py-4 font-medium text-gray-900 gap-2 flex items-center whitespace-nowrap "
+                >
+                  <div className=" rounded-full border-2 w-10 border-gray-200">
                     <img src={thumbnail} className="w-full " alt="" />
                   </div>
                   <span>{title}</span>{" "}
-                </TableCell>
-                <TableCell align="left">{category}</TableCell>
-                <TableCell align="left">{type}</TableCell>
-                <TableCell align="left">{addeBy}</TableCell>
-                <TableCell align="left">₹{price}</TableCell>
-                <TableCell align="left">
+                </th>
+                <td class="px-6 py-4">{category}</td>
+                <td class="px-6 py-4">{type}</td>
+                <td class="px-6 py-4">{addeBy}</td>
+                <td class="px-6 py-4">₹{price}</td>
+                <td class="px-6 py-4">
                   <IconButton aria-label="delete" size="small">
                     <CreateIcon fontSize="small" />
                   </IconButton>
@@ -102,12 +113,12 @@ export default function ProductsTable({ products, count }) {
                       fontSize="small"
                     />
                   </IconButton>
-                </TableCell>
-              </TableRow>
+                </td>
+              </tr>
             );
           })}
-        </TableBody>
-      </Table>
-    </TableContainer>
+        </tbody>
+      </table>
+    </div>
   );
 }

@@ -9,11 +9,7 @@ const ProductLayout = ({ children }) => {
       </h2>
     );
   };
-  return (
-    <section className=" mt-20 m-auto  py-5 container">
-        <main className="  w-full ">{children}</main>
-    </section>
-  );
+  return <main className="  container m-auto  w-full ">{children}</main>;
 };
 
 export default ProductLayout;
