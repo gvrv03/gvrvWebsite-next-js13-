@@ -3,10 +3,11 @@ import { getAllBlogsURL } from "../../allLinks";
 import BlogCard from "./BlogCard";
 import BlogsHeader from "./BlogsHeader";
 
-export default async function AllBlogs() {
-  const res = await fetch(getAllBlogsURL);
-  const data = await res.json();
-  if (data === undefined) {
+export default async function AllBlogs({ page, setpage }) {
+  const res = await fetch(getAllBlogsURL + `?page=${page}&limit=2`);
+  const { blogs, totalPages } = await res.json();
+
+  if (blogs === undefined) {
     return (
       <div className="h-screen w-full grid place-items-center  bg-white ">
         Error occuured
@@ -15,15 +16,15 @@ export default async function AllBlogs() {
   }
   return (
     <>
-      {data.length === 0 && (
+      {blogs.length === 0 && (
         <div className="w-full h-90 grid place-items-center bg-white mt-5">
           No Blogs Found
         </div>
       )}
-      <BlogsHeader/>
+      <BlogsHeader /> 
       <section className="mt-[148px]  grid grid-cols-2  md:grid-cols-4 gap-5  ">
-        {data &&
-          data.map((i, index) => {
+        {blogs &&
+          blogs.map((i, index) => {
             return (
               <BlogCard
                 key={index}
@@ -37,6 +38,26 @@ export default async function AllBlogs() {
             );
           })}
       </section>
+      <div className="w-full mt-5 flex justify-between">
+        <button
+          disabled={page === 1 ? true : false}
+          onClick={() => {
+            setpage(page - 1);
+          }}
+          className="pBtn px-5 py-2 disabled:bg-red-300"
+        >
+          PREV
+        </button>
+        <button
+          disabled={page === totalPages ? true : false}
+          onClick={() => {
+            setpage(page + 1);
+          }}
+          className="pBtn px-5 disabled:bg-red-300 py-2"
+        >
+          NEXT
+        </button>
+      </div>
     </>
   );
 }

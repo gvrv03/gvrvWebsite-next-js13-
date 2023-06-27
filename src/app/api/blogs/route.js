@@ -53,10 +53,19 @@ export const POST = AdminMiddleware(async (request) => {
 });
 
 // --------------To Fetch All Blogs--------------
-export const GET = async (req, res) => {
+export const GET = async (request) => {
   try {
-    const blog = await Blogs.find();
-    return NextResponse.json(blog);
+    const url = new URL(request.url);
+    const searchParams = new URLSearchParams(url.search);
+    const page = searchParams.get("page"); // Retrieves the value of the 'page' parameter
+    const limit = searchParams.get("limit"); // Retrieves the value of the 'limit' parameter
+
+    const skipCount = (page - 1) * limit;
+    const blogCount = await Blogs.countDocuments(); // Get the total count of blogs
+    const totalPages = Math.ceil(blogCount / limit); // Calculate the total number of pages
+    const blogs = await Blogs.find().skip(skipCount).limit(limit);
+
+    return NextResponse.json({ blogs, totalPages });
   } catch (error) {
     return NextResponse.json(
       {
