@@ -2,22 +2,6 @@ import mongoose, { models } from "mongoose";
 const { Schema } = mongoose;
 const { ObjectId } = mongoose.Schema.Types;
 
-// Define the review schema
-const reviewSchema = new mongoose.Schema({
-  User: {
-    type: ObjectId,
-    ref: "User",
-  },
-  text: {
-    type: String,
-    required: true,
-  },
-  createdAt: {
-    type: Date,
-    default: Date.now,
-  },
-});
-
 // Define the product schema
 const productDetailSchema = new Schema(
   {
@@ -45,12 +29,12 @@ const productDetailSchema = new Schema(
       profit: { type: Number, default: 0, required: true },
       margin: { type: Number, default: 0, required: true },
     },
-    reviews: [reviewSchema],
-    rating: [{
-      type: Number,
-      min: 1,
-      max: 5,
-    }],
+    reviews: [
+      {
+        type: ObjectId,
+        ref: "productReview",
+      },
+    ],
     productID: {
       type: ObjectId,
       ref: "product",

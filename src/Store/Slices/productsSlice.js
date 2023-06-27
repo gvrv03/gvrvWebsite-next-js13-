@@ -47,8 +47,8 @@ const blogSlice = createSlice({
       })
       .addCase(AddProduct.fulfilled, (state, action) => {
         state.isLoading = false;
-        const blogData = action.payload;
-        if (blogData.isSuccess === true) {
+        const productData = action.payload;
+        if (productData.isSuccess === true) {
           state.data.push(action.payload.data);
         }
       })

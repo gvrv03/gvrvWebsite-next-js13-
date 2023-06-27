@@ -25,7 +25,7 @@ export default function RootLayout({ children }) {
         <Provider store={store}>
           <UserAuthContexProvider>
             <Navbar />
-            <div className="px-5">
+            <div className="px-5 pb-5">
               <ToastContainer
                 position="top-left"
                 autoClose={2000}
@@ -42,7 +42,7 @@ export default function RootLayout({ children }) {
             </div>
             {/* <Footer /> */}
             <ScrollToTop showUnder={160}>
-              <i className="bi text-3xl pColor bi-arrow-up-square-fill"></i>
+              <i className="bi text-4xl pColor bi-arrow-up-square-fill"></i>
             </ScrollToTop>
           </UserAuthContexProvider>
         </Provider>

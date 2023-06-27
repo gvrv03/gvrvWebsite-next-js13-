@@ -42,9 +42,9 @@ const ProductMinDetail = ({
   };
   const [selected, setSelected] = useState(false);
   return (
-    <section className="  grid grid-cols-1   ">
+    <section className="  grid grid-cols-1  ">
       {/* short description  */}
-      <div className="bg-white p-5">
+      <div className="bg-white ">
         <div className="w-full mx-auto flex flex-wrap">
           <div className="lg:w-1/2  grid place-items-center border p-5 w-full lg:h-auto ">
             <img
@@ -147,11 +147,11 @@ const ProductMinDetail = ({
       </div>
       {/* All Detail Section  */}
       <div className=" bg-white mt-5 ">
-        <DetailTabs artical={artical} title={title} images={images} />
+        <DetailTabs artical={artical} title={title} images={images} productID={productID} />
       </div>{" "}
       {/* Reccomended Products  */}
       <div>
-        <h2 className="text-lg bg-white p-5 mt-5 lg:text-2xl font-bold text-gray-900 ">
+        <h2 className="text-lg bg-white mt-5 lg:text-2xl font-bold text-gray-900 ">
           Recommended Products
         </h2>
       </div>

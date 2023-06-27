@@ -19,7 +19,7 @@ const page = async ({ params }) => {
   }
   return (
     <>
-      <div className="bg-white h-full p-5   w-full  mt-16 ">
+      <div className="bg-white h-full    w-full  mt-20 ">
         {/* <BlogHeader title={title} /> */}
         <div className="">
           <section className="">

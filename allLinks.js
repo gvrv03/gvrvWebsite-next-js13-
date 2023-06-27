@@ -2,6 +2,7 @@ import baseUrl from "./baseUrl";
 
 // Products
 export const getProductsURL = baseUrl + "api/products";
+export const addProductReviewURL = baseUrl + "api/ProductReview?productID=";
 export const getProductsByQueryOBJURL = baseUrl + "api/GetProductByQueryObj";
 // {
 //     "queryObject": {},

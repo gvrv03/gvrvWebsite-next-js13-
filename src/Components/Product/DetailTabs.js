@@ -39,7 +39,7 @@ function a11yProps(index) {
   };
 }
 
-export default function DetailTabs({ artical, images,title }) {
+export default function DetailTabs({ artical, images, title, productID }) {
   const [value, setValue] = React.useState(0);
 
   const handleChange = (event, newValue) => {
@@ -68,10 +68,10 @@ export default function DetailTabs({ artical, images,title }) {
         />
       </TabPanel>
       <TabPanel value={value} index={1}>
-        <ProductImageList ImageData={images}  title={title}/>
+        <ProductImageList ImageData={images} title={title} />
       </TabPanel>
       <TabPanel value={value} index={2}>
-        <ProductReview />
+        <ProductReview productID={productID} />
       </TabPanel>
     </Box>
   );

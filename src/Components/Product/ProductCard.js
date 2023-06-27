@@ -16,9 +16,9 @@ const ProductCard = ({ title, thumbnail, price, comAtPrice, id }) => {
         onClick={() => {
           router.push("/Products/Product/" + id);
         }}
-        className="grid place-items-center p-5 "
+        className="grid place-items-center "
       >
-        <img className="md:h-60   cursor-pointer h-30" src={thumbnail} alt={title} />
+        <img className="md:h-44   cursor-pointer h-30" src={thumbnail} alt={title} />
       </div>
       <div className=" ">
         <h3 className="text-xs text-gray-400 font-semibold md:text-sm">
@@ -32,14 +32,14 @@ const ProductCard = ({ title, thumbnail, price, comAtPrice, id }) => {
         >
           {title}
         </h5>
-        <div className="flex items-center border-t-2 border-gray-50  justify-between mt-3 pt-2">
+        <div className="flex items-center   justify-between mt-3  align-baseline ">
           <div className="flex gap-2 items-baseline justify-between">
             <span className="text-sm md:text-xl font-bold ">₹{price}</span>
             <strike className="text-[8px]  font-semibold ">
               ₹{comAtPrice}
             </strike>
           </div>
-          <span className="text-[6px] md:text-sm  text-white bg-red-500  p-1 font-bold ">
+          <span className="text-[6px] md:text-xs  text-white bg-red-500  p-1 font-bold ">
             - {(100 - (price / comAtPrice) * 100).toFixed(1)} % OFF
           </span>
         </div>

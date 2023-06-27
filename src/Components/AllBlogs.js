@@ -2,6 +2,7 @@ import React from "react";
 import { getAllBlogsURL } from "../../allLinks";
 import BlogCard from "./BlogCard";
 import BlogsHeader from "./BlogsHeader";
+import Pegination from "./UtilityComponents/Pegination";
 
 export default async function AllBlogs({ page, setpage }) {
   const res = await fetch(getAllBlogsURL + `?page=${page}&limit=8`);
@@ -21,7 +22,7 @@ export default async function AllBlogs({ page, setpage }) {
           No Blogs Found
         </div>
       )}
-      <BlogsHeader /> 
+      <BlogsHeader />
       <section className="mt-[148px]  grid grid-cols-2  md:grid-cols-4 gap-5  ">
         {blogs &&
           blogs.map((i, index) => {
@@ -38,26 +39,7 @@ export default async function AllBlogs({ page, setpage }) {
             );
           })}
       </section>
-      <div className="w-full mt-5 flex justify-between">
-        <button
-          disabled={page === 1 ? true : false}
-          onClick={() => {
-            setpage(page - 1);
-          }}
-          className="pBtn px-5 py-2 disabled:bg-red-300"
-        >
-          PREV
-        </button>
-        <button
-          disabled={page === totalPages ? true : false}
-          onClick={() => {
-            setpage(page + 1);
-          }}
-          className="pBtn px-5 disabled:bg-red-300 py-2"
-        >
-          NEXT
-        </button>
-      </div>
+      <Pegination page={page} totalPages={totalPages} setpage={setpage} />
     </>
   );
 }
