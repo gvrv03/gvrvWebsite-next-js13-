@@ -63,7 +63,10 @@ export const GET = async (request) => {
     const skipCount = (page - 1) * limit;
     const blogCount = await Blogs.countDocuments(); // Get the total count of blogs
     const totalPages = Math.ceil(blogCount / limit); // Calculate the total number of pages
-    const blogs = await Blogs.find().skip(skipCount).limit(limit);
+    const blogs = await Blogs.find()
+      .sort({ createdAt: -1 })
+      .skip(skipCount)
+      .limit(limit);
 
     return NextResponse.json({ blogs, totalPages });
   } catch (error) {

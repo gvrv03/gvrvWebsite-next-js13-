@@ -4,7 +4,7 @@ import BlogCard from "./BlogCard";
 import BlogsHeader from "./BlogsHeader";
 
 export default async function AllBlogs({ page, setpage }) {
-  const res = await fetch(getAllBlogsURL + `?page=${page}&limit=2`);
+  const res = await fetch(getAllBlogsURL + `?page=${page}&limit=8`);
   const { blogs, totalPages } = await res.json();
 
   if (blogs === undefined) {
@@ -28,9 +28,9 @@ export default async function AllBlogs({ page, setpage }) {
             return (
               <BlogCard
                 key={index}
-                title={i.title}
+                title={i.title.substring(0, 32) + "..."}
                 category={i.category}
-                description={i.description.substring(0, 80) + "..."}
+                description={i.description.substring(0, 60) + "..."}
                 image={i.image}
                 id={i._id}
                 views={i.views}

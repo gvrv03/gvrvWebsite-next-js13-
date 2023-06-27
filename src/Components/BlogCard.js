@@ -6,7 +6,7 @@ export default function BlogCard(props) {
   return (
     <div className="w-full border hover:shadow-md md:w-auto ">
       <div className=" rounded-sm">
-        <img className="w-full md:h-64" src={image} alt={title} />
+        <img className="w-full md:h-44" src={image} alt={title} />
         <div className="p-5 bg-white ">
           <h2 className="tracking-widest text-xs title-font text-gray-500  font-medium mb-1">
             {category}

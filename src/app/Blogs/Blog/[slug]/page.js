@@ -19,9 +19,8 @@ const page = async ({ params }) => {
   }
   return (
     <>
-      <div className="bg-white h-full p-5   mt-16 ">
+      <div className="bg-white h-full p-5   w-full  mt-16 ">
         {/* <BlogHeader title={title} /> */}
-
         <div className="">
           <section className="">
             <h1 className="font-bold text-lg md:text-3xl">{title}</h1>
