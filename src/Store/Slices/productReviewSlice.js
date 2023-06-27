@@ -22,14 +22,13 @@ const blogSlice = createSlice({
         state.isLoading = true;
       })
       .addCase(fetchProductReviews.fulfilled, (state, action) => {
-        console.log(action.payload);
         state.isLoading = false;
         state.data = action.payload.data;
-        // state.count = action.payload.data.length;
+        state.count = action.payload.ReviewCount;
       })
       .addCase(fetchProductReviews.rejected, (state, action) => {
         state.isLoading = false;
-        state.error = action.error;
+        state.error = action.payload.error;
       })
 
       .addCase(AddProductReview.pending, (state) => {
@@ -40,7 +39,6 @@ const blogSlice = createSlice({
         const reviewData = action.payload;
         if (reviewData.isSuccess === true) {
           state.data.push(action.payload.data);
-          state.count = state.count + 1;
         }
       })
       .addCase(AddProductReview.rejected, (state, action) => {

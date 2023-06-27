@@ -43,15 +43,16 @@ export const GET = async (request) => {
     const url = new URL(request.url);
     const searchParams = new URLSearchParams(url.search);
     const id = searchParams.get("productID");
+    const Reviews = await ProductReviews.find({ productID: id }).sort({
+      createdAt: -1,
+    });
+
     const countAllReview = await ProductReviews.countDocuments();
-    const Reviews = await ProductReviews.find({ productID: id }).populate(
-      "userID"
-    );
 
     return NextResponse.json(
       {
         data: Reviews,
-        AllReviewCount: Reviews.length,
+        ReviewCount: Reviews.length,
         message: "Fetch Review Successfully",
         isSuccess: true,
       },

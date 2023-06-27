@@ -9,6 +9,8 @@ const productReviewSchema = new Schema(
       type: ObjectId,
       ref: "productDetail",
     },
+    userProfileImg: { type: String, required: true },
+    Name: { type: String, required: true },
     stars: { type: Number, min: 1, max: 5 },
     userID: { type: ObjectId, ref: "User" },
     text: {

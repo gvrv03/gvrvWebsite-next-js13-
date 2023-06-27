@@ -7,11 +7,12 @@ import { Rating } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
+import LoadingSpinner, { BtnSpinner2 } from "../Spinner/LoadingSpinner";
 import { DefButton } from "../UtilComponent";
 
 const ProductReview = ({ productID }) => {
   const [value, setvalue] = useState(4);
-  const { userIDS } = useUserAuth();
+  const { userIDS, user } = useUserAuth();
   const [starsRating, setstarsRating] = useState({
     Star5: "50%",
     Star4: "90%",
@@ -27,7 +28,7 @@ const ProductReview = ({ productID }) => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(fetchProductReviews(productID ));
+    dispatch(fetchProductReviews(productID));
   }, [dispatch]);
 
   const addNewReview = async (e) => {
@@ -39,6 +40,8 @@ const ProductReview = ({ productID }) => {
         stars: rating,
         userID: userIDS.ID,
         text: userReview,
+        Name: user.displayName,
+        userProfileImg: user.photoURL,
       })
     );
 
@@ -66,7 +69,7 @@ const ProductReview = ({ productID }) => {
             </h2>
             <div className="flex items-center gap-5 mt-2">
               <Rating name="read-only" value={value} readOnly />{" "}
-              <p className="text-gray-500 text-sm">Based on 15000 reviews</p>
+              <p className="text-gray-500 text-sm">Based on {count} reviews</p>
             </div>{" "}
           </div>
 
@@ -171,9 +174,6 @@ const ProductReview = ({ productID }) => {
             className={`${reviewState} transition-all delay-200 ease-linear mb-6`}
           >
             <div className="py-2 px-4 mb-4 bg-white rounded-lg rounded-t-lg border border-gray-200  ">
-              <label for="comment" className="sr-only">
-                Your comment
-              </label>
               <textarea
                 id="comment"
                 onChange={(e) => {
@@ -206,48 +206,57 @@ const ProductReview = ({ productID }) => {
               func={addNewReview}
             />
           </form>
-
-          {data &&
-            data.map((review, index) => {
-              console.log(review);
-              const dateObj = new Date(review.createdAt);
-              const combinedDate =
-                dateObj.getDate() +
-                "-" +
-                dateObj.getMonth() +
-                1 +
-                "-" +
-                dateObj.getFullYear();
-              return (
-                <article
-                  key={index}
-                  className=" mb-6 text-base bg-white rounded-lg "
-                >
-                  <footer className="flex justify-between items-center mb-2">
-                    <div className="flex items-center">
-                      <p className="inline-flex items-center mr-3 text-sm text-gray-900 ">
-                        <img
-                          className="mr-2 w-6 h-6 rounded-full"
-                          src={review.userID.userProfile}
-                          alt="Michael Gough"
-                        />
-                        {review.userID.userName}
-                      </p>
-                      <p className="text-sm text-gray-600 dark:text-gray-400">
-                        <time
-                          pubdate
-                          datetime="2022-02-08"
-                          title="February 8th, 2022"
-                        >
-                          {combinedDate}
-                        </time>
-                      </p>
-                    </div>
-                  </footer>
-                  <p className="text-gray-500 ">{review.text}</p>
-                </article>
-              );
-            })}
+          {isLoading && (
+            <div className="grid place-items-center">
+              <LoadingSpinner />
+            </div>
+          )}
+          <div className="">
+            {data &&
+              data.map((review, index) => {
+                console.log(review);
+                const dateObj = new Date(review.createdAt);
+                const combinedDate =
+                  dateObj.getDate() +
+                  "-" +
+                  dateObj.getMonth() +
+                  1 +
+                  "-" +
+                  dateObj.getFullYear();
+                return (
+                  <article
+                    key={index}
+                    className=" mb-6 text-base bg-white rounded-lg "
+                  >
+                    <footer className="flex justify-between items-center mb-2">
+                      <div className="flex items-center">
+                        <p className="inline-flex items-center mr-3 text-sm text-gray-900 ">
+                          <img
+                            className="mr-2 border border-gray-500   w-6 h-6 rounded-full"
+                            src={review.userProfileImg}
+                            alt="Michael Gough"
+                          />
+                          {review.Name}
+                        </p>
+                        <p className="text-sm text-gray-600 dark:text-gray-400">
+                          <time
+                            pubdate
+                            datetime="2022-02-08"
+                            title="February 8th, 2022"
+                          >
+                            {combinedDate}
+                          </time>
+                        </p>
+                      </div>
+                      <Rating name="read-only" value={review.stars} readOnly />{" "}
+                    </footer>
+                    <p className="text-gray-500  bg-gray-50 p-5 mt-2 rounded-md ">
+                      {review.text}
+                    </p>
+                  </article>
+                );
+              })}
+          </div>
         </div>
       </section>
     </>
