@@ -1,5 +1,5 @@
-"use client"
-import { fetchBlogs } from "@/Store/Actions/blogAction";
+"use client";
+import { fetchBlogs, fetchBlogsByQueryObj } from "@/Store/Actions/blogAction";
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import BlogCard from "../BlogCard";
@@ -9,14 +9,17 @@ import HeaderName from "./HeaderName";
 const FeatureBlog = () => {
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(fetchBlogs());
+    dispatch(
+      fetchBlogsByQueryObj({
+        queryObj: {},
+        skip: 0,
+        limit: 3,
+        sortObj: {},
+      })
+    );
   }, [dispatch]);
 
   const blogs = useSelector((state) => state.blogs);
-  const { isLoading, error } = blogs;
-
-  const last = blogs.data.length;
-  const first = last - 3;
   return (
     <div className="   m-auto">
       <HeaderName name="Blog" />
@@ -29,7 +32,7 @@ const FeatureBlog = () => {
       )}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
         {blogs &&
-          blogs.data.slice(first, last).map((item) => {
+          blogs.data.map((item) => {
             return (
               <BlogCard
                 image={item.image}
