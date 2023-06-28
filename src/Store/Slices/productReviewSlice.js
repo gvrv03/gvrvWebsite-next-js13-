@@ -9,6 +9,8 @@ const initialState = {
   data: [],
   isLoading: false,
   error: null,
+  totalStars: 0,
+  starCounts: {},
   count: 0,
 };
 
@@ -25,6 +27,8 @@ const blogSlice = createSlice({
         state.isLoading = false;
         state.data = action.payload.data;
         state.count = action.payload.ReviewCount;
+        state.totalStars = action.payload.totalStars;
+        state.starCounts = action.payload.starCounts;
       })
       .addCase(fetchProductReviews.rejected, (state, action) => {
         state.isLoading = false;
@@ -38,7 +42,9 @@ const blogSlice = createSlice({
         state.isLoading = false;
         const reviewData = action.payload;
         if (reviewData.isSuccess === true) {
-          state.data.push(action.payload.data);
+          state.data.unshift(action.payload.data);
+          state.count = state.count + 1;
+          state.totalStars = state.totalStars + action.payload.data.stars;
         }
       })
       .addCase(AddProductReview.rejected, (state, action) => {

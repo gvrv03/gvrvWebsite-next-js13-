@@ -11,7 +11,6 @@ import LoadingSpinner, { BtnSpinner2 } from "../Spinner/LoadingSpinner";
 import { DefButton } from "../UtilComponent";
 
 const ProductReview = ({ productID }) => {
-  const [value, setvalue] = useState(4);
   const { userIDS, user } = useUserAuth();
   const [starsRating, setstarsRating] = useState({
     Star5: "50%",
@@ -34,6 +33,10 @@ const ProductReview = ({ productID }) => {
   const addNewReview = async (e) => {
     e.preventDefault();
     setreviewLoading(true);
+    if (!user) {
+      setreviewLoading(false);
+      return toast.error("You need to Login");
+    }
     const { payload } = await dispatch(
       AddProductReview({
         productID: productID,
@@ -56,8 +59,9 @@ const ProductReview = ({ productID }) => {
   };
 
   const reviews = useSelector((state) => state.productReview);
-  const { data, isLoading, error, count } = reviews;
-  console.log(reviews);
+  const { data, isLoading, error, count, totalStars, starCounts } = reviews;
+  const averageStars = totalStars / data.length;
+  console.log(starCounts);
   return (
     <>
       <section className=" bg-white">
@@ -68,7 +72,11 @@ const ProductReview = ({ productID }) => {
               Customer Reviews
             </h2>
             <div className="flex items-center gap-5 mt-2">
-              <Rating name="read-only" value={value} readOnly />{" "}
+              <Rating
+                name="read-only"
+                value={averageStars ? averageStars : 0}
+                readOnly
+              />{" "}
               <p className="text-gray-500 text-sm">Based on {count} reviews</p>
             </div>{" "}
           </div>
@@ -82,11 +90,18 @@ const ProductReview = ({ productID }) => {
               </div>
               <div className="w-full border rounded-full">
                 <div
-                  style={{ width: starsRating.Star5 }}
+                  style={{
+                    width: !starCounts.star5
+                      ? "0%"
+                      : starCounts.star5 * 20 + "%",
+                  }}
                   className="p-1 rounded-full bg-yellow-300"
                 />
               </div>
-              <div>{starsRating.Star5}</div>
+              <div>
+                {" "}
+                {!starCounts.star5 ? "0%" : starCounts.star5 * 20 + "%"}
+              </div>
             </div>
 
             <div className="flex items-center w-full gap-3">
@@ -96,11 +111,17 @@ const ProductReview = ({ productID }) => {
               </div>
               <div className="w-full border rounded-full">
                 <div
-                  style={{ width: starsRating.Star4 }}
+                  style={{
+                    width: !starCounts.star4
+                      ? "0%"
+                      : starCounts.star4 * 20 + "%",
+                  }}
                   className="p-1 rounded-full bg-yellow-300"
                 />
               </div>
-              <div>{starsRating.Star4}</div>
+              <div>
+                {!starCounts.star4 ? "0%" : starCounts.star4 * 20 + "%"}
+              </div>
             </div>
 
             <div className="flex items-center w-full gap-3">
@@ -110,11 +131,17 @@ const ProductReview = ({ productID }) => {
               </div>
               <div className="w-full border rounded-full">
                 <div
-                  style={{ width: starsRating.Star3 }}
+                  style={{
+                    width: !starCounts.star3
+                      ? "0%"
+                      : starCounts.star3 * 20 + "%",
+                  }}
                   className="p-1 rounded-full bg-yellow-300"
                 />
               </div>
-              <div>{starsRating.Star3}</div>
+              <div>
+                {!starCounts.star3 ? "0%" : starCounts.star3 * 20 + "%"}
+              </div>
             </div>
 
             <div className="flex items-center w-full gap-3">
@@ -124,11 +151,17 @@ const ProductReview = ({ productID }) => {
               </div>
               <div className="w-full border rounded-full">
                 <div
-                  style={{ width: starsRating.Star2 }}
+                  style={{
+                    width: !starCounts.star2
+                      ? "0%"
+                      : starCounts.star2 * 20 + "%",
+                  }}
                   className="p-1 rounded-full bg-yellow-300"
                 />
               </div>
-              <div>{starsRating.Star2}</div>
+              <div>
+                {!starCounts.star2 ? "0%" : starCounts.star2 * 20 + "%"}
+              </div>
             </div>
 
             <div className="flex items-center w-full gap-3">
@@ -138,11 +171,17 @@ const ProductReview = ({ productID }) => {
               </div>
               <div className="w-full border rounded-full">
                 <div
-                  style={{ width: starsRating.Star1 }}
+                  style={{
+                    width: !starCounts.star1
+                      ? "0%"
+                      : starCounts.star1 * 20 + "%",
+                  }}
                   className="p-1 rounded-full bg-yellow-300"
                 />
               </div>
-              <div>{starsRating.Star1}</div>
+              <div>
+                {!starCounts.star1 ? "0%" : starCounts.star1 * 20 + "%"}
+              </div>
             </div>
           </div>
         </div>
@@ -186,7 +225,8 @@ const ProductReview = ({ productID }) => {
               ></textarea>
             </div>
             <p className="text-sm text-gray-400 pb-5">
-              Reviews are public and include yor account info.
+              Reviews are public and include yor account info and you can't
+              delete review after sending.
             </p>
             <div className="mb-5">
               <Rating
@@ -211,16 +251,18 @@ const ProductReview = ({ productID }) => {
               <LoadingSpinner />
             </div>
           )}
+          {!isLoading && data && data.length === 0 && (
+            <div className="w-full border text-center p-5">No review Found</div>
+          )}
           <div className="">
-            {data &&
+            {!isLoading &&
+              data &&
               data.map((review, index) => {
-                console.log(review);
                 const dateObj = new Date(review.createdAt);
                 const combinedDate =
                   dateObj.getDate() +
                   "-" +
-                  dateObj.getMonth() +
-                  1 +
+                  (dateObj.getMonth() + 1) +
                   "-" +
                   dateObj.getFullYear();
                 return (
@@ -250,7 +292,7 @@ const ProductReview = ({ productID }) => {
                       </div>
                       <Rating name="read-only" value={review.stars} readOnly />{" "}
                     </footer>
-                    <p className="text-gray-500  bg-gray-50 p-5 mt-2 rounded-md ">
+                    <p className="text-gray-500 ml-8  bg-gray-50 p-5 mt-2 rounded-md ">
                       {review.text}
                     </p>
                   </article>

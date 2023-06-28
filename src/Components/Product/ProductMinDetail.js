@@ -18,6 +18,7 @@ const ProductMinDetail = ({
   price,
   productID,
   artical,
+  id,
   images,
 }) => {
   // Download Product
@@ -147,7 +148,12 @@ const ProductMinDetail = ({
       </div>
       {/* All Detail Section  */}
       <div className=" bg-white mt-5 ">
-        <DetailTabs artical={artical} title={title} images={images} productID={productID} />
+        <DetailTabs
+          artical={artical}
+          title={title}
+          images={images}
+          productID={id}
+        />
       </div>{" "}
       {/* Reccomended Products  */}
       <div>

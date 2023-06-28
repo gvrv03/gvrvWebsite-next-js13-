@@ -16,7 +16,7 @@ export const POST = async (request) => {
     return NextResponse.json(
       {
         data: addReview,
-        message: "Review send Successfully",
+        message: "Thanks for your Valuable review !",
         isSuccess: true,
       },
       {
@@ -47,12 +47,17 @@ export const GET = async (request) => {
       createdAt: -1,
     });
 
-    const countAllReview = await ProductReviews.countDocuments();
+    const totalStars = Reviews.reduce((acc, obj) => acc + obj.stars, 0);
+    const starCounts = countStarRatings(Reviews);
+
+    console.log(starCounts);
 
     return NextResponse.json(
       {
         data: Reviews,
         ReviewCount: Reviews.length,
+        totalStars: totalStars,
+        starCounts: starCounts,
         message: "Fetch Review Successfully",
         isSuccess: true,
       },
@@ -73,4 +78,15 @@ export const GET = async (request) => {
       }
     );
   }
+};
+
+//Method for count each star
+const countStarRatings = (array) => {
+  const starCounts = array.reduce((acc, obj) => {
+    const stars = obj.stars;
+    acc["star" + stars] = (acc[stars] || 0) + 1;
+    return acc;
+  }, {});
+
+  return starCounts;
 };

@@ -36,6 +36,7 @@ const ProductDetail = async ({ params }) => {
         comAtPrice={comAtPrice}
         images={images}
         artical={artical}
+        id={_id}
         productID={productID}
         price={price}
         title={title}
