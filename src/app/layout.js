@@ -21,7 +21,7 @@ export default function RootLayout({ children }) {
           href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css"
         />
       </head>
-      <body className="bgBackground  text-black">
+      <body className="bgBackground text-sm md:text-base text-black">
         <Provider store={store}>
           <UserAuthContexProvider>
             <Navbar />

@@ -23,7 +23,7 @@ export default async function AllBlogs({ page, setpage }) {
         </div>
       )}
       <BlogsHeader />
-      <section className="mt-[148px]  grid grid-cols-2  md:grid-cols-4 gap-5  ">
+      <section className="mt-[141px]  grid grid-cols-2  md:grid-cols-4 gap-5  ">
         {blogs &&
           blogs.map((i, index) => {
             return (

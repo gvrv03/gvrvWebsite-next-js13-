@@ -1,5 +1,5 @@
 import React from "react";
-const ProductLayout = ({ children }) => {
+const CollectionLayout = ({ children }) => {
   const HeaderName = (props) => {
     return (
       <h2 className="font-bold border-b-2 text-lg relative">{props.name}</h2>
@@ -46,9 +46,9 @@ const ProductLayout = ({ children }) => {
   };
   return (
     <div className="flex m-auto flex-col md:flex-row container gap-5">
-      <main className=" w-full h-full ">{children}</main>
-      <aside className="w-full md:w-96 flex-col flex gap-5 ">
-        <div className="md:h-[128px] md:block hidden ">Hey</div>
+      <main className=" w-full h-full mt-20 ">{children}</main>
+      <aside className="w-full md:w-96  mt-20 flex-col flex gap-5 ">
+        {/* <div className=" md:block hidden ">Hey</div> */}
         <div>
           <HeaderName name="Recent Post" />
           <div className="mt-2 flex-col flex gap-2">
@@ -69,4 +69,4 @@ const ProductLayout = ({ children }) => {
   );
 };
 
-export default ProductLayout;
+export default CollectionLayout;

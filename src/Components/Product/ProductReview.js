@@ -62,7 +62,6 @@ const ProductReview = ({ productID }) => {
   };
 
   const reviews = useSelector((state) => state.productReview);
-  console.log(reviews);
   const { data, isLoading, error, count, totalStars, starCounts } = reviews;
   const averageStars = totalStars / data.length;
 

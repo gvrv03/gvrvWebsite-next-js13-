@@ -11,11 +11,12 @@ import { useUserAuth } from "@/Context/UserAuthContext";
 import UserDropDown from "./UserDropDown";
 import { AppBar, IconButton, Toolbar, Typography } from "@mui/material";
 import styled from "@emotion/styled";
+import SearchAll from "./UtilityComponents/SearchAll";
 
 const Navbar = () => {
   const { user } = useUserAuth();
-  console.log(user);
 
+  const router = useRouter();
   return (
     <>
       <nav className=" py-1 md:px-0 px-5  fixed z-50 w-full left-0 bg-white backdrop-blur-2xl top-0 ">
@@ -30,17 +31,10 @@ const Navbar = () => {
             </span>
           </Link>
           <div
-            data-collapse-toggle="navbar-multi-level"
             type="button"
             className="inline-flex items-center py-2  gap-5 text-sm text-gray-500 rounded-lg dark:text-gray-400 "
-            aria-controls="navbar-multi-level"
-            aria-expanded="false"
           >
-            <input
-              type="search"
-              className="bg-transparent rounded-full p-2 text-xs border  border-gray-200 outline-none"
-              placeholder="Search..."
-            />
+            <SearchAll/>
 
             {!user ? (
               <Link
@@ -64,7 +58,7 @@ export const AppBarNav = ({ handleDrawerOpen, open, AppBar }) => {
   const { user } = useUserAuth();
 
   return (
-    <AppBar position="fixed"  color="primary" open={open}>
+    <AppBar position="fixed" color="primary" open={open}>
       <Toolbar className="flex justify-between">
         <div className="flex items-center">
           <IconButton

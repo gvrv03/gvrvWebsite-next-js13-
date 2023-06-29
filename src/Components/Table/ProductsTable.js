@@ -48,25 +48,25 @@ export default function ProductsTable({ products, count }) {
 
   return (
     <div className="w-full bg-white mt-5 p-5 overflow-scroll">
-      <table class=" text-sm text-left w-full text-gray-500 ">
-        <thead class="text-xs text-gray-700 uppercase bg-gray-50 ">
+      <table className=" text-sm text-left w-full text-gray-500 ">
+        <thead className="text-xs text-gray-700 uppercase bg-gray-50 ">
           <tr>
-            <th scope="col" class="px-6 py-3">
+            <th scope="col" className="px-6 py-3">
               Title
             </th>
-            <th scope="col" class="px-6 py-3">
+            <th scope="col" className="px-6 py-3">
               Category
             </th>
-            <th scope="col" class="px-6 py-3">
+            <th scope="col" className="px-6 py-3">
               Type
             </th>
-            <th scope="col" class="px-6 py-3">
+            <th scope="col" className="px-6 py-3">
               Author
             </th>
-            <th scope="col" class="px-6 py-3">
+            <th scope="col" className="px-6 py-3">
               Price
             </th>
-            <th scope="col" class="px-6 py-3">
+            <th scope="col" className="px-6 py-3">
               Edit/Delete
             </th>
           </tr>
@@ -87,21 +87,21 @@ export default function ProductsTable({ products, count }) {
               productOrganization ? productOrganization : {};
 
             return (
-              <tr class="bg-white border-b  " key={index}>
+              <tr className="bg-white border-b  " key={index}>
                 <th
                   scope="row"
-                  class="px-6 py-4 font-medium text-gray-900 gap-2 flex items-center whitespace-nowrap "
+                  className="px-6 py-4 font-medium text-gray-900 gap-2 flex items-center whitespace-nowrap "
                 >
                   <div className=" rounded-full border-2 w-10 border-gray-200">
                     <img src={thumbnail} className="w-full " alt="" />
                   </div>
                   <span>{title}</span>{" "}
                 </th>
-                <td class="px-6 py-4">{category}</td>
-                <td class="px-6 py-4">{type}</td>
-                <td class="px-6 py-4">{addeBy}</td>
-                <td class="px-6 py-4">₹{price}</td>
-                <td class="px-6 py-4">
+                <td className="px-6 py-4">{category}</td>
+                <td className="px-6 py-4">{type}</td>
+                <td className="px-6 py-4">{addeBy}</td>
+                <td className="px-6 py-4">₹{price}</td>
+                <td className="px-6 py-4">
                   <IconButton aria-label="delete" size="small">
                     <CreateIcon fontSize="small" />
                   </IconButton>

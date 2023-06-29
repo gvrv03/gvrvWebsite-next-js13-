@@ -69,8 +69,8 @@ const ProductMinDetail = ({
                   <svg
                     fill="currentColor"
                     strokeLinecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
                     className="w-5 h-5"
                     viewBox="0 0 24 24"
                   >
@@ -81,8 +81,8 @@ const ProductMinDetail = ({
                   <svg
                     fill="currentColor"
                     strokeLinecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
                     className="w-5 h-5"
                     viewBox="0 0 24 24"
                   >
@@ -93,8 +93,8 @@ const ProductMinDetail = ({
                   <svg
                     fill="currentColor"
                     strokeLinecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
                     className="w-5 h-5"
                     viewBox="0 0 24 24"
                   >
@@ -103,7 +103,7 @@ const ProductMinDetail = ({
                 </a>
               </span>
             </div>
-            <p className="leading-relaxed text-justify">{description}</p>
+            <div className="leading-relaxed text-justify">{description}</div>
             <div className="flex mt-6 items-center pb-5 md:border-b-2 border-gray-100 mb-5" />
 
             <div className=" md:relative z-40 md:border-none border fixed w-full md:bottom-auto md:left-auto md:right-auto md:p-0 bottom-0 left-0 right-0 bg-white p-5">

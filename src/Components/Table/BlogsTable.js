@@ -86,7 +86,7 @@ export default function BlogsTable({ blogs }) {
                         src={blog.image}
                         className="rounded-full border-2 border-gray-400 w-10 h-10"
                         alt=""
-                        srcset=""
+                        srcSet=""
                       />
                     </TableCell>
                     <TableCell>{blog.title}</TableCell>

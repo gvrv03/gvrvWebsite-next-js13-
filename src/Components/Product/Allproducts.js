@@ -24,7 +24,7 @@ export default async function Allproducts({ page, setpage }) {
       )}
 
       <ProductHeader />
-      <section className="mt-[148px] grid grid-cols-2  md:grid-cols-4 gap-5  ">
+      <section className="mt-[141px] grid grid-cols-2  md:grid-cols-4 gap-5  ">
         {products &&
           products.map((product, index) => {
             return (

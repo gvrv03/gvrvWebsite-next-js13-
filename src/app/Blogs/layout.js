@@ -13,7 +13,7 @@ const BlogsLayout = ({ children }) => {
           src="https://www.stxnext.com/hubfs/blog-post-graphic-Best-Django-packages-and-libraries.webp"
           alt=""
           className="w-20"
-          srcset=""
+          srcSet=""
         />{" "}
         <span>
           <h4 className="text-xs font-semibold">
