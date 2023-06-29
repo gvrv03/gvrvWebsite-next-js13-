@@ -16,8 +16,8 @@ const AllUsers = () => {
   const dispatch = useDispatch();
   const { userIDS } = useUserAuth();
 
-  useEffect(async () => {
-    await dispatch(fetchUsers(userIDS.ID));
+  useEffect(() => {
+    dispatch(fetchUsers());
   }, [dispatch]);
 
   const Users = useSelector((state) => state.users);
