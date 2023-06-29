@@ -8,8 +8,6 @@ import ProductCard from "@/Components/Product/ProductCard";
 import { Rating, ToggleButton } from "@mui/material";
 import { downloadProductURL } from "../../../allLinks";
 import { DefButton } from "../UtilComponent";
-import Link from "next/link";
-import ImagesSlideShow from "./ImagesSlideShow";
 const ProductMinDetail = ({
   thumbnail,
   title,
@@ -22,7 +20,6 @@ const ProductMinDetail = ({
   images,
 }) => {
   // Download Product
-
   const [laodingDown, setlaodingDown] = useState(false);
   const handleDownload = async (id) => {
     setlaodingDown(true);

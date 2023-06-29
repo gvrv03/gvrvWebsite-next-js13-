@@ -49,15 +49,14 @@ export const GET = async (request) => {
 
     const totalStars = Reviews.reduce((acc, obj) => acc + obj.stars, 0);
     const starCounts = countStarRatings(Reviews);
-
-    console.log(starCounts);
+    const averageStar = calculateStarAverage(Reviews);
 
     return NextResponse.json(
       {
         data: Reviews,
         ReviewCount: Reviews.length,
         totalStars: totalStars,
-        starCounts: starCounts,
+        starCounts: averageStar,
         message: "Fetch Review Successfully",
         isSuccess: true,
       },
@@ -84,9 +83,39 @@ export const GET = async (request) => {
 const countStarRatings = (array) => {
   const starCounts = array.reduce((acc, obj) => {
     const stars = obj.stars;
-    acc["star" + stars] = (acc[stars] || 0) + 1;
+    const key = "star" + stars;
+    acc[key] = (acc[key] || 0) + 1;
     return acc;
   }, {});
 
   return starCounts;
+};
+
+const calculateStarAverage = (array) => {
+  const starData = array.reduce(
+    (acc, obj) => {
+      const stars = obj.stars;
+      acc[stars].totalStars += stars;
+      acc[stars].totalRatings++;
+      return acc;
+    },
+    {
+      1: { totalStars: 0, totalRatings: 0 },
+      2: { totalStars: 0, totalRatings: 0 },
+      3: { totalStars: 0, totalRatings: 0 },
+      4: { totalStars: 0, totalRatings: 0 },
+      5: { totalStars: 0, totalRatings: 0 },
+    }
+  );
+
+  const starAverages = {};
+  for (let stars in starData) {
+    const totalStars = starData[stars].totalStars;
+    const totalRatings = starData[stars].totalRatings;
+    const averagePercent =
+      totalRatings !== 0 ? (totalStars / totalRatings) * 20 : 0;
+    starAverages[`star${stars}`] = averagePercent;
+  }
+
+  return starAverages;
 };

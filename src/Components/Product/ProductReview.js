@@ -91,17 +91,12 @@ const ProductReview = ({ productID }) => {
               <div className="w-full border rounded-full">
                 <div
                   style={{
-                    width: !starCounts.star5
-                      ? "0%"
-                      : starCounts.star5 * 20 + "%",
+                    width: !starCounts.star5 ? "0%" : starCounts.star5 + "%",
                   }}
                   className="p-1 rounded-full bg-yellow-300"
                 />
               </div>
-              <div>
-                {" "}
-                {!starCounts.star5 ? "0%" : starCounts.star5 * 20 + "%"}
-              </div>
+              <div> {!starCounts.star5 ? "0%" : starCounts.star5 + "%"}</div>
             </div>
 
             <div className="flex items-center w-full gap-3">
@@ -112,16 +107,12 @@ const ProductReview = ({ productID }) => {
               <div className="w-full border rounded-full">
                 <div
                   style={{
-                    width: !starCounts.star4
-                      ? "0%"
-                      : starCounts.star4 * 20 + "%",
+                    width: !starCounts.star4 ? "0%" : starCounts.star4 + "%",
                   }}
                   className="p-1 rounded-full bg-yellow-300"
                 />
               </div>
-              <div>
-                {!starCounts.star4 ? "0%" : starCounts.star4 * 20 + "%"}
-              </div>
+              <div>{!starCounts.star4 ? "0%" : starCounts.star4 + "%"}</div>
             </div>
 
             <div className="flex items-center w-full gap-3">
@@ -132,16 +123,12 @@ const ProductReview = ({ productID }) => {
               <div className="w-full border rounded-full">
                 <div
                   style={{
-                    width: !starCounts.star3
-                      ? "0%"
-                      : starCounts.star3 * 20 + "%",
+                    width: !starCounts.star3 ? "0%" : starCounts.star3 + "%",
                   }}
                   className="p-1 rounded-full bg-yellow-300"
                 />
               </div>
-              <div>
-                {!starCounts.star3 ? "0%" : starCounts.star3 * 20 + "%"}
-              </div>
+              <div>{!starCounts.star3 ? "0%" : starCounts.star3 + "%"}</div>
             </div>
 
             <div className="flex items-center w-full gap-3">
@@ -152,16 +139,12 @@ const ProductReview = ({ productID }) => {
               <div className="w-full border rounded-full">
                 <div
                   style={{
-                    width: !starCounts.star2
-                      ? "0%"
-                      : starCounts.star2 * 20 + "%",
+                    width: !starCounts.star2 ? "0%" : starCounts.star2 + "%",
                   }}
                   className="p-1 rounded-full bg-yellow-300"
                 />
               </div>
-              <div>
-                {!starCounts.star2 ? "0%" : starCounts.star2 * 20 + "%"}
-              </div>
+              <div>{!starCounts.star2 ? "0%" : starCounts.star2 + "%"}</div>
             </div>
 
             <div className="flex items-center w-full gap-3">
@@ -172,19 +155,16 @@ const ProductReview = ({ productID }) => {
               <div className="w-full border rounded-full">
                 <div
                   style={{
-                    width: !starCounts.star1
-                      ? "0%"
-                      : starCounts.star1 * 20 + "%",
+                    width: !starCounts.star1 ? "0%" : starCounts.star1 + "%",
                   }}
                   className="p-1 rounded-full bg-yellow-300"
                 />
               </div>
-              <div>
-                {!starCounts.star1 ? "0%" : starCounts.star1 * 20 + "%"}
-              </div>
+              <div>{!starCounts.star1 ? "0%" : starCounts.star1 + "%"}</div>
             </div>
           </div>
         </div>
+
         <div className=" mx-auto mt-10">
           <div className="flex justify-between flex-col mb-6">
             <h2 className="text-lg lg:text-2xl font-bold text-gray-900 ">
