@@ -23,7 +23,7 @@ const ProductReview = ({ productID }) => {
     Star1: "10%",
   });
   const [reviewState, setreviewState] = useState("hidden");
-  const [rating, setrating] = useState("");
+  const [rating, setrating] = useState(1);
   const [userReview, setuserReview] = useState("");
   const [reviewLoading, setreviewLoading] = useState(false);
   // to add Review
@@ -31,7 +31,7 @@ const ProductReview = ({ productID }) => {
 
   useEffect(() => {
     dispatch(fetchProductReviews(productID));
-  }, []);
+  }, [dispatch]);
 
   const addNewReview = async (e) => {
     e.preventDefault();
@@ -62,30 +62,31 @@ const ProductReview = ({ productID }) => {
   };
 
   const reviews = useSelector((state) => state.productReview);
+  console.log(reviews);
   const { data, isLoading, error, count, totalStars, starCounts } = reviews;
   const averageStars = totalStars / data.length;
-  console.log(starCounts);
+
   return (
-    <>
-      <section className=" bg-white">
-        {/* Based on Review  */}
-        <AverageReview averageStars={averageStars} count={count} />
+    <section className=" bg-white">
+      {/* Based on Review  */}
+      <AverageReview averageStars={averageStars} count={count} />
 
-        {/* Review Section */}
-        <SingleStarCount starCounts={starCounts} />
+      {/* Review Section */}
+      <SingleStarCount starCounts={starCounts} />
 
-        {/* User Review  */}
-        <UserReview
-          reviewState={reviewState}
-          rating={rating}
-          setrating={setrating}
-          reviewLoading={reviewLoading}
-          addNewReview={addNewReview}
-          isLoading={isLoading}
-          data={data}
-        />
-      </section>
-    </>
+      {/* User Review  */}
+      <UserReview
+        setreviewState={setreviewState}
+        reviewState={reviewState}
+        rating={rating}
+        setrating={setrating}
+        setuserReview={setuserReview}
+        reviewLoading={reviewLoading}
+        addNewReview={addNewReview}
+        isLoading={isLoading}
+        data={data}
+      />
+    </section>
   );
 };
 

@@ -7,8 +7,10 @@ const UserReview = ({
   reviewState,
   rating,
   setrating,
+  setreviewState,
   reviewLoading,
   addNewReview,
+  setuserReview,
   isLoading,
   data,
 }) => {

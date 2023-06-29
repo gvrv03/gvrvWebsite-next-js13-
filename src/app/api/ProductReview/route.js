@@ -46,11 +46,10 @@ export const GET = async (request) => {
     const Reviews = await ProductReviews.find({ productID: id }).sort({
       createdAt: -1,
     });
-
-    const totalStars = Reviews.reduce((acc, obj) => acc + obj.stars, 0);
     const starCounts = countStarRatings(Reviews);
+    const totalStars = Reviews.reduce((acc, obj) => acc + obj.stars, 0);
     const averageStar = calculateStarAverage(Reviews);
-
+    console.log(totalStars);
     return NextResponse.json(
       {
         data: Reviews,
