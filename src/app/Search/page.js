@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 import HeaderSearch from "@/Components/SearchPage/HeaderSearch";
 
-const page = ({ searchParams }) => {
+const SearchPage = ({ searchParams }) => {
   const [value, setvalue] = useState(1);
   return (
     <div>
@@ -16,4 +16,4 @@ const page = ({ searchParams }) => {
   );
 };
 
-export default page;
+export default SearchPage;
