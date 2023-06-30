@@ -5,9 +5,15 @@ import DetailTabs from "@/Components/Product/DetailTabs";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import ProductCard from "@/Components/Product/ProductCard";
+import axios from "axios";
+import { toast } from "react-toastify";
 import { Rating, ToggleButton } from "@mui/material";
-import { downloadProductURL } from "../../../allLinks";
+import { createOrderURL, downloadProductURL } from "../../../allLinks";
 import { DefButton } from "../UtilComponent";
+import { handlePayment } from "@/Functions/downloadProduct";
+import { Login } from "@mui/icons-material";
+import PaymentInititate from "../Payment/PaymentInititate";
+import { useUserAuth } from "@/Context/UserAuthContext";
 const ProductMinDetail = ({
   thumbnail,
   title,
@@ -19,26 +25,8 @@ const ProductMinDetail = ({
   id,
   images,
 }) => {
-  // Download Product
-  const [laodingDown, setlaodingDown] = useState(false);
-  const handleDownload = async (id) => {
-    setlaodingDown(true);
-    // Fetch the file or generate its data dynamically
-    const res = await fetch(downloadProductURL, {
-      method: "POST", // or 'GET', 'PUT', 'DELETE', etc.
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        pid: id,
-      }),
-    });
-    const productLink = await res.json();
-    const link = document.createElement("a");
-    link.href = productLink;
-    link.download = title + ".zip";
-    link.click();
-    setlaodingDown(false);
-  };
   const [selected, setSelected] = useState(false);
+  const { user } = useUserAuth();
   return (
     <section className="  grid grid-cols-1  ">
       {/* short description  */}
@@ -113,16 +101,12 @@ const ProductMinDetail = ({
                   <strike className="text-xs ml-2">₹{comAtPrice}</strike>
                 </span>
 
-                <DefButton
-                  name="Buy"
-                  loading={laodingDown}
-                  func={() => {
-                    handleDownload(productID);
-                  }}
-                  btnStyle="flex ml-auto mr-5 rounded-sm py-2 px-6 pBtn"
-                >
-                  Buy Now
-                </DefButton>
+                <PaymentInititate
+                  title={title}
+                  amount={price}
+                  produDID={productID}
+                  cusDetail={{ name: user.displayName, email: user.email }}
+                />
 
                 <ToggleButton
                   value="check"

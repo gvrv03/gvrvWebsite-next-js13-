@@ -10,6 +10,10 @@ export const getProductsByQueryOBJURL = baseUrl + "api/GetProductByQueryObj";
 //     "limit": 0,
 //     "sortingObj": {}
 //   }
+
+// Payment 
+export const createOrderURL = baseUrl + "api/PaymentGateway/CreateOrder"
+
 export const downloadProductURL = baseUrl + "api/ProductDown";
 export const getSingleProductURL = baseUrl + "api/products/Product/";
 

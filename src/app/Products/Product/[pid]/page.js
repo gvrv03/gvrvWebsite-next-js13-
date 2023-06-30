@@ -1,8 +1,12 @@
+
 import NotFound from "@/app/not-found";
 import ProductMinDetail from "@/Components/Product/ProductMinDetail";
+import axios from "axios";
 import Link from "next/link";
 import React from "react";
-import { getSingleProductURL } from "../../../../../allLinks";
+import { toast } from "react-toastify";
+import { resolve } from "styled-jsx/css";
+import {  getSingleProductURL } from "../../../../../allLinks";
 
 const ProductDetail = async ({ params }) => {
   const res = await fetch(getSingleProductURL + params.pid);
@@ -30,8 +34,12 @@ const ProductDetail = async ({ params }) => {
     );
   }
 
+ 
+
   return (
     <div className="h-full  mt-20  ">
+    
+
       <ProductMinDetail
         comAtPrice={comAtPrice}
         images={images}
