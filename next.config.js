@@ -2,7 +2,6 @@
 const nextConfig = {
   experimental: {
     serverComponentsExternalPackages: ["mongoose"],
-    purge: true,
   },
 };
 

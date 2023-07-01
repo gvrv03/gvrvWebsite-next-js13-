@@ -36,6 +36,7 @@ const FeatureBlog = () => {
             return (
               <BlogCard
                 image={item.image}
+                fullTitle={item.title}
                 category={item.category}
                 title={item.title.substring(0, 80)}
                 description={item.description.substring(0, 100) + "..."}
