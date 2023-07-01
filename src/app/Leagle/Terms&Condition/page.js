@@ -3,7 +3,7 @@ import React from "react";
 
 const page = () => {
   return (
-    <div className=" bg-white h-full  text-justify p-5">
+    <div className=" bg-white h-full  text-justify ">
       <ol className="inline-flex  bg-white pb-5 w-full items-center space-x-1 md:space-x-3">
         <li className="inline-flex items-center">
           <Link
@@ -36,7 +36,7 @@ const page = () => {
         </li>
       </ol>
 
-      <div className="h-90 overflow-y-scroll ">
+      <div >
         <h1 className="font-bold text-2xl ">Terms and Conditions</h1>
         <p>Last updated: May 31, 2023</p>
         <p>

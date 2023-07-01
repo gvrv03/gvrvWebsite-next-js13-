@@ -2,7 +2,7 @@ import React from "react";
 import Link from "next/link";
 import { getSingleURL } from "../../../../../allLinks";
 import NotFound from "../not-found";
-import BlogHeader from "@/Components/BlogHeader";
+
 
 const page = async ({ params }) => {
   const res = await fetch(getSingleURL + params.slug);

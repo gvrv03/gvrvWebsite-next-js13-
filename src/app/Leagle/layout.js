@@ -14,32 +14,42 @@ const LeagleLayout = ({ children }) => {
   };
   const HeaderName = (props) => {
     return (
-      <h2 className="font-bold text-lg relative">
+      <h2 className="font-bold     relative">
         {props.name}
         <span className="w-16 -mb-2 pColor absolute left-0 bottom-0" />
       </h2>
     );
   };
 
+  const FollowUs = () => {
+    return (
+      <div className="flex gap-2 justify-between items-center">
+        <div className=" flex w-full py-2 justify-center items-center flex-col text-sm bg-gray-100">
+          <i className=" text-3xl uil uil-facebook" />
+          <span>100</span> <span>Fans</span>
+        </div>
+
+        <div className=" flex w-full py-2 justify-center items-center flex-col text-sm bg-gray-100">
+          <i className=" text-3xl uil uil-instagram" />
+          <span>500</span> <span>Followers</span>
+        </div>
+        <div className=" flex w-full py-2 justify-center items-center flex-col text-sm bg-gray-100">
+          <i className=" text-3xl uil uil-youtube" />
+          <span>50</span> <span>Subscribers</span>
+        </div>
+      </div>
+    );
+  };
   return (
-    <section className=" m-auto h-full    container">
-      <button
-        onClick={toggleLegal}
-        className="md:hidden hover:w-20 block fixed top-2/4 right-0 transition-all ease-linear delay-700 bgpColor rounded-l-full p-2 "
-      >
-        <i className="uil uil-angle-left-b text-white text-2xl" />
-      </button>
-      <div className=" mt-20    md:flex-row flex-col gap-5 flex">
-        <main className="  w-full md:w-9/12 h-screen ">{children}</main>
-        <aside
-          className={`w-full md:w-1/4 bg-white fixed md:relative transition-all ease-linear delay-300 md:top-0 md:h-auto md:right-0 top-20 ${LegalNav}  h-full p-5 `}
-        >
+    <div className=" container m-auto   md:relative justify-between  flex-col-reverse md:flex-row flex mt-20  gap-5 ">
+      <aside className=" md:w-[15%] md:fixed   w-full    flex bg-white    flex-col gap-10 items-start ">
+        <div className="w-full">
           <button onClick={toggleLegal} className="mb-5 md:hidden block">
             <i className="uil uil-angle-left-b pColor text-2xl" />
           </button>
           <div className=" ">
             <HeaderName name="More Pages" />
-            <div className="mt-5 h-64 overflow-y-scroll flex flex-col gap-5">
+            <div className="mt-5   flex flex-col gap-5">
               {Legal.map((item, index) => {
                 return (
                   <Link
@@ -55,9 +65,18 @@ const LeagleLayout = ({ children }) => {
               })}
             </div>
           </div>
-        </aside>
-      </div>
-    </section>
+        </div>{" "}
+        <div className="w-full">
+          <HeaderName name="Follow Us" />
+          <div className="mt-2 flex-col flex gap-2">
+            <FollowUs />
+          </div>
+        </div>{" "}
+      </aside>
+      <main className=" w-full md:w-4/5 md:absolute md:right-0 text-justify">
+        {children}
+      </main>
+    </div>
   );
 };
 

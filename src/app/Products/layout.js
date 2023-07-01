@@ -1,27 +1,9 @@
+import ProductCard from "@/Components/Product/ProductCard";
 import React from "react";
 const ProductLayout = ({ children }) => {
   const HeaderName = (props) => {
     return (
-      <h2 className="font-bold border-b-2 text-lg relative">{props.name}</h2>
-    );
-  };
-
-  const SingleBlogCard = () => {
-    return (
-      <div className="flex bg-gray-100  rounded-sm justify-start items-center gap-5 p-2">
-        <img
-          src="https://www.stxnext.com/hubfs/blog-post-graphic-Best-Django-packages-and-libraries.webp"
-          alt=""
-          className="w-20"
-          srcSet=""
-        />{" "}
-        <span>
-          <h4 className="text-xs font-semibold">
-            Using dangerouslySetInnerHTML in a React application
-          </h4>
-          <h6 className="text-xs mt-2 font-light">Python</h6>
-        </span>
-      </div>
+      <h2 className="font-bold border-b pb-2 relative">{props.name}</h2>
     );
   };
 
@@ -45,26 +27,45 @@ const ProductLayout = ({ children }) => {
     );
   };
   return (
-    <div className="flex m-auto flex-col md:flex-row container gap-5">
-      <main className=" w-full h-full ">{children}</main>
-      <aside className="w-full md:w-96 flex-col flex gap-5 ">
-        <div className="md:h-[128px] md:block hidden ">Hey</div>
-        <div>
-          <HeaderName name="Recent Post" />
-          <div className="mt-2 flex-col flex gap-2">
-            <SingleBlogCard />
-            <SingleBlogCard />
-            <SingleBlogCard />
-            <SingleBlogCard />
+    <div className=" container m-auto   md:relative justify-between  flex-col-reverse md:flex-row flex  gap-5 ">
+      <aside className=" md:w-[15%] md:fixed  md:mt-[140px] w-full    flex bg-white    flex-col gap-5 items-start ">
+        <div className="w-full">
+          <HeaderName name="Category" />
+          <div className="mt-2 flex-col items-start  flex gap-2">
+            <button className="text-gray-600 hover:text-black hover:font-semibold">
+              - Template
+            </button>
+            <button className="text-gray-600 hover:text-black hover:font-semibold">
+              - PS Presets
+            </button>
+            <button className="text-gray-600 hover:text-black hover:font-semibold">
+              - Microprojects
+            </button>
+            <button className="text-gray-600 hover:text-black hover:font-semibold">
+              - Cheetsheets
+            </button>
+            <button className="text-gray-600 hover:text-black hover:font-semibold">
+              - Web Template
+            </button>
+
+            <button className="text-gray-600 hover:text-black hover:font-semibold">
+              - EBooks
+            </button>
+            <button className="text-gray-600 hover:text-black hover:font-semibold">
+              - Capstone Project
+            </button>
           </div>
         </div>{" "}
-        <div>
+        <div className="w-full">
           <HeaderName name="Follow Us" />
           <div className="mt-2 flex-col flex gap-2">
             <FollowUs />
           </div>
         </div>{" "}
       </aside>
+      <main className=" w-full md:w-4/5 md:absolute md:right-0 text-justify">
+        {children}
+      </main>
     </div>
   );
 };

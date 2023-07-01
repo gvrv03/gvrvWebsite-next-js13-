@@ -17,38 +17,34 @@ const MainCard = () => {
     return <MainSkeleton />;
   }
 
-
   if (error) {
     return <div>Unexpected Error Occure</div>;
   }
 
   return (
-    <div className="bg-white relative w-full flex-col flex justify-center items-center gap-5  md:w-fit p-5">
-      <button>
+    <div className="bg-white items-center shadow-md relative w-full flex-col md:flex-row border  flex justify-between  gap-5   p-5">
+      {/* <button>
         <i className="uil uil-edit absolute top-5 right-5 text-xl" />
-      </button>
-      <div className="w-40 flex-col flex justify-center items-center gap-5 ">
+      </button> */}
+      <div className=" ">
         <img
           src={userProfile}
-          className="w-full rounded-full h-full"
+          className="w-20   rounded-full h-full"
           alt="User"
         />
-        <button className="rounded-sm pBtn px-5 py-2  text-sm">
-          Change Photo
-        </button>
       </div>
 
-      <div className="w-full grid grid-cols-1 md:grid-cols-2 gap-5 ">
+      <div className="w-full   place-items-center grid  grid-cols-2 gap-5 ">
         <div className="gap-2 flex-col flex">
           <div className="">
-            <label className="font-semibold md:text-md text-sm text-gray-400">
+            <label className="font-semibold text-gray-400">
               Name
             </label>
             <p className="md:text-sm text-xs">{userName}</p>
           </div>
 
           <div className="">
-            <label className="font-semibold md:text-md text-sm text-gray-400">
+            <label className="font-semibold text-gray-400">
               Email
             </label>
             <p className="md:text-sm  text-xs">{email}</p>
@@ -57,20 +53,22 @@ const MainCard = () => {
 
         <div className="gap-2 flex-col flex">
           <div className="">
-            <label className="font-semibold md:text-md text-sm text-gray-400">
+            <label className="font-semibold text-gray-400">
               Gender
             </label>
             <p className="md:text-sm text-xs">{gender}</p>
           </div>
 
           <div className="">
-            <label className="font-semibold md:text-md text-sm text-gray-400">
+            <label className="font-semibold text-gray-400">
               Phone No.
             </label>
-            <p className="md:text-sm text-xs">+{phoneNo}</p>
+            <p className="md:text-sm text-xs">{phoneNo}</p>
           </div>
         </div>
       </div>
+
+      <button>Edit</button>
     </div>
   );
 };
@@ -92,14 +90,14 @@ export const MainSkeleton = () => {
       <div className="w-full md:w-96 flex-col bg-white flex justify-between gap-5 ">
         <div className="gap-2  grid grid-cols-2">
           <div className="">
-            <label className="font-semibold md:text-md text-sm text-gray-400">
+            <label className="font-semibold text-gray-400">
               Name
             </label>
             <Skeleton variant="rectangular" width="100%" height="20px" />
           </div>
 
           <div className="">
-            <label className="font-semibold md:text-md text-sm text-gray-400">
+            <label className="font-semibold text-gray-400">
               Email
             </label>
             <Skeleton variant="rectangular" width="100%" height="20px" />
@@ -108,14 +106,14 @@ export const MainSkeleton = () => {
 
         <div className="gap-2  grid grid-cols-2">
           <div className="">
-            <label className="font-semibold md:text-md text-sm text-gray-400">
+            <label className="font-semibold text-gray-400">
               Gender
             </label>
             <Skeleton variant="rectangular" width="100%" height="20px" />
           </div>
 
           <div className="">
-            <label className="font-semibold md:text-md text-sm text-gray-400">
+            <label className="font-semibold text-gray-400">
               Phone No.
             </label>
             <Skeleton variant="rectangular" width="100%" height="20px" />

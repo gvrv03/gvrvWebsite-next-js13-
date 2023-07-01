@@ -2,7 +2,7 @@ import React from "react";
 const BlogsLayout = ({ children }) => {
   const HeaderName = (props) => {
     return (
-      <h2 className="font-bold border-b-2 text-lg relative">{props.name}</h2>
+      <h2 className="font-bold border-b-2  relative">{props.name}</h2>
     );
   };
 
@@ -45,26 +45,29 @@ const BlogsLayout = ({ children }) => {
     );
   };
   return (
-    <div className="flex m-auto flex-col md:flex-row container gap-5">
-      <main className=" w-full h-full ">{children}</main>
-      <aside className="w-full md:w-96 flex-col flex gap-5 ">
-        <div className="md:h-[128px] md:block hidden ">Hey</div>
-        <div>
+    <div className=" container m-auto   md:relative justify-between  flex-col-reverse md:flex-row flex  gap-5 ">
+      <aside className=" md:w-[15%] md:fixed  md:mt-[140px] w-full    flex bg-white    flex-col gap-5 items-start ">
+        <div className="w-full">
           <HeaderName name="Recent Post" />
           <div className="mt-2 flex-col flex gap-2">
-            <SingleBlogCard />
-            <SingleBlogCard />
-            <SingleBlogCard />
-            <SingleBlogCard />
+            <div className="mt-2 flex-col flex gap-2">
+              <SingleBlogCard />
+              <SingleBlogCard />
+              <SingleBlogCard />
+              <SingleBlogCard />
+            </div>
           </div>
         </div>{" "}
-        <div>
+        <div className="w-full">
           <HeaderName name="Follow Us" />
           <div className="mt-2 flex-col flex gap-2">
             <FollowUs />
           </div>
         </div>{" "}
       </aside>
+      <main className=" w-full md:w-4/5 md:absolute md:right-0 text-justify">
+        {children}
+      </main>
     </div>
   );
 };

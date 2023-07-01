@@ -4,14 +4,7 @@ import Allproducts from "@/Components/Product/Allproducts";
 import DetailTabs from "@/Components/Product/DetailTabs";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import FavoriteIcon from "@mui/icons-material/Favorite";
-import ProductCard from "@/Components/Product/ProductCard";
-import axios from "axios";
-import { toast } from "react-toastify";
 import { Rating, ToggleButton } from "@mui/material";
-import { createOrderURL, downloadProductURL } from "../../../allLinks";
-import { DefButton } from "../UtilComponent";
-import { handlePayment } from "@/Functions/downloadProduct";
-import { Login } from "@mui/icons-material";
 import PaymentInititate from "../Payment/PaymentInititate";
 import { useUserAuth } from "@/Context/UserAuthContext";
 const ProductMinDetail = ({
@@ -26,7 +19,6 @@ const ProductMinDetail = ({
   images,
 }) => {
   const [selected, setSelected] = useState(false);
-  const { user } = useUserAuth();
   return (
     <section className="  grid grid-cols-1  ">
       {/* short description  */}
@@ -105,7 +97,6 @@ const ProductMinDetail = ({
                   title={title}
                   amount={price}
                   produDID={productID}
-                  cusDetail={{ name: user.displayName, email: user.email }}
                 />
 
                 <ToggleButton

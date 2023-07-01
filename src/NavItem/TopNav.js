@@ -15,6 +15,34 @@ export const Legal = [
     icon: "pColor uil uil-shield-check",
   },
 ];
+
+export const UserAccountNav = [
+  {
+    name: "Home",
+    location: "/MyAccount",
+    icon: "pColor uil uil-estate",
+  },
+  {
+    name: "Profile",
+    location: "/MyAccount/Profile",
+    icon: "pColor uil uil-user",
+  },
+  {
+    name: "My Product",
+    location: "/MyAccount/MyProduct",
+    icon: "pColor uil uil-shopping-cart",
+  },
+  {
+    name: "Setting",
+    location: "/MyAccount/Setting",
+    icon: "pColor uil uil-cog",
+  },
+  {
+    name: "Help",
+    location: "/MyAccount/Help",
+    icon: "pColor uil uil-question",
+  },
+];
 const TopNav = [
   {
     name: "Home",
@@ -42,8 +70,8 @@ const TopNav = [
     icon: "pColor uil uil-bookmark",
   },
   {
-    name: "Profile",
-    location: "/Profile",
+    name: "My Account",
+    location: "/MyAccount",
     icon: "pColor uil uil-user",
   },
   {

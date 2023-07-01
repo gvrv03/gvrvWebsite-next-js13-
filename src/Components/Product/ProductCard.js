@@ -1,13 +1,8 @@
-import { Rating, ToggleButton } from "@mui/material";
-import Link from "next/link";
+"use client"
 import { useRouter } from "next/navigation";
 import React from "react";
-import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
-import FavoriteIcon from "@mui/icons-material/Favorite";
-import { useState } from "react";
 
 const ProductCard = ({ title, thumbnail, price, comAtPrice, id }) => {
-  const [selected, setSelected] = useState(false);
 
   const router = useRouter();
   return (

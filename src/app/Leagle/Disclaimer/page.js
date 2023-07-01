@@ -3,7 +3,7 @@ import React from "react";
 
 const Disclaimer = () => {
   return (
-    <div className=" bg-white h-full text-justify p-5">
+    <div className=" bg-white h-full text-justify ">
       <ol className="inline-flex  pb-5 bg-white  w-full items-center space-x-1 md:space-x-3">
         <li className="inline-flex items-center">
           <Link
@@ -35,7 +35,7 @@ const Disclaimer = () => {
           </div>
         </li>
       </ol>
-      <div className="h-90 overflow-y-scroll ">
+      <div >
         <h1 className="font-bold text-2xl ">Disclaimer</h1>
         <p>Last updated: May 31, 2023</p>
         <h1 className="font-bold text-2xl mt-5">

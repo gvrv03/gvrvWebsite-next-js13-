@@ -5,6 +5,7 @@ import React, { useState } from "react";
 import { createOrderURL } from "../../../allLinks";
 import { DefButton } from "../UtilComponent";
 import { downloadProduct } from "@/Functions/downloadProduct";
+import { useUserAuth } from "@/Context/UserAuthContext";
 
 function generateOrderId() {
   const min = 1000000000; // Minimum 10-digit number
@@ -15,6 +16,8 @@ function generateOrderId() {
 
 const PaymentInititate = ({ amount, produDID, title }) => {
   const [loading, setloading] = useState(false);
+  const { user } = useUserAuth();
+
   //PAyemnt Integration
   const loadScript = (src) => {
     return new Promise((resolve) => {
@@ -32,6 +35,10 @@ const PaymentInititate = ({ amount, produDID, title }) => {
 
   const handlePayment = async () => {
     setloading(true);
+    if (!user) {
+      setloading(false);
+      return toast.error("You need to Login to Buy");
+    }
     // Create order API
     let orderID = generateOrderId();
 
