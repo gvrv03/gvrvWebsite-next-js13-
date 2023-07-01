@@ -1,19 +1,34 @@
-"use client"
+"use client";
 import { useRouter } from "next/navigation";
 import React from "react";
 
-const ProductCard = ({ title, thumbnail, price, comAtPrice, id }) => {
-
+const ProductCard = ({
+  title,
+  fullTitle,
+  thumbnail,
+  price,
+  comAtPrice,
+  id,
+}) => {
   const router = useRouter();
   return (
-    <div className="w-full hover:shadow-md border border-gray-200 bg-white p-5 h-fit rounded-sm  ">
+    <div className="w-full hover:shadow-md border border-gray-200 bg-white md:p-5 p-2 h-fit rounded-sm  ">
       <div
         onClick={() => {
-          router.push("/Products/Product/" + id);
+          router.push(
+            "/Products/Product/" +
+              fullTitle.replaceAll(" ", "_") +
+              "?product=" +
+              id
+          );
         }}
         className="grid place-items-center "
       >
-        <img className="md:h-44   cursor-pointer h-30" src={thumbnail} alt={title} />
+        <img
+          className="md:h-44   cursor-pointer h-30"
+          src={thumbnail}
+          alt={title}
+        />
       </div>
       <div className=" ">
         <h3 className="text-xs text-gray-400 font-semibold md:text-sm">
@@ -21,7 +36,12 @@ const ProductCard = ({ title, thumbnail, price, comAtPrice, id }) => {
         </h3>
         <h5
           onClick={() => {
-            router.push("/Products/Product/" + id);
+            router.push(
+              "/Products/Product/" +
+                fullTitle.replaceAll(" ", "_") +
+                "?product=" +
+                id
+            );
           }}
           className="text-xs  cursor-pointer  md:text-sm mt-3 font-semibold tracking-tight "
         >

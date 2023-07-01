@@ -3,9 +3,8 @@ import Link from "next/link";
 import { getSingleURL } from "../../../../../allLinks";
 import NotFound from "../not-found";
 
-
-const page = async ({ params }) => {
-  const res = await fetch(getSingleURL + params.slug);
+const page = async ({ searchParams }) => {
+  const res = await fetch(getSingleURL + searchParams.ID);
   const data = await res.json();
   const { title, category, description, image, artical, author, views } = data
     ? data

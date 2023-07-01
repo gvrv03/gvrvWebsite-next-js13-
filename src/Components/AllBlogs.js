@@ -29,6 +29,7 @@ export default async function AllBlogs({ page, setpage }) {
             return (
               <BlogCard
                 key={index}
+                fullTitle={i.title}
                 title={i.title.substring(0, 32) + "..."}
                 category={i.category}
                 description={i.description.substring(0, 60) + "..."}

@@ -31,6 +31,7 @@ export default async function Allproducts({ page, setpage }) {
               <ProductCard
                 key={index}
                 id={product._id}
+                fullTitle={product.title}
                 title={product.title.substring(0, 40) + "..."}
                 thumbnail={product.thumbnail}
                 price={product.pricing.price}
