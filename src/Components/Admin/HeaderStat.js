@@ -4,7 +4,7 @@ import SupervisorAccountIcon from "@mui/icons-material/SupervisorAccount";
 import NewspaperIcon from "@mui/icons-material/Newspaper";
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import ShoppingBagIcon from '@mui/icons-material/ShoppingBag';
+import ShoppingBagIcon from "@mui/icons-material/ShoppingBag";
 import { fetchBlogs } from "@/Store/Actions/blogAction";
 import LoopIcon from "@mui/icons-material/Loop";
 import { fetchUsers } from "@/Store/Actions/userAction";
@@ -21,18 +21,18 @@ const HeaderStat = () => {
     dispatch(fetchProducts());
     dispatch(fetchUsers());
   }, [updater]);
-  
+
   const { blogs, users, products } = useSelector((state) => state);
 
   const StatHeader = ({ blogs, users, products }) => {
     const HeaderCard = ({ name, value, icon, loading }) => {
       return (
         <div className="">
-          <div className="  px-5 py-5 bg-gray-100 flex gap-5 relative justify-center items-center  rounded-sm">
+          <div className="  px-5 py-5 bg-gray-50 flex gap-5 relative justify-center items-center  rounded-sm">
             {icon}
             <div className=" ">
               <div className="flex gap-5">
-                <h2 className="title-font font-medium  text-xl ">{value}</h2>
+                <h2 className="title-font font-medium   ">{value}</h2>
                 {loading && <BtnSpinner />}
               </div>
 
@@ -48,8 +48,11 @@ const HeaderStat = () => {
           <div className="grid gap-5 grid-cols-2 md:grid-cols-4 ">
             <HeaderCard
               name="Blogs"
-              value={blogs.data.length}
-              loading={blogs.isLoading}
+              // value={blogs.data.length}
+              // loading={blogs.isLoading}
+
+              value={100}
+              loading={false}
               icon={<NewspaperIcon className="pColor text-3xl" />}
             />
             <HeaderCard
@@ -60,8 +63,11 @@ const HeaderStat = () => {
             />
             <HeaderCard
               name="Products"
-              value={products.data.length}
-              loading={products.isLoading}
+              // value={products.data.length}
+              // loading={products.isLoading}
+              
+              value={100}
+              loading={false}
               icon={<ShoppingBagIcon className="pColor text-3xl" />}
             />
           </div>

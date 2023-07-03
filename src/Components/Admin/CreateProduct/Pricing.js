@@ -12,7 +12,7 @@ const Pricing = ({
   price
 }) => {
   return (
-    <div className="p-5 bg-white">
+    <div className="p-5 border bg-white">
       <label className="font-semibold text-gray-500">Pricing</label>
       <div className="flex mt-5 gap-5 flex-col md:flex-row">
         <div className="flex flex-col gap-2 text-sm text-gray-500">

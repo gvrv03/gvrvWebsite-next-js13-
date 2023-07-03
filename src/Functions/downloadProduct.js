@@ -1,4 +1,4 @@
-import { toast } from "react-toastify";
+import { toast } from "react-hot-toast";
 import { downloadProductURL } from "../../allLinks";
 
 export const downloadProduct = async (id, title) => {

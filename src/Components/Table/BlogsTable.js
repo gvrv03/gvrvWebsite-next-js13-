@@ -13,7 +13,7 @@ import DeleteModal from "../DeleteModal";
 import { useState } from "react";
 import { DeleteBlog } from "@/Store/Actions/blogAction";
 import CreateIcon from "@mui/icons-material/Create";
-import { toast } from "react-toastify";
+import { toast } from "react-hot-toast";
 import { useDispatch } from "react-redux";
 import { IconButton } from "@mui/material";
 import DeleteIcon from "@mui/icons-material/Delete";
@@ -74,7 +74,7 @@ export default function BlogsTable({ blogs }) {
             </TableRow>
           </TableHead>
           <TableBody>
-            {blogs
+            {blogs && blogs
               .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
               .map((blog, index) => {
                 return (

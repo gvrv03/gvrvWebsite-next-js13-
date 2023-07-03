@@ -13,7 +13,7 @@ import MainData from "@/Components/Admin/CreateProduct/MainData";
 import Pricing from "@/Components/Admin/CreateProduct/Pricing";
 import ProductOrg from "@/Components/Admin/CreateProduct/ProductOrg";
 import { AddProduct } from "@/Store/Actions/productAction";
-import { toast } from "react-toastify";
+import { toast } from "react-hot-toast";
 import { useDispatch } from "react-redux";
 import { useUserAuth } from "@/Context/UserAuthContext";
 
@@ -130,7 +130,7 @@ console.log(file);
         </div>
 
         <div className="w-full md:w-96  flex flex-col gap-5">
-          <div className="bg-white flex flex-col p-5">
+          <div className="bg-white border flex flex-col p-5">
             <label className="font-semibold text-gray-500">Status</label>
             <select
               onClick={(e) => {
@@ -155,7 +155,7 @@ console.log(file);
             setPKeyword={setPKeyword}
           />
 
-          <div className="bg-white flex flex-col p-5">
+          <div className="bg-white border flex flex-col p-5">
             <DefButton
               name="Add Product"
               func={createProduct}

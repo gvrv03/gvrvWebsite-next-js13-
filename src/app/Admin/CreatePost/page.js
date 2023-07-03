@@ -13,7 +13,7 @@ import LoadingSpinner, {
 import { BackBtn, UploadButton } from "@/Components/UtilComponent";
 import { AddBlog } from "@/Store/Actions/blogAction";
 import { useDispatch, useSelector } from "react-redux";
-import { toast } from "react-toastify";
+import { toast } from "react-hot-toast";
 const CreatePost = () => {
   const [blogNav, setblogNav] = useState("-right-full");
   const [cat, setcat] = useState("");
@@ -112,7 +112,7 @@ const CreatePost = () => {
     <div className="w-full    h-full">
       <BackBtn backLocation="/Admin/AllBlogs" headName="Create Blog" />
 
-      <div className="  bg-white p-5 gap-5 flex">
+      <div className=" border bg-white p-5 gap-5 flex">
         <input
           type="text"
           onChange={(e) => {
@@ -148,7 +148,7 @@ const CreatePost = () => {
       </div>
 
       <div className=" w-full flex gap-5 mt-5 ">
-        <div className="w-full bg-white p-5 md:w-4/5">
+        <div className="w-full border bg-white p-5 md:w-4/5">
           <div>
             <textarea
               className="border outline-none p-5 w-full h-auto"
@@ -165,7 +165,7 @@ const CreatePost = () => {
         </div>
 
         <div
-          className={`flex md:w-1/5 md:relative fixed w-full h-full md:right-0 transition-all ease-linear delay-300   ${blogNav} md:top-0 top-20   z-50 bg-white p-5 flex-col gap-5`}
+          className={`flex md:w-1/5 md:relative fixed  border w-full h-full md:right-0 transition-all ease-linear delay-300   ${blogNav} md:top-0 top-20   z-50 bg-white p-5 flex-col gap-5`}
         >
           <div className="md:hidden ">
             <button
@@ -175,7 +175,7 @@ const CreatePost = () => {
               <i className="bi bi-arrow-left text-lg" />
             </button>{" "}
           </div>
-          <div className="flex flex-col w-full ">
+          <div className="flex flex-col   w-full ">
             <h5 className="text-gray-500">Upload Thumbnail</h5>
             <div>
               <input

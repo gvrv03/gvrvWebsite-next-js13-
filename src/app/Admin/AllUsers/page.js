@@ -1,6 +1,6 @@
 "use client";
 import UserTable from "@/Components/Table/UserTable";
-import { User } from "../../../DataSet/DataSet";
+import { User } from "@/DataSet/DataSet";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchUsers } from "@/Store/Actions/userAction";

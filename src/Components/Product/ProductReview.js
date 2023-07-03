@@ -6,7 +6,7 @@ import {
 import { Rating } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { toast } from "react-toastify";
+import { toast } from "react-hot-toast";
 import LoadingSpinner, { BtnSpinner2 } from "../Spinner/LoadingSpinner";
 import { DefButton } from "../UtilComponent";
 import AverageReview from "./ProductReview/AverageReview";

@@ -8,7 +8,7 @@ const ProductOrg = ({
   setPKeyword,
 }) => {
   return (
-    <div className="bg-white flex flex-col p-5">
+    <div className="bg-white flex flex-col p-5 border ">
       <label className="font-semibold text-gray-500">
         Product Organization
       </label>

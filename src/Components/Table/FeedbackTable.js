@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import * as React from "react";
 import Paper from "@mui/material/Paper";
 import Table from "@mui/material/Table";
@@ -16,6 +16,7 @@ export default function FeedbackTable() {
   const [rowsPerPage, setRowsPerPage] = React.useState(10);
   const Context = useUserAuth();
   const handleChangePage = (event, newPage) => {
+    console.log(newPage);
     setPage(newPage);
   };
 

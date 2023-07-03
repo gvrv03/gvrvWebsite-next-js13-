@@ -13,7 +13,7 @@ import DeleteModal from "../DeleteModal";
 import { useState } from "react";
 import { DeleteBlog } from "@/Store/Actions/blogAction";
 import CreateIcon from "@mui/icons-material/Create";
-import { toast } from "react-toastify";
+import { toast } from "react-hot-toast";
 import { useDispatch } from "react-redux";
 import { IconButton } from "@mui/material";
 import DeleteIcon from "@mui/icons-material/Delete";
@@ -47,7 +47,7 @@ export default function ProductsTable({ products, count }) {
   };
 
   return (
-    <div className="w-full bg-white mt-5 p-5 overflow-scroll">
+    <div className="w-full bg-white mt-5  overflow-scroll">
       <table className=" text-sm text-left w-full text-gray-500 ">
         <thead className="text-xs text-gray-700 uppercase bg-gray-50 ">
           <tr>
@@ -90,18 +90,18 @@ export default function ProductsTable({ products, count }) {
               <tr className="bg-white border-b  " key={index}>
                 <th
                   scope="row"
-                  className="px-6 py-4 font-medium text-gray-900 gap-2 flex items-center whitespace-nowrap "
+                  className="px-6 py-2 font-medium text-gray-900 gap-5 flex items-center whitespace-nowrap "
                 >
                   <div className=" rounded-full border-2 w-10 border-gray-200">
                     <img src={thumbnail} className="w-full " alt="" />
                   </div>
                   <span>{title}</span>{" "}
                 </th>
-                <td className="px-6 py-4">{category}</td>
-                <td className="px-6 py-4">{type}</td>
-                <td className="px-6 py-4">{addeBy}</td>
-                <td className="px-6 py-4">₹{price}</td>
-                <td className="px-6 py-4">
+                <td className="px-6 py-2">{category}</td>
+                <td className="px-6 py-2">{type}</td>
+                <td className="px-6 py-2">{addeBy}</td>
+                <td className="px-6 py-2">₹{price}</td>
+                <td className="px-6 py-2">
                   <IconButton aria-label="delete" size="small">
                     <CreateIcon fontSize="small" />
                   </IconButton>

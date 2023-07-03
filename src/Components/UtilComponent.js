@@ -81,8 +81,14 @@ export const AdminPageHeader = ({
         </div>{" "}
         <div className="flex  justify-between gap-5 items-center">
           <div className="gap-2 flex">
-            <input className="border w-20 p-2 text-xs outline-none" type="text" />
-            <input className="border w-20 p-2 text-xs outline-none" type="text" />
+            <input
+              className="border w-20 p-2 text-xs outline-none"
+              type="text"
+            />
+            <input
+              className="border w-20 p-2 text-xs outline-none"
+              type="text"
+            />
           </div>{" "}
           <div className="gap-2 flex">
             <button className="p-2  bg-red-500 text-white text-xs rounded-sm flex gap-2 items-center   font-bold">
@@ -134,7 +140,7 @@ export const BackBtn = ({ backLocation, headName }) => {
   const router = useRouter();
 
   return (
-    <h1 className="text-lg pb-5 font-bold">
+    <h1 className="text-lg flex items-center pb-5 font-bold">
       <IconButton
         onClick={() => {
           router.push(backLocation);
@@ -144,7 +150,7 @@ export const BackBtn = ({ backLocation, headName }) => {
       >
         <ArrowBackIcon className="text-2xl  " />
       </IconButton>{" "}
-      {headName}
+      <span>{headName}</span>{" "}
     </h1>
   );
 };

@@ -1,6 +1,6 @@
 "use client";
 import axios from "axios";
-import { toast } from "react-toastify";
+import { toast } from "react-hot-toast";
 import React, { useState } from "react";
 import { createOrderURL } from "../../../allLinks";
 import { DefButton } from "../UtilComponent";

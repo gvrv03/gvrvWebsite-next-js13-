@@ -10,11 +10,11 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import XLSX, { utils, write } from "xlsx";
 
-const AllProducts = () => {
+const AllProductsPage = () => {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(
-      fetchProductsByQueryObj({ queryObj: {}, skip: 0, limit: 0, sortObj: {} })
+      fetchProductsByQueryObj({ queryObj: {}, skip: 0, limit: 10, sortObj: {} })
     );
   }, [dispatch]);
 
@@ -84,4 +84,4 @@ const AllProducts = () => {
   );
 };
 
-export default AllProducts;
+export default AllProductsPage;

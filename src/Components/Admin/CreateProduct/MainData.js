@@ -8,7 +8,7 @@ const MainData = ({
   setartical,
 }) => {
   return (
-    <div className="p-5 flex flex-col gap-5 bg-white">
+    <div className="p-5 border flex flex-col gap-5 bg-white">
       <div className="flex flex-col gap-2">
         <label>Title</label>
         <input

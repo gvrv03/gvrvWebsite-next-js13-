@@ -5,7 +5,7 @@ import { FileUploader } from "react-drag-drop-files";
 import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import { storage } from "../../../../firebase";
 import { v4 } from "uuid";
-import { toast } from "react-toastify";
+import { toast } from "react-hot-toast";
 import {
   FullScreenLoader,
   FullScreenLoaderMsg,
@@ -95,7 +95,7 @@ const Media = ({
   };
 
   return (
-    <div className="p-5  bg-white">
+    <div className="p-5 border bg-white">
       {loading && <FullScreenLoaderMsg />}
       <label className="font-semibold text-gray-500">Media</label>
       <div className=" border-2 border-dashed gap-5 grid grid-cols-1 lg:grid-cols-3 rounded-md p-5 mt-5">

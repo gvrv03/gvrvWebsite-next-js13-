@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import * as React from "react";
 import Box from "@mui/material/Box";
 import Avatar from "@mui/material/Avatar";
@@ -45,7 +45,11 @@ export default function UserDropDown() {
             aria-expanded={open ? "true" : undefined}
           >
             <Avatar sx={{ width: 32, height: 32 }}>
-              <img src={user.photoURL} className="p-1 rounded-full bg-gray-200" alt={user.displayName} />
+              <img
+                src={user.photoURL}
+                className="p-1 rounded-full bg-gray-200"
+                alt={user.displayName}
+              />
             </Avatar>
           </IconButton>
         </Tooltip>
@@ -94,11 +98,12 @@ export default function UserDropDown() {
           </div>
         </h5>
 
+
         <MenuItem onClick={handleClose}>
-          <Avatar /> Profile
+          <Avatar /> My Account
         </MenuItem>
         <MenuItem onClick={handleClose}>
-          <Avatar /> My account
+          <Avatar /> Dashboard
         </MenuItem>
         <Divider />
 

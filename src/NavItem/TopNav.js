@@ -33,9 +33,24 @@ export const UserAccountNav = [
     icon: "pColor uil uil-shopping-cart",
   },
   {
+    name: "Downloads",
+    location: "/MyAccount/Downloads",
+    icon: "pColor uil uil-cloud-download",
+  },
+  {
+    name: "Your Order",
+    location: "/MyAccount/YourOrder",
+    icon: "pColor uil uil-shopping-bag",
+  },
+  {
     name: "Setting",
     location: "/MyAccount/Setting",
     icon: "pColor uil uil-cog",
+  },
+  {
+    name: "Dashboard",
+    location: "/Admin",
+    icon: "pColor uil uil-chart-pie-alt",
   },
   {
     name: "Help",
