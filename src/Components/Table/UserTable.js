@@ -48,55 +48,56 @@ export default function UserTable({ Users }) {
                 <TableCell colSpan={9}>Unexpected error occured !</TableCell>
               </TableRow>
             )}
-            {Users.data
-              .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-              .map((row, index) => {
-                const {
-                  userName,
-                  firebaseID,
-                  gender,
-                  email,
-                  phoneNo,
-                  userProfile,
-                  role,
-                } = row;
+            {Users &&
+              Users.data
+                .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+                .map((row, index) => {
+                  const {
+                    userName,
+                    firebaseID,
+                    gender,
+                    email,
+                    phoneNo,
+                    userProfile,
+                    role,
+                  } = row;
 
-                return (
-                  <TableRow hover role="checkbox" tabIndex={-1} key={index}>
-                    <TableCell>{firebaseID}</TableCell>
-                    <TableCell>
-                      <img
-                        className="w-7 h-7 rounded-full border-2 p-1 border-gray-400"
-                        src={userProfile}
-                        alt="G"
-                      />
-                    </TableCell>
-                    <TableCell>{userName}</TableCell>
-                    <TableCell>{email}</TableCell>
-                    <TableCell>{phoneNo}</TableCell>
-                    <TableCell>{gender}</TableCell>
-                    <TableCell>
-                    <select value={role}>
-                      <option value="user">User</option>
-                      <option value="admin">Admin</option>
-                    </select>
-                    </TableCell>
-                    <TableCell>
-                      <div className="w-full flex justify-center gap-5 items-center">
-                        <button>
-                          <i className="uil uil-edit text-xl  text-blue-600" />
-                        </button>
-                        <button>
-                          <i className="uil uil-phone text-xl  " />
-                        </button>
-                        <button>
-                          <i className="uil uil-trash-alt text-red-600 text-xl " />
-                        </button>
-                      </div>
-                    </TableCell>
-                  </TableRow>
-                );
-              })}
+                  return (
+                    <TableRow hover role="checkbox" tabIndex={-1} key={index}>
+                      <TableCell>{firebaseID}</TableCell>
+                      <TableCell>
+                        <img
+                          className="w-7 h-7 rounded-full border-2 p-1 border-gray-400"
+                          src={userProfile}
+                          alt="G"
+                        />
+                      </TableCell>
+                      <TableCell>{userName}</TableCell>
+                      <TableCell>{email}</TableCell>
+                      <TableCell>{phoneNo}</TableCell>
+                      <TableCell>{gender}</TableCell>
+                      <TableCell>
+                        <select value={role}>
+                          <option value="user">User</option>
+                          <option value="admin">Admin</option>
+                        </select>
+                      </TableCell>
+                      <TableCell>
+                        <div className="w-full flex justify-center gap-5 items-center">
+                          <button>
+                            <i className="uil uil-edit text-xl  text-blue-600" />
+                          </button>
+                          <button>
+                            <i className="uil uil-phone text-xl  " />
+                          </button>
+                          <button>
+                            <i className="uil uil-trash-alt text-red-600 text-xl " />
+                          </button>
+                        </div>
+                      </TableCell>
+                    </TableRow>
+                  );
+                })}
           </TableBody>
         </Table>
       </TableContainer>

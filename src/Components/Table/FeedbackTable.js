@@ -43,7 +43,7 @@ export default function FeedbackTable() {
             </TableRow>
           </TableHead>
           <TableBody>
-            {User.slice(
+            {User&&User.slice(
               page * rowsPerPage,
               page * rowsPerPage + rowsPerPage
             ).map((row, index) => {

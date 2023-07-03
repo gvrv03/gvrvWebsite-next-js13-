@@ -72,7 +72,7 @@ export default function ProductsTable({ products, count }) {
           </tr>
         </thead>
         <tbody>
-          {products.map((product, index) => {
+          {products&&products.map((product, index) => {
             const {
               title,
               thumbnail,
