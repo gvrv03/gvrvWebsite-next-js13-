@@ -7,6 +7,7 @@ import React, { useState } from "react";
 
 const AdminLayout = ({ children }) => {
   const [navbar, setnavbar] = useState(false);
+  const router = useRouter();
   const { user } = useUserAuth();
   if (!user) {
     return (
@@ -30,7 +31,6 @@ const AdminLayout = ({ children }) => {
     }
   };
 
-  const router = useRouter();
   return (
     <div className=" container m-auto mt-20  relative justify-between flex gap-5 ">
       <aside
