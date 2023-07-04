@@ -2,7 +2,7 @@
 import { FullScreenLoader } from "@/Components/Spinner/LoadingSpinner";
 import BlogsTable from "@/Components/Table/BlogsTable";
 import { AdminPageHeader, NoDataFound } from "@/Components/UtilComponent";
-import { fetchBlogsByQueryObj } from "@/Store/Actions/blogAction";
+import { fetchBlogs } from "@/Store/Actions/blogAction";
 import { useRouter } from "next/navigation";
 import React, { useEffect } from "react";
 import { useState } from "react";
@@ -11,20 +11,21 @@ import XLSX, { utils, write } from "xlsx";
 
 const AllBlogs = () => {
   const dispatch = useDispatch();
+  
   useEffect(() => {
     dispatch(
-      fetchBlogsByQueryObj({
+      fetchBlogs({
         queryObj: {},
-        skip: 0,
-        limit: 0,
-        sortObj: {},
+        page: 1,
+        limit: 10,
       })
     );
   }, [dispatch]);
 
   const blogs = useSelector((state) => state.blogs);
-  const { isLoading, error } = blogs;
-
+  console.log(blogs);
+  const { isLoading, error, count, totatlPages, data } = blogs;
+  console.log(error);
   // download Data
   function convertJsonToXls(jsonData) {
     const worksheet = utils.json_to_sheet(jsonData);
@@ -57,32 +58,31 @@ const AllBlogs = () => {
       <div className=" w-full  ">
         <AdminPageHeader
           pageName="All Blogs"
-          totalCount={blogs.data.length}
+          totalCount={count}
           refreshFun={() => {
             dispatch(
-              fetchBlogsByQueryObj({
+              fetchBlogs({
                 queryObj: {},
-                skip: 0,
-                limit: 0,
-                sortObj: {},
+                page: 1,
+                limit: 10,
               })
             );
           }}
-          downloadData={() => downloadXlsFile(blogs.data)}
+          downloadData={() => downloadXlsFile(data)}
           routeLocation="/Admin/CreatePost"
           btnName="Create Post"
         />
 
-        {error && <div className="  p-5 mt-5">Unexpected error occured !</div>}
+        {error &&  <div className="  p-5 mt-5">Unexpected error occured !    <span  className="p-1 text-center bg-red-200 border border-red-300"  >{error}</span>  </div>}
         {isLoading && <FullScreenLoader />}
-        {!isLoading && blogs.data.length === 0 ? (
+        {!isLoading && data.length === 0 ? (
           <NoDataFound
             nameHead="No Blog Found"
             location="/Admin/CreatePost"
             btnTitle="Create New Blog"
           />
         ) : (
-          <BlogsTable blogs={blogs.data} />
+          <BlogsTable blogs={data} totatlPages={totatlPages} count={count} />
         )}
       </div>
     </>

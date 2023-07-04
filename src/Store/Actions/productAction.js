@@ -3,35 +3,24 @@ import { getProductsByQueryOBJURL, getProductsURL } from "../../../allLinks";
 
 export const fetchProducts = createAsyncThunk(
   "Product/fetchProducts",
-  async () => {
-    const res = await fetch(getProductsURL, {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
+  async (data) => {
+    const page = data?.page ?? 1;
+    const limit = data?.limit ?? 10;
+    const queryObj = data?.queryObj ?? {};
+    const res = await fetch(
+      getProductsURL +
+        `?page=${page}&limit=${limit}&query=${JSON.stringify(queryObj)}`,
+      {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
     return await res.json();
   }
 );
 
-export const fetchProductsByQueryObj = createAsyncThunk(
-  "Product/fetchProductsByQueryObj",
-  async (data) => {
-    const res = await fetch(getProductsByQueryOBJURL, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        queryObject: data.queryObj,
-        skip: data.skip,
-        limit: data.limit,
-        sortingObj: data.sortObj,
-      }),
-    });
-    return await res.json();
-  }
-);
 
 export const AddProduct = createAsyncThunk(
   "Product/AddProduct",

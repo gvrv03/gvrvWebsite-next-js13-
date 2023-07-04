@@ -59,16 +59,22 @@ export const GET = async (request) => {
     const searchParams = new URLSearchParams(url.search);
     const page = searchParams.get("page"); // Retrieves the value of the 'page' parameter
     const limit = searchParams.get("limit"); // Retrieves the value of the 'limit' parameter
+    const query = searchParams.get("query"); // Retrieves the value of the 'query' parameter  Ex : ?query={"_id":"649ec1dc0227a5b8da286425"}
 
     const skipCount = (page - 1) * limit;
     const blogCount = await Blogs.countDocuments(); // Get the total count of blogs
     const totalPages = Math.ceil(blogCount / limit); // Calculate the total number of pages
-    const blogs = await Blogs.find()
+    const blogs = await Blogs.find(JSON.parse(query))
       .sort({ createdAt: -1 })
       .skip(skipCount)
       .limit(limit);
 
-    return NextResponse.json({ blogs, totalPages });
+    return NextResponse.json({
+      isSuccess: true,
+      blogs,
+      totalPages,
+      blogCount,
+    });
   } catch (error) {
     return NextResponse.json(
       {

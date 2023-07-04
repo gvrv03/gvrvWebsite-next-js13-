@@ -2,10 +2,7 @@
 import { FullScreenLoader } from "@/Components/Spinner/LoadingSpinner";
 import ProductsTable from "@/Components/Table/ProductsTable";
 import { AdminPageHeader, NoDataFound } from "@/Components/UtilComponent";
-import {
-  fetchProducts,
-  fetchProductsByQueryObj,
-} from "@/Store/Actions/productAction";
+import { fetchProducts } from "@/Store/Actions/productAction";
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import XLSX, { utils, write } from "xlsx";
@@ -13,9 +10,7 @@ import XLSX, { utils, write } from "xlsx";
 const AllProductsPage = () => {
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(
-      fetchProductsByQueryObj({ queryObj: {}, skip: 0, limit: 10, sortObj: {} })
-    );
+    dispatch(fetchProducts({ queryObj: {}, page: 1, limit: 10 }));
   }, [dispatch]);
 
   const products = useSelector((state) => state.products);
@@ -55,11 +50,10 @@ const AllProductsPage = () => {
         totalCount={count}
         refreshFun={() => {
           dispatch(
-            fetchProductsByQueryObj({
+            fetchProducts({
               queryObj: {},
-              skip: 0,
+              page: 1,
               limit: 0,
-              sortObj: {},
             })
           );
         }}

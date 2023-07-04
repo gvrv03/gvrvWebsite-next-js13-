@@ -76,34 +76,10 @@ export const AdminPageHeader = ({
   return (
     <div className=" font-semibold  flex-col w-full  rounded-sm  gap-2 border-b-2 pb-2  flex ">
       <div className="flex justify-between items-center">
-        <div>
-          {pageName} ({totalCount})
-        </div>{" "}
-        <div className="flex  justify-between gap-5 items-center">
-          <div className="gap-2 flex">
-            <input
-              className="border w-20 p-2 text-xs outline-none"
-              type="text"
-            />
-            <input
-              className="border w-20 p-2 text-xs outline-none"
-              type="text"
-            />
-          </div>{" "}
-          <div className="gap-2 flex">
-            <button className="p-2  bg-red-500 text-white text-xs rounded-sm flex gap-2 items-center   font-bold">
-              <SearchIcon /> <span className="md:block hidden">FIND</span>
-            </button>
-            <button
-              onClick={() => {
-                router.push(routeLocation);
-              }}
-              className="pBtn text-xs  flex gap-2 items-center  p-2 rounded-sm"
-            >
-              <AddIcon /> <span className="md:block hidden">CREATE</span>
-            </button>
-          </div>
-        </div>
+        <BackBtn
+          backLocation="/Admin"
+          headName={`${pageName} (${totalCount}) `}
+        />
       </div>
 
       <div className="flex justify-between ">
@@ -118,18 +94,39 @@ export const AdminPageHeader = ({
         </div>
 
         <div className="flex items-center gap-2">
-          <div className="text-xs md:text-sm text-gray-500">1 - 2 of 2</div>
-          <IconButton onClick={refreshFun} aria-label="LoopIcon" size="small">
+          <div className="flex  justify-between gap-5 items-center">
+            <div className="gap-2 flex">
+              <input
+                className="border w-20 p-2 rounded-sm  text-xs outline-none"
+                type="text"
+              />
+              <input
+                className="border w-20 p-2 rounded-sm  text-xs outline-none"
+                type="text"
+              />
+            </div>{" "}
+            <div className="gap-2 flex">
+              <button className="py-1  px-3   bg-red-500 text-white text-xs rounded-sm flex gap-2 items-center   font-bold">
+                <SearchIcon /> <span className="md:block hidden">FIND</span>
+              </button>
+              <button
+                onClick={() => {
+                  router.push(routeLocation);
+                }}
+                className="pBtn  px-3   text-xs  flex gap-2 items-center  py-1 rounded-sm"
+              >
+                <AddIcon /> <span className="md:block hidden">CREATE</span>
+              </button>
+            </div>
+          </div>
+          <IconButton
+            onClick={refreshFun}
+            aria-label="LoopIcon"
+            className="border"
+            size="small"
+          >
             <LoopIcon className="text-2xl  " />
           </IconButton>
-          <div className=" flex">
-            <IconButton>
-              <NavigateBeforeIcon className="text-gray-500" size="small" />
-            </IconButton>
-            <IconButton>
-              <NavigateNextIcon className="text-gray-500" size="small" />
-            </IconButton>
-          </div>
         </div>
       </div>
     </div>

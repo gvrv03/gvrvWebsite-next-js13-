@@ -5,34 +5,24 @@ import {
   getSingleURL,
 } from "../../../allLinks";
 
-export const fetchBlogs = createAsyncThunk("blogs/fetchBlogs", async () => {
-  const res = await fetch(getAllBlogsURL, {
-    method: "GET",
-    headers: {
-      "Content-Type": "application/json",
-    },
-  });
-  return await res.json();
-});
+export const fetchBlogs = createAsyncThunk("blogs/fetchBlogs", async (data) => {
+  
+  const page = data?.page ?? 1;
+  const limit = data?.limit ?? 10;
+  const queryObj = data?.queryObj ?? {};
 
-export const fetchBlogsByQueryObj = createAsyncThunk(
-  "Blogs/fetchBlogsByQueryObj",
-  async (data) => {
-    const res = await fetch(getAllBlogsByQueryObj, {
-      method: "POST",
+  const res = await fetch(
+    getAllBlogsURL +
+      `?page=${page}&limit=${limit}&query=${JSON.stringify(queryObj)}`,
+    {
+      method: "GET",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({
-        queryObject: data.queryObj,
-        skip: data.skip,
-        limit: data.limit,
-        sortingObj: data.sortObj,
-      }),
-    });
-    return await res.json();
-  }
-);
+    }
+  );
+  return await res.json();
+});
 
 export const AddBlog = createAsyncThunk("blogs/AddBlog", async (data) => {
   const res = await fetch(getAllBlogsURL, {

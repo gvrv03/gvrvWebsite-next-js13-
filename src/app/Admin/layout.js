@@ -34,7 +34,7 @@ const AdminLayout = ({ children }) => {
   return (
     <div className=" container m-auto mt-20  relative justify-between flex gap-5 ">
       <aside
-        className={` w-[55%] md:w-[15%] transition-all delay-100 ease-linear h-screen md:h-[85vh] fixed flex bg-white z-40  ${
+        className={` w-[55%] md:w-[15%]  transition-all delay-100 ease-linear h-screen md:h-[85vh] fixed flex bg-white z-40  ${
           navbar ? "left-0" : "-left-full"
         }  md:left-auto top-28 md:top-auto  p-5 items-start   flex-col gap-5 border`}
       >

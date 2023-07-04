@@ -8,7 +8,7 @@ const TopNavBar = ({  navbar, toggleNav }) => {
           <i className="uuil uil-estate pColor" />
         </button>{" "}
         <button onClick={toggleNav}>
-          <i class="uil uil-draggabledots text-lg " />
+          <i className="uil uil-draggabledots text-lg " />
         </button>
       </div>
     </div>

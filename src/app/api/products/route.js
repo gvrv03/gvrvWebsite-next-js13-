@@ -77,24 +77,25 @@ export const POST = async (request) => {
   }
 };
 
-// --------------To Fetch All Blogs--------------
-export const GET = async (request, res) => {
+// --------------To Fetch All Products--------------
+export const GET = async (request) => {
   try {
     const url = new URL(request.url);
     const searchParams = new URLSearchParams(url.search);
     const page = searchParams.get("page"); // Retrieves the value of the 'page' parameter
     const limit = searchParams.get("limit"); // Retrieves the value of the 'limit' parameter
+    const query = searchParams.get("query"); // Retrieves the value of the 'query' parameter  Ex : ?query={"_id":"649ec1dc0227a5b8da286425"}
 
     const skipCount = (page - 1) * limit;
     const ProductCount = await ProductDetailData.countDocuments(); // Get the total count of blogs
     const totalPages = Math.ceil(ProductCount / limit); // Calculate the total number of pages
 
-    const products = await ProductDetailData.find()
+    const products = await ProductDetailData.find(JSON.parse(query))
       .sort({ createdAt: -1 })
       .skip(skipCount)
       .limit(limit);
 
-    return NextResponse.json({ products, totalPages });
+    return NextResponse.json({ products, totalPages, ProductCount });
   } catch (error) {
     return NextResponse.json(
       {

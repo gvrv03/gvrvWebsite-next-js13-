@@ -1,9 +1,5 @@
-import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import {
-  AddProduct,
-  fetchProducts,
-  fetchProductsByQueryObj,
-} from "../Actions/productAction";
+import { createSlice } from "@reduxjs/toolkit";
+import { AddProduct, fetchProducts } from "../Actions/productAction";
 
 // Define the initial state
 const initialState = {
@@ -11,6 +7,7 @@ const initialState = {
   isLoading: false,
   error: null,
   count: 0,
+  totatlPages: 0,
 };
 
 // Create the user slice
@@ -24,21 +21,12 @@ const blogSlice = createSlice({
       })
       .addCase(fetchProducts.fulfilled, (state, action) => {
         state.isLoading = false;
-        state.data = action.payload;
+        state.error = null;
+        state.data = action.payload.products;
+        state.count = action.payload.ProductCount;
+        state.totatlPages = action.payload.totalPages;
       })
       .addCase(fetchProducts.rejected, (state, action) => {
-        state.isLoading = false;
-        state.error = action.error.message;
-      })
-      .addCase(fetchProductsByQueryObj.pending, (state) => {
-        state.isLoading = true;
-      })
-      .addCase(fetchProductsByQueryObj.fulfilled, (state, action) => {
-        state.isLoading = false;
-        state.data = action.payload.products;
-        state.count = action.payload.productsCount;
-      })
-      .addCase(fetchProductsByQueryObj.rejected, (state, action) => {
         state.isLoading = false;
         state.error = action.error.message;
       })

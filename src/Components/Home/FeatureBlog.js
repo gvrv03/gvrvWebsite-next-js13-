@@ -1,38 +1,17 @@
-"use client";
-import { fetchBlogs, fetchBlogsByQueryObj } from "@/Store/Actions/blogAction";
-import React, { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import React from "react";
+import { getAllBlogsURL } from "../../../allLinks";
 import BlogCard from "../BlogCard";
-import BlogSkeleton from "../BlogSkeleton";
 import HeaderName from "./HeaderName";
 
-const FeatureBlog = () => {
-  const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(
-      fetchBlogsByQueryObj({
-        queryObj: {},
-        skip: 0,
-        limit: 3,
-        sortObj: {},
-      })
-    );
-  }, [dispatch]);
-
-  const blogs = useSelector((state) => state.blogs);
+const FeatureBlog = async () => {
+  const res = await fetch(getAllBlogsURL + `?page=1&limit=4`);
+  const { blogs } = await res.json();
   return (
     <div className="   m-auto">
       <HeaderName name="Blog" />
-      {blogs.data.length === 0 && (
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
-          <BlogSkeleton />
-          <BlogSkeleton />
-          <BlogSkeleton />
-        </div>
-      )}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-10">
         {blogs &&
-          blogs.data.map((item) => {
+          blogs.map((item) => {
             return (
               <BlogCard
                 image={item.image}

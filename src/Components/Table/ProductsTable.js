@@ -17,23 +17,28 @@ import { toast } from "react-hot-toast";
 import { useDispatch } from "react-redux";
 import { IconButton } from "@mui/material";
 import DeleteIcon from "@mui/icons-material/Delete";
+import moment from "moment";
+import { fetchProducts } from "@/Store/Actions/productAction";
 
 export default function ProductsTable({ products, count }) {
-  const [page, setPage] = React.useState(0);
-  const [rowsPerPage, setRowsPerPage] = React.useState(10);
+  const dispatch = useDispatch();
+  const [page, setPage] = useState(0);
+  const [rowsPerPage, setRowsPerPage] = useState(10);
   const { userIDS } = useUserAuth();
   const handleChangePage = (event, newPage) => {
     setPage(newPage);
+    dispatch(fetchProducts({ queryObj: {}, page: newPage + 1, limit: 10 }));
   };
 
   const handleChangeRowsPerPage = (event) => {
     setRowsPerPage(+event.target.value);
     setPage(0);
+    dispatch(
+      fetchProducts({ queryObj: {}, page: page + 1, limit: event.target.value })
+    );
   };
 
   const [forDelete, setforDelete] = useState({ state: "hidden", id: "" });
-  const dispatch = useDispatch();
-
   const handleDelete = async (id) => {
     const { payload } = await dispatch(
       DeleteBlog({ id: id, token: userIDS.ID })
@@ -42,83 +47,106 @@ export default function ProductsTable({ products, count }) {
     if (payload.isSuccess) {
       toast.success(payload.message);
     } else {
-      toast.error(payload.error);
+      toast.error(payload.message);
     }
   };
 
   return (
-    <div className="w-full bg-white mt-5  overflow-scroll">
-      <table className=" text-sm text-left w-full text-gray-500 ">
-        <thead className="text-xs text-gray-700 uppercase bg-gray-50 ">
-          <tr>
-            <th scope="col" className="px-6 py-3">
-              Title
-            </th>
-            <th scope="col" className="px-6 py-3">
-              Category
-            </th>
-            <th scope="col" className="px-6 py-3">
-              Type
-            </th>
-            <th scope="col" className="px-6 py-3">
-              Author
-            </th>
-            <th scope="col" className="px-6 py-3">
-              Price
-            </th>
-            <th scope="col" className="px-6 py-3">
-              Edit/Delete
-            </th>
-          </tr>
-        </thead>
-        <tbody>
-          {products&&products.map((product, index) => {
-            const {
-              title,
-              thumbnail,
-              pricing,
-              productOrganization,
-              addeBy,
-              _id,
-            } = product ? product : {};
-            const { price } = pricing ? pricing : {};
+    <>
+      <Paper
+        className="mt-5 border "
+        sx={{ width: "100%", overflow: "hidden" }}
+      >
+        <DeleteModal
+          handleDelete={handleDelete}
+          setforDelete={setforDelete}
+          state={forDelete.state}
+          id={forDelete.id}
+        />
+        <TableContainer sx={{ minHeight: "67vh", maxHeight: "67vh" }}>
+          <Table stickyHeader aria-label="sticky table">
+            <TableHead>
+              <TableRow>
+                <TableCell style={{ fontWeight: 800 }}>Sr. No.</TableCell>
+                <TableCell style={{ fontWeight: 800 }}>Image</TableCell>
+                <TableCell className="text-center" style={{ fontWeight: 800 }}>
+                  Title
+                </TableCell>
+                <TableCell className="text-center" style={{ fontWeight: 800 }}>
+                  Category
+                </TableCell>
+                <TableCell style={{ fontWeight: 800 }}>Type</TableCell>
+                <TableCell style={{ fontWeight: 800 }}>Author</TableCell>
+                <TableCell style={{ fontWeight: 800 }}>Price</TableCell>
+                <TableCell style={{ fontWeight: 800 }}>Created At</TableCell>
+                <TableCell style={{ fontWeight: 800, textAlign: "center" }}>
+                  Edit/Delete
+                </TableCell>
+              </TableRow>
+            </TableHead>
+            <TableBody>
+              {products &&
+                products.map((product, index) => {
+                  const {
+                    title,
+                    thumbnail,
+                    pricing,
+                    productOrganization,
+                    addeBy,
+                    _id,
+                    createdAt,
+                  } = product ? product : {};
+                  const { price } = pricing ? pricing : {};
 
-            const { category, type, vendor, collection, keywords } =
-              productOrganization ? productOrganization : {};
+                  const { category, type, vendor, collection, keywords } =
+                    productOrganization ? productOrganization : {};
 
-            return (
-              <tr className="bg-white border-b  " key={index}>
-                <th
-                  scope="row"
-                  className="px-6 py-2 font-medium text-gray-900 gap-5 flex items-center whitespace-nowrap "
-                >
-                  <div className=" rounded-full border-2 w-10 border-gray-200">
-                    <img src={thumbnail} className="w-full " alt="" />
-                  </div>
-                  <span>{title}</span>{" "}
-                </th>
-                <td className="px-6 py-2">{category}</td>
-                <td className="px-6 py-2">{type}</td>
-                <td className="px-6 py-2">{addeBy}</td>
-                <td className="px-6 py-2">₹{price}</td>
-                <td className="px-6 py-2">
-                  <IconButton aria-label="delete" size="small">
-                    <CreateIcon fontSize="small" />
-                  </IconButton>
-                  <IconButton aria-label="delete" size="small">
-                    <DeleteIcon
-                      onClick={() => {
-                        setforDelete({ state: "grid", id: _id });
-                      }}
-                      fontSize="small"
-                    />
-                  </IconButton>
-                </td>
-              </tr>
-            );
-          })}
-        </tbody>
-      </table>
-    </div>
+                  return (
+                    <TableRow hover role="checkbox" tabIndex={-1} key={index}>
+                      <TableCell className="text-center">{index + 1}</TableCell>
+
+                      <TableCell sx={{ textAlign: "center" }}>
+                        <img
+                          src={thumbnail}
+                          className="rounded-full border-2 border-gray-400 w-10 h-10"
+                          alt={title}
+                        />
+                      </TableCell>
+                      <TableCell>{title}</TableCell>
+                      <TableCell>{category}</TableCell>
+                      <TableCell>{type}</TableCell>
+                      <TableCell>{addeBy}</TableCell>
+                      <TableCell>₹{price}</TableCell>
+                      <TableCell>
+                        {moment(createdAt).format("DD-MM-YYYY")}
+                      </TableCell>
+                      <TableCell className="text-center">
+                        <IconButton
+                          onClick={() => {
+                            setforDelete({ state: "grid", id: _id });
+                          }}
+                          aria-label="delete"
+                          size="small"
+                        >
+                          <DeleteIcon fontSize="small" />
+                        </IconButton>
+                      </TableCell>
+                    </TableRow>
+                  );
+                })}
+            </TableBody>
+          </Table>
+        </TableContainer>
+        <TablePagination
+          rowsPerPageOptions={[10, 25, 100]}
+          component="div"
+          count={count}
+          rowsPerPage={rowsPerPage}
+          page={page}
+          onPageChange={handleChangePage}
+          onRowsPerPageChange={handleChangeRowsPerPage}
+        />
+      </Paper>
+    </>
   );
 }
