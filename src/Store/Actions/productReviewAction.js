@@ -14,24 +14,6 @@ export const fetchProductReviews = createAsyncThunk(
   }
 );
 
-// export const fetchProductsByQueryObj = createAsyncThunk(
-//   "Product/fetchProductsByQueryObj",
-//   async (data) => {
-//     const res = await fetch(getProductsByQueryOBJURL, {
-//       method: "POST",
-//       headers: {
-//         "Content-Type": "application/json",
-//       },
-//       body: JSON.stringify({
-//         queryObject: data.queryObj,
-//         skip: data.skip,
-//         limit: data.limit,
-//         sortingObj: data.sortObj,
-//       }),
-//     });
-//     return await res.json();
-//   }
-// );
 
 export const AddProductReview = createAsyncThunk(
   "ProductReview/AddProductReview",

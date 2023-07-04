@@ -8,7 +8,6 @@ initDB();
 export const GET = async (req, { params }) => {
   try {
     const getProduct = await ProductDetail.findById(params.pid);
-    console.log(getProduct);
     const update = { views: getProduct.views + 1 };
     const afterUpdate = await ProductDetail.findByIdAndUpdate(
       params.pid,

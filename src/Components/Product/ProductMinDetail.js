@@ -2,11 +2,13 @@
 import React, { useRef, useState } from "react";
 import Allproducts from "@/Components/Product/Allproducts";
 import DetailTabs from "@/Components/Product/DetailTabs";
-import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
-import FavoriteIcon from "@mui/icons-material/Favorite";
 import { Rating, ToggleButton } from "@mui/material";
 import PaymentInititate from "../Payment/PaymentInititate";
 import { useUserAuth } from "@/Context/UserAuthContext";
+import { useDispatch } from "react-redux";
+import { SavedProduct } from "@/Store/Actions/favouriteAction";
+import { toast } from "react-hot-toast";
+import SavedButton from "./SavedButton";
 const ProductMinDetail = ({
   thumbnail,
   title,
@@ -18,7 +20,8 @@ const ProductMinDetail = ({
   id,
   images,
 }) => {
-  const [selected, setSelected] = useState(false);
+  const { userIDS } = useUserAuth();
+
   return (
     <section className="  grid grid-cols-1  ">
       {/* short description  */}
@@ -98,21 +101,7 @@ const ProductMinDetail = ({
                   amount={price}
                   produDID={productID}
                 />
-
-                <ToggleButton
-                  value="check"
-                  selected={selected}
-                  onChange={(e) => {
-                    e.preventDefault();
-                    setSelected(!selected);
-                  }}
-                >
-                  {selected ? (
-                    <FavoriteIcon className="text-red-600" />
-                  ) : (
-                    <FavoriteBorderIcon />
-                  )}
-                </ToggleButton>
+                <SavedButton productID={id} userID={userIDS.ID} />
               </div>
             </div>
           </div>

@@ -4,7 +4,7 @@ import productReducer from "./Slices/productsSlice";
 import blogReducer from "./Slices/blogSlice";
 import userIndividualReducer from "./Slices/userSliceIndividual";
 import productReviewReducer from "./Slices/productReviewSlice";
-
+import favouriteReducer from "./Slices/favouriteSlice";
 
 const store = configureStore({
   reducer: {
@@ -13,6 +13,7 @@ const store = configureStore({
     user: userIndividualReducer,
     products: productReducer,
     productReview: productReviewReducer,
+    favourite: favouriteReducer,
   },
 });
 

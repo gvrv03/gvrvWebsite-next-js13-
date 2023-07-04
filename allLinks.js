@@ -4,6 +4,8 @@ import baseUrl from "./baseUrl";
 export const getProductsURL = baseUrl + "api/products";
 export const addProductReviewURL = baseUrl + "api/ProductReview?productID=";
 export const getProductsByQueryOBJURL = baseUrl + "api/GetProductByQueryObj";
+export const savedProductToFavoriteURL = baseUrl + "api/ProductSaved";
+export const checkSavedProductURL = baseUrl + "api/CheckProductSaved";
 // {
 //     "queryObject": {},
 //     "skip": 0,
@@ -11,8 +13,8 @@ export const getProductsByQueryOBJURL = baseUrl + "api/GetProductByQueryObj";
 //     "sortingObj": {}
 //   }
 
-// Payment 
-export const createOrderURL = baseUrl + "api/PaymentGateway/CreateOrder"
+// Payment
+export const createOrderURL = baseUrl + "api/PaymentGateway/CreateOrder";
 
 export const downloadProductURL = baseUrl + "api/ProductDown";
 export const getSingleProductURL = baseUrl + "api/products/Product/";
@@ -25,3 +27,5 @@ export const getSingleURL = baseUrl + "api/blogs/Post/";
 // Users
 export const getAllUsers = baseUrl + "api/signIn";
 export const getUser = baseUrl + "api/User/";
+
+//Favourite
