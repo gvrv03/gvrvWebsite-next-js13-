@@ -7,7 +7,12 @@ import { DownloadTableExcel } from "react-export-table-to-excel";
 import NavigateBeforeIcon from "@mui/icons-material/NavigateBefore";
 import NavigateNextIcon from "@mui/icons-material/NavigateNext";
 import SearchIcon from "@mui/icons-material/Search";
-import { BtnSpinner, BtnSpinner2 } from "./Spinner/LoadingSpinner";
+import {
+  BtnSpinner,
+  BtnSpinner2,
+  BtnSpinnerBlue,
+  BtnSpinnerWhite,
+} from "./Spinner/LoadingSpinner";
 import AddIcon from "@mui/icons-material/Add";
 
 export const DefButton = ({ name, func, btnStyle, loading }) => {
@@ -15,9 +20,9 @@ export const DefButton = ({ name, func, btnStyle, loading }) => {
     <button
       onClick={func}
       disabled={loading ? true : false}
-      className={`${btnStyle} grid place-items-center`}
+      className={`${btnStyle} grid ${loading && "py-5"} place-items-center`}
     >
-      {loading ? <BtnSpinner /> : name}
+      {loading ? <BtnSpinnerWhite /> : name}
     </button>
   );
 };

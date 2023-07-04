@@ -10,6 +10,14 @@ const LoadingSpinner = () => {
   );
 };
 
+export const BtnSpinnerWhite = ()=>{
+  return(
+    <div class="loadingio-spinner-spinner-qknpytta52r absolute "><div class="ldio-if2qo3vpcif">
+<div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div>
+</div></div>
+  )
+}
+
 export const BtnSpinnerBlue = () => {
   return (
     <div className="loadingio-spinner-spinner-nxgvwpxbukq absolute "><div className="ldio-i2zaqjtv41">
