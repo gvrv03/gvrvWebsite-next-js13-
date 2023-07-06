@@ -23,15 +23,15 @@ export default function RootLayout({ children }) {
       <body className="bgBackground text-sm md:text-base text-black">
         <Provider store={store}>
           <UserAuthContexProvider>
-            <Navbar />
-            <div className="px-5 pb-5">
-              <Toaster position="top-center" reverseOrder={false} />
-              {children}
-            </div>
-            {/* <Footer /> */}
-            <ScrollToTop showUnder={160}>
-              <i className="bi text-4xl pColor bi-arrow-up-square-fill"></i>
-            </ScrollToTop>
+              <Navbar />
+              <div className="px-5 pb-5">
+                <Toaster position="top-center" reverseOrder={false} />
+                {children}
+              </div>
+              {/* <Footer /> */}
+              <ScrollToTop showUnder={160}>
+                <i className="bi text-4xl pColor bi-arrow-up-square-fill"></i>
+              </ScrollToTop>
           </UserAuthContexProvider>
         </Provider>
       </body>

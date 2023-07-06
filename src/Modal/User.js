@@ -1,14 +1,8 @@
 import mongoose from "mongoose";
 const userSchema = new mongoose.Schema(
   {
-    userName: {
+    name: {
       type: String,
-      required: true,
-    },
-    firebaseID: {
-      type: String,
-      required: true,
-      unique: true,
     },
     gender: {
       type: String,
@@ -22,9 +16,11 @@ const userSchema = new mongoose.Schema(
       type: String,
       default: "N/A",
     },
-    userProfile: {
+    image: {
       type: String,
-      required: true,
+    },
+    password: {
+      type: String,
     },
     role: {
       type: String,

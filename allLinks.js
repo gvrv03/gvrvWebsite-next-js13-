@@ -1,5 +1,8 @@
 import baseUrl from "./baseUrl";
 
+// Auth
+export const SignUpURL = baseUrl + "api/auth/SignUp";
+
 // Products
 export const getProductsURL = baseUrl + "api/products";
 export const addProductReviewURL = baseUrl + "api/ProductReview?productID=";

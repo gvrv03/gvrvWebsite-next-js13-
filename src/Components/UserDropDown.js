@@ -13,10 +13,11 @@ import PersonAdd from "@mui/icons-material/PersonAdd";
 import Settings from "@mui/icons-material/Settings";
 import Logout from "@mui/icons-material/Logout";
 import { useUserAuth } from "@/Context/UserAuthContext";
+import { signOut } from "next-auth/react";
 
-export default function UserDropDown() {
-  const { user, logOut } = useUserAuth();
-
+export default function UserDropDown({user}) {
+  // const { user, logOut } = useUserAuth();
+console.log(user);
   const [anchorEl, setAnchorEl] = React.useState(null);
 
   const open = Boolean(anchorEl);
@@ -46,9 +47,9 @@ export default function UserDropDown() {
           >
             <Avatar sx={{ width: 32, height: 32 }}>
               <img
-                src={user.photoURL}
+                src={user?.image}
                 className="p-1 rounded-full bg-gray-200"
-                alt={user.displayName}
+                alt={user?.name}
               />
             </Avatar>
           </IconButton>
@@ -93,7 +94,7 @@ export default function UserDropDown() {
           <div className="border-b-2 pb-2">
             Hello !{" "}
             <span className="font-semibold text-blue-600 ">
-              {user.displayName}
+              {user.name}
             </span>
           </div>
         </h5>
@@ -115,7 +116,7 @@ export default function UserDropDown() {
         </MenuItem>
         <MenuItem
           onClick={() => {
-            logOut();
+            signOut();
             handleClose();
           }}
         >

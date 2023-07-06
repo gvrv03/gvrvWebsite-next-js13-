@@ -12,10 +12,13 @@ import UserDropDown from "./UserDropDown";
 import { AppBar, IconButton, Toolbar, Typography } from "@mui/material";
 import styled from "@emotion/styled";
 import SearchAll from "./UtilityComponents/SearchAll";
+import { useSession } from "next-auth/react";
 
 const Navbar = () => {
   const { user } = useUserAuth();
-
+  const { data } = useSession();
+  const session = useSession();
+console.log(session);
   const router = useRouter();
   return (
     <>
@@ -34,17 +37,17 @@ const Navbar = () => {
             type="button"
             className="inline-flex items-center py-2  gap-5 text-sm text-gray-500 rounded-lg dark:text-gray-400 "
           >
-            <SearchAll/>
+            <SearchAll />
 
-            {!user ? (
+            {!data ? (
               <Link
-                href="/Authentication"
+                href="/Auth/SignIn"
                 className=" border w-6 h-6  cursor-pointer grid place-items-center   rounded-full"
               >
                 <i className="bi bi-person-fill"></i>
               </Link>
             ) : (
-              <UserDropDown />
+              <UserDropDown user={data?.user} />
             )}
             <Sidebar />
           </div>

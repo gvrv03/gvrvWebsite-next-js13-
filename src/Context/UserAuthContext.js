@@ -16,6 +16,7 @@ import {
 import { auth } from "../../firebase";
 import { useEffect } from "react";
 import { useState } from "react";
+import { SessionProvider } from "next-auth/react";
 
 const userAuthContext = createContext();
 export function UserAuthContexProvider({ children }) {
@@ -144,7 +145,7 @@ export function UserAuthContexProvider({ children }) {
         resetPassword,
       }}
     >
-      {children}
+      <SessionProvider>{children}</SessionProvider>
     </userAuthContext.Provider>
   );
 }
