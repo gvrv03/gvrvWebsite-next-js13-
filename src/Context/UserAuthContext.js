@@ -16,10 +16,13 @@ import {
 import { auth } from "../../firebase";
 import { useEffect } from "react";
 import { useState } from "react";
-import { SessionProvider } from "next-auth/react";
+import { SessionProvider, useSession } from "next-auth/react";
 
 const userAuthContext = createContext();
 export function UserAuthContexProvider({ children }) {
+  // const session = useSession();
+  // console.log(session);
+
   const [user, setuser] = useState("");
   const [response, setresponse] = useState("");
   const [verificatioIDPhone, setverificatioIDPhone] = useState({});

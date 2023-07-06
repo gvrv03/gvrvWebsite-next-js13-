@@ -1,5 +1,5 @@
 "use client";
-import { useUserAuth } from "@/Context/UserAuthContext";
+ 
 import { ToggleButton } from "@mui/material";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import FavoriteIcon from "@mui/icons-material/Favorite";
@@ -12,11 +12,13 @@ import LoadingSpinner, {
   BtnSpinner2,
   BtnSpinnerBlue,
 } from "../Spinner/LoadingSpinner";
+import { useUserNextAuth } from "@/Context/useNextAuthContext";
 
 const SavedButton = ({ productID, userID }) => {
   const [selected, setSelected] = useState(false);
   const [loading, setloading] = useState(false);
-  const { user } = useUserAuth();
+  const { userData } = useUserNextAuth();
+
   const checkSvaedAPi = async () => {
     const uID = localStorage.getItem("id");
     const res = await fetch(checkSavedProductURL, {
@@ -34,7 +36,7 @@ const SavedButton = ({ productID, userID }) => {
 
   const savedProduct = async () => {
     setloading(true);
-    if (!user) {
+    if (!userData) {
       setloading(false);
       return toast.error("You need to Login !");
     }

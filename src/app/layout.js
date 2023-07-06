@@ -7,6 +7,7 @@ import { Provider } from "react-redux";
 import ScrollToTop from "react-scroll-up";
 import "./globals.css";
 import { Toaster } from "react-hot-toast";
+import { UserNextAuthContexProvider } from "@/Context/useNextAuthContext";
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
@@ -23,6 +24,7 @@ export default function RootLayout({ children }) {
       <body className="bgBackground text-sm md:text-base text-black">
         <Provider store={store}>
           <UserAuthContexProvider>
+            <UserNextAuthContexProvider>
               <Navbar />
               <div className="px-5 pb-5">
                 <Toaster position="top-center" reverseOrder={false} />
@@ -32,6 +34,7 @@ export default function RootLayout({ children }) {
               <ScrollToTop showUnder={160}>
                 <i className="bi text-4xl pColor bi-arrow-up-square-fill"></i>
               </ScrollToTop>
+            </UserNextAuthContexProvider>
           </UserAuthContexProvider>
         </Provider>
       </body>

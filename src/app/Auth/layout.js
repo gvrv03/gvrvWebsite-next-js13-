@@ -1,16 +1,16 @@
 "use client";
 import React from "react";
 import { signIn } from "next-auth/react";
-import { Container } from "postcss";
-import { Box, CssBaseline } from "@mui/material";
 const AuthLayout = ({ children }) => {
   return (
-    <div className="container m-auto flex  mt-28   items-center gap-10">
-      <div className="w-3/4 hidden md:block bg-red-700  " >
-fkhs
+    <div className="container m-auto flex h-screen      items-center gap-10">
+      <div className="w-3/4 hidden md:grid  place-items-center ">
+        <img src="/img/Auth.svg" />
       </div>
-      <div className="w-full md:w-1/4 border p-5 " >
-        <div className="grid place-items-center max-w-mdrounded-sm ">{children}</div>
+      <div className="w-full md:w-1/4 border p-5 ">
+        <div className="grid place-items-center max-w-mdrounded-sm ">
+          {children}
+        </div>
 
         <div className="flex justify-center items-center gap-5 mt-5">
           <button

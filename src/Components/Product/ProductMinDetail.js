@@ -4,11 +4,12 @@ import Allproducts from "@/Components/Product/Allproducts";
 import DetailTabs from "@/Components/Product/DetailTabs";
 import { Rating, ToggleButton } from "@mui/material";
 import PaymentInititate from "../Payment/PaymentInititate";
-import { useUserAuth } from "@/Context/UserAuthContext";
+ 
 import { useDispatch } from "react-redux";
 import { SavedProduct } from "@/Store/Actions/favouriteAction";
 import { toast } from "react-hot-toast";
 import SavedButton from "./SavedButton";
+import { useUserNextAuth } from "@/Context/useNextAuthContext";
 const ProductMinDetail = ({
   thumbnail,
   title,
@@ -20,7 +21,7 @@ const ProductMinDetail = ({
   id,
   images,
 }) => {
-  const { userIDS } = useUserAuth();
+  const { userData } = useUserNextAuth();
 
   return (
     <section className="  grid grid-cols-1  ">
@@ -101,7 +102,10 @@ const ProductMinDetail = ({
                   amount={price}
                   produDID={productID}
                 />
-                <SavedButton productID={id} userID={userIDS.ID} />
+                <SavedButton
+                  productID={id}
+                  userID={userData?.id ? userData?.id : userData?._id}
+                />
               </div>
             </div>
           </div>

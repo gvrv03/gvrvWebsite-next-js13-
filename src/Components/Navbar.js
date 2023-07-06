@@ -7,19 +7,16 @@ import MenuIcon from "@mui/icons-material/Menu";
 import MuiAppBar from "@mui/material/AppBar";
 
 import Sidebar from "./Sidebar";
-import { useUserAuth } from "@/Context/UserAuthContext";
+ 
 import UserDropDown from "./UserDropDown";
 import { AppBar, IconButton, Toolbar, Typography } from "@mui/material";
 import styled from "@emotion/styled";
 import SearchAll from "./UtilityComponents/SearchAll";
 import { useSession } from "next-auth/react";
+import { useUserNextAuth } from "@/Context/useNextAuthContext";
 
 const Navbar = () => {
-  const { user } = useUserAuth();
   const { data } = useSession();
-  const session = useSession();
-console.log(session);
-  const router = useRouter();
   return (
     <>
       <nav className=" py-1 md:px-0 px-5  fixed z-50 w-full left-0 bg-white backdrop-blur-2xl top-0 ">

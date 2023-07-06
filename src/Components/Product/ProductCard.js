@@ -63,10 +63,10 @@ const ProductCard = ({
           </div>
         </div>
         <div className=" flex gap-2 mt-2  items-center ">
-          <Rating name="read-only" value={4} readOnly />
+          <Rating name="read-only" size="small" value={4} readOnly />
           <img
             src="https://static-assets-web.flixcart.com/fk-p-linchpin-web/fk-cp-zion/img/fa_62673a.png"
-            className="h-5"
+            className=" h-2 md:h-4"
             alt={title}
           />
         </div>

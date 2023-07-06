@@ -1,6 +1,6 @@
 "use client";
 import TopNavBar from "@/Components/MyAccount/TopNavBar";
-import { useUserAuth } from "@/Context/UserAuthContext";
+import { useUserNextAuth } from "@/Context/useNextAuthContext";
 import { DashNav, UserAccountNav } from "@/NavItem/TopNav";
 import { useRouter } from "next/navigation";
 import React, { useState } from "react";
@@ -8,15 +8,15 @@ import React, { useState } from "react";
 const AdminLayout = ({ children }) => {
   const [navbar, setnavbar] = useState(false);
   const router = useRouter();
-  const { user } = useUserAuth();
-  if (!user) {
+  const { userData } = useUserNextAuth();
+  if (!userData) {
     return (
       <div className="h-screen bg-white w-full grid place-items-center">
         You Need to Sign In
       </div>
     );
   }
-  if (user.email != "itsgaurav3112003@gmail.com") {
+  if (userData.email != "itsgaurav3112003@gmail.com") {
     return (
       <div className="h-screen bg-white w-full grid place-items-center">
         Access Denied

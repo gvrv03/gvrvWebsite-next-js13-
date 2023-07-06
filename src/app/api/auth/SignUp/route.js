@@ -24,7 +24,7 @@ export async function POST(request) {
 
     const userAdd = await User.create({
       email,
-      image:"/img/maleUser",
+      image:"/img/maleUser.svg",
       name,
       password: await bcrypt.hash(password, saltRounds),
     });

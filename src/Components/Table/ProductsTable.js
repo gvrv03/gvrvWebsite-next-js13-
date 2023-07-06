@@ -8,7 +8,7 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TablePagination from "@mui/material/TablePagination";
 import TableRow from "@mui/material/TableRow";
-import { useUserAuth } from "@/Context/UserAuthContext";
+ 
 import DeleteModal from "../DeleteModal";
 import { useState } from "react";
 import { DeleteBlog } from "@/Store/Actions/blogAction";
@@ -19,12 +19,13 @@ import { IconButton } from "@mui/material";
 import DeleteIcon from "@mui/icons-material/Delete";
 import moment from "moment";
 import { fetchProducts } from "@/Store/Actions/productAction";
+import { useUserNextAuth } from "@/Context/useNextAuthContext";
 
 export default function ProductsTable({ products, count }) {
   const dispatch = useDispatch();
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(10);
-  const { userIDS } = useUserAuth();
+  const { userIDS } = useUserNextAuth();
   const handleChangePage = (event, newPage) => {
     setPage(newPage);
     dispatch(fetchProducts({ queryObj: {}, page: newPage + 1, limit: 10 }));

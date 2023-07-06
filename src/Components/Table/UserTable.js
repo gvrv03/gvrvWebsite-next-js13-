@@ -9,7 +9,7 @@ import TableHead from "@mui/material/TableHead";
 import TablePagination from "@mui/material/TablePagination";
 import TableRow from "@mui/material/TableRow";
 import { User } from "@/DataSet/DataSet";
-import { useUserAuth } from "@/Context/UserAuthContext";
+ 
 import LoadingSpinner from "../Spinner/LoadingSpinner";
 
 export default function UserTable({ Users }) {

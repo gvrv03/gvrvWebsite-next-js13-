@@ -15,7 +15,8 @@ import ProductOrg from "@/Components/Admin/CreateProduct/ProductOrg";
 import { AddProduct } from "@/Store/Actions/productAction";
 import { toast } from "react-hot-toast";
 import { useDispatch } from "react-redux";
-import { useUserAuth } from "@/Context/UserAuthContext";
+ 
+import { useUserNextAuth } from "@/Context/useNextAuthContext";
 
 const CreateProdct = () => {
   //Main Data State
@@ -23,8 +24,7 @@ const CreateProdct = () => {
   const [artical, setartical] = useState("");
   const [title, settitle] = useState("");
   const [status, setstatus] = useState("");
-  console.log(status);
-  const { userIDS } = useUserAuth();
+  const { userIDS } = useUserNextAuth();
   const [loading, setloading] = useState(false);
   // Product Organization
   const [PCategory, setPCategory] = useState("");
@@ -44,7 +44,6 @@ const CreateProdct = () => {
   const [thumbnail, setthumbnail] = useState("");
   const [images, setimages] = useState([]);
   const [file, setFile] = useState(null);
-console.log(file);
   const dispatch = useDispatch();
   const createProduct = async (e) => {
     e.preventDefault();

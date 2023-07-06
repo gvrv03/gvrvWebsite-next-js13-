@@ -9,12 +9,11 @@ import TableHead from "@mui/material/TableHead";
 import TablePagination from "@mui/material/TablePagination";
 import TableRow from "@mui/material/TableRow";
 import { User } from "@/DataSet/DataSet";
-import { useUserAuth } from "@/Context/UserAuthContext";
+ 
 
 export default function FeedbackTable() {
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(10);
-  const Context = useUserAuth();
   const handleChangePage = (event, newPage) => {
     console.log(newPage);
     setPage(newPage);
@@ -51,11 +50,11 @@ export default function FeedbackTable() {
                 <TableRow hover role="checkbox" tabIndex={-1} key={index}>
                   <TableCell>{index + 1}</TableCell>
                   <TableCell>
-                    <img
+                    {/* <img
                       className="w-7 h-7 rounded-full border-2 p-1 border-gray-400"
-                      src={Context.user && Context.user.photoURL}
+                      // src={Context.user && Context.user.photoURL}
                       alt=""
-                    />
+                    /> */}
                   </TableCell>
                   <TableCell>{row.name}</TableCell>
                   <TableCell>{row.email}</TableCell>

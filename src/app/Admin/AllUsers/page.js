@@ -10,7 +10,7 @@ import LoadingSpinner, {
 import { getAuth } from "firebase/auth";
 import { Button } from "@mui/material";
 import { AdminPageHeader } from "@/Components/UtilComponent";
-import { useUserAuth } from "@/Context/UserAuthContext";
+ 
 
 const AllUsers = () => {
   const dispatch = useDispatch();

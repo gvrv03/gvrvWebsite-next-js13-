@@ -1,7 +1,7 @@
 "use client";
 import HtmlEditor from "@/Components/Admin/HtmlEditor ";
 import TextEditor from "@/Components/Admin/TextEditor";
-import { useUserAuth } from "@/Context/UserAuthContext";
+ 
 import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import { storage } from "../../../../firebase";
 import { v4 } from "uuid";
@@ -14,10 +14,11 @@ import { BackBtn, UploadButton } from "@/Components/UtilComponent";
 import { AddBlog } from "@/Store/Actions/blogAction";
 import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-hot-toast";
+import { useUserNextAuth } from "@/Context/useNextAuthContext";
 const CreatePost = () => {
   const [blogNav, setblogNav] = useState("-right-full");
   const [cat, setcat] = useState("");
-  const { userIDS } = useUserAuth();
+  const { userIDS } = useUserNextAuth();
   const [loading, setloading] = useState(false);
   // Data State
   const [title, settitle] = useState("");
@@ -90,12 +91,12 @@ const CreatePost = () => {
         blog: {
           title,
           category,
-          author: userIDS.ID,
+          author: userIDS?.ID,
           image: imageUrls,
           description,
           artical,
         },
-        adminToken: userIDS.ID,
+        adminToken: userIDS?.ID,
       })
     );
     if (payload.message) {

@@ -1,12 +1,11 @@
 "use client";
 import MainCard from "@/Components/Profile/MainCard";
-import { useUserAuth } from "@/Context/UserAuthContext";
+import { useUserNextAuth } from "@/Context/useNextAuthContext";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
 import { read, utils } from "xlsx";
 
 const Profile = () => {
-  const { user } = useUserAuth();
   const [xlsxData, setxlsxData] = useState({});
   const readUploadFile = (e) => {
     e.preventDefault();
@@ -28,19 +27,9 @@ const Profile = () => {
 
   return (
     <div className=" container m-auto flex-col flex gap-5">
-      {user ? (
-        <section>
-          <MainCard />
-        </section>
-      ) : (
-        <div className="bg-white p-5 font-semibold">
-          You need Sign In!{" "}
-          <Link href="/Authentication" className="pColor">
-            {" "}
-            Sign In
-          </Link>{" "}
-        </div>
-      )}
+      <section>
+        <MainCard />
+      </section>
     </div>
   );
 };

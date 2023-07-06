@@ -1,4 +1,4 @@
-import { useUserAuth } from "@/Context/UserAuthContext";
+ 
 import { fetchUsersIndividual } from "@/Store/Actions/userActionIndividual";
 import { Skeleton } from "@mui/material";
 import { useRouter } from "next/navigation";
@@ -12,10 +12,11 @@ const MainCard = () => {
   }, [dispatch]);
   const Users = useSelector((state) => state.user);
   const { isLoading, error, data } = Users;
-  const { userProfile, userName, email, phoneNo, gender } = data;
+  const { image, name, email, phoneNo, gender } = data;
   if (isLoading) {
     return <MainSkeleton />;
   }
+  console.log(Users);
 
   if (error) {
     return <div>Unexpected Error Occure</div>;
@@ -27,42 +28,30 @@ const MainCard = () => {
         <i className="uil uil-edit absolute top-5 right-5 text-xl" />
       </button> */}
       <div className=" ">
-        <img
-          src={userProfile}
-          className="w-20   rounded-full h-full"
-          alt="User"
-        />
+        <img src={image} className="w-20   rounded-full h-full" alt="User" />
       </div>
 
       <div className="w-full   place-items-center grid  grid-cols-2 gap-5 ">
         <div className="gap-2 flex-col flex">
           <div className="">
-            <label className="font-semibold text-gray-400">
-              Name
-            </label>
-            <p className="md:text-sm text-xs">{userName}</p>
+            <label className="font-semibold text-gray-400">Name</label>
+            <p className="md:text-sm text-xs">{name}</p>
           </div>
 
           <div className="">
-            <label className="font-semibold text-gray-400">
-              Email
-            </label>
+            <label className="font-semibold text-gray-400">Email</label>
             <p className="md:text-sm  text-xs">{email}</p>
           </div>
         </div>
 
         <div className="gap-2 flex-col flex">
           <div className="">
-            <label className="font-semibold text-gray-400">
-              Gender
-            </label>
+            <label className="font-semibold text-gray-400">Gender</label>
             <p className="md:text-sm text-xs">{gender}</p>
           </div>
 
           <div className="">
-            <label className="font-semibold text-gray-400">
-              Phone No.
-            </label>
+            <label className="font-semibold text-gray-400">Phone No.</label>
             <p className="md:text-sm text-xs">{phoneNo}</p>
           </div>
         </div>
@@ -90,32 +79,24 @@ export const MainSkeleton = () => {
       <div className="w-full md:w-96 flex-col bg-white flex justify-between gap-5 ">
         <div className="gap-2  grid grid-cols-2">
           <div className="">
-            <label className="font-semibold text-gray-400">
-              Name
-            </label>
+            <label className="font-semibold text-gray-400">Name</label>
             <Skeleton variant="rectangular" width="100%" height="20px" />
           </div>
 
           <div className="">
-            <label className="font-semibold text-gray-400">
-              Email
-            </label>
+            <label className="font-semibold text-gray-400">Email</label>
             <Skeleton variant="rectangular" width="100%" height="20px" />
           </div>
         </div>
 
         <div className="gap-2  grid grid-cols-2">
           <div className="">
-            <label className="font-semibold text-gray-400">
-              Gender
-            </label>
+            <label className="font-semibold text-gray-400">Gender</label>
             <Skeleton variant="rectangular" width="100%" height="20px" />
           </div>
 
           <div className="">
-            <label className="font-semibold text-gray-400">
-              Phone No.
-            </label>
+            <label className="font-semibold text-gray-400">Phone No.</label>
             <Skeleton variant="rectangular" width="100%" height="20px" />
           </div>
         </div>

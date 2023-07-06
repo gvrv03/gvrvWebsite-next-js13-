@@ -4,8 +4,8 @@ import { getAllUsers, getUser } from "../../../allLinks";
 export const fetchUsersIndividual = createAsyncThunk(
   "blogs/fetchUsersIndividual",
   async () => {
-    const fid = localStorage.getItem("firebaseuid");
-    const res = await fetch(getUser + fid, {
+    const id = localStorage.getItem("id");
+    const res = await fetch(getUser + id, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",

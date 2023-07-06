@@ -8,7 +8,7 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TablePagination from "@mui/material/TablePagination";
 import TableRow from "@mui/material/TableRow";
-import { useUserAuth } from "@/Context/UserAuthContext";
+ 
 import DeleteModal from "../DeleteModal";
 import { useState } from "react";
 import { DeleteBlog, fetchBlogs } from "@/Store/Actions/blogAction";
@@ -18,12 +18,13 @@ import { useDispatch } from "react-redux";
 import { IconButton } from "@mui/material";
 import DeleteIcon from "@mui/icons-material/Delete";
 import moment from "moment/moment";
+import { useUserNextAuth } from "@/Context/useNextAuthContext";
 
 export default function BlogsTable({ blogs, count }) {
   const dispatch = useDispatch();
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(10);
-  const { userIDS } = useUserAuth();
+  const { userIDS } = useUserNextAuth();
   const handleChangePage = (event, newPage) => {
     setPage(newPage);
     dispatch(

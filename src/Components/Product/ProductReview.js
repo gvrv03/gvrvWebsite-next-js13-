@@ -1,4 +1,4 @@
-import { useUserAuth } from "@/Context/UserAuthContext";
+ 
 import {
   AddProductReview,
   fetchProductReviews,
@@ -12,21 +12,15 @@ import { DefButton } from "../UtilComponent";
 import AverageReview from "./ProductReview/AverageReview";
 import SingleStarCount from "./ProductReview/SingleStarCount";
 import UserReview from "./ProductReview/UserReview";
+import { useUserNextAuth } from "@/Context/useNextAuthContext";
 
 const ProductReview = ({ productID }) => {
-  const { userIDS, user } = useUserAuth();
-  const [starsRating, setstarsRating] = useState({
-    Star5: "50%",
-    Star4: "90%",
-    Star3: "100%",
-    Star2: "8%",
-    Star1: "10%",
-  });
   const [reviewState, setreviewState] = useState("hidden");
   const [rating, setrating] = useState(1);
   const [userReview, setuserReview] = useState("");
   const [reviewLoading, setreviewLoading] = useState(false);
   // to add Review
+  const { userIDS, userData } = useUserNextAuth();
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -36,7 +30,7 @@ const ProductReview = ({ productID }) => {
   const addNewReview = async (e) => {
     e.preventDefault();
     setreviewLoading(true);
-    if (!user) {
+    if (!userData) {
       setreviewLoading(false);
       return toast.error("You need to Login");
     }
@@ -46,8 +40,8 @@ const ProductReview = ({ productID }) => {
         stars: rating,
         userID: userIDS.ID,
         text: userReview,
-        Name: user.displayName,
-        userProfileImg: user.photoURL,
+        Name: userData.name,
+        userProfileImg: userData.image,
       })
     );
 

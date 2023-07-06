@@ -33,7 +33,7 @@ import { NextResponse } from "next/server";
 
 export async function GET(req, { params }) {
   try {
-    const getUser = await User.findOne({ firebaseID: params.fid });
+    const getUser = await User.findOne({ _id: params.fid });
     if (!getUser) {
       return NextResponse.json({ msg: "No User Found" }, { status: 404 });
     }
