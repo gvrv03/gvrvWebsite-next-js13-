@@ -1,8 +1,14 @@
 import { ProductSkeleton } from "@/app/Products/loading";
 import AllSavedProducts from "@/Components/Favourite/AllSavedProduct";
 import React, { Suspense } from "react";
+import { savedProductToFavoriteURL } from "../../../../allLinks";
 
-const Page = () => {
+const Page = async () => {
+  const res = await fetch(
+    `${savedProductToFavoriteURL}?page=1&limit=100&query={"userId":"64a7a6148f71ff29c9bdeb4e"}`
+  );
+  const { products } = await res.json();
+
   return (
     <div className="container m-auto">
       <div className="flex gap-5 ">
@@ -13,7 +19,7 @@ const Page = () => {
 
       <div className="mt-5">
         <Suspense fallback={<ProductLoading />}>
-          <AllSavedProducts />
+          <AllSavedProducts products={products && products} />
         </Suspense>
       </div>
     </div>

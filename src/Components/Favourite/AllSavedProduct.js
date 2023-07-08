@@ -1,15 +1,8 @@
-import axios from "axios";
+"use client";
 import React from "react";
-import { savedProductToFavoriteURL } from "../../../allLinks";
-
 import ProductCard from "../Product/ProductCard";
 
-export default async function AllSavedProducts() {
-  const res = await fetch(
-    `${savedProductToFavoriteURL}?page=1&limit=100&query={"userId":"64a7a6148f71ff29c9bdeb4e"}`
-  );
-
-  const { products } = await res.json();
+export default function AllSavedProducts({ products }) {
   if (products && products === undefined) {
     return (
       <div className="h-screen w-full grid place-items-center  bg-white ">
