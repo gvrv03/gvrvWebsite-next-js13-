@@ -5,13 +5,12 @@ import { savedProductToFavoriteURL } from "../../../allLinks";
 import ProductCard from "../Product/ProductCard";
 
 export default async function AllSavedProducts() {
-  const res = await axios.get(
-    savedProductToFavoriteURL +
-      `?page=1&limit=1000&query={"userId":"64a7a6148f71ff29c9bdeb4e"}`
+  const res = await fetch(
+    `${savedProductToFavoriteURL}?page=1&limit=100&query={"userId":"64a7a6148f71ff29c9bdeb4e"}`
   );
 
-  const { products } = await res.data;
-  //   console.log(products);
+  const { products } = await res.json();
+    console.log(products);
   if (products && products === undefined) {
     return (
       <div className="h-screen w-full grid place-items-center  bg-white ">
