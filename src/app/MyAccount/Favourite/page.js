@@ -1,15 +1,26 @@
+"use client";
 import { ProductSkeleton } from "@/app/Products/loading";
 import AllSavedProducts from "@/Components/Favourite/AllSavedProduct";
-import React, { Suspense } from "react";
-import { savedProductToFavoriteURL } from "../../../../allLinks";
+import { fetchSavedProduct } from "@/Store/Actions/favouriteAction";
+import React, { Suspense, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 
 const Page = async () => {
-  const res = await fetch(
-    savedProductToFavoriteURL +
-      `?page=1&limit=100&query={"userId":"64a7a6148f71ff29c9bdeb4e"}`
-  );
-  const { products } = await res.json();
+  const dispatch = useDispatch();
 
+  useEffect(() => {
+    dispatch(
+      fetchSavedProduct({
+        queryObj: { userId: localStorage.getItem("id") },
+        page: 1,
+        limit: 1000,
+      })
+    );
+  }, []);
+
+  // favourite
+  const favourite = useSelector((state) => state.favourite);
+  
   return (
     <div className="container m-auto">
       <div className="flex gap-5 ">
@@ -17,11 +28,9 @@ const Page = async () => {
         <button className="border rounded-full px-5 py-1">Product</button>
         <button className="border rounded-full px-5 py-1">Blog</button>
       </div>
-
       <div className="mt-5">
-        <Suspense fallback={<ProductLoading />}>
-          <AllSavedProducts products={products && products} />
-        </Suspense>
+        {favourite?.isLoading && <ProductLoading />}
+        <AllSavedProducts products={favourite?.data?.products} />
       </div>
     </div>
   );

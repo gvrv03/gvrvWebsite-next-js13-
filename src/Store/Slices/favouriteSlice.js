@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { SavedProduct } from "../Actions/favouriteAction";
+import { fetchSavedProduct, SavedProduct } from "../Actions/favouriteAction";
 
 // Define the initial state
 const initialState = {
@@ -33,7 +33,23 @@ const favouriteSlice = createSlice({
       .addCase(SavedProduct.rejected, (state, action) => {
         state.isLoading = false;
         state.error = action.error.message;
-      });
+      })
+
+
+      .addCase(fetchSavedProduct.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(fetchSavedProduct.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.error = null;
+        state.data.products = action.payload.products;
+      })
+      .addCase(fetchSavedProduct.rejected, (state, action) => {
+        state.isLoading = false;
+        state.error = action.error.message;
+      })
+
+
   },
 });
 
