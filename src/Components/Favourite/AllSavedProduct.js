@@ -10,14 +10,14 @@ export default async function AllSavedProducts() {
   );
 
   const { products } = await res.json();
-    console.log(products);
-  if (products && products === undefined) {
-    return (
-      <div className="h-screen w-full grid place-items-center  bg-white ">
-        Error occuured
-      </div>
-    );
-  }
+    // console.log(products);
+  // if (products && products === undefined) {
+  //   return (
+  //     <div className="h-screen w-full grid place-items-center  bg-white ">
+  //       Error occuured
+  //     </div>
+  //   );
+  // }
 
   return (
     <>
