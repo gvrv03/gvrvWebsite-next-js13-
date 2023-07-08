@@ -4,7 +4,7 @@ import Allproducts from "@/Components/Product/Allproducts";
 import DetailTabs from "@/Components/Product/DetailTabs";
 import { Rating, ToggleButton } from "@mui/material";
 import PaymentInititate from "../Payment/PaymentInititate";
- 
+
 import { useDispatch } from "react-redux";
 import { SavedProduct } from "@/Store/Actions/favouriteAction";
 import { toast } from "react-hot-toast";
@@ -103,6 +103,8 @@ const ProductMinDetail = ({
                   produDID={productID}
                 />
                 <SavedButton
+                  styleicon="text-lg"
+                  style="p-1 rounded-sm w-10 h-10 grid place-items-center  border"
                   productID={id}
                 />
               </div>

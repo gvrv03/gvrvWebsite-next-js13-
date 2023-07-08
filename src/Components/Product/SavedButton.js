@@ -14,7 +14,7 @@ import LoadingSpinner, {
 } from "../Spinner/LoadingSpinner";
 import { useUserNextAuth } from "@/Context/useNextAuthContext";
 
-const SavedButton = ({ productID }) => {
+const SavedButton = ({ productID,style,styleicon }) => {
   const [selected, setSelected] = useState(false);
   const [loading, setloading] = useState(false);
   const { userData } = useUserNextAuth();
@@ -61,7 +61,7 @@ const SavedButton = ({ productID }) => {
       type="button"
       disabled={loading ? true : false}
       onClick={savedProduct}
-      className="p-1 rounded-full w-10 h-10 grid place-items-center  border"
+      className={style}
     >
       {loading ? (
         <div className=" grid place-items-center">
@@ -69,7 +69,7 @@ const SavedButton = ({ productID }) => {
         </div>
       ) : (
         <i
-          className={`bi text-xl ${
+          className={`bi  ${styleicon}  ${
             selected ? "bi-heart-fill text-red-500 " : "bi-heart"
           }  `}
         />

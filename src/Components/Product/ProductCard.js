@@ -17,7 +17,11 @@ const ProductCard = ({
   return (
     <div className="w-full    relative hover:shadow-md border border-gray-200 bg-white md:p-5 p-2 h-fit rounded-sm  ">
       <div className="absolute  right-2 top-2 ">
-        <SavedButton productID={id} />
+        <SavedButton
+          styleicon=" text-xs "
+          style="p-1 rounded-sm w-8 h-8  grid place-items-center  border"
+          productID={id}
+        />
       </div>
 
       <motion.div
