@@ -25,16 +25,20 @@ const favouriteSlice = createSlice({
       .addCase(SavedProduct.fulfilled, (state, action) => {
         state.isLoading = false;
         const Data = action.payload;
+        console.log(Data);
         if (Data.isSaved === true) {
           state.data.products.push(action.payload.product);
           state.count = state.count + 1;
+        } else {
+          state.data.products = state.data.products.filter(
+            (ele) => ele?.productID?._id !== Data.ID
+          );
         }
       })
       .addCase(SavedProduct.rejected, (state, action) => {
         state.isLoading = false;
         state.error = action.error.message;
       })
-
 
       .addCase(fetchSavedProduct.pending, (state) => {
         state.isLoading = true;
@@ -47,9 +51,7 @@ const favouriteSlice = createSlice({
       .addCase(fetchSavedProduct.rejected, (state, action) => {
         state.isLoading = false;
         state.error = action.error.message;
-      })
-
-
+      });
   },
 });
 

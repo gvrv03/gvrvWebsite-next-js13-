@@ -24,6 +24,8 @@ export const POST = async (request) => {
         {
           message: "Product is removed from Favourites !",
           isSuccess: true,
+          ID: productID,
+          isSaved: false,
         },
         {
           status: 200,
@@ -38,6 +40,8 @@ export const POST = async (request) => {
         product: productSaved,
         message: "Added to Favourite !",
         isSuccess: true,
+        ID: productID,
+        isSaved: true,
       },
       {
         status: 201,

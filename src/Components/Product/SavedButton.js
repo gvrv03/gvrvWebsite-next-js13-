@@ -34,9 +34,10 @@ const SavedButton = ({ productID }) => {
 
   const dispatch = useDispatch();
 
-  const savedProduct = async () => {
+  const savedProduct = async (e) => {
+    e.preventDefault();
     setloading(true);
-    if (!userData) {
+    if (userData?.length === 0) {
       setloading(false);
       return toast.error("You need to Login !");
     }
@@ -57,8 +58,10 @@ const SavedButton = ({ productID }) => {
 
   return (
     <button
+      type="button"
+      disabled={loading ? true : false}
       onClick={savedProduct}
-      className="p-1 rounded-full w-10 h-10  border"
+      className="p-1 rounded-full w-10 h-10 grid place-items-center  border"
     >
       {loading ? (
         <div className=" grid place-items-center">
