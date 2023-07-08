@@ -1,5 +1,5 @@
 "use client";
- 
+
 import { ToggleButton } from "@mui/material";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import FavoriteIcon from "@mui/icons-material/Favorite";
@@ -14,7 +14,7 @@ import LoadingSpinner, {
 } from "../Spinner/LoadingSpinner";
 import { useUserNextAuth } from "@/Context/useNextAuthContext";
 
-const SavedButton = ({ productID, userID }) => {
+const SavedButton = ({ productID }) => {
   const [selected, setSelected] = useState(false);
   const [loading, setloading] = useState(false);
   const { userData } = useUserNextAuth();
@@ -41,12 +41,7 @@ const SavedButton = ({ productID, userID }) => {
       return toast.error("You need to Login !");
     }
 
-    const { payload } = await dispatch(
-      SavedProduct({
-        productID: productID,
-        userId: userID,
-      })
-    );
+    const { payload } = await dispatch(SavedProduct(productID));
     if (payload.isSuccess) {
       setloading(false);
       return toast.success(payload.message);
@@ -61,7 +56,10 @@ const SavedButton = ({ productID, userID }) => {
   }, [savedProduct]);
 
   return (
-    <button onClick={savedProduct} className="p-1 rounded-sm w-10 h-10  border">
+    <button
+      onClick={savedProduct}
+      className="p-1 rounded-full w-10 h-10  border"
+    >
       {loading ? (
         <div className=" grid place-items-center">
           <BtnSpinnerBlue />

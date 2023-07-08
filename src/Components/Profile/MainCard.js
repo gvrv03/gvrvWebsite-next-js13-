@@ -6,17 +6,12 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 const MainCard = () => {
-  const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(fetchUsersIndividual());
-  }, [dispatch]);
   const Users = useSelector((state) => state.user);
   const { isLoading, error, data } = Users;
   const { image, name, email, phoneNo, gender } = data;
   if (isLoading) {
     return <MainSkeleton />;
   }
-  console.log(Users);
 
   if (error) {
     return <div>Unexpected Error Occure</div>;

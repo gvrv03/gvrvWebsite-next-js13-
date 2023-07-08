@@ -1,9 +1,13 @@
+import { fetchUsersIndividual } from "@/Store/Actions/userActionIndividual";
 import { useSession } from "next-auth/react";
 import { useContext, useEffect, useState } from "react";
 import { createContext } from "react";
+import { useDispatch, useSelector } from "react-redux";
 
 const userNextAuthContext = createContext();
 export function UserNextAuthContexProvider({ children }) {
+  const dispatch = useDispatch();
+
   const [userIDS, setuserIDS] = useState({
     token: null,
     firebaseID: null,
@@ -22,12 +26,16 @@ export function UserNextAuthContexProvider({ children }) {
       firebaseID: null,
       ID: localStorage.getItem("id"),
     });
+    if (data) {
+      dispatch(fetchUsersIndividual());
+    }
   }, [data]);
+  const User = useSelector((state) => state.user);
 
   return (
     <userNextAuthContext.Provider
       value={{
-        userData: data?.user,
+        userData: User?.data,
         userIDS,
       }}
     >

@@ -1,5 +1,4 @@
 "use client";
- 
 import SupervisorAccountIcon from "@mui/icons-material/SupervisorAccount";
 import NewspaperIcon from "@mui/icons-material/Newspaper";
 import React, { useEffect } from "react";
@@ -12,8 +11,9 @@ import { IconButton } from "@mui/material";
 import { BtnSpinner, BtnSpinner2 } from "../Spinner/LoadingSpinner";
 import { useState } from "react";
 import { fetchProducts } from "@/Store/Actions/productAction";
+import { useUserNextAuth } from "@/Context/useNextAuthContext";
 const HeaderStat = () => {
-  const { user } = useUserAuth();
+  const { userData } = useUserNextAuth();
   const [updater, setupdater] = useState("");
   const dispatch = useDispatch();
   useEffect(() => {
@@ -65,7 +65,7 @@ const HeaderStat = () => {
               name="Products"
               // value={products.data.length}
               // loading={products.isLoading}
-              
+
               value={100}
               loading={false}
               icon={<ShoppingBagIcon className="pColor text-3xl" />}
@@ -83,7 +83,7 @@ const HeaderStat = () => {
           <div className="bg-gray-100  font-bold px-10 py-2 rounded-full ">
             Hello!{" "}
             <span className="dark:text-red-600 text-indigo-600">
-              {user && user.displayName}
+              {userData?.name}
             </span>{" "}
           </div>
 
@@ -100,8 +100,8 @@ const HeaderStat = () => {
             </IconButton>
             <img
               className="w-10 h-10 rounded-full"
-              src={user && user.photoURL}
-              alt={user && user.displayName}
+              src={userData?.image}
+              alt={userData?.name}
             />
           </div>
         </div>

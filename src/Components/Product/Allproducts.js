@@ -17,7 +17,7 @@ export default async function Allproducts({ page, setpage }) {
 
   return (
     <>
-      {products && products.length === 0 && (
+      {products?.length === 0 && (
         <div className="w-full h-90 grid place-items-center bg-white mt-5">
           No Product Found
         </div>
@@ -25,20 +25,19 @@ export default async function Allproducts({ page, setpage }) {
 
       <ProductHeader />
       <section className="mt-[141px] grid grid-cols-2  md:grid-cols-4 gap-5  ">
-        {products &&
-          products.map((product, index) => {
-            return (
-              <ProductCard
-                key={index}
-                id={product._id}
-                fullTitle={product.title}
-                title={product.title.substring(0, 40) + "..."}
-                thumbnail={product.thumbnail}
-                price={product.pricing.price}
-                comAtPrice={product.pricing.comAtPrice}
-              />
-            );
-          })}
+        {products?.map((product, index) => {
+          return (
+            <ProductCard
+              key={index}
+              id={product._id}
+              fullTitle={product.title}
+              title={product.title.substring(0, 40) + "..."}
+              thumbnail={product.thumbnail}
+              price={product.pricing.price}
+              comAtPrice={product.pricing.comAtPrice}
+            />
+          );
+        })}
       </section>
       <Pegination page={page} totalPages={totalPages} setpage={setpage} />
     </>

@@ -8,7 +8,7 @@ import React, { useState } from "react";
 const AdminLayout = ({ children }) => {
   const [navbar, setnavbar] = useState(false);
   const router = useRouter();
-  const { userData } = useUserNextAuth();
+  const { userData } = useUserNextAuth(); 
   if (!userData) {
     return (
       <div className="h-screen bg-white w-full grid place-items-center">
@@ -16,7 +16,13 @@ const AdminLayout = ({ children }) => {
       </div>
     );
   }
-  if (userData.email != "itsgaurav3112003@gmail.com") {
+  console.log(userData);
+  if (
+    userData?.role != "admin" 
+    // userData?.role != "root"
+    // userData?.role != process.env.ADMIN_KEY
+    // userData?.role != process.env.ROOT_KEY
+  ) {
     return (
       <div className="h-screen bg-white w-full grid place-items-center">
         Access Denied

@@ -38,6 +38,11 @@ export const UserAccountNav = [
     icon: "pColor uil uil-cloud-download",
   },
   {
+    name: "Favourite",
+    location: "/MyAccount/Favourite",
+    icon: "pColor uil uil-bookmark",
+  },
+  {
     name: "Your Order",
     location: "/MyAccount/YourOrder",
     icon: "pColor uil uil-shopping-bag",
@@ -79,11 +84,7 @@ const TopNav = [
     location: "/Products",
     icon: "pColor uil  uil-shopping-cart-alt",
   },
-  {
-    name: "Collection",
-    location: "/Collection",
-    icon: "pColor uil uil-bookmark",
-  },
+
   {
     name: "My Account",
     location: "/MyAccount",

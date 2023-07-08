@@ -104,7 +104,6 @@ const ProductMinDetail = ({
                 />
                 <SavedButton
                   productID={id}
-                  userID={userData?.id ? userData?.id : userData?._id}
                 />
               </div>
             </div>

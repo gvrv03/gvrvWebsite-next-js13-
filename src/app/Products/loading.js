@@ -28,7 +28,7 @@ const LoadingProduct = () => {
 
 export default LoadingProduct;
 
-function ProductSkeleton() {
+export function ProductSkeleton() {
   return (
     <div className="w-full md:w-auto border  bg-white ">
       <div className=" rounded-sm">

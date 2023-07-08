@@ -2,7 +2,8 @@
 import { Rating } from "@mui/material";
 import { useRouter } from "next/navigation";
 import React from "react";
-import { motion } from "framer-motion"
+import { motion } from "framer-motion";
+import SavedButton from "./SavedButton";
 
 const ProductCard = ({
   title,
@@ -14,7 +15,11 @@ const ProductCard = ({
 }) => {
   const router = useRouter();
   return (
-    <div className="w-full hover:shadow-md border border-gray-200 bg-white md:p-5 p-2 h-fit rounded-sm  ">
+    <div className="w-full    relative hover:shadow-md border border-gray-200 bg-white md:p-5 p-2 h-fit rounded-sm  ">
+      <div className="absolute  right-2 top-2 ">
+        <SavedButton productID={id} />
+      </div>
+
       <motion.div
         whileHover={{ scale: 1.1 }}
         whileTap={{ scale: 0.9 }}

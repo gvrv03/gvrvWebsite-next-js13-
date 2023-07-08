@@ -18,8 +18,7 @@ const MyAccountLayout = ({ children }) => {
   };
 
   const router = useRouter();
-
-  if (userData) {
+  if (userData?.length != 0) {
     return (
       <div className=" container m-auto mt-20  relative justify-between flex gap-5 ">
         <aside
