@@ -5,7 +5,8 @@ import { savedProductToFavoriteURL } from "../../../../allLinks";
 
 const Page = async () => {
   const res = await fetch(
-    `${savedProductToFavoriteURL}?page=1&limit=100&query={"userId":"64a7a6148f71ff29c9bdeb4e"}`
+    savedProductToFavoriteURL +
+      `?page=1&limit=100&query={"userId":"64a7a6148f71ff29c9bdeb4e"}`
   );
   const { products } = await res.json();
 
