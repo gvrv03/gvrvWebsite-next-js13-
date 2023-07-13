@@ -24,7 +24,7 @@ const DeleteModal = ({ setforDelete, state, id, handleDelete }) => {
             onClick={() => {
               setforDelete({ state: "hidden", id: "" });
             }}
-            className="border px-10 py-2 rounded-sm"
+            className="     px-10 py-2 rounded-sm"
           >
             Cancel
           </button>

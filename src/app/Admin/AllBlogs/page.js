@@ -73,7 +73,7 @@ const AllBlogs = () => {
           btnName="Create Post"
         />
 
-        {error &&  <div className="  p-5 mt-5">Unexpected error occured !    <span  className="p-1 text-center bg-red-200 border border-red-300"  >{error}</span>  </div>}
+        {error &&  <div className="  p-5 mt-5">Unexpected error occured !    <span  className="p-1 text-center bg-red-200          -red-300"  >{error}</span>  </div>}
         {isLoading && <FullScreenLoader />}
         {!isLoading && data.length === 0 ? (
           <NoDataFound

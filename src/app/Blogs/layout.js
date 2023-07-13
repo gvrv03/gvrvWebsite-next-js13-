@@ -2,7 +2,7 @@ import React from "react";
 const BlogsLayout = ({ children }) => {
   const HeaderName = (props) => {
     return (
-      <h2 className="font-bold border-b-2  relative">{props.name}</h2>
+      <h2 className="font-bold     -b-2  relative">{props.name}</h2>
     );
   };
 
@@ -16,7 +16,7 @@ const BlogsLayout = ({ children }) => {
           srcSet=""
         />{" "}
         <span>
-          <h4 className="text-xs font-semibold">
+          <h4 className="text-[10px] font-semibold">
             Using dangerouslySetInnerHTML in a React application
           </h4>
           <h6 className="text-xs mt-2 font-light">Python</h6>
@@ -46,7 +46,7 @@ const BlogsLayout = ({ children }) => {
   };
   return (
     <div className=" container m-auto   md:relative justify-between  flex-col-reverse md:flex-row flex  gap-5 ">
-      <aside className=" md:w-[15%] md:fixed  md:mt-[140px] w-full    flex bg-white    flex-col gap-5 items-start ">
+      <aside className=" md:w-[15%] md:fixed  md:mt-[140px] w-full    flex bg-white    p-5 flex-col gap-5 items-start ">
         <div className="w-full">
           <HeaderName name="Recent Post" />
           <div className="mt-2 flex-col flex gap-2">

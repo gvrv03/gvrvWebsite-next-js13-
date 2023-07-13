@@ -95,10 +95,10 @@ const Media = ({
   };
 
   return (
-    <div className="p-5 border bg-white">
+    <div className="p-5      bg-white">
       {loading && <FullScreenLoaderMsg />}
       <label className="font-semibold text-gray-500">Media</label>
-      <div className=" border-2 border-dashed gap-5 grid grid-cols-1 lg:grid-cols-3 rounded-md p-5 mt-5">
+      <div className="     -2     -dashed gap-5 grid grid-cols-1 lg:grid-cols-3 rounded-md p-5 mt-5">
         <div className=" flex gap-2 flex-col">
           <label className="text-sm font-bold  text-gray-600">Images</label>
           <FileUploader
@@ -129,7 +129,7 @@ const Media = ({
       </div>
 
       <div className="grid grid-cols-2 gap-5">
-        <div className=" border-2 border-dashed w-full items-center flex justify-between flex-col rounded-md p-5 mt-5">
+        <div className="     -2     -dashed w-full items-center flex justify-between flex-col rounded-md p-5 mt-5">
           <label className="text-sm font-bold  text-gray-600 mb-5">
             Thumbnail
           </label>
@@ -138,7 +138,7 @@ const Media = ({
           )}
           <img src={thumbnail} className="w-96" alt="" />
         </div>
-        <div className=" border-2 border-dashed w-full items-center  flex  flex-col rounded-md p-5 mt-5">
+        <div className="     -2     -dashed w-full items-center  flex  flex-col rounded-md p-5 mt-5">
           <label className="text-sm font-bold  text-gray-600 mb-5">
             Images
           </label>

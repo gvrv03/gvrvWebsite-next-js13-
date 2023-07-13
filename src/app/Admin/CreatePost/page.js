@@ -113,19 +113,19 @@ const CreatePost = () => {
     <div className="w-full    h-full">
       <BackBtn backLocation="/Admin/AllBlogs" headName="Create Blog" />
 
-      <div className=" border bg-white p-5 gap-5 flex">
+      <div className="      bg-white p-5 gap-5 flex">
         <input
           type="text"
           onChange={(e) => {
             settitle(e.target.value);
           }}
-          className="w-full md:w-4/5 border-b-2  border-red-500 bg-transparent outline-none p-2 "
+          className="w-full md:w-4/5     -b-2      -red-500 bg-transparent outline-none p-2 "
           placeholder="Title"
           name=""
           id=""
         />
         <div className=" w-1/5 flex justify-between gap-2">
-          <button className="border  w-full  flex  gap-2 rounded-full items-center justify-center  p-2 px-3">
+          <button className="      w-full  flex  gap-2 rounded-full items-center justify-center  p-2 px-3">
             <i className="bi bi-eye-fill" />
             <p className="hidden md:block">Preview</p>
           </button>
@@ -142,17 +142,17 @@ const CreatePost = () => {
         <button
           type="button"
           onClick={toggleblogNav}
-          className="border    block md:hidden  gap-2 rounded-full p-2 px-3"
+          className="        block md:hidden  gap-2 rounded-full p-2 px-3"
         >
           <i className="bi bi-gear-fill" />
         </button>
       </div>
 
       <div className=" w-full flex gap-5 mt-5 ">
-        <div className="w-full border bg-white p-5 md:w-4/5">
+        <div className="w-full      bg-white p-5 md:w-4/5">
           <div>
             <textarea
-              className="border outline-none p-5 w-full h-auto"
+              className="     outline-none p-5 w-full h-auto"
               id=""
               rows="2"
               onChange={(e) => {
@@ -166,7 +166,7 @@ const CreatePost = () => {
         </div>
 
         <div
-          className={`flex md:w-1/5 md:relative fixed  border w-full h-full md:right-0 transition-all ease-linear delay-300   ${blogNav} md:top-0 top-20   z-50 bg-white p-5 flex-col gap-5`}
+          className={`flex md:w-1/5 md:relative fixed       w-full h-full md:right-0 transition-all ease-linear delay-300   ${blogNav} md:top-0 top-20   z-50 bg-white p-5 flex-col gap-5`}
         >
           <div className="md:hidden ">
             <button
@@ -207,7 +207,7 @@ const CreatePost = () => {
             <h5 className="text-gray-500">Keywords</h5>
             <input
               type="text"
-              className="border outline-none mt-2 p-2 text-sm w-full  "
+              className="     outline-none mt-2 p-2 text-sm w-full  "
               placeholder="keywords..."
             />
           </div>
@@ -220,7 +220,7 @@ const CreatePost = () => {
                   setcat(e.target.value);
                 }}
                 value={cat ? cat : ""}
-                className="border outline-none p-2 text-sm w-full  "
+                className="     outline-none p-2 text-sm w-full  "
                 placeholder="Category"
               />
               <button
@@ -236,7 +236,7 @@ const CreatePost = () => {
             </div>
 
             <div
-              className={`mt-5 border  gap-2  flex-wrap p-2 ${
+              className={`mt-5       gap-2  flex-wrap p-2 ${
                 category.length === 0 ? "hidden" : "flex"
               }`}
             >

@@ -1,42 +1,13 @@
+import SingleHeader from "@/Components/SingleHeader";
 import Link from "next/link";
 import React from "react";
 
 const page = () => {
   return (
-    <div className=" bg-white h-full  text-justify ">
-      <ol className="inline-flex  bg-white pb-5 w-full items-center space-x-1 md:space-x-3">
-        <li className="inline-flex items-center">
-          <Link
-            href="/"
-            className="inline-flex items-center text-sm font-medium text-gray-700 hover:text-blue-600 "
-          >
-            <i className="uil uil-estate mr-2 pColor" />
-            Home
-          </Link>
-        </li>
-        <li aria-current="page">
-          <div className="flex items-center">
-            <svg
-              aria-hidden="true"
-              className="w-6 h-6 text-gray-400"
-              fill="currentColor"
-              viewBox="0 0 20 20"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                fillRule="evenodd"
-                d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
-                clipRule="evenodd"
-              ></path>
-            </svg>
-            <span className="ml-1 text-sm font-medium text-gray-500 md:ml-2">
-              Terms & Conditions
-            </span>
-          </div>
-        </li>
-      </ol>
+    <div className="p-5 bg-white h-full  text-justify ">
+      <SingleHeader title2Nd="Terms & Conditions" />
 
-      <div >
+      <div>
         <h1 className="font-bold text-2xl ">Terms and Conditions</h1>
         <p>Last updated: May 31, 2023</p>
         <p>
@@ -60,9 +31,9 @@ const page = () => {
             <p>
               <strong>Affiliate</strong> means an entity that controls, is
               controlled by or is under common control with a party, where
-              	&#34;control	&#34; means ownership of 50% or more of the shares, equity
-              interest or other securities entitled to vote for election of
-              directors or other managing authority.
+              &#34;control &#34; means ownership of 50% or more of the shares,
+              equity interest or other securities entitled to vote for election
+              of directors or other managing authority.
             </p>
           </li>
           <li>
@@ -72,9 +43,9 @@ const page = () => {
           </li>
           <li>
             <p>
-              <strong>Company</strong> (referred to as either 	&#34;the Company	&#34;,
-              	&#34;We	&#34;, 	&#34;Us	&#34; or 	&#34;Our	&#34; in this Agreement) refers to Gaurav Narnaware
-              || Personal Website.
+              <strong>Company</strong> (referred to as either &#34;the Company
+              &#34;, &#34;We &#34;, &#34;Us &#34; or &#34;Our &#34; in this
+              Agreement) refers to Gaurav Narnaware || Personal Website.
             </p>
           </li>
           <li>
@@ -90,11 +61,11 @@ const page = () => {
           </li>
           <li>
             <p>
-              <strong>Terms and Conditions</strong> (also referred as 	&#34;Terms	&#34;)
-              mean these Terms and Conditions that form the entire agreement
-              between You and the Company regarding the use of the Service. This
-              Terms and Conditions agreement has been created with the help of
-              the
+              <strong>Terms and Conditions</strong> (also referred as &#34;Terms
+              &#34;) mean these Terms and Conditions that form the entire
+              agreement between You and the Company regarding the use of the
+              Service. This Terms and Conditions agreement has been created with
+              the help of the
               <a
                 href="https://www.freeprivacypolicy.com/free-terms-and-conditions-generator/"
                 target="_blank"
@@ -217,35 +188,36 @@ const page = () => {
           Some states do not allow the exclusion of implied warranties or
           limitation of liability for incidental or consequential damages, which
           means that some of the above limitations may not apply. In these
-          states, each party&#39;s liability will be limited to the greatest extent
-          permitted by law.
+          states, each party&#39;s liability will be limited to the greatest
+          extent permitted by law.
         </p>
         <h1 className="font-bold text-2xl mt-5">
-          	&#34;AS IS	&#34; and 	&#34;AS AVAILABLE	&#34; Disclaimer
+          &#34;AS IS &#34; and &#34;AS AVAILABLE &#34; Disclaimer
         </h1>
         <p>
-          The Service is provided to You 	&#34;AS IS	&#34; and 	&#34;AS AVAILABLE	&#34; and with all
-          faults and defects without warranty of any kind. To the maximum extent
-          permitted under applicable law, the Company, on its own behalf and on
-          behalf of its Affiliates and its and their respective licensors and
-          service providers, expressly disclaims all warranties, whether
-          express, implied, statutory or otherwise, with respect to the Service,
-          including all implied warranties of merchantability, fitness for a
-          particular purpose, title and non-infringement, and warranties that
-          may arise out of course of dealing, course of performance, usage or
-          trade practice. Without limitation to the foregoing, the Company
-          provides no warranty or undertaking, and makes no representation of
-          any kind that the Service will meet Your requirements, achieve any
-          intended results, be compatible or work with any other software,
-          applications, systems or services, operate without interruption, meet
-          any performance or reliability standards or be error free or that any
-          errors or defects can or will be corrected.
+          The Service is provided to You &#34;AS IS &#34; and &#34;AS AVAILABLE
+          &#34; and with all faults and defects without warranty of any kind. To
+          the maximum extent permitted under applicable law, the Company, on its
+          own behalf and on behalf of its Affiliates and its and their
+          respective licensors and service providers, expressly disclaims all
+          warranties, whether express, implied, statutory or otherwise, with
+          respect to the Service, including all implied warranties of
+          merchantability, fitness for a particular purpose, title and
+          non-infringement, and warranties that may arise out of course of
+          dealing, course of performance, usage or trade practice. Without
+          limitation to the foregoing, the Company provides no warranty or
+          undertaking, and makes no representation of any kind that the Service
+          will meet Your requirements, achieve any intended results, be
+          compatible or work with any other software, applications, systems or
+          services, operate without interruption, meet any performance or
+          reliability standards or be error free or that any errors or defects
+          can or will be corrected.
         </p>
         <p>
           Without limiting the foregoing, neither the Company nor any of the
-          company&#39;s provider makes any representation or warranty of any kind,
-          express or implied: (i) as to the operation or availability of the
-          Service, or the information, content, and materials or products
+          company&#39;s provider makes any representation or warranty of any
+          kind, express or implied: (i) as to the operation or availability of
+          the Service, or the information, content, and materials or products
           included thereon; (ii) that the Service will be uninterrupted or
           error-free; (iii) as to the accuracy, reliability, or currency of any
           information or content provided through the Service; or (iv) that the
@@ -287,9 +259,9 @@ const page = () => {
         <p>
           You represent and warrant that (i) You are not located in a country
           that is subject to the United States government embargo, or that has
-          been designated by the United States government as a 	&#34;terrorist
-          supporting	&#34; country, and (ii) You are not listed on any United States
-          government list of prohibited or restricted parties.
+          been designated by the United States government as a &#34;terrorist
+          supporting &#34; country, and (ii) You are not listed on any United
+          States government list of prohibited or restricted parties.
         </p>
         <h1 className="font-bold text-2xl mt-5">Severability and Waiver</h1>
         <h2 className="text-xl font-semibold mt-2">Severability</h2>
@@ -320,9 +292,9 @@ const page = () => {
         <p>
           We reserve the right, at Our sole discretion, to modify or replace
           these Terms at any time. If a revision is material We will make
-          reasonable efforts to provide at least 30 days&#39; notice prior to any
-          new terms taking effect. What constitutes a material change will be
-          determined at Our sole discretion.
+          reasonable efforts to provide at least 30 days&#39; notice prior to
+          any new terms taking effect. What constitutes a material change will
+          be determined at Our sole discretion.
         </p>
         <p>
           By continuing to access or use Our Service after those revisions

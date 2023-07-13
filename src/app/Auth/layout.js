@@ -7,7 +7,7 @@ const AuthLayout = ({ children }) => {
       <div className="w-3/4 hidden md:grid  place-items-center ">
         <img src="/img/Auth.svg" />
       </div>
-      <div className="w-full md:w-1/4 border p-5 ">
+      <div className="w-full md:w-1/4      p-5 ">
         <div className="grid place-items-center max-w-mdrounded-sm ">
           {children}
         </div>

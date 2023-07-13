@@ -42,7 +42,7 @@ const AdminLayout = ({ children }) => {
       <aside
         className={` w-[55%] md:w-[15%]  transition-all delay-100 ease-linear h-screen md:h-[85vh] fixed flex bg-white z-40  ${
           navbar ? "left-0" : "-left-full"
-        }  md:left-auto top-28 md:top-auto  p-5 items-start   flex-col gap-5 border`}
+        }  md:left-auto top-28 md:top-auto  p-5 items-start   flex-col gap-5     `}
       >
         <button
           onClick={toggleNav}

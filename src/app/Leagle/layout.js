@@ -41,8 +41,8 @@ const LeagleLayout = ({ children }) => {
     );
   };
   return (
-    <div className=" container m-auto   md:relative justify-between  flex-col-reverse md:flex-row flex mt-20  gap-5 ">
-      <aside className=" md:w-[15%] md:fixed   w-full    flex bg-white    flex-col gap-10 items-start ">
+    <div className=" container m-auto   mt-[140px]  md:relative justify-between  flex-col-reverse md:flex-row flex   gap-5 ">
+      <aside className=" md:w-[15%] md:fixed p-5  w-full    flex bg-white    flex-col gap-10 items-start ">
         <div className="w-full">
           <button onClick={toggleLegal} className="mb-5 md:hidden block">
             <i className="uil uil-angle-left-b pColor text-2xl" />

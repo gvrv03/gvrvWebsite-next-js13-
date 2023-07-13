@@ -21,14 +21,15 @@ export default function AllSavedProducts() {
   const favourite = useSelector((state) => state.favourite);
   return (
     <>
-      {favourite?.data.length === 0 && favourite?.isLoading && (
+      {favourite?.data?.products.length === 0 && favourite?.isLoading && (
         <ProductLoading />
       )}
-      {favourite?.data?.products?.length === 0 && (
-        <div className="w-full h-90 grid place-items-center bg-white mt-5">
-          No Favourite Found
-        </div>
-      )}
+      {favourite?.isLoading === false &&
+        favourite?.data?.products?.length === 0 && (
+          <div className="w-full h-90 grid place-items-center p-5  bg-white mt-5">
+            No Favourite Found
+          </div>
+        )}
 
       <section className=" grid grid-cols-2  md:grid-cols-4 gap-5  ">
         {favourite?.data?.products?.map((product, index) => {

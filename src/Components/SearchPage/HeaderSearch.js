@@ -1,7 +1,7 @@
 import React from "react";
 const HeaderSearch = ({ searchParam, setvalue, value }) => {
   return (
-    <div className="fixed top-14  border-b  left-0 right-0 bg-white ">
+    <div className="fixed top-14      -b  left-0 right-0 bg-white ">
       <div className="container md:px-0 px-5 py-5 m-auto flex justify-between items-baseline">
         <div className="text-sm md:text-base font-semibold ">
           Showing result for : <span className="pColor">{searchParam}</span>

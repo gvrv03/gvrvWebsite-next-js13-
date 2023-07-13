@@ -129,14 +129,14 @@ const CreateProdct = () => {
         </div>
 
         <div className="w-full md:w-96  flex flex-col gap-5">
-          <div className="bg-white border flex flex-col p-5">
+          <div className="bg-white      flex flex-col p-5">
             <label className="font-semibold text-gray-500">Status</label>
             <select
               onClick={(e) => {
                 setstatus(e.target.value);
               }}
               defaultValue="active"
-              className="border rounded-sm px-2 mt-2 py-2 outline-none"
+              className="     rounded-sm px-2 mt-2 py-2 outline-none"
             >
               <option selected={true} value="active">
                 Active
@@ -154,7 +154,7 @@ const CreateProdct = () => {
             setPKeyword={setPKeyword}
           />
 
-          <div className="bg-white border flex flex-col p-5">
+          <div className="bg-white      flex flex-col p-5">
             <DefButton
               name="Add Product"
               func={createProduct}

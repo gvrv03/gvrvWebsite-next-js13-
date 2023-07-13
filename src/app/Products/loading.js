@@ -30,7 +30,7 @@ export default LoadingProduct;
 
 export function ProductSkeleton() {
   return (
-    <div className="w-full md:w-auto border  bg-white ">
+    <div className="w-full md:w-auto       bg-white ">
       <div className=" rounded-sm">
         <div className="md:block hidden">
           <Skeleton variant="rectangular" width="100%" height={200} />

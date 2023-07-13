@@ -8,7 +8,7 @@ const ProductOrg = ({
   setPKeyword,
 }) => {
   return (
-    <div className="bg-white flex flex-col p-5 border ">
+    <div className="bg-white flex flex-col p-5      ">
       <label className="font-semibold text-gray-500">
         Product Organization
       </label>
@@ -18,7 +18,7 @@ const ProductOrg = ({
           onChange={(e) => {
             setPCategory(e.target.value);
           }}
-          className="border rounded-sm px-2 mt-2 py-2 outline-none"
+          className="     rounded-sm px-2 mt-2 py-2 outline-none"
         >
           <option selected={true} value="ebook">
             EBook
@@ -35,7 +35,7 @@ const ProductOrg = ({
           onChange={(e) => {
             setPType(e.target.value);
           }}
-          className="border rounded-sm px-2 py-2 outline-none"
+          className="     rounded-sm px-2 py-2 outline-none"
           type="text"
         />
       </div>
@@ -45,7 +45,7 @@ const ProductOrg = ({
           onChange={(e) => {
             setPVendor(e.target.value);
           }}
-          className="border rounded-sm px-2 py-2 outline-none"
+          className="     rounded-sm px-2 py-2 outline-none"
           type="text"
         />
       </div>
@@ -55,7 +55,7 @@ const ProductOrg = ({
           onChange={(e) => {
             setPCollection(e.target.value);
           }}
-          className="border rounded-sm px-2 py-2 outline-none"
+          className="     rounded-sm px-2 py-2 outline-none"
           type="text"
         />
       </div>
@@ -65,7 +65,7 @@ const ProductOrg = ({
           onChange={(e) => {
             setPKeyword(e.target.value);
           }}
-          className="border rounded-sm px-2 py-2 outline-none"
+          className="     rounded-sm px-2 py-2 outline-none"
           type="text"
         />
       </div>

@@ -2,6 +2,7 @@ import React from "react";
 import Link from "next/link";
 import { getSingleURL } from "../../../../../allLinks";
 import NotFound from "../not-found";
+import SingleHeader from "@/Components/SingleHeader";
 
 const page = async ({ searchParams }) => {
   const res = await fetch(getSingleURL + searchParams.ID);
@@ -18,8 +19,13 @@ const page = async ({ searchParams }) => {
   }
   return (
     <>
-      <div className="bg-white h-full    w-full  mt-20 ">
+      <div className="bg-white h-full p-5   w-full  mt-[140px] ">
         {/* <BlogHeader title={title} /> */}
+        <SingleHeader
+          firstTitle={{ name: "Blogs", location: "/Blogs" }}
+          title2Nd={title}
+        />
+
         <div className="">
           <section className="">
             <h1 className="font-bold text-lg md:text-3xl">{title}</h1>

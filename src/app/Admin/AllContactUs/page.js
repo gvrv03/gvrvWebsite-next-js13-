@@ -6,7 +6,7 @@ import React from "react";
 const AllContactUs = () => {
   return (
     <div>
-      <div className=" font-semibold    rounded-sm  border-b-2 p-2 bg-white   flex justify-between ">
+      <div className=" font-semibold    rounded-sm      -b-2 p-2 bg-white   flex justify-between ">
         <div>All Contacts ({User.length})</div>
         <div className="flex gap-5 justify-between items-center">
           <button>

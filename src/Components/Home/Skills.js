@@ -55,7 +55,7 @@ const Skills = () => {
         onClick={() => {
           setmodalState("grid");
         }}
-        className="flex mx-auto mt-16 text-white border-0 py-2 px-8 focus:outline-none bg-indigo-500  hover:bg-indigo-600  rounded-sm pBtn text-lg"
+        className="flex mx-auto mt-16 text-white     -0 py-2 px-8 focus:outline-none bg-indigo-500  hover:bg-indigo-600  rounded-sm pBtn text-lg"
       >
         More
       </button>

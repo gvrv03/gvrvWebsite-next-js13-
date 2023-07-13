@@ -2,13 +2,13 @@ import React from "react";
 
 const SingleStarCount = ({starCounts}) => {
   return (
-    <div className="p-5 border border-gray-200 rounded-md">
+    <div className="p-5          -gray-200 rounded-md">
       <div className="flex items-center w-full gap-3">
         <div>5</div>
         <div>
           <i className="bi bi-star-fill text-yellow-500" />
         </div>
-        <div className="w-full border rounded-full">
+        <div className="w-full      rounded-full">
           <div
             style={{
               width: !starCounts.star5 ? "0%" : starCounts.star5 + "%",
@@ -24,7 +24,7 @@ const SingleStarCount = ({starCounts}) => {
         <div>
           <i className="bi bi-star-fill text-yellow-500" />
         </div>
-        <div className="w-full border rounded-full">
+        <div className="w-full      rounded-full">
           <div
             style={{
               width: !starCounts.star4 ? "0%" : starCounts.star4 + "%",
@@ -40,7 +40,7 @@ const SingleStarCount = ({starCounts}) => {
         <div>
           <i className="bi bi-star-fill text-yellow-500" />
         </div>
-        <div className="w-full border rounded-full">
+        <div className="w-full      rounded-full">
           <div
             style={{
               width: !starCounts.star3 ? "0%" : starCounts.star3 + "%",
@@ -56,7 +56,7 @@ const SingleStarCount = ({starCounts}) => {
         <div>
           <i className="bi bi-star-fill text-yellow-500" />
         </div>
-        <div className="w-full border rounded-full">
+        <div className="w-full      rounded-full">
           <div
             style={{
               width: !starCounts.star2 ? "0%" : starCounts.star2 + "%",
@@ -72,7 +72,7 @@ const SingleStarCount = ({starCounts}) => {
         <div>
           <i className="bi bi-star-fill text-yellow-500" />
         </div>
-        <div className="w-full border rounded-full">
+        <div className="w-full      rounded-full">
           <div
             style={{
               width: !starCounts.star1 ? "0%" : starCounts.star1 + "%",

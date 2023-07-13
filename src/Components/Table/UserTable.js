@@ -67,7 +67,7 @@ export default function UserTable({ Users }) {
                       <TableCell>{firebaseID}</TableCell>
                       <TableCell>
                         <img
-                          className="w-7 h-7 rounded-full border-2 p-1 border-gray-400"
+                          className="w-7 h-7 rounded-full     -2 p-1     -gray-400"
                           src={userProfile}
                           alt="G"
                         />

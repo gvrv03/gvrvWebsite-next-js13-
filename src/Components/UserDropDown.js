@@ -12,7 +12,7 @@ import Tooltip from "@mui/material/Tooltip";
 import PersonAdd from "@mui/icons-material/PersonAdd";
 import Settings from "@mui/icons-material/Settings";
 import Logout from "@mui/icons-material/Logout";
- 
+
 import { signOut } from "next-auth/react";
 
 export default function UserDropDown({ user }) {
@@ -48,7 +48,7 @@ export default function UserDropDown({ user }) {
             <Avatar sx={{ width: 32, height: 32 }}>
               <img
                 src={user?.image}
-                className="p-1 rounded-full bg-gray-200"
+                className="p-1 rounded-full bg-gray-50"
                 alt={user?.name}
               />
             </Avatar>
@@ -87,25 +87,25 @@ export default function UserDropDown({ user }) {
             },
           },
         }}
+        sx={{ minWidth: "100px" }}
         transformOrigin={{ horizontal: "right", vertical: "top" }}
         anchorOrigin={{ horizontal: "right", vertical: "bottom" }}
       >
         <h5 className="p-5 ">
-          <div className="border-b-2 pb-2">
+          <div className="      border-b-2 pb-2">
             Hello !{" "}
             <span className="font-semibold text-blue-600 ">{user.name}</span>
           </div>
         </h5>
-
-        <MenuItem onClick={handleClose}>
+        <MenuItem    onClick={handleClose}>
           <Avatar /> My Account
         </MenuItem>
-        <MenuItem onClick={handleClose}>
+        <MenuItem    onClick={handleClose}>
           <Avatar /> Dashboard
         </MenuItem>
         <Divider />
 
-        <MenuItem onClick={handleClose}>
+        <MenuItem    onClick={handleClose}>
           <ListItemIcon>
             <Settings fontSize="small" />
           </ListItemIcon>

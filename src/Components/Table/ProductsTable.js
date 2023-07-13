@@ -55,7 +55,7 @@ export default function ProductsTable({ products, count }) {
   return (
     <>
       <Paper
-        className="mt-5 border "
+        className="mt-5      "
         sx={{ width: "100%", overflow: "hidden" }}
       >
         <DeleteModal
@@ -109,7 +109,7 @@ export default function ProductsTable({ products, count }) {
                       <TableCell sx={{ textAlign: "center" }}>
                         <img
                           src={thumbnail}
-                          className="rounded-full border-2 border-gray-400 w-10 h-10"
+                          className="rounded-full     -2     -gray-400 w-10 h-10"
                           alt={title}
                         />
                       </TableCell>

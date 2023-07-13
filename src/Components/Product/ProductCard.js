@@ -15,11 +15,11 @@ const ProductCard = ({
 }) => {
   const router = useRouter();
   return (
-    <div className="w-full    relative hover:shadow-md border border-gray-200 bg-white md:p-5 p-2 h-fit rounded-sm  ">
+    <div className="w-full    relative        bg-white  p-2 h-fit rounded-sm  ">
       <div className="absolute  right-2 top-2 ">
         <SavedButton
           styleicon=" text-xs "
-          style="p-1 rounded-sm w-8 h-8  grid place-items-center  border"
+          style="p-1 rounded-sm w-8 h-8  grid place-items-center      "
           productID={id}
         />
       </div>
@@ -60,7 +60,7 @@ const ProductCard = ({
         >
           {title}
         </h5>
-        <div className="flex items-center   justify-between mt-3  align-baseline ">
+        <div className="flex items-center   justify-between mt-2  align-baseline ">
           <div className="flex gap-2 items-baseline justify-between">
             <span className="text-sm md:text-base text-red-500 font-bold ">
               {(100 - (price / comAtPrice) * 100).toFixed(1)} off{" "}

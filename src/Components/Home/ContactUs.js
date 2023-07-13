@@ -53,7 +53,7 @@ const ContactUs = () => {
               type="text"
               id="name"
               name="name"
-              className="w-full bg-slate-50   rounded-sm   focus:border-indigo-500 focus:ring-2  text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
+              className="w-full bg-slate-50   rounded-sm   focus:    -indigo-500 focus:ring-2  text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
             />
           </div>
           <div className="relative mb-4">
@@ -67,7 +67,7 @@ const ContactUs = () => {
               type="text"
               id="subject"
               name="subject"
-              className="w-full bg-slate-50   rounded-sm   focus:border-indigo-500 focus:ring-2  text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
+              className="w-full bg-slate-50   rounded-sm   focus:    -indigo-500 focus:ring-2  text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
             />
           </div>
           <div className="relative mb-4">
@@ -81,7 +81,7 @@ const ContactUs = () => {
               type="email"
               id="email"
               name="email"
-              className="w-full bg-slate-50   rounded-sm   focus:border-indigo-500 focus:ring-2  text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
+              className="w-full bg-slate-50   rounded-sm   focus:    -indigo-500 focus:ring-2  text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
             />
           </div>
           <div className="relative mb-4">
@@ -94,10 +94,10 @@ const ContactUs = () => {
             <textarea
               id="message"
               name="message"
-              className="w-full bg-slate-50   rounded-sm   focus:border-indigo-500 focus:ring-2  h-32 text-base outline-none text-gray-700 py-1 px-3 resize-none leading-6 transition-colors duration-200 ease-in-out"
+              className="w-full bg-slate-50   rounded-sm   focus:    -indigo-500 focus:ring-2  h-32 text-base outline-none text-gray-700 py-1 px-3 resize-none leading-6 transition-colors duration-200 ease-in-out"
             ></textarea>
           </div>
-          <button className="pBtn border-0 py-2 px-6 focus:outline-nonerounded-sm text-lg">
+          <button className="pBtn     -0 py-2 px-6 focus:outline-nonerounded-sm text-lg">
             Send Message
           </button>
         </div>

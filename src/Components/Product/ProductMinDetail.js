@@ -27,8 +27,8 @@ const ProductMinDetail = ({
     <section className="  grid grid-cols-1  ">
       {/* short description  */}
       <div className="bg-white ">
-        <div className="w-full mx-auto flex flex-wrap">
-          <div className="lg:w-1/2  grid place-items-center border p-5 w-full lg:h-auto ">
+        <div className="w-full mx-auto flex md:flex-row flex-col gap-5 ">
+          <div className="lg:w-1/2 m-5 grid place-items-center border p-5 w-full lg:h-auto ">
             <img
               alt="ecommerce"
               className="object-cover object-center rounded"
@@ -36,7 +36,7 @@ const ProductMinDetail = ({
             />
             {/* <ImagesSlideShow slideImages={images} /> */}
           </div>
-          <div className="lg:w-1/2 w-full lg:pl-10 lg:py-6 mt-6 lg:mt-0">
+          <div className="lg:w-1/2 p-5 w-full lg:pl-10 lg:py-6 mt-6 lg:mt-0">
             <h2 className="text-sm title-font text-gray-500 tracking-widest">
               BRAND NAME
             </h2>
@@ -90,11 +90,11 @@ const ProductMinDetail = ({
             <div className="leading-relaxed text-justify">{description}</div>
             <div className="flex mt-6 items-center pb-5 md:border-b-2 border-gray-100 mb-5" />
 
-            <div className=" md:relative z-40 md:border-none border fixed w-full md:bottom-auto md:left-auto md:right-auto md:p-0 bottom-0 left-0 right-0 bg-white p-5">
+            <div className=" md:relative md:z-auto  z-40 md:border-none rounded-t-3xl border fixed w-full md:bottom-auto md:left-auto md:right-auto md:p-0 bottom-0 left-0 right-0   bg-white p-5">
               <div className="flex container m-auto">
                 <span className="title-font font-medium text-2xl text-gray-900">
                   ₹{price}{" "}
-                  <strike className="text-xs ml-2">₹{comAtPrice}</strike>
+                  <strike className="text-xs ml-2 text-gray-500 ">₹{comAtPrice}</strike>
                 </span>
 
                 <PaymentInititate
@@ -113,7 +113,7 @@ const ProductMinDetail = ({
         </div>
       </div>
       {/* All Detail Section  */}
-      <div className=" bg-white mt-5 ">
+      <div className="p-5 bg-white mt-5 ">
         <DetailTabs
           artical={artical}
           title={title}
@@ -122,8 +122,8 @@ const ProductMinDetail = ({
         />
       </div>{" "}
       {/* Reccomended Products  */}
-      <div>
-        <h2 className="text-lg bg-white mt-5 lg:text-2xl font-bold text-gray-900 ">
+      <div className="p-5 bg-white mt-5">
+        <h2 className="text-lg  lg:text-2xl font-bold text-gray-900 ">
           Recommended Products
         </h2>
       </div>

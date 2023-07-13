@@ -79,7 +79,7 @@ export const AdminPageHeader = ({
 }) => {
   const router = useRouter();
   return (
-    <div className=" font-semibold  flex-col w-full  rounded-sm  gap-2 border-b-2 pb-2  flex ">
+    <div className=" font-semibold  flex-col w-full  rounded-sm  gap-2     -b-2 pb-2  flex ">
       <div className="flex justify-between items-center">
         <BackBtn
           backLocation="/Admin"
@@ -102,11 +102,11 @@ export const AdminPageHeader = ({
           <div className="flex  justify-between gap-5 items-center">
             <div className="gap-2 flex">
               <input
-                className="border w-20 p-2 rounded-sm  text-xs outline-none"
+                className="     w-20 p-2 rounded-sm  text-xs outline-none"
                 type="text"
               />
               <input
-                className="border w-20 p-2 rounded-sm  text-xs outline-none"
+                className="     w-20 p-2 rounded-sm  text-xs outline-none"
                 type="text"
               />
             </div>{" "}
@@ -127,7 +127,7 @@ export const AdminPageHeader = ({
           <IconButton
             onClick={refreshFun}
             aria-label="LoopIcon"
-            className="border"
+            className="    "
             size="small"
           >
             <LoopIcon className="text-2xl  " />

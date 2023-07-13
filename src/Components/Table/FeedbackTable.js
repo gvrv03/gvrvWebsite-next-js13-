@@ -51,7 +51,7 @@ export default function FeedbackTable() {
                   <TableCell>{index + 1}</TableCell>
                   <TableCell>
                     {/* <img
-                      className="w-7 h-7 rounded-full border-2 p-1 border-gray-400"
+                      className="w-7 h-7 rounded-full     -2 p-1     -gray-400"
                       // src={Context.user && Context.user.photoURL}
                       alt=""
                     /> */}

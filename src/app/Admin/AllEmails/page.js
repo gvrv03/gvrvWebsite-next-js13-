@@ -6,7 +6,7 @@ import React, { useEffect } from "react";
 const AllEmails = () => {
   return (
     <div>
-      <div className=" font-semibold    rounded-sm  border-b-2 p-2 bg-white    flex justify-between ">
+      <div className=" font-semibold    rounded-sm      -b-2 p-2 bg-white    flex justify-between ">
         <div>All Emails ({User.length})</div>
         <div className="flex gap-5 justify-between items-center">
           <button>

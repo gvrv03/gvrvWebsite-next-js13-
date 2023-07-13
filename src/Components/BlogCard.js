@@ -4,10 +4,10 @@ import Link from "next/link";
 export default function BlogCard(props) {
   const { title, category, description, image, id, views ,fullTitle} = props ? props : {};
   return (
-    <div className="w-full border hover:shadow-md md:w-auto ">
+    <div className="w-full      bg-white  hover:shadow-md md:w-auto ">
       <div className=" rounded-sm">
         <img className="w-full md:h-44" src={image} alt={title} />
-        <div className="p-2 bg-white ">
+        <div className="p-2 ">
           <h2 className="tracking-widest text-xs title-font text-gray-500  font-medium mb-1">
             {category}
           </h2>

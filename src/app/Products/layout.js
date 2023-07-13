@@ -3,7 +3,7 @@ import React from "react";
 const ProductLayout = ({ children }) => {
   const HeaderName = (props) => {
     return (
-      <h2 className="font-bold border-b pb-2 relative">{props.name}</h2>
+      <h2 className="font-bold     -b pb-2 relative">{props.name}</h2>
     );
   };
 
@@ -27,8 +27,8 @@ const ProductLayout = ({ children }) => {
     );
   };
   return (
-    <div className=" container m-auto   md:relative justify-between  flex-col-reverse md:flex-row flex  gap-5 ">
-      <aside className=" md:w-[15%] md:fixed  md:mt-[140px] w-full    flex bg-white    flex-col gap-5 items-start ">
+    <div className=" container m-auto       md:relative justify-between  flex-col-reverse md:flex-row flex  gap-5 ">
+      <aside className=" md:w-[15%] md:fixed  md:mt-[141px] w-full p-5   flex bg-white    flex-col gap-5 items-start ">
         <div className="w-full">
           <HeaderName name="Category" />
           <div className="mt-2 flex-col items-start  flex gap-2">

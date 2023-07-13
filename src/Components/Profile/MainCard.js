@@ -18,7 +18,7 @@ const MainCard = () => {
   }
 
   return (
-    <div className="bg-white items-center relative w-full flex-col md:flex-row border  flex justify-between  gap-5   p-5">
+    <div className="bg-white items-center relative w-full flex-col md:flex-row       flex justify-between  gap-5   p-5">
       {/* <button>
         <i className="uil uil-edit absolute top-5 right-5 text-xl" />
       </button> */}

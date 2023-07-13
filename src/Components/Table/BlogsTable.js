@@ -63,7 +63,7 @@ export default function BlogsTable({ blogs, count }) {
   };
 
   return (
-    <Paper className="mt-5 border " sx={{ width: "100%", overflow: "hidden" }}>
+    <Paper className="mt-5      " sx={{ width: "100%", overflow: "hidden" }}>
       <DeleteModal
         handleDelete={handleDelete}
         setforDelete={setforDelete}
@@ -99,7 +99,7 @@ export default function BlogsTable({ blogs, count }) {
                     <TableCell sx={{ textAlign: "center" }}>
                       <img
                         src={blog.image}
-                        className="rounded-full border-2 border-gray-400 w-10 h-10"
+                        className="rounded-full     -2     -gray-400 w-10 h-10"
                         alt={blog.title}
                       />
                     </TableCell>

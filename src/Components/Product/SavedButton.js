@@ -61,7 +61,7 @@ const SavedButton = ({ productID,style,styleicon }) => {
       type="button"
       disabled={loading ? true : false}
       onClick={savedProduct}
-      className={style}
+      className={`${style} border `}
     >
       {loading ? (
         <div className=" grid place-items-center">

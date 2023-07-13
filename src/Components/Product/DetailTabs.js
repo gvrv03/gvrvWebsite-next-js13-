@@ -44,7 +44,7 @@ export default function DetailTabs({ artical, images, title, productID }) {
 
   return (
     <Box sx={{ width: "100%" }}>
-      <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
+      <Box sx={{     Bottom: 1,     Color: "divider" }}>
         <Tabs
           value={value}
           onChange={handleChange}
