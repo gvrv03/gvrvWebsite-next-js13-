@@ -14,10 +14,10 @@ import LoadingSpinner, {
 } from "../Spinner/LoadingSpinner";
 import { useUserNextAuth } from "@/Context/useNextAuthContext";
 
-const SavedButton = ({ productID,style,styleicon }) => {
+const SavedButton = ({ productID, style, styleicon }) => {
   const [selected, setSelected] = useState(false);
   const [loading, setloading] = useState(false);
-  const { userData } = useUserNextAuth();
+  const { isLogin } = useUserNextAuth();
 
   const checkSvaedAPi = async () => {
     const uID = localStorage.getItem("id");
@@ -37,13 +37,13 @@ const SavedButton = ({ productID,style,styleicon }) => {
   const savedProduct = async (e) => {
     e.preventDefault();
     setloading(true);
-    if (userData?.length === 0) {
+    if (!isLogin) {
       setloading(false);
       return toast.error("You need to Login !");
     }
 
     const { payload } = await dispatch(SavedProduct(productID));
-    if (payload.isSuccess) {
+    if (payload?.isSuccess) {
       setloading(false);
       return toast.success(payload.message);
     } else {

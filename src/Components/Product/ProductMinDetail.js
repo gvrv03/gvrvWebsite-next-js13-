@@ -1,15 +1,10 @@
 "use client";
 import React, { useRef, useState } from "react";
-import Allproducts from "@/Components/Product/Allproducts";
 import DetailTabs from "@/Components/Product/DetailTabs";
 import { Rating, ToggleButton } from "@mui/material";
 import PaymentInititate from "../Payment/PaymentInititate";
 
-import { useDispatch } from "react-redux";
-import { SavedProduct } from "@/Store/Actions/favouriteAction";
-import { toast } from "react-hot-toast";
 import SavedButton from "./SavedButton";
-import { useUserNextAuth } from "@/Context/useNextAuthContext";
 const ProductMinDetail = ({
   thumbnail,
   title,
@@ -21,17 +16,15 @@ const ProductMinDetail = ({
   id,
   images,
 }) => {
-  const { userData } = useUserNextAuth();
-
   return (
     <section className="  grid grid-cols-1  ">
       {/* short description  */}
       <div className="bg-white ">
         <div className="w-full mx-auto flex md:flex-row flex-col gap-5 ">
-          <div className="lg:w-1/2 m-5 grid place-items-center border p-5 w-full lg:h-auto ">
+          <div className="lg:w-1/2 m-5 grid place-items-center border p-5  lg:h-auto ">
             <img
               alt="ecommerce"
-              className="object-cover object-center rounded"
+              className="object-cover object-center  rounded"
               src={thumbnail}
             />
             {/* <ImagesSlideShow slideImages={images} /> */}
@@ -90,11 +83,13 @@ const ProductMinDetail = ({
             <div className="leading-relaxed text-justify">{description}</div>
             <div className="flex mt-6 items-center pb-5 md:border-b-2 border-gray-100 mb-5" />
 
-            <div className=" md:relative md:z-auto  z-40 md:border-none rounded-t-3xl border fixed w-full md:bottom-auto md:left-auto md:right-auto md:p-0 bottom-0 left-0 right-0   bg-white p-5">
+            <div className=" md:relative md:z-auto   z-40 md:border-none rounded-t-3xl border fixed w-full md:bottom-auto md:left-auto md:right-auto md:p-0 bottom-0 left-0 right-0   bg-white p-5">
               <div className="flex container m-auto">
                 <span className="title-font font-medium text-2xl text-gray-900">
                   ₹{price}{" "}
-                  <strike className="text-xs ml-2 text-gray-500 ">₹{comAtPrice}</strike>
+                  <strike className="text-xs ml-2 text-gray-500 ">
+                    ₹{comAtPrice}
+                  </strike>
                 </span>
 
                 <PaymentInititate
@@ -123,9 +118,10 @@ const ProductMinDetail = ({
       </div>{" "}
       {/* Reccomended Products  */}
       <div className="p-5 bg-white mt-5">
-        <h2 className="text-lg  lg:text-2xl font-bold text-gray-900 ">
-          Recommended Products
-        </h2>
+        <div className=" flex justify-between  font-bold text-gray-900 ">
+          <span>Recommended Products</span>
+          <button className="pColor" >See All </button>
+        </div>
       </div>
     </section>
   );

@@ -16,10 +16,7 @@ import Logout from "@mui/icons-material/Logout";
 import { signOut } from "next-auth/react";
 
 export default function UserDropDown({ user }) {
-  // const { user, logOut } = useUserAuth();
-  // console.log(user);
   const [anchorEl, setAnchorEl] = React.useState(null);
-
   const open = Boolean(anchorEl);
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);

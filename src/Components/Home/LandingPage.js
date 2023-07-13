@@ -8,7 +8,7 @@ const LandingPage = () => {
     <section className={`text-gray-600 CSSPAttern2 h-screen -mx-5 body-font `}>
       <div className=" mx-auto gap-10 justify-center flex-col flex  h-full items-center">
         <div className=" flex items-center justify-center backdrop-blur-sm">
-          <div className=" rounded-full overflow-hidden    w-60 h-60 grid place-items-center p-10     -8 shadow-xl      -white">
+          <div className=" rounded-full overflow-hidden    w-60 h-60 grid place-items-center p-10 border-8 shadow-xl  border-white">
             <Image
               width={200}
               height={200}
@@ -18,7 +18,7 @@ const LandingPage = () => {
               className="    rounded-full  w-full h-full "
             />
           </div>
-          {/* <div className="absolute left-16 px-10 py-5 float  dark:text-white          -gray-500 backdrop-blur-md rounded-sm top-5">
+          {/* <div className="absolute left-16 px-10 py-5 float  dark:text-white border border-gray-500 backdrop-blur-md rounded-sm top-5">
                 Web Developer
               </div> */}
         </div>
@@ -40,7 +40,7 @@ const LandingPage = () => {
         </div>
 
         <div className="  relative font-bold float flex gap-5 justify-center items-center px-20 py-5 rounded-full">
-          <div className=" w-10 rounded-full h-20 grid place-items-center     -2">
+          <div className=" w-10 rounded-full h-20 grid place-items-center border-2">
             <div className="w-1 bg-gray-300 h-10" />
           </div>
           <div>Swipe Up</div>

@@ -24,9 +24,7 @@ const ProductCard = ({
         />
       </div>
 
-      <motion.div
-        whileHover={{ scale: 1.1 }}
-        whileTap={{ scale: 0.9 }}
+      <div
         onClick={() => {
           router.push(
             "/Products/Product/" +
@@ -42,7 +40,7 @@ const ProductCard = ({
           src={thumbnail}
           alt={title}
         />
-      </motion.div>
+      </div>
       <div className=" ">
         <h3 className="text-xs text-gray-400 font-semibold md:text-sm">
           EBOOK

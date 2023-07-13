@@ -32,16 +32,16 @@ const AllSkills = ({ fun, mState }) => {
           fun("hidden");
         }}
       />
-      <div className=" bg-white  gap-10 grid place-items-center p-10 z-10  h-screen md:h-4/5 w-auto  absolute  ">
-        <h4 className="font-bold text-2xl flex w-full justify-between text-center">
-          <p>Skills</p>
+      <div className=" bg-white  gap-5 grid place-items-center p-5 z-10  h-screen md:h-4/5 w-auto  absolute  ">
+        <h4 className="font-bold  text-2xl gap-5 flex w-full items-center  justify-between text-center">
+          <p className="border  p-1  w-full   text-left pl-5 "  >Skills</p>
           <button
             onClick={() => {
               fun("hidden");
             }}
-            className="     p-1 w-10 h-10 "
+            className="  border grid place-items-center w-10 h-10 "
           >
-            <i className="bi bi-plus" />
+            <i className="uil uil-multiply" />
           </button>
         </h4>
         <div className="w-10 h-1 bg-gray-200 rounded-full" />

@@ -1,22 +1,13 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
-// import { useUserAuth } from "../../lib/Context/UserAuthContext";
-import { useRouter } from "next/navigation";
-import MenuIcon from "@mui/icons-material/Menu";
-import MuiAppBar from "@mui/material/AppBar";
-
 import Sidebar from "./Sidebar";
- 
 import UserDropDown from "./UserDropDown";
-import { AppBar, IconButton, Toolbar, Typography } from "@mui/material";
-import styled from "@emotion/styled";
 import SearchAll from "./UtilityComponents/SearchAll";
-import { useSession } from "next-auth/react";
 import { useUserNextAuth } from "@/Context/useNextAuthContext";
 
 const Navbar = () => {
-  const { data } = useSession();
+  const { userData, isLogin } = useUserNextAuth();
   return (
     <>
       <nav className=" py-1 md:px-0 px-5  fixed z-50 w-full left-0 bg-white backdrop-blur-2xl top-0 ">
@@ -34,9 +25,18 @@ const Navbar = () => {
             type="button"
             className="inline-flex items-center py-2  gap-5 text-sm text-gray-500 rounded-lg dark:text-gray-400 "
           >
+            {/* <div className="flex gap-5">
+                {TopNav.map((item, index) => {
+                  return (
+                    <button className="font-semibold hover:border-b-2 borderPColor hover:pb-1 transition-all delay-75 ease-linear   ">
+                      {item.name}
+                    </button>
+                  );
+                })}
+              </div> */}
             <SearchAll />
 
-            {!data ? (
+            {!isLogin ? (
               <Link
                 href="/Auth/SignIn"
                 className="      w-6 h-6  cursor-pointer grid place-items-center   rounded-full"
@@ -44,16 +44,14 @@ const Navbar = () => {
                 <i className="bi bi-person-fill"></i>
               </Link>
             ) : (
-              <UserDropDown user={data?.user} />
+              <UserDropDown user={userData} />
             )}
-            <Sidebar />
+            <Sidebar user={userData} isLogin={isLogin} />
           </div>
         </div>
       </nav>
     </>
   );
 };
-
-
 
 export default Navbar;

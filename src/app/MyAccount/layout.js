@@ -7,7 +7,7 @@ import React, { useState } from "react";
 
 const MyAccountLayout = ({ children }) => {
   const [navbar, setnavbar] = useState(false);
-  const { userData } = useUserNextAuth();
+  const { isLogin, isAdmin } = useUserNextAuth();
 
   const toggleNav = () => {
     if (navbar) {
@@ -18,7 +18,7 @@ const MyAccountLayout = ({ children }) => {
   };
 
   const router = useRouter();
-  if (userData?.length != 0) {
+  if (isLogin) {
     return (
       <div className=" container m-auto mt-20  relative justify-between flex gap-5 ">
         <aside
@@ -47,6 +47,19 @@ const MyAccountLayout = ({ children }) => {
               </button>
             );
           })}
+
+          {isAdmin && (
+            <button
+              onClick={() => {
+                router.push("/Admin");
+                setnavbar(false);
+              }}
+              className="flex gap-2"
+            >
+              <i className={`pColor uil uil-chart-pie-alt`} />
+              <h1>Dashboard</h1>{" "}
+            </button>
+          )}
         </aside>
         <main className=" w-full md:w-4/5 absolute right-0 text-justify">
           <TopNavBar navbar={navbar} toggleNav={toggleNav} />

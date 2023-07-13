@@ -17,7 +17,7 @@ function generateOrderId() {
 
 const PaymentInititate = ({ amount, produDID, title }) => {
   const [loading, setloading] = useState(false);
-  const { userData } = useUserNextAuth()
+  const { isLogin} = useUserNextAuth()
 
   //PAyemnt Integration
   const loadScript = (src) => {
@@ -36,9 +36,9 @@ const PaymentInititate = ({ amount, produDID, title }) => {
 
   const handlePayment = async () => {
     setloading(true);
-    if (!userData) {
+    if (!isLogin) {
       setloading(false);
-      return toast.error("You need to Login to Buy");
+      return toast.error("You need to Login");
     }
     // Create order API
     let orderID = generateOrderId();

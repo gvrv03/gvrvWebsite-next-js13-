@@ -37,6 +37,12 @@ export function UserNextAuthContexProvider({ children }) {
       value={{
         userData: User?.data,
         userIDS,
+        isLogin: User?.data?.length === 0 ? false : true,
+        isAdmin:
+          User?.data?.role === "admin" || User?.data?.role === "root"
+            ? true
+            : false,
+        isRoot: User?.data?.role === "root" ? true : false,
       }}
     >
       {children}

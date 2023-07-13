@@ -34,13 +34,18 @@
 }
 
 :root {
-  --PrimaryColor: rgb(255, 0, 0);
+  --PrimaryColor: rgb(132, 0, 255);
 }
 .bgpColor {
   background-color: var(--PrimaryColor);
 }
+
+
 .pColor {
   color: var(--PrimaryColor);
+}
+.borderPColor{
+  border-color: var(--PrimaryColor);
 }
 .pBtn {
   background-color: var(--PrimaryColor);

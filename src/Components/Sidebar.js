@@ -1,15 +1,10 @@
 import * as React from "react";
-import Box from "@mui/material/Box";
 import SwipeableDrawer from "@mui/material/SwipeableDrawer";
-import List from "@mui/material/List";
 import Divider from "@mui/material/Divider";
-import ListItem from "@mui/material/ListItem";
-import ListItemButton from "@mui/material/ListItemButton";
-import ListItemText from "@mui/material/ListItemText";
 import TopNav, { DashNav, Legal } from "../../src/NavItem/TopNav";
-import Link from "next/link";
+import { signOut } from "next-auth/react";
 import { useRouter } from "next/navigation";
-export default function Sidebar() {
+export default function Sidebar({ user, isLogin }) {
   const router = useRouter();
   const [state, setState] = React.useState({
     top: false,
@@ -31,55 +26,77 @@ export default function Sidebar() {
   };
 
   const list = (anchor) => (
-    <Box
-      sx={{ width: 300, padding: "10px 10px" }}
+    <aside
+      className="w-[300px]  p-5 "
       role="presentation"
-      onClick={toggleDrawer(anchor, false)}
-      onKeyDown={toggleDrawer(anchor, false)}
+      // onKeyDown={toggleDrawer(anchor, false)}
     >
-      <div className="p-5">
-        <h1 className="text-lg font-semibold">Gaurav Narnaware</h1>
-      </div>{" "}
-      <Divider />
-      <List>
+      {!isLogin ? (
+        <></>
+      ) : (
+        <div className="p-5 rounded-md flex  flex-col bg-blue-50 ">
+          <div className="items-center  flex   gap-5   ">
+            <div className="w-14 h-14   overflow-hidden  border-white border-4  rounded-full">
+              <img
+                src={user?.image}
+                className="w-full h-full"
+                alt=""
+                srcset=""
+              />
+            </div>
+            <div className="h-full flex flex-col justify-between items-start gap-2">
+              <h1 className="font-semibold">{user?.name}</h1>
+              <button
+                onClick={() => {
+                  router.push("/MyAccount");
+                }}
+                className="font-light  text-gray-500 text-sm "
+              >
+                {" "}
+                <i className="uil uil-user" /> My Account
+              </button>
+            </div>
+          </div>
+          <button
+            onClick={signOut}
+            className="bgpColor  mt-2 text-white p-1 rounded-md flex gap-2 justify-center items-center "
+          >
+            {" "}
+            <i className="uil uil-signout" /> <span> Sign Out</span>
+          </button>
+        </div>
+      )}
+      <div className="mt-5">
         {TopNav.map((text, index) => (
           <button
-            className="w-full"
+            className=" text-left  py-2 flex gap-5 w-full"
             key={index}
             onClick={() => {
               router.push(text.location);
             }}
           >
-            <ListItem disablePadding>
-              <ListItemButton>
-                <i className={`text-blue-600 ${text.icon} mr-5 text-xl`} />
-                <ListItemText primary={text.name} />
-              </ListItemButton>
-            </ListItem>
+            <i className={`${text.icon}`} />
+            <span>{text.name}</span>{" "}
           </button>
         ))}
 
         <Divider sx={{ margin: "10px 0 " }} />
+
         {Legal.map((text, index) => (
           <button
-            className="w-full"
+            className=" text-left    py-2 flex gap-5 w-full"
             key={index}
             onClick={() => {
               router.push(text.location);
             }}
           >
-            <ListItem disablePadding>
-              <ListItemButton>
-                <i className={`text-blue-600 ${text.icon} mr-5 text-xl`} />
-                <ListItemText primary={text.name} />
-              </ListItemButton>
-            </ListItem>
+            <i className={`${text.icon}`} />
+            <span>{text.name}</span>{" "}
           </button>
         ))}
-      </List>
-    </Box>
+      </div>
+    </aside>
   );
-
   return (
     <div>
       <>

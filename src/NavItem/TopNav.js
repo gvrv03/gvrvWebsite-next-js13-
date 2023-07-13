@@ -52,11 +52,11 @@ export const UserAccountNav = [
     location: "/MyAccount/Setting",
     icon: "pColor uil uil-cog",
   },
-  {
-    name: "Dashboard",
-    location: "/Admin",
-    icon: "pColor uil uil-chart-pie-alt",
-  },
+  // {
+  //   name: "Dashboard",
+  //   location: "/Admin",
+  //   icon: "pColor uil uil-chart-pie-alt",
+  // },
   {
     name: "Help",
     location: "/MyAccount/Help",
@@ -85,11 +85,11 @@ const TopNav = [
     icon: "pColor uil  uil-shopping-cart-alt",
   },
 
-  {
-    name: "My Account",
-    location: "/MyAccount",
-    icon: "pColor uil uil-user",
-  },
+  // {
+  //   name: "My Account",
+  //   location: "/MyAccount",
+  //   icon: "pColor uil uil-user",
+  // },
   {
     name: "Sitemap",
     location: "/Sitemap",

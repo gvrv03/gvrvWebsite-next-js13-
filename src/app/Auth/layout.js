@@ -1,7 +1,14 @@
 "use client";
 import React from "react";
 import { signIn } from "next-auth/react";
+import { useUserNextAuth } from "@/Context/useNextAuthContext";
+import { useRouter } from "next/navigation";
 const AuthLayout = ({ children }) => {
+  const { isLogin } = useUserNextAuth();
+  const router = useRouter();
+  if (isLogin) {
+    router.push("/");
+  }
   return (
     <div className="container m-auto flex h-screen      items-center gap-10">
       <div className="w-3/4 hidden md:grid  place-items-center ">
