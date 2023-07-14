@@ -2,7 +2,6 @@
 import Allproducts from "@/Components/Product/Allproducts";
 import React from "react";
 import { useState } from "react";
-
 export const metadata = {
   title: "Products || Gaurav Narnaware",
   description: "Premium Digital products that helps to complete your need ",
@@ -55,7 +54,7 @@ export const metadata = {
     nocache: true,
     googleBot: {
       index: true,
-      follow: false,
+      follow: true,
       noimageindex: true,
       "max-video-preview": -1,
       "max-image-preview": "large",
@@ -63,7 +62,8 @@ export const metadata = {
     },
   },
 };
-const Products = () => {
+
+const AllProducts = () => {
   const [page, setpage] = useState(1);
 
   return (
@@ -73,4 +73,4 @@ const Products = () => {
   );
 };
 
-export default Products;
+export default AllProducts;

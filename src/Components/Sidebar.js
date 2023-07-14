@@ -41,7 +41,7 @@ export default function Sidebar({ user, isLogin }) {
                 src={user?.image}
                 className="w-full h-full"
                 alt=""
-                srcset=""
+                    srcSet=""
               />
             </div>
             <div className="h-full flex flex-col justify-between items-start gap-2">

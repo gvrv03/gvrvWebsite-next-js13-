@@ -53,7 +53,7 @@ export const NoDataFound = ({ nameHead, location, btnTitle }) => {
   return (
     <div className=" text-center  h-80vh bg-white p-5 mt-5 grid  place-items-center">
       <div className="bg-white w-full md:w-fit flex flex-col justify-center items-center p-5 ">
-        <img src="/NoData.svg" className="w-80" alt="" srcSet="" />
+        <img src="/NoData.svg" className="w-80" alt=""     srcSet="" />
         <h1 className="text-gray-400 mt-5">{nameHead}</h1>
         <button
           onClick={() => {
