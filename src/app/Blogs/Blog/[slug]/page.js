@@ -4,6 +4,61 @@ import { getSingleURL } from "../../../../../allLinks";
 import NotFound from "../not-found";
 import SingleHeader from "@/Components/SingleHeader";
 
+export async function generateMetadata({ searchParams }) {
+  // fetch data
+  const data = await fetch(getSingleURL + searchParams.ID).then((res) =>
+    res.json()
+  );
+
+  const { title, category, keywords, description, image, author, _id } = data
+    ? data
+    : {};
+
+  let metatitle = title?.replaceAll(" ", "_");
+  return {
+    title: title,
+    description: description,
+    author: author,
+    keywords: keywords,
+    category: category,
+    images: [image],
+    url: "/Blogs/Blog/" + metatitle + "?ID=" + _id,
+    twitter: {
+      card: "summary_large_image",
+      title: title,
+      description: description,
+      author: author,
+      keywords: keywords,
+      category: category,
+      images: [image],
+      url: "/Blogs/Blog/" + metatitle + "?ID=" + _id,
+    },
+    openGraph: {
+      title: title,
+      description: description,
+      author: author,
+      keywords: keywords,
+      category: category,
+      images: [image],
+      url: "/Blogs/Blog/" + metatitle + "?ID=" + _id,
+    },
+
+    robots: {
+      index: true,
+      follow: true,
+      nocache: true,
+      googleBot: {
+        index: true,
+        follow: true,
+        noimageindex: true,
+        "max-video-preview": -1,
+        "max-image-preview": "large",
+        "max-snippet": -1,
+      },
+    },
+  };
+}
+
 const page = async ({ searchParams }) => {
   const res = await fetch(getSingleURL + searchParams.ID);
   const data = await res.json();

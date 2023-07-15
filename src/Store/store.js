@@ -5,6 +5,7 @@ import blogReducer from "./Slices/blogSlice";
 import userIndividualReducer from "./Slices/userSliceIndividual";
 import productReviewReducer from "./Slices/productReviewSlice";
 import favouriteReducer from "./Slices/favouriteSlice";
+import contactReducer from "./Slices/contactSlice";
 
 const store = configureStore({
   reducer: {
@@ -14,6 +15,7 @@ const store = configureStore({
     products: productReducer,
     productReview: productReviewReducer,
     favourite: favouriteReducer,
+    contact: contactReducer,
   },
 });
 

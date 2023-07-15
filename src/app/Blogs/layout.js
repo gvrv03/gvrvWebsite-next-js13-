@@ -1,28 +1,70 @@
 import React from "react";
+
+export const metadata = {
+  title: "Blogs || Gaurav Narnaware",
+  description: "Blogs by Gaurav Narnaware and his Team member",
+  keywords: [
+    "Products",
+    "DigitalProducts",
+    "WebTemplates",
+    "WebSites",
+    "Ebooks",
+    "Templates",
+    "Presets",
+  ],
+  images: ["/gaurav.svg"],
+  url: "/Blogs",
+
+  twitter: {
+    card: "summary_large_image",
+    title: "Blogs || Gaurav Narnaware",
+    description: "Blogs by Gaurav Narnaware and his Team member",
+    keywords: [
+      "Products",
+      "DigitalProducts",
+      "WebTemplates",
+      "WebSites",
+      "Ebooks",
+      "Templates",
+      "Presets",
+    ],
+    images: ["/gaurav.svg"],
+    url: "/Blogs",
+  },
+  openGraph: {
+    title: "Blogs || Gaurav Narnaware",
+    description: "Blogs by Gaurav Narnaware and his Team member",
+    keywords: [
+      "Products",
+      "DigitalProducts",
+      "WebTemplates",
+      "WebSites",
+      "Ebooks",
+      "Templates",
+      "Presets",
+    ],
+    images: ["/gaurav.svg"],
+    url: "/Blogs",
+  },
+
+  robots: {
+    index: true,
+    follow: true,
+    nocache: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      noimageindex: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
+};
+
 const BlogsLayout = ({ children }) => {
   const HeaderName = (props) => {
-    return (
-      <h2 className="font-bold     -b-2  relative">{props.name}</h2>
-    );
-  };
-
-  const SingleBlogCard = () => {
-    return (
-      <div className="flex bg-gray-100  rounded-sm justify-start items-center gap-5 p-2">
-        <img
-          src="https://www.stxnext.com/hubfs/blog-post-graphic-Best-Django-packages-and-libraries.webp"
-          alt=""
-          className="w-20"
-              srcSet=""
-        />{" "}
-        <span>
-          <h4 className="text-[10px] font-semibold">
-            Using dangerouslySetInnerHTML in a React application
-          </h4>
-          <h6 className="text-xs mt-2 font-light">Python</h6>
-        </span>
-      </div>
-    );
+    return <h2 className="font-bold     -b pb-2 relative">{props.name}</h2>;
   };
 
   const FollowUs = () => {
@@ -45,17 +87,23 @@ const BlogsLayout = ({ children }) => {
     );
   };
   return (
-    <div className=" container m-auto   md:relative justify-between  flex-col-reverse md:flex-row flex  gap-5 ">
-      <aside className=" md:w-[15%] md:fixed  md:mt-[140px] w-full    flex bg-white    p-5 flex-col gap-5 items-start ">
+    <div className=" container m-auto       md:relative justify-between  flex-col-reverse md:flex-row flex  gap-5 ">
+      <aside className=" md:w-[15%] md:fixed  md:mt-[141px] w-full p-5   flex bg-white    flex-col gap-5 items-start ">
         <div className="w-full">
-          <HeaderName name="Recent Post" />
-          <div className="mt-2 flex-col flex gap-2">
-            <div className="mt-2 flex-col flex gap-2">
-              <SingleBlogCard />
-              <SingleBlogCard />
-              <SingleBlogCard />
-              <SingleBlogCard />
-            </div>
+          <HeaderName name="Category" />
+          <div className="mt-2 flex-col items-start  flex gap-2">
+            <button className="text-gray-600 hover:text-black hover:font-semibold">
+              - Template
+            </button>
+            <button className="text-gray-600 hover:text-black hover:font-semibold">
+              - JavaScript
+            </button>
+            <button className="text-gray-600 hover:text-black hover:font-semibold">
+              - Programming
+            </button>
+            <button className="text-gray-600 hover:text-black hover:font-semibold">
+              - Development
+            </button>
           </div>
         </div>{" "}
         <div className="w-full">

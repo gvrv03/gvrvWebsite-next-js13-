@@ -9,9 +9,11 @@ import LoopIcon from "@mui/icons-material/Loop";
 import { fetchUsers } from "@/Store/Actions/userAction";
 import { IconButton } from "@mui/material";
 import { BtnSpinner, BtnSpinner2 } from "../Spinner/LoadingSpinner";
+import PhoneIcon from "@mui/icons-material/Phone";
 import { useState } from "react";
 import { fetchProducts } from "@/Store/Actions/productAction";
 import { useUserNextAuth } from "@/Context/useNextAuthContext";
+import { fetchContacts } from "@/Store/Actions/contactAction";
 const HeaderStat = () => {
   const { userData } = useUserNextAuth();
   const [updater, setupdater] = useState("");
@@ -20,11 +22,12 @@ const HeaderStat = () => {
     dispatch(fetchBlogs());
     dispatch(fetchProducts());
     dispatch(fetchUsers());
+    dispatch(fetchContacts());
   }, [updater]);
 
-  const { blogs, users, products } = useSelector((state) => state);
+  const { blogs, users, products, contact } = useSelector((state) => state);
 
-  const StatHeader = ({ blogs, users, products }) => {
+  const StatHeader = ({ blogs, users, products, contact }) => {
     const HeaderCard = ({ name, value, icon, loading }) => {
       return (
         <div className="">
@@ -48,27 +51,27 @@ const HeaderStat = () => {
           <div className="grid gap-5 grid-cols-2 md:grid-cols-4 ">
             <HeaderCard
               name="Blogs"
-              // value={blogs.data.length}
-              // loading={blogs.isLoading}
-
-              value={100}
-              loading={false}
+              value={blogs?.count}
+              loading={blogs?.isLoading}
               icon={<NewspaperIcon className="pColor text-3xl" />}
             />
             <HeaderCard
               name="Users"
-              value={users.data.length}
-              loading={users.isLoading}
+              value={users?.data.length}
+              loading={users?.isLoading}
               icon={<SupervisorAccountIcon className="pColor text-3xl" />}
             />
             <HeaderCard
               name="Products"
-              // value={products.data.length}
-              // loading={products.isLoading}
-
-              value={100}
-              loading={false}
+              value={products?.count}
+              loading={products?.isLoading}
               icon={<ShoppingBagIcon className="pColor text-3xl" />}
+            />
+            <HeaderCard
+              name="Contact"
+              value={contact?.count}
+              loading={contact?.isLoading}
+              icon={<PhoneIcon className="pColor text-3xl" />}
             />
           </div>
         </div>
@@ -82,7 +85,7 @@ const HeaderStat = () => {
         <div className=" justify-between items-center  rounded-full  flex mb-5">
           <div className="bg-gray-100  font-bold px-10 py-2 rounded-full ">
             Hello!{" "}
-            <span className="dark:text-red-600 text-indigo-600">
+            <span className="pColor">
               {userData?.name}
             </span>{" "}
           </div>
@@ -105,7 +108,12 @@ const HeaderStat = () => {
             />
           </div>
         </div>
-        <StatHeader blogs={blogs} users={users} products={products} />
+        <StatHeader
+          blogs={blogs}
+          users={users}
+          contact={contact}
+          products={products}
+        />
       </div>
     </div>
   );

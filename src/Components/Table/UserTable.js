@@ -9,7 +9,7 @@ import TableHead from "@mui/material/TableHead";
 import TablePagination from "@mui/material/TablePagination";
 import TableRow from "@mui/material/TableRow";
 import { User } from "@/DataSet/DataSet";
- 
+
 import LoadingSpinner from "../Spinner/LoadingSpinner";
 
 export default function UserTable({ Users }) {
@@ -54,21 +54,21 @@ export default function UserTable({ Users }) {
                 .map((row, index) => {
                   const {
                     userName,
-                    firebaseID,
+                    _id,
                     gender,
                     email,
                     phoneNo,
-                    userProfile,
+                    image,
                     role,
                   } = row;
 
                   return (
                     <TableRow hover role="checkbox" tabIndex={-1} key={index}>
-                      <TableCell>{firebaseID}</TableCell>
+                      <TableCell>{_id}</TableCell>
                       <TableCell>
                         <img
                           className="w-7 h-7 rounded-full     -2 p-1     -gray-400"
-                          src={userProfile}
+                          src={image}
                           alt="G"
                         />
                       </TableCell>

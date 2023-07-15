@@ -1,6 +1,5 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import {
-  getAllBlogsByQueryObj,
   getAllBlogsURL,
   getSingleURL,
 } from "../../../allLinks";

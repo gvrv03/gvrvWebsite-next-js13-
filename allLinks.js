@@ -31,3 +31,5 @@ export const getUser = baseUrl + "api/User/";
 
 //Favourite
 
+//Contact
+export const ContactURL = baseUrl + "api/contact";

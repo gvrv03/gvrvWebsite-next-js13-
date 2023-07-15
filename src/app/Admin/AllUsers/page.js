@@ -1,20 +1,15 @@
 "use client";
 import UserTable from "@/Components/Table/UserTable";
-import { User } from "@/DataSet/DataSet";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchUsers } from "@/Store/Actions/userAction";
-import LoadingSpinner, {
-  FullScreenLoader,
-} from "@/Components/Spinner/LoadingSpinner";
-import { getAuth } from "firebase/auth";
-import { Button } from "@mui/material";
+import { FullScreenLoader } from "@/Components/Spinner/LoadingSpinner";
 import { AdminPageHeader } from "@/Components/UtilComponent";
- 
+import { useUserNextAuth } from "@/Context/useNextAuthContext";
 
 const AllUsers = () => {
   const dispatch = useDispatch();
-  const { userIDS } = useUserAuth();
+  const { userIDS } = useUserNextAuth();
 
   useEffect(() => {
     dispatch(fetchUsers());
