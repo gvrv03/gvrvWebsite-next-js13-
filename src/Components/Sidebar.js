@@ -27,21 +27,23 @@ export default function Sidebar({ user, isLogin }) {
 
   const list = (anchor) => (
     <aside
-      className="w-[300px]  p-5 "
+      className="w-[300px]  "
       role="presentation"
-      // onKeyDown={toggleDrawer(anchor, false)}
+      onKeyDown={toggleDrawer(anchor, false)}
+      onClick={toggleDrawer(anchor, false)}
     >
       {!isLogin ? (
         <></>
       ) : (
-        <div className="p-5 rounded-md flex  flex-col bg-blue-50 ">
-          <div className="items-center  flex   gap-5   ">
+        <div className="p-5  flex   gap-5 flex-col bg-blue-900 text-white  ">
+          <div  className=" font-semibold text-sky-50 text-left " >Welcome !</div>
+          <div className="items-center    flex   gap-5   ">
             <div className="w-14 h-14   overflow-hidden  border-white border-4  rounded-full">
               <img
                 src={user?.image}
                 className="w-full h-full"
                 alt=""
-                    srcSet=""
+                srcSet=""
               />
             </div>
             <div className="h-full flex flex-col justify-between items-start gap-2">
@@ -50,7 +52,7 @@ export default function Sidebar({ user, isLogin }) {
                 onClick={() => {
                   router.push("/MyAccount");
                 }}
-                className="font-light  text-gray-500 text-sm "
+                className="font-light  text-gray-100 text-sm "
               >
                 {" "}
                 <i className="uil uil-user" /> My Account
@@ -59,14 +61,14 @@ export default function Sidebar({ user, isLogin }) {
           </div>
           <button
             onClick={signOut}
-            className="bgpColor  mt-2 text-white p-1 rounded-md flex gap-2 justify-center items-center "
+            className="bgpColor   text-white p-2 rounded-sm flex gap-2 justify-center items-center "
           >
             {" "}
             <i className="uil uil-signout" /> <span> Sign Out</span>
           </button>
         </div>
       )}
-      <div className="mt-5">
+      <div className=" px-5  mt-5">
         {TopNav.map((text, index) => (
           <button
             className=" text-left  py-2 flex gap-5 w-full"

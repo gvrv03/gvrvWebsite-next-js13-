@@ -43,8 +43,8 @@ export const UserAccountNav = [
     icon: "pColor uil uil-bookmark",
   },
   {
-    name: "Your Order",
-    location: "/MyAccount/YourOrder",
+    name: "Order History",
+    location: "/MyAccount/OrderHistory",
     icon: "pColor uil uil-shopping-bag",
   },
   {

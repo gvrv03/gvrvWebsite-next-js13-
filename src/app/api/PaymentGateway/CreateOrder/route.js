@@ -1,6 +1,6 @@
 import initDB from "@/helper/initDB";
 import razorpayConfig from "@/config/razorpayConfig";
-import ProductDetail from "@/Modal/ProductDetail";
+import Order from "@/Modal/Order";
 initDB();
 
 import { NextResponse } from "next/server";
@@ -8,9 +8,10 @@ import { NextResponse } from "next/server";
 // --------------To Create Product --------------
 export const POST = async (request) => {
   try {
-    const options = await request.json();
-    console.log(options);
+    const { options, User, pID } = await request.json();
     const response = await razorpayConfig.orders.create(options);
+    console.log(response);
+    await Order.create({ ...response, User, Product: pID });
 
     return NextResponse.json(
       {
@@ -37,4 +38,3 @@ export const POST = async (request) => {
   }
 };
 
-// order_M7zOqZhwY5oLcN

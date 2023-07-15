@@ -6,7 +6,7 @@ import userIndividualReducer from "./Slices/userSliceIndividual";
 import productReviewReducer from "./Slices/productReviewSlice";
 import favouriteReducer from "./Slices/favouriteSlice";
 import contactReducer from "./Slices/contactSlice";
-
+import orderReducer from "./Slices/orderSlice";
 const store = configureStore({
   reducer: {
     users: userReducer,
@@ -16,6 +16,7 @@ const store = configureStore({
     productReview: productReviewReducer,
     favourite: favouriteReducer,
     contact: contactReducer,
+    order: orderReducer,
   },
 });
 

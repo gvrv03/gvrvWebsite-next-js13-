@@ -96,6 +96,7 @@ const ProductMinDetail = ({
                   title={title}
                   amount={price}
                   produDID={productID}
+                  productDetailID={id}
                 />
                 <SavedButton
                   styleicon="text-lg"
