@@ -64,11 +64,11 @@ const AboutUs = () => {
           <p className="uppercase pColor font-semibold" >What I Do</p>
           <p className="font-bold text-xl md:text-3xl">Your partner in digital transformation</p>
           <p className="  text-base md:text-lg   text-justify">
-            Hi, I'm <span className="font-semibold pColor" >Gaurav Narnaware</span>, an Indian web developer
+            Hi, I am <span className="font-semibold pColor" >Gaurav Narnaware</span>, an Indian web developer
             working out of Maharashtra. I have a strong desire to make the
             technical and aesthetic components of digital goods come to life.
-            When I'm creating, learning, exploring, and considering ways to
-            improve things, I'm happy.
+            When I am creating, learning, exploring, and considering ways to
+            improve things.
           </p>
         </div>
       </div>
