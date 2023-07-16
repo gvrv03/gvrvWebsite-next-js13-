@@ -19,9 +19,9 @@ const LandingPage = () => {
   return (
     <>
       <section
-        className={`text-gray-100  md:h-[70vh] h-[90vh]   bg-blue-900 -mx-5  pt-32   body-font `}
+        className={`text-gray-100  md:h-[70vh] h-[85vh]   bg-blue-900 -mx-5  pt-32   body-font `}
       >
-        <div className="flex  absolute flex-col  h-[70vh]  left-5 md:left-10  justify-center items-center gap-5">
+        <div className="flex  absolute flex-col  h-[60vh]  left-5 md:left-10  justify-center items-center gap-5">
           <button>
             <i className="uil uil-instagram" />
           </button>
@@ -48,14 +48,14 @@ const LandingPage = () => {
                 className="  float  rounded-full   w-full h-full "
               />
             </div>
-            <div className="absolute left-[80%] w-fit top-0   p-2 float    font-semibold   backdrop-blur-lg z-40 bg-white/25   rounded-sm ">
+            <div className="absolute left-[70%] w-fit top-0   p-2 float    font-semibold   backdrop-blur-lg z-40 bg-white/25   rounded-sm ">
               Web&nbsp;Developer
             </div>
 
             <div className="absolute right-[80%] w-fit top-[45%]  p-2 float    font-semibold   backdrop-blur-lg z-40 bg-white/25   rounded-sm ">
               App&nbsp;Developer
             </div>
-            <div className="absolute left-[80%] w-fit bottom-0 p-2 float    font-semibold   backdrop-blur-lg z-40 bg-white/25   rounded-sm ">
+            <div className="absolute left-[70%] w-fit bottom-0 p-2 float    font-semibold   backdrop-blur-lg z-40 bg-white/25   rounded-sm ">
               Software&nbsp;Developer
             </div>
           </div>
@@ -100,7 +100,7 @@ const LandingPage = () => {
                 </button>
               )}
             </div>
-            <div className="    relative font-bold float flex gap-5 justify-center items-center py-5 rounded-full">
+            <div className="relative font-bold float flex gap-5 justify-center items-center py-5 rounded-full">
               <div className=" w-10 rounded-full h-20 grid place-items-center border-2">
                 <div className="w-1 bg-gray-300 h-10" />
               </div>

@@ -8,6 +8,8 @@ import ScrollToTop from "react-scroll-up";
 import "./globals.css";
 import { Toaster } from "react-hot-toast";
 import { UserNextAuthContexProvider } from "@/Context/useNextAuthContext";
+import WarnModel from "@/Components/Modal/WarnModel";
+import { UseStoreContextProvider } from "@/Context/UseStoreContext";
 
 export default function RootLayout({ children }) {
   return (
@@ -26,15 +28,18 @@ export default function RootLayout({ children }) {
         <Provider store={store}>
           <UserAuthContexProvider>
             <UserNextAuthContexProvider>
-              <Navbar />
-              <div className="px-5 pb-5">
-                <Toaster position="top-center" reverseOrder={false} />
-                {children}
-              </div>
-              {/* <Footer /> */}
-              <ScrollToTop showUnder={160}>
-                <i className="bi text-4xl pColor bi-arrow-up-square-fill"></i>
-              </ScrollToTop>
+              <UseStoreContextProvider>
+                <Navbar />
+                <WarnModel />
+                <div className="px-5 pb-5">
+                  <Toaster position="top-center" reverseOrder={false} />
+                  {children}
+                </div>
+                {/* <Footer /> */}
+                <ScrollToTop showUnder={160}>
+                  <i className="bi text-4xl pColor bi-arrow-up-square-fill"></i>
+                </ScrollToTop>
+              </UseStoreContextProvider>
             </UserNextAuthContexProvider>
           </UserAuthContexProvider>
         </Provider>
