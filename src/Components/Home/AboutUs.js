@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import React from "react";
 import HeaderName from "./HeaderName";
 import Typewriter from "typewriter-effect";
@@ -7,9 +7,9 @@ import Link from "next/link";
 
 const AboutUs = () => {
   return (
-    <div className="  m-auto">
+    <div className="m-auto">
       <HeaderName name="About Us" />
-      <div className=" ">
+      {/* <div className=" ">
         <div className="-z-50 w-auto h-80 rounded-full  overflow-hidden grid place-items-center">
           <Image
             width={300}
@@ -26,7 +26,7 @@ const AboutUs = () => {
             <span className="ml-2 font-bold  text-red-600 text-center ">
               <Typewriter
                 options={{
-                  strings: ["Web Developer", "Software Developer"],
+                  strings: ["Web Developer"],
                   autoStart: true,
                   loop: true,
                 }}
@@ -34,10 +34,11 @@ const AboutUs = () => {
             </span>
           </h3>
           <p className="text-center">
-            Hi there! Im a passionate web developer with a love for all things
-            digital. I have been in the industry for over 2 years, and during
-            that time, I have honed my skills in HTML, CSS, JavaScript, and
-            other web development frameworks.
+            Hi, I'm Gaurav Narnaware, an Indian web developer working out of
+            Maharashtra. I have a strong desire to make the technical and
+            aesthetic components of digital goods come to life. When I'm
+            creating, learning, exploring, and considering ways to improve
+            things, I'm happy.
           </p>
           <div className=" grid place-items-center">
             <Link
@@ -48,6 +49,27 @@ const AboutUs = () => {
               Download CV
             </Link>
           </div>
+        </div>
+      </div> */}
+
+      <div className="flex flex-col md:flex-row gap-5">
+        <div className="">
+          <img
+            src="https://sahilpingale.github.io/portfolio/img/about-me.png"
+            className=" "
+            alt=""
+          />
+        </div>
+        <div className="flex flex-col gap-5">
+          <p className="uppercase pColor font-semibold" >What I Do</p>
+          <p className="font-bold text-xl md:text-3xl">Your partner in digital transformation</p>
+          <p className="  text-base md:text-lg   text-justify">
+            Hi, I'm <span className="font-semibold pColor" >Gaurav Narnaware</span>, an Indian web developer
+            working out of Maharashtra. I have a strong desire to make the
+            technical and aesthetic components of digital goods come to life.
+            When I'm creating, learning, exploring, and considering ways to
+            improve things, I'm happy.
+          </p>
         </div>
       </div>
     </div>

@@ -8,7 +8,7 @@ export const metadata = {
   title: "Gaurav Narnaware || Personal Website ",
   applicationName: "Gaurav Narnaware || Personal Website ",
   description:
-    "Transforming the Digital Landscape: Expert Web & Software Development Services",
+    "  Hi, I'm Gaurav Narnaware, an Indian web developer   working out of Maharashtra. I have a strong desire to make the technical and aesthetic components of digital goods come to life. When I'm creating, learning, exploring, and considering ways to improve things, I'm happy.",
   keywords: [
     "its.gvrv_n",
     "gvrv_n",
@@ -26,7 +26,7 @@ export const metadata = {
     images: ["/gaurav.svg"],
     creator: "@gvrv_n",
     description:
-      "Transforming the Digital Landscape: Expert Web & Software Development Services",
+      "  Hi, I'm Gaurav Narnaware, an Indian web developer working out of Maharashtra. I have a strong desire to make the technical and aesthetic components of digital goods come to life. When I'm creating, learning, exploring, and considering ways to improve things, I'm happy.",
     keywords: [
       "its.gvrv_n",
       "gvrv_n",
@@ -41,7 +41,7 @@ export const metadata = {
     url: "/",
     images: ["/gaurav.svg"],
     description:
-      "Transforming the Digital Landscape: Expert Web & Software Development Services",
+      "  Hi, I'm Gaurav Narnaware, an Indian web developer working out of Maharashtra. I have a strong desire to make the technical and aesthetic components of digital goods come to life. When I'm creating, learning, exploring, and considering ways to improve things, I'm happy.",
     keywords: [
       "its.gvrv_n",
       "gvrv_n",
@@ -71,7 +71,7 @@ export default function Home() {
   return (
     <main>
       <LandingPage />
-      <div className="container  m-auto">
+      <div className="container flex flex-col gap-20 m-auto">
         <AboutUs />
         <Skills />
         <FeatureBlog />
