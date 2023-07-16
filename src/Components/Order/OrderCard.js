@@ -35,10 +35,10 @@ const OrderCard = ({ orderDetail }) => {
 
       <div className="flex justify-between  w-full gap-5 flex-col md:flex-row  items-center">
         <div className="flex   md:flex-col justify-between  w-full md:gap-1   gap-5">
-          <span className="text-xs   md:text-sm text-gray-500">
+          <span className="text-[10px]   md:text-sm text-gray-500">
             Order ID : {orderDetail?.id}
           </span>
-          <span className="text-xs   md:text-sm text-gray-500">
+          <span className="text-[10px]   md:text-sm text-gray-500">
             Payment ID :{orderDetail?.razorpay_payment_id}
           </span>
         </div>
